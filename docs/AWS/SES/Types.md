@@ -94,7 +94,7 @@ Encode AddressList
 
 ``` purescript
 newtype AlreadyExistsException
-  = AlreadyExistsException { "Name" :: NullOrUndefined (RuleOrRuleSetName) }
+  = AlreadyExistsException { "Name" :: Maybe (RuleOrRuleSetName) }
 ```
 
 <p>Indicates that a resource could not be created because of a naming conflict.</p>
@@ -119,7 +119,7 @@ Constructs AlreadyExistsException from required parameters
 #### `newAlreadyExistsException'`
 
 ``` purescript
-newAlreadyExistsException' :: ({ "Name" :: NullOrUndefined (RuleOrRuleSetName) } -> { "Name" :: NullOrUndefined (RuleOrRuleSetName) }) -> AlreadyExistsException
+newAlreadyExistsException' :: ({ "Name" :: Maybe (RuleOrRuleSetName) } -> { "Name" :: Maybe (RuleOrRuleSetName) }) -> AlreadyExistsException
 ```
 
 Constructs AlreadyExistsException's fields from required parameters
@@ -176,7 +176,7 @@ Encode BehaviorOnMXFailure
 
 ``` purescript
 newtype Body
-  = Body { "Text" :: NullOrUndefined (Content), "Html" :: NullOrUndefined (Content) }
+  = Body { "Text" :: Maybe (Content), "Html" :: Maybe (Content) }
 ```
 
 <p>Represents the body of the message. You can specify text, HTML, or both. If you use both, then the message should display correctly in the widest variety of email clients.</p>
@@ -201,7 +201,7 @@ Constructs Body from required parameters
 #### `newBody'`
 
 ``` purescript
-newBody' :: ({ "Text" :: NullOrUndefined (Content), "Html" :: NullOrUndefined (Content) } -> { "Text" :: NullOrUndefined (Content), "Html" :: NullOrUndefined (Content) }) -> Body
+newBody' :: ({ "Text" :: Maybe (Content), "Html" :: Maybe (Content) } -> { "Text" :: Maybe (Content), "Html" :: Maybe (Content) }) -> Body
 ```
 
 Constructs Body's fields from required parameters
@@ -210,7 +210,7 @@ Constructs Body's fields from required parameters
 
 ``` purescript
 newtype BounceAction
-  = BounceAction { "TopicArn" :: NullOrUndefined (AmazonResourceName), "SmtpReplyCode" :: BounceSmtpReplyCode, "StatusCode" :: NullOrUndefined (BounceStatusCode), "Message" :: BounceMessage, "Sender" :: Address }
+  = BounceAction { "TopicArn" :: Maybe (AmazonResourceName), "SmtpReplyCode" :: BounceSmtpReplyCode, "StatusCode" :: Maybe (BounceStatusCode), "Message" :: BounceMessage, "Sender" :: Address }
 ```
 
 <p>When included in a receipt rule, this action rejects the received email by returning a bounce response to the sender and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p> <p>For information about sending a bounce message in response to a received email, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-bounce.html">Amazon SES Developer Guide</a>.</p>
@@ -235,7 +235,7 @@ Constructs BounceAction from required parameters
 #### `newBounceAction'`
 
 ``` purescript
-newBounceAction' :: BounceMessage -> Address -> BounceSmtpReplyCode -> ({ "TopicArn" :: NullOrUndefined (AmazonResourceName), "SmtpReplyCode" :: BounceSmtpReplyCode, "StatusCode" :: NullOrUndefined (BounceStatusCode), "Message" :: BounceMessage, "Sender" :: Address } -> { "TopicArn" :: NullOrUndefined (AmazonResourceName), "SmtpReplyCode" :: BounceSmtpReplyCode, "StatusCode" :: NullOrUndefined (BounceStatusCode), "Message" :: BounceMessage, "Sender" :: Address }) -> BounceAction
+newBounceAction' :: BounceMessage -> Address -> BounceSmtpReplyCode -> ({ "TopicArn" :: Maybe (AmazonResourceName), "SmtpReplyCode" :: BounceSmtpReplyCode, "StatusCode" :: Maybe (BounceStatusCode), "Message" :: BounceMessage, "Sender" :: Address } -> { "TopicArn" :: Maybe (AmazonResourceName), "SmtpReplyCode" :: BounceSmtpReplyCode, "StatusCode" :: Maybe (BounceStatusCode), "Message" :: BounceMessage, "Sender" :: Address }) -> BounceAction
 ```
 
 Constructs BounceAction's fields from required parameters
@@ -308,7 +308,7 @@ Encode BounceType
 
 ``` purescript
 newtype BouncedRecipientInfo
-  = BouncedRecipientInfo { "Recipient" :: Address, "RecipientArn" :: NullOrUndefined (AmazonResourceName), "BounceType" :: NullOrUndefined (BounceType), "RecipientDsnFields" :: NullOrUndefined (RecipientDsnFields) }
+  = BouncedRecipientInfo { "Recipient" :: Address, "RecipientArn" :: Maybe (AmazonResourceName), "BounceType" :: Maybe (BounceType), "RecipientDsnFields" :: Maybe (RecipientDsnFields) }
 ```
 
 <p>Recipient-related information to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.</p> <p>For information about receiving email through Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon SES Developer Guide</a>.</p>
@@ -333,7 +333,7 @@ Constructs BouncedRecipientInfo from required parameters
 #### `newBouncedRecipientInfo'`
 
 ``` purescript
-newBouncedRecipientInfo' :: Address -> ({ "Recipient" :: Address, "RecipientArn" :: NullOrUndefined (AmazonResourceName), "BounceType" :: NullOrUndefined (BounceType), "RecipientDsnFields" :: NullOrUndefined (RecipientDsnFields) } -> { "Recipient" :: Address, "RecipientArn" :: NullOrUndefined (AmazonResourceName), "BounceType" :: NullOrUndefined (BounceType), "RecipientDsnFields" :: NullOrUndefined (RecipientDsnFields) }) -> BouncedRecipientInfo
+newBouncedRecipientInfo' :: Address -> ({ "Recipient" :: Address, "RecipientArn" :: Maybe (AmazonResourceName), "BounceType" :: Maybe (BounceType), "RecipientDsnFields" :: Maybe (RecipientDsnFields) } -> { "Recipient" :: Address, "RecipientArn" :: Maybe (AmazonResourceName), "BounceType" :: Maybe (BounceType), "RecipientDsnFields" :: Maybe (RecipientDsnFields) }) -> BouncedRecipientInfo
 ```
 
 Constructs BouncedRecipientInfo's fields from required parameters
@@ -358,7 +358,7 @@ Encode BouncedRecipientInfoList
 
 ``` purescript
 newtype BulkEmailDestination
-  = BulkEmailDestination { "Destination" :: Destination, "ReplacementTags" :: NullOrUndefined (MessageTagList), "ReplacementTemplateData" :: NullOrUndefined (TemplateData) }
+  = BulkEmailDestination { "Destination" :: Destination, "ReplacementTags" :: Maybe (MessageTagList), "ReplacementTemplateData" :: Maybe (TemplateData) }
 ```
 
 <p>An array that contains one or more Destinations, as well as the tags and replacement data associated with each of those Destinations.</p>
@@ -383,7 +383,7 @@ Constructs BulkEmailDestination from required parameters
 #### `newBulkEmailDestination'`
 
 ``` purescript
-newBulkEmailDestination' :: Destination -> ({ "Destination" :: Destination, "ReplacementTags" :: NullOrUndefined (MessageTagList), "ReplacementTemplateData" :: NullOrUndefined (TemplateData) } -> { "Destination" :: Destination, "ReplacementTags" :: NullOrUndefined (MessageTagList), "ReplacementTemplateData" :: NullOrUndefined (TemplateData) }) -> BulkEmailDestination
+newBulkEmailDestination' :: Destination -> ({ "Destination" :: Destination, "ReplacementTags" :: Maybe (MessageTagList), "ReplacementTemplateData" :: Maybe (TemplateData) } -> { "Destination" :: Destination, "ReplacementTags" :: Maybe (MessageTagList), "ReplacementTemplateData" :: Maybe (TemplateData) }) -> BulkEmailDestination
 ```
 
 Constructs BulkEmailDestination's fields from required parameters
@@ -408,7 +408,7 @@ Encode BulkEmailDestinationList
 
 ``` purescript
 newtype BulkEmailDestinationStatus
-  = BulkEmailDestinationStatus { "Status" :: NullOrUndefined (BulkEmailStatus), "Error" :: NullOrUndefined (Error), "MessageId" :: NullOrUndefined (MessageId) }
+  = BulkEmailDestinationStatus { "Status" :: Maybe (BulkEmailStatus), "Error" :: Maybe (Error), "MessageId" :: Maybe (MessageId) }
 ```
 
 <p>An object that contains the response from the <code>SendBulkTemplatedEmail</code> operation.</p>
@@ -433,7 +433,7 @@ Constructs BulkEmailDestinationStatus from required parameters
 #### `newBulkEmailDestinationStatus'`
 
 ``` purescript
-newBulkEmailDestinationStatus' :: ({ "Status" :: NullOrUndefined (BulkEmailStatus), "Error" :: NullOrUndefined (Error), "MessageId" :: NullOrUndefined (MessageId) } -> { "Status" :: NullOrUndefined (BulkEmailStatus), "Error" :: NullOrUndefined (Error), "MessageId" :: NullOrUndefined (MessageId) }) -> BulkEmailDestinationStatus
+newBulkEmailDestinationStatus' :: ({ "Status" :: Maybe (BulkEmailStatus), "Error" :: Maybe (Error), "MessageId" :: Maybe (MessageId) } -> { "Status" :: Maybe (BulkEmailStatus), "Error" :: Maybe (Error), "MessageId" :: Maybe (MessageId) }) -> BulkEmailDestinationStatus
 ```
 
 Constructs BulkEmailDestinationStatus's fields from required parameters
@@ -474,7 +474,7 @@ Encode BulkEmailStatus
 
 ``` purescript
 newtype CannotDeleteException
-  = CannotDeleteException { "Name" :: NullOrUndefined (RuleOrRuleSetName) }
+  = CannotDeleteException { "Name" :: Maybe (RuleOrRuleSetName) }
 ```
 
 <p>Indicates that the delete operation could not be completed.</p>
@@ -499,7 +499,7 @@ Constructs CannotDeleteException from required parameters
 #### `newCannotDeleteException'`
 
 ``` purescript
-newCannotDeleteException' :: ({ "Name" :: NullOrUndefined (RuleOrRuleSetName) } -> { "Name" :: NullOrUndefined (RuleOrRuleSetName) }) -> CannotDeleteException
+newCannotDeleteException' :: ({ "Name" :: Maybe (RuleOrRuleSetName) } -> { "Name" :: Maybe (RuleOrRuleSetName) }) -> CannotDeleteException
 ```
 
 Constructs CannotDeleteException's fields from required parameters
@@ -710,7 +710,7 @@ Constructs ConfigurationSet's fields from required parameters
 
 ``` purescript
 newtype ConfigurationSetAlreadyExistsException
-  = ConfigurationSetAlreadyExistsException { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) }
+  = ConfigurationSetAlreadyExistsException { "ConfigurationSetName" :: Maybe (ConfigurationSetName) }
 ```
 
 <p>Indicates that the configuration set could not be created because of a naming conflict.</p>
@@ -735,7 +735,7 @@ Constructs ConfigurationSetAlreadyExistsException from required parameters
 #### `newConfigurationSetAlreadyExistsException'`
 
 ``` purescript
-newConfigurationSetAlreadyExistsException' :: ({ "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } -> { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) }) -> ConfigurationSetAlreadyExistsException
+newConfigurationSetAlreadyExistsException' :: ({ "ConfigurationSetName" :: Maybe (ConfigurationSetName) } -> { "ConfigurationSetName" :: Maybe (ConfigurationSetName) }) -> ConfigurationSetAlreadyExistsException
 ```
 
 Constructs ConfigurationSetAlreadyExistsException's fields from required parameters
@@ -776,7 +776,7 @@ Encode ConfigurationSetAttributeList
 
 ``` purescript
 newtype ConfigurationSetDoesNotExistException
-  = ConfigurationSetDoesNotExistException { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) }
+  = ConfigurationSetDoesNotExistException { "ConfigurationSetName" :: Maybe (ConfigurationSetName) }
 ```
 
 <p>Indicates that the configuration set does not exist.</p>
@@ -801,7 +801,7 @@ Constructs ConfigurationSetDoesNotExistException from required parameters
 #### `newConfigurationSetDoesNotExistException'`
 
 ``` purescript
-newConfigurationSetDoesNotExistException' :: ({ "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } -> { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) }) -> ConfigurationSetDoesNotExistException
+newConfigurationSetDoesNotExistException' :: ({ "ConfigurationSetName" :: Maybe (ConfigurationSetName) } -> { "ConfigurationSetName" :: Maybe (ConfigurationSetName) }) -> ConfigurationSetDoesNotExistException
 ```
 
 Constructs ConfigurationSetDoesNotExistException's fields from required parameters
@@ -826,7 +826,7 @@ Encode ConfigurationSetName
 
 ``` purescript
 newtype ConfigurationSetSendingPausedException
-  = ConfigurationSetSendingPausedException { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) }
+  = ConfigurationSetSendingPausedException { "ConfigurationSetName" :: Maybe (ConfigurationSetName) }
 ```
 
 <p>Indicates that email sending is disabled for the configuration set.</p> <p>You can enable or disable email sending for a configuration set using <a>UpdateConfigurationSetSendingEnabled</a>.</p>
@@ -851,7 +851,7 @@ Constructs ConfigurationSetSendingPausedException from required parameters
 #### `newConfigurationSetSendingPausedException'`
 
 ``` purescript
-newConfigurationSetSendingPausedException' :: ({ "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } -> { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) }) -> ConfigurationSetSendingPausedException
+newConfigurationSetSendingPausedException' :: ({ "ConfigurationSetName" :: Maybe (ConfigurationSetName) } -> { "ConfigurationSetName" :: Maybe (ConfigurationSetName) }) -> ConfigurationSetSendingPausedException
 ```
 
 Constructs ConfigurationSetSendingPausedException's fields from required parameters
@@ -876,7 +876,7 @@ Encode ConfigurationSets
 
 ``` purescript
 newtype Content
-  = Content { "Data" :: MessageData, "Charset" :: NullOrUndefined (Charset) }
+  = Content { "Data" :: MessageData, "Charset" :: Maybe (Charset) }
 ```
 
 <p>Represents textual data, plus an optional character set specification.</p> <p>By default, the text must be 7-bit ASCII, due to the constraints of the SMTP protocol. If the text must contain any other characters, then you must also specify a character set. Examples include UTF-8, ISO-8859-1, and Shift_JIS.</p>
@@ -901,7 +901,7 @@ Constructs Content from required parameters
 #### `newContent'`
 
 ``` purescript
-newContent' :: MessageData -> ({ "Data" :: MessageData, "Charset" :: NullOrUndefined (Charset) } -> { "Data" :: MessageData, "Charset" :: NullOrUndefined (Charset) }) -> Content
+newContent' :: MessageData -> ({ "Data" :: MessageData, "Charset" :: Maybe (Charset) } -> { "Data" :: MessageData, "Charset" :: Maybe (Charset) }) -> Content
 ```
 
 Constructs Content's fields from required parameters
@@ -1168,7 +1168,7 @@ Encode CreateReceiptFilterResponse
 
 ``` purescript
 newtype CreateReceiptRuleRequest
-  = CreateReceiptRuleRequest { "RuleSetName" :: ReceiptRuleSetName, "After" :: NullOrUndefined (ReceiptRuleName), "Rule" :: ReceiptRule }
+  = CreateReceiptRuleRequest { "RuleSetName" :: ReceiptRuleSetName, "After" :: Maybe (ReceiptRuleName), "Rule" :: ReceiptRule }
 ```
 
 <p>Represents a request to create a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
@@ -1193,7 +1193,7 @@ Constructs CreateReceiptRuleRequest from required parameters
 #### `newCreateReceiptRuleRequest'`
 
 ``` purescript
-newCreateReceiptRuleRequest' :: ReceiptRule -> ReceiptRuleSetName -> ({ "RuleSetName" :: ReceiptRuleSetName, "After" :: NullOrUndefined (ReceiptRuleName), "Rule" :: ReceiptRule } -> { "RuleSetName" :: ReceiptRuleSetName, "After" :: NullOrUndefined (ReceiptRuleName), "Rule" :: ReceiptRule }) -> CreateReceiptRuleRequest
+newCreateReceiptRuleRequest' :: ReceiptRule -> ReceiptRuleSetName -> ({ "RuleSetName" :: ReceiptRuleSetName, "After" :: Maybe (ReceiptRuleName), "Rule" :: ReceiptRule } -> { "RuleSetName" :: ReceiptRuleSetName, "After" :: Maybe (ReceiptRuleName), "Rule" :: ReceiptRule }) -> CreateReceiptRuleRequest
 ```
 
 Constructs CreateReceiptRuleRequest's fields from required parameters
@@ -1372,7 +1372,7 @@ Encode CustomVerificationEmailInvalidContentException
 
 ``` purescript
 newtype CustomVerificationEmailTemplate
-  = CustomVerificationEmailTemplate { "TemplateName" :: NullOrUndefined (TemplateName), "FromEmailAddress" :: NullOrUndefined (FromAddress), "TemplateSubject" :: NullOrUndefined (Subject), "SuccessRedirectionURL" :: NullOrUndefined (SuccessRedirectionURL), "FailureRedirectionURL" :: NullOrUndefined (FailureRedirectionURL) }
+  = CustomVerificationEmailTemplate { "TemplateName" :: Maybe (TemplateName), "FromEmailAddress" :: Maybe (FromAddress), "TemplateSubject" :: Maybe (Subject), "SuccessRedirectionURL" :: Maybe (SuccessRedirectionURL), "FailureRedirectionURL" :: Maybe (FailureRedirectionURL) }
 ```
 
 <p>Contains information about a custom verification email template.</p>
@@ -1397,7 +1397,7 @@ Constructs CustomVerificationEmailTemplate from required parameters
 #### `newCustomVerificationEmailTemplate'`
 
 ``` purescript
-newCustomVerificationEmailTemplate' :: ({ "TemplateName" :: NullOrUndefined (TemplateName), "FromEmailAddress" :: NullOrUndefined (FromAddress), "TemplateSubject" :: NullOrUndefined (Subject), "SuccessRedirectionURL" :: NullOrUndefined (SuccessRedirectionURL), "FailureRedirectionURL" :: NullOrUndefined (FailureRedirectionURL) } -> { "TemplateName" :: NullOrUndefined (TemplateName), "FromEmailAddress" :: NullOrUndefined (FromAddress), "TemplateSubject" :: NullOrUndefined (Subject), "SuccessRedirectionURL" :: NullOrUndefined (SuccessRedirectionURL), "FailureRedirectionURL" :: NullOrUndefined (FailureRedirectionURL) }) -> CustomVerificationEmailTemplate
+newCustomVerificationEmailTemplate' :: ({ "TemplateName" :: Maybe (TemplateName), "FromEmailAddress" :: Maybe (FromAddress), "TemplateSubject" :: Maybe (Subject), "SuccessRedirectionURL" :: Maybe (SuccessRedirectionURL), "FailureRedirectionURL" :: Maybe (FailureRedirectionURL) } -> { "TemplateName" :: Maybe (TemplateName), "FromEmailAddress" :: Maybe (FromAddress), "TemplateSubject" :: Maybe (Subject), "SuccessRedirectionURL" :: Maybe (SuccessRedirectionURL), "FailureRedirectionURL" :: Maybe (FailureRedirectionURL) }) -> CustomVerificationEmailTemplate
 ```
 
 Constructs CustomVerificationEmailTemplate's fields from required parameters
@@ -1406,7 +1406,7 @@ Constructs CustomVerificationEmailTemplate's fields from required parameters
 
 ``` purescript
 newtype CustomVerificationEmailTemplateAlreadyExistsException
-  = CustomVerificationEmailTemplateAlreadyExistsException { "CustomVerificationEmailTemplateName" :: NullOrUndefined (TemplateName) }
+  = CustomVerificationEmailTemplateAlreadyExistsException { "CustomVerificationEmailTemplateName" :: Maybe (TemplateName) }
 ```
 
 <p>Indicates that a custom verification email template with the name you specified already exists.</p>
@@ -1431,7 +1431,7 @@ Constructs CustomVerificationEmailTemplateAlreadyExistsException from required p
 #### `newCustomVerificationEmailTemplateAlreadyExistsException'`
 
 ``` purescript
-newCustomVerificationEmailTemplateAlreadyExistsException' :: ({ "CustomVerificationEmailTemplateName" :: NullOrUndefined (TemplateName) } -> { "CustomVerificationEmailTemplateName" :: NullOrUndefined (TemplateName) }) -> CustomVerificationEmailTemplateAlreadyExistsException
+newCustomVerificationEmailTemplateAlreadyExistsException' :: ({ "CustomVerificationEmailTemplateName" :: Maybe (TemplateName) } -> { "CustomVerificationEmailTemplateName" :: Maybe (TemplateName) }) -> CustomVerificationEmailTemplateAlreadyExistsException
 ```
 
 Constructs CustomVerificationEmailTemplateAlreadyExistsException's fields from required parameters
@@ -1440,7 +1440,7 @@ Constructs CustomVerificationEmailTemplateAlreadyExistsException's fields from r
 
 ``` purescript
 newtype CustomVerificationEmailTemplateDoesNotExistException
-  = CustomVerificationEmailTemplateDoesNotExistException { "CustomVerificationEmailTemplateName" :: NullOrUndefined (TemplateName) }
+  = CustomVerificationEmailTemplateDoesNotExistException { "CustomVerificationEmailTemplateName" :: Maybe (TemplateName) }
 ```
 
 <p>Indicates that a custom verification email template with the name you specified does not exist.</p>
@@ -1465,7 +1465,7 @@ Constructs CustomVerificationEmailTemplateDoesNotExistException from required pa
 #### `newCustomVerificationEmailTemplateDoesNotExistException'`
 
 ``` purescript
-newCustomVerificationEmailTemplateDoesNotExistException' :: ({ "CustomVerificationEmailTemplateName" :: NullOrUndefined (TemplateName) } -> { "CustomVerificationEmailTemplateName" :: NullOrUndefined (TemplateName) }) -> CustomVerificationEmailTemplateDoesNotExistException
+newCustomVerificationEmailTemplateDoesNotExistException' :: ({ "CustomVerificationEmailTemplateName" :: Maybe (TemplateName) } -> { "CustomVerificationEmailTemplateName" :: Maybe (TemplateName) }) -> CustomVerificationEmailTemplateDoesNotExistException
 ```
 
 Constructs CustomVerificationEmailTemplateDoesNotExistException's fields from required parameters
@@ -2058,7 +2058,7 @@ Encode DescribeActiveReceiptRuleSetRequest
 
 ``` purescript
 newtype DescribeActiveReceiptRuleSetResponse
-  = DescribeActiveReceiptRuleSetResponse { "Metadata" :: NullOrUndefined (ReceiptRuleSetMetadata), "Rules" :: NullOrUndefined (ReceiptRulesList) }
+  = DescribeActiveReceiptRuleSetResponse { "Metadata" :: Maybe (ReceiptRuleSetMetadata), "Rules" :: Maybe (ReceiptRulesList) }
 ```
 
 <p>Represents the metadata and receipt rules for the receipt rule set that is currently active.</p>
@@ -2083,7 +2083,7 @@ Constructs DescribeActiveReceiptRuleSetResponse from required parameters
 #### `newDescribeActiveReceiptRuleSetResponse'`
 
 ``` purescript
-newDescribeActiveReceiptRuleSetResponse' :: ({ "Metadata" :: NullOrUndefined (ReceiptRuleSetMetadata), "Rules" :: NullOrUndefined (ReceiptRulesList) } -> { "Metadata" :: NullOrUndefined (ReceiptRuleSetMetadata), "Rules" :: NullOrUndefined (ReceiptRulesList) }) -> DescribeActiveReceiptRuleSetResponse
+newDescribeActiveReceiptRuleSetResponse' :: ({ "Metadata" :: Maybe (ReceiptRuleSetMetadata), "Rules" :: Maybe (ReceiptRulesList) } -> { "Metadata" :: Maybe (ReceiptRuleSetMetadata), "Rules" :: Maybe (ReceiptRulesList) }) -> DescribeActiveReceiptRuleSetResponse
 ```
 
 Constructs DescribeActiveReceiptRuleSetResponse's fields from required parameters
@@ -2092,7 +2092,7 @@ Constructs DescribeActiveReceiptRuleSetResponse's fields from required parameter
 
 ``` purescript
 newtype DescribeConfigurationSetRequest
-  = DescribeConfigurationSetRequest { "ConfigurationSetName" :: ConfigurationSetName, "ConfigurationSetAttributeNames" :: NullOrUndefined (ConfigurationSetAttributeList) }
+  = DescribeConfigurationSetRequest { "ConfigurationSetName" :: ConfigurationSetName, "ConfigurationSetAttributeNames" :: Maybe (ConfigurationSetAttributeList) }
 ```
 
 <p>Represents a request to return the details of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
@@ -2117,7 +2117,7 @@ Constructs DescribeConfigurationSetRequest from required parameters
 #### `newDescribeConfigurationSetRequest'`
 
 ``` purescript
-newDescribeConfigurationSetRequest' :: ConfigurationSetName -> ({ "ConfigurationSetName" :: ConfigurationSetName, "ConfigurationSetAttributeNames" :: NullOrUndefined (ConfigurationSetAttributeList) } -> { "ConfigurationSetName" :: ConfigurationSetName, "ConfigurationSetAttributeNames" :: NullOrUndefined (ConfigurationSetAttributeList) }) -> DescribeConfigurationSetRequest
+newDescribeConfigurationSetRequest' :: ConfigurationSetName -> ({ "ConfigurationSetName" :: ConfigurationSetName, "ConfigurationSetAttributeNames" :: Maybe (ConfigurationSetAttributeList) } -> { "ConfigurationSetName" :: ConfigurationSetName, "ConfigurationSetAttributeNames" :: Maybe (ConfigurationSetAttributeList) }) -> DescribeConfigurationSetRequest
 ```
 
 Constructs DescribeConfigurationSetRequest's fields from required parameters
@@ -2126,7 +2126,7 @@ Constructs DescribeConfigurationSetRequest's fields from required parameters
 
 ``` purescript
 newtype DescribeConfigurationSetResponse
-  = DescribeConfigurationSetResponse { "ConfigurationSet" :: NullOrUndefined (ConfigurationSet), "EventDestinations" :: NullOrUndefined (EventDestinations), "TrackingOptions" :: NullOrUndefined (TrackingOptions), "ReputationOptions" :: NullOrUndefined (ReputationOptions) }
+  = DescribeConfigurationSetResponse { "ConfigurationSet" :: Maybe (ConfigurationSet), "EventDestinations" :: Maybe (EventDestinations), "TrackingOptions" :: Maybe (TrackingOptions), "ReputationOptions" :: Maybe (ReputationOptions) }
 ```
 
 <p>Represents the details of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
@@ -2151,7 +2151,7 @@ Constructs DescribeConfigurationSetResponse from required parameters
 #### `newDescribeConfigurationSetResponse'`
 
 ``` purescript
-newDescribeConfigurationSetResponse' :: ({ "ConfigurationSet" :: NullOrUndefined (ConfigurationSet), "EventDestinations" :: NullOrUndefined (EventDestinations), "TrackingOptions" :: NullOrUndefined (TrackingOptions), "ReputationOptions" :: NullOrUndefined (ReputationOptions) } -> { "ConfigurationSet" :: NullOrUndefined (ConfigurationSet), "EventDestinations" :: NullOrUndefined (EventDestinations), "TrackingOptions" :: NullOrUndefined (TrackingOptions), "ReputationOptions" :: NullOrUndefined (ReputationOptions) }) -> DescribeConfigurationSetResponse
+newDescribeConfigurationSetResponse' :: ({ "ConfigurationSet" :: Maybe (ConfigurationSet), "EventDestinations" :: Maybe (EventDestinations), "TrackingOptions" :: Maybe (TrackingOptions), "ReputationOptions" :: Maybe (ReputationOptions) } -> { "ConfigurationSet" :: Maybe (ConfigurationSet), "EventDestinations" :: Maybe (EventDestinations), "TrackingOptions" :: Maybe (TrackingOptions), "ReputationOptions" :: Maybe (ReputationOptions) }) -> DescribeConfigurationSetResponse
 ```
 
 Constructs DescribeConfigurationSetResponse's fields from required parameters
@@ -2194,7 +2194,7 @@ Constructs DescribeReceiptRuleRequest's fields from required parameters
 
 ``` purescript
 newtype DescribeReceiptRuleResponse
-  = DescribeReceiptRuleResponse { "Rule" :: NullOrUndefined (ReceiptRule) }
+  = DescribeReceiptRuleResponse { "Rule" :: Maybe (ReceiptRule) }
 ```
 
 <p>Represents the details of a receipt rule.</p>
@@ -2219,7 +2219,7 @@ Constructs DescribeReceiptRuleResponse from required parameters
 #### `newDescribeReceiptRuleResponse'`
 
 ``` purescript
-newDescribeReceiptRuleResponse' :: ({ "Rule" :: NullOrUndefined (ReceiptRule) } -> { "Rule" :: NullOrUndefined (ReceiptRule) }) -> DescribeReceiptRuleResponse
+newDescribeReceiptRuleResponse' :: ({ "Rule" :: Maybe (ReceiptRule) } -> { "Rule" :: Maybe (ReceiptRule) }) -> DescribeReceiptRuleResponse
 ```
 
 Constructs DescribeReceiptRuleResponse's fields from required parameters
@@ -2262,7 +2262,7 @@ Constructs DescribeReceiptRuleSetRequest's fields from required parameters
 
 ``` purescript
 newtype DescribeReceiptRuleSetResponse
-  = DescribeReceiptRuleSetResponse { "Metadata" :: NullOrUndefined (ReceiptRuleSetMetadata), "Rules" :: NullOrUndefined (ReceiptRulesList) }
+  = DescribeReceiptRuleSetResponse { "Metadata" :: Maybe (ReceiptRuleSetMetadata), "Rules" :: Maybe (ReceiptRulesList) }
 ```
 
 <p>Represents the details of the specified receipt rule set.</p>
@@ -2287,7 +2287,7 @@ Constructs DescribeReceiptRuleSetResponse from required parameters
 #### `newDescribeReceiptRuleSetResponse'`
 
 ``` purescript
-newDescribeReceiptRuleSetResponse' :: ({ "Metadata" :: NullOrUndefined (ReceiptRuleSetMetadata), "Rules" :: NullOrUndefined (ReceiptRulesList) } -> { "Metadata" :: NullOrUndefined (ReceiptRuleSetMetadata), "Rules" :: NullOrUndefined (ReceiptRulesList) }) -> DescribeReceiptRuleSetResponse
+newDescribeReceiptRuleSetResponse' :: ({ "Metadata" :: Maybe (ReceiptRuleSetMetadata), "Rules" :: Maybe (ReceiptRulesList) } -> { "Metadata" :: Maybe (ReceiptRuleSetMetadata), "Rules" :: Maybe (ReceiptRulesList) }) -> DescribeReceiptRuleSetResponse
 ```
 
 Constructs DescribeReceiptRuleSetResponse's fields from required parameters
@@ -2296,7 +2296,7 @@ Constructs DescribeReceiptRuleSetResponse's fields from required parameters
 
 ``` purescript
 newtype Destination
-  = Destination { "ToAddresses" :: NullOrUndefined (AddressList), "CcAddresses" :: NullOrUndefined (AddressList), "BccAddresses" :: NullOrUndefined (AddressList) }
+  = Destination { "ToAddresses" :: Maybe (AddressList), "CcAddresses" :: Maybe (AddressList), "BccAddresses" :: Maybe (AddressList) }
 ```
 
 <p>Represents the destination of the message, consisting of To:, CC:, and BCC: fields.</p> <note> <p>Amazon SES does not support the SMTPUTF8 extension, as described in <a href="https://tools.ietf.org/html/rfc6531">RFC6531</a>. For this reason, the <i>local part</i> of a destination email address (the part of the email address that precedes the @ sign) may only contain <a href="https://en.wikipedia.org/wiki/Email_address#Local-part">7-bit ASCII characters</a>. If the <i>domain part</i> of an address (the part after the @ sign) contains non-ASCII characters, they must be encoded using Punycode, as described in <a href="https://tools.ietf.org/html/rfc3492.html">RFC3492</a>.</p> </note>
@@ -2321,7 +2321,7 @@ Constructs Destination from required parameters
 #### `newDestination'`
 
 ``` purescript
-newDestination' :: ({ "ToAddresses" :: NullOrUndefined (AddressList), "CcAddresses" :: NullOrUndefined (AddressList), "BccAddresses" :: NullOrUndefined (AddressList) } -> { "ToAddresses" :: NullOrUndefined (AddressList), "CcAddresses" :: NullOrUndefined (AddressList), "BccAddresses" :: NullOrUndefined (AddressList) }) -> Destination
+newDestination' :: ({ "ToAddresses" :: Maybe (AddressList), "CcAddresses" :: Maybe (AddressList), "BccAddresses" :: Maybe (AddressList) } -> { "ToAddresses" :: Maybe (AddressList), "CcAddresses" :: Maybe (AddressList), "BccAddresses" :: Maybe (AddressList) }) -> Destination
 ```
 
 Constructs Destination's fields from required parameters
@@ -2474,7 +2474,7 @@ Encode Error
 
 ``` purescript
 newtype EventDestination
-  = EventDestination { "Name" :: EventDestinationName, "Enabled" :: NullOrUndefined (Enabled), "MatchingEventTypes" :: EventTypes, "KinesisFirehoseDestination" :: NullOrUndefined (KinesisFirehoseDestination), "CloudWatchDestination" :: NullOrUndefined (CloudWatchDestination), "SNSDestination" :: NullOrUndefined (SNSDestination) }
+  = EventDestination { "Name" :: EventDestinationName, "Enabled" :: Maybe (Enabled), "MatchingEventTypes" :: EventTypes, "KinesisFirehoseDestination" :: Maybe (KinesisFirehoseDestination), "CloudWatchDestination" :: Maybe (CloudWatchDestination), "SNSDestination" :: Maybe (SNSDestination) }
 ```
 
 <p>Contains information about the event destination that the specified email sending events will be published to.</p> <note> <p>When you create or update an event destination, you must provide one, and only one, destination. The destination can be Amazon CloudWatch, Amazon Kinesis Firehose or Amazon Simple Notification Service (Amazon SNS).</p> </note> <p>Event destinations are associated with configuration sets, which enable you to publish email sending events to Amazon CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS). For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
@@ -2499,7 +2499,7 @@ Constructs EventDestination from required parameters
 #### `newEventDestination'`
 
 ``` purescript
-newEventDestination' :: EventTypes -> EventDestinationName -> ({ "Name" :: EventDestinationName, "Enabled" :: NullOrUndefined (Enabled), "MatchingEventTypes" :: EventTypes, "KinesisFirehoseDestination" :: NullOrUndefined (KinesisFirehoseDestination), "CloudWatchDestination" :: NullOrUndefined (CloudWatchDestination), "SNSDestination" :: NullOrUndefined (SNSDestination) } -> { "Name" :: EventDestinationName, "Enabled" :: NullOrUndefined (Enabled), "MatchingEventTypes" :: EventTypes, "KinesisFirehoseDestination" :: NullOrUndefined (KinesisFirehoseDestination), "CloudWatchDestination" :: NullOrUndefined (CloudWatchDestination), "SNSDestination" :: NullOrUndefined (SNSDestination) }) -> EventDestination
+newEventDestination' :: EventTypes -> EventDestinationName -> ({ "Name" :: EventDestinationName, "Enabled" :: Maybe (Enabled), "MatchingEventTypes" :: EventTypes, "KinesisFirehoseDestination" :: Maybe (KinesisFirehoseDestination), "CloudWatchDestination" :: Maybe (CloudWatchDestination), "SNSDestination" :: Maybe (SNSDestination) } -> { "Name" :: EventDestinationName, "Enabled" :: Maybe (Enabled), "MatchingEventTypes" :: EventTypes, "KinesisFirehoseDestination" :: Maybe (KinesisFirehoseDestination), "CloudWatchDestination" :: Maybe (CloudWatchDestination), "SNSDestination" :: Maybe (SNSDestination) }) -> EventDestination
 ```
 
 Constructs EventDestination's fields from required parameters
@@ -2508,7 +2508,7 @@ Constructs EventDestination's fields from required parameters
 
 ``` purescript
 newtype EventDestinationAlreadyExistsException
-  = EventDestinationAlreadyExistsException { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "EventDestinationName" :: NullOrUndefined (EventDestinationName) }
+  = EventDestinationAlreadyExistsException { "ConfigurationSetName" :: Maybe (ConfigurationSetName), "EventDestinationName" :: Maybe (EventDestinationName) }
 ```
 
 <p>Indicates that the event destination could not be created because of a naming conflict.</p>
@@ -2533,7 +2533,7 @@ Constructs EventDestinationAlreadyExistsException from required parameters
 #### `newEventDestinationAlreadyExistsException'`
 
 ``` purescript
-newEventDestinationAlreadyExistsException' :: ({ "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "EventDestinationName" :: NullOrUndefined (EventDestinationName) } -> { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "EventDestinationName" :: NullOrUndefined (EventDestinationName) }) -> EventDestinationAlreadyExistsException
+newEventDestinationAlreadyExistsException' :: ({ "ConfigurationSetName" :: Maybe (ConfigurationSetName), "EventDestinationName" :: Maybe (EventDestinationName) } -> { "ConfigurationSetName" :: Maybe (ConfigurationSetName), "EventDestinationName" :: Maybe (EventDestinationName) }) -> EventDestinationAlreadyExistsException
 ```
 
 Constructs EventDestinationAlreadyExistsException's fields from required parameters
@@ -2542,7 +2542,7 @@ Constructs EventDestinationAlreadyExistsException's fields from required paramet
 
 ``` purescript
 newtype EventDestinationDoesNotExistException
-  = EventDestinationDoesNotExistException { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "EventDestinationName" :: NullOrUndefined (EventDestinationName) }
+  = EventDestinationDoesNotExistException { "ConfigurationSetName" :: Maybe (ConfigurationSetName), "EventDestinationName" :: Maybe (EventDestinationName) }
 ```
 
 <p>Indicates that the event destination does not exist.</p>
@@ -2567,7 +2567,7 @@ Constructs EventDestinationDoesNotExistException from required parameters
 #### `newEventDestinationDoesNotExistException'`
 
 ``` purescript
-newEventDestinationDoesNotExistException' :: ({ "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "EventDestinationName" :: NullOrUndefined (EventDestinationName) } -> { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "EventDestinationName" :: NullOrUndefined (EventDestinationName) }) -> EventDestinationDoesNotExistException
+newEventDestinationDoesNotExistException' :: ({ "ConfigurationSetName" :: Maybe (ConfigurationSetName), "EventDestinationName" :: Maybe (EventDestinationName) } -> { "ConfigurationSetName" :: Maybe (ConfigurationSetName), "EventDestinationName" :: Maybe (EventDestinationName) }) -> EventDestinationDoesNotExistException
 ```
 
 Constructs EventDestinationDoesNotExistException's fields from required parameters
@@ -2770,7 +2770,7 @@ Encode FromAddress
 
 ``` purescript
 newtype FromEmailAddressNotVerifiedException
-  = FromEmailAddressNotVerifiedException { "FromEmailAddress" :: NullOrUndefined (FromAddress) }
+  = FromEmailAddressNotVerifiedException { "FromEmailAddress" :: Maybe (FromAddress) }
 ```
 
 <p>Indicates that the sender address specified for a custom verification email is not verified, and is therefore not eligible to send the custom verification email. </p>
@@ -2795,7 +2795,7 @@ Constructs FromEmailAddressNotVerifiedException from required parameters
 #### `newFromEmailAddressNotVerifiedException'`
 
 ``` purescript
-newFromEmailAddressNotVerifiedException' :: ({ "FromEmailAddress" :: NullOrUndefined (FromAddress) } -> { "FromEmailAddress" :: NullOrUndefined (FromAddress) }) -> FromEmailAddressNotVerifiedException
+newFromEmailAddressNotVerifiedException' :: ({ "FromEmailAddress" :: Maybe (FromAddress) } -> { "FromEmailAddress" :: Maybe (FromAddress) }) -> FromEmailAddressNotVerifiedException
 ```
 
 Constructs FromEmailAddressNotVerifiedException's fields from required parameters
@@ -2804,7 +2804,7 @@ Constructs FromEmailAddressNotVerifiedException's fields from required parameter
 
 ``` purescript
 newtype GetAccountSendingEnabledResponse
-  = GetAccountSendingEnabledResponse { "Enabled" :: NullOrUndefined (Enabled) }
+  = GetAccountSendingEnabledResponse { "Enabled" :: Maybe (Enabled) }
 ```
 
 <p>Represents a request to return the email sending status for your Amazon SES account.</p>
@@ -2829,7 +2829,7 @@ Constructs GetAccountSendingEnabledResponse from required parameters
 #### `newGetAccountSendingEnabledResponse'`
 
 ``` purescript
-newGetAccountSendingEnabledResponse' :: ({ "Enabled" :: NullOrUndefined (Enabled) } -> { "Enabled" :: NullOrUndefined (Enabled) }) -> GetAccountSendingEnabledResponse
+newGetAccountSendingEnabledResponse' :: ({ "Enabled" :: Maybe (Enabled) } -> { "Enabled" :: Maybe (Enabled) }) -> GetAccountSendingEnabledResponse
 ```
 
 Constructs GetAccountSendingEnabledResponse's fields from required parameters
@@ -2872,7 +2872,7 @@ Constructs GetCustomVerificationEmailTemplateRequest's fields from required para
 
 ``` purescript
 newtype GetCustomVerificationEmailTemplateResponse
-  = GetCustomVerificationEmailTemplateResponse { "TemplateName" :: NullOrUndefined (TemplateName), "FromEmailAddress" :: NullOrUndefined (FromAddress), "TemplateSubject" :: NullOrUndefined (Subject), "TemplateContent" :: NullOrUndefined (TemplateContent), "SuccessRedirectionURL" :: NullOrUndefined (SuccessRedirectionURL), "FailureRedirectionURL" :: NullOrUndefined (FailureRedirectionURL) }
+  = GetCustomVerificationEmailTemplateResponse { "TemplateName" :: Maybe (TemplateName), "FromEmailAddress" :: Maybe (FromAddress), "TemplateSubject" :: Maybe (Subject), "TemplateContent" :: Maybe (TemplateContent), "SuccessRedirectionURL" :: Maybe (SuccessRedirectionURL), "FailureRedirectionURL" :: Maybe (FailureRedirectionURL) }
 ```
 
 <p>The content of the custom verification email template.</p>
@@ -2897,7 +2897,7 @@ Constructs GetCustomVerificationEmailTemplateResponse from required parameters
 #### `newGetCustomVerificationEmailTemplateResponse'`
 
 ``` purescript
-newGetCustomVerificationEmailTemplateResponse' :: ({ "TemplateName" :: NullOrUndefined (TemplateName), "FromEmailAddress" :: NullOrUndefined (FromAddress), "TemplateSubject" :: NullOrUndefined (Subject), "TemplateContent" :: NullOrUndefined (TemplateContent), "SuccessRedirectionURL" :: NullOrUndefined (SuccessRedirectionURL), "FailureRedirectionURL" :: NullOrUndefined (FailureRedirectionURL) } -> { "TemplateName" :: NullOrUndefined (TemplateName), "FromEmailAddress" :: NullOrUndefined (FromAddress), "TemplateSubject" :: NullOrUndefined (Subject), "TemplateContent" :: NullOrUndefined (TemplateContent), "SuccessRedirectionURL" :: NullOrUndefined (SuccessRedirectionURL), "FailureRedirectionURL" :: NullOrUndefined (FailureRedirectionURL) }) -> GetCustomVerificationEmailTemplateResponse
+newGetCustomVerificationEmailTemplateResponse' :: ({ "TemplateName" :: Maybe (TemplateName), "FromEmailAddress" :: Maybe (FromAddress), "TemplateSubject" :: Maybe (Subject), "TemplateContent" :: Maybe (TemplateContent), "SuccessRedirectionURL" :: Maybe (SuccessRedirectionURL), "FailureRedirectionURL" :: Maybe (FailureRedirectionURL) } -> { "TemplateName" :: Maybe (TemplateName), "FromEmailAddress" :: Maybe (FromAddress), "TemplateSubject" :: Maybe (Subject), "TemplateContent" :: Maybe (TemplateContent), "SuccessRedirectionURL" :: Maybe (SuccessRedirectionURL), "FailureRedirectionURL" :: Maybe (FailureRedirectionURL) }) -> GetCustomVerificationEmailTemplateResponse
 ```
 
 Constructs GetCustomVerificationEmailTemplateResponse's fields from required parameters
@@ -3246,7 +3246,7 @@ Constructs GetIdentityVerificationAttributesResponse's fields from required para
 
 ``` purescript
 newtype GetSendQuotaResponse
-  = GetSendQuotaResponse { "Max24HourSend" :: NullOrUndefined (Max24HourSend), "MaxSendRate" :: NullOrUndefined (MaxSendRate), "SentLast24Hours" :: NullOrUndefined (SentLast24Hours) }
+  = GetSendQuotaResponse { "Max24HourSend" :: Maybe (Max24HourSend), "MaxSendRate" :: Maybe (MaxSendRate), "SentLast24Hours" :: Maybe (SentLast24Hours) }
 ```
 
 <p>Represents your Amazon SES daily sending quota, maximum send rate, and the number of emails you have sent in the last 24 hours.</p>
@@ -3271,7 +3271,7 @@ Constructs GetSendQuotaResponse from required parameters
 #### `newGetSendQuotaResponse'`
 
 ``` purescript
-newGetSendQuotaResponse' :: ({ "Max24HourSend" :: NullOrUndefined (Max24HourSend), "MaxSendRate" :: NullOrUndefined (MaxSendRate), "SentLast24Hours" :: NullOrUndefined (SentLast24Hours) } -> { "Max24HourSend" :: NullOrUndefined (Max24HourSend), "MaxSendRate" :: NullOrUndefined (MaxSendRate), "SentLast24Hours" :: NullOrUndefined (SentLast24Hours) }) -> GetSendQuotaResponse
+newGetSendQuotaResponse' :: ({ "Max24HourSend" :: Maybe (Max24HourSend), "MaxSendRate" :: Maybe (MaxSendRate), "SentLast24Hours" :: Maybe (SentLast24Hours) } -> { "Max24HourSend" :: Maybe (Max24HourSend), "MaxSendRate" :: Maybe (MaxSendRate), "SentLast24Hours" :: Maybe (SentLast24Hours) }) -> GetSendQuotaResponse
 ```
 
 Constructs GetSendQuotaResponse's fields from required parameters
@@ -3280,7 +3280,7 @@ Constructs GetSendQuotaResponse's fields from required parameters
 
 ``` purescript
 newtype GetSendStatisticsResponse
-  = GetSendStatisticsResponse { "SendDataPoints" :: NullOrUndefined (SendDataPointList) }
+  = GetSendStatisticsResponse { "SendDataPoints" :: Maybe (SendDataPointList) }
 ```
 
 <p>Represents a list of data points. This list contains aggregated data from the previous two weeks of your sending activity with Amazon SES.</p>
@@ -3305,7 +3305,7 @@ Constructs GetSendStatisticsResponse from required parameters
 #### `newGetSendStatisticsResponse'`
 
 ``` purescript
-newGetSendStatisticsResponse' :: ({ "SendDataPoints" :: NullOrUndefined (SendDataPointList) } -> { "SendDataPoints" :: NullOrUndefined (SendDataPointList) }) -> GetSendStatisticsResponse
+newGetSendStatisticsResponse' :: ({ "SendDataPoints" :: Maybe (SendDataPointList) } -> { "SendDataPoints" :: Maybe (SendDataPointList) }) -> GetSendStatisticsResponse
 ```
 
 Constructs GetSendStatisticsResponse's fields from required parameters
@@ -3346,7 +3346,7 @@ Constructs GetTemplateRequest's fields from required parameters
 
 ``` purescript
 newtype GetTemplateResponse
-  = GetTemplateResponse { "Template" :: NullOrUndefined (Template) }
+  = GetTemplateResponse { "Template" :: Maybe (Template) }
 ```
 
 ##### Instances
@@ -3369,7 +3369,7 @@ Constructs GetTemplateResponse from required parameters
 #### `newGetTemplateResponse'`
 
 ``` purescript
-newGetTemplateResponse' :: ({ "Template" :: NullOrUndefined (Template) } -> { "Template" :: NullOrUndefined (Template) }) -> GetTemplateResponse
+newGetTemplateResponse' :: ({ "Template" :: Maybe (Template) } -> { "Template" :: Maybe (Template) }) -> GetTemplateResponse
 ```
 
 Constructs GetTemplateResponse's fields from required parameters
@@ -3442,7 +3442,7 @@ Encode Identity
 
 ``` purescript
 newtype IdentityDkimAttributes
-  = IdentityDkimAttributes { "DkimEnabled" :: Enabled, "DkimVerificationStatus" :: VerificationStatus, "DkimTokens" :: NullOrUndefined (VerificationTokenList) }
+  = IdentityDkimAttributes { "DkimEnabled" :: Enabled, "DkimVerificationStatus" :: VerificationStatus, "DkimTokens" :: Maybe (VerificationTokenList) }
 ```
 
 <p>Represents the DKIM attributes of a verified email address or a domain.</p>
@@ -3467,7 +3467,7 @@ Constructs IdentityDkimAttributes from required parameters
 #### `newIdentityDkimAttributes'`
 
 ``` purescript
-newIdentityDkimAttributes' :: Enabled -> VerificationStatus -> ({ "DkimEnabled" :: Enabled, "DkimVerificationStatus" :: VerificationStatus, "DkimTokens" :: NullOrUndefined (VerificationTokenList) } -> { "DkimEnabled" :: Enabled, "DkimVerificationStatus" :: VerificationStatus, "DkimTokens" :: NullOrUndefined (VerificationTokenList) }) -> IdentityDkimAttributes
+newIdentityDkimAttributes' :: Enabled -> VerificationStatus -> ({ "DkimEnabled" :: Enabled, "DkimVerificationStatus" :: VerificationStatus, "DkimTokens" :: Maybe (VerificationTokenList) } -> { "DkimEnabled" :: Enabled, "DkimVerificationStatus" :: VerificationStatus, "DkimTokens" :: Maybe (VerificationTokenList) }) -> IdentityDkimAttributes
 ```
 
 Constructs IdentityDkimAttributes's fields from required parameters
@@ -3526,7 +3526,7 @@ Constructs IdentityMailFromDomainAttributes's fields from required parameters
 
 ``` purescript
 newtype IdentityNotificationAttributes
-  = IdentityNotificationAttributes { "BounceTopic" :: NotificationTopic, "ComplaintTopic" :: NotificationTopic, "DeliveryTopic" :: NotificationTopic, "ForwardingEnabled" :: Enabled, "HeadersInBounceNotificationsEnabled" :: NullOrUndefined (Enabled), "HeadersInComplaintNotificationsEnabled" :: NullOrUndefined (Enabled), "HeadersInDeliveryNotificationsEnabled" :: NullOrUndefined (Enabled) }
+  = IdentityNotificationAttributes { "BounceTopic" :: NotificationTopic, "ComplaintTopic" :: NotificationTopic, "DeliveryTopic" :: NotificationTopic, "ForwardingEnabled" :: Enabled, "HeadersInBounceNotificationsEnabled" :: Maybe (Enabled), "HeadersInComplaintNotificationsEnabled" :: Maybe (Enabled), "HeadersInDeliveryNotificationsEnabled" :: Maybe (Enabled) }
 ```
 
 <p>Represents the notification attributes of an identity, including whether an identity has Amazon Simple Notification Service (Amazon SNS) topics set for bounce, complaint, and/or delivery notifications, and whether feedback forwarding is enabled for bounce and complaint notifications.</p>
@@ -3551,7 +3551,7 @@ Constructs IdentityNotificationAttributes from required parameters
 #### `newIdentityNotificationAttributes'`
 
 ``` purescript
-newIdentityNotificationAttributes' :: NotificationTopic -> NotificationTopic -> NotificationTopic -> Enabled -> ({ "BounceTopic" :: NotificationTopic, "ComplaintTopic" :: NotificationTopic, "DeliveryTopic" :: NotificationTopic, "ForwardingEnabled" :: Enabled, "HeadersInBounceNotificationsEnabled" :: NullOrUndefined (Enabled), "HeadersInComplaintNotificationsEnabled" :: NullOrUndefined (Enabled), "HeadersInDeliveryNotificationsEnabled" :: NullOrUndefined (Enabled) } -> { "BounceTopic" :: NotificationTopic, "ComplaintTopic" :: NotificationTopic, "DeliveryTopic" :: NotificationTopic, "ForwardingEnabled" :: Enabled, "HeadersInBounceNotificationsEnabled" :: NullOrUndefined (Enabled), "HeadersInComplaintNotificationsEnabled" :: NullOrUndefined (Enabled), "HeadersInDeliveryNotificationsEnabled" :: NullOrUndefined (Enabled) }) -> IdentityNotificationAttributes
+newIdentityNotificationAttributes' :: NotificationTopic -> NotificationTopic -> NotificationTopic -> Enabled -> ({ "BounceTopic" :: NotificationTopic, "ComplaintTopic" :: NotificationTopic, "DeliveryTopic" :: NotificationTopic, "ForwardingEnabled" :: Enabled, "HeadersInBounceNotificationsEnabled" :: Maybe (Enabled), "HeadersInComplaintNotificationsEnabled" :: Maybe (Enabled), "HeadersInDeliveryNotificationsEnabled" :: Maybe (Enabled) } -> { "BounceTopic" :: NotificationTopic, "ComplaintTopic" :: NotificationTopic, "DeliveryTopic" :: NotificationTopic, "ForwardingEnabled" :: Enabled, "HeadersInBounceNotificationsEnabled" :: Maybe (Enabled), "HeadersInComplaintNotificationsEnabled" :: Maybe (Enabled), "HeadersInDeliveryNotificationsEnabled" :: Maybe (Enabled) }) -> IdentityNotificationAttributes
 ```
 
 Constructs IdentityNotificationAttributes's fields from required parameters
@@ -3576,7 +3576,7 @@ Encode IdentityType
 
 ``` purescript
 newtype IdentityVerificationAttributes
-  = IdentityVerificationAttributes { "VerificationStatus" :: VerificationStatus, "VerificationToken" :: NullOrUndefined (VerificationToken) }
+  = IdentityVerificationAttributes { "VerificationStatus" :: VerificationStatus, "VerificationToken" :: Maybe (VerificationToken) }
 ```
 
 <p>Represents the verification attributes of a single identity.</p>
@@ -3601,7 +3601,7 @@ Constructs IdentityVerificationAttributes from required parameters
 #### `newIdentityVerificationAttributes'`
 
 ``` purescript
-newIdentityVerificationAttributes' :: VerificationStatus -> ({ "VerificationStatus" :: VerificationStatus, "VerificationToken" :: NullOrUndefined (VerificationToken) } -> { "VerificationStatus" :: VerificationStatus, "VerificationToken" :: NullOrUndefined (VerificationToken) }) -> IdentityVerificationAttributes
+newIdentityVerificationAttributes' :: VerificationStatus -> ({ "VerificationStatus" :: VerificationStatus, "VerificationToken" :: Maybe (VerificationToken) } -> { "VerificationStatus" :: VerificationStatus, "VerificationToken" :: Maybe (VerificationToken) }) -> IdentityVerificationAttributes
 ```
 
 Constructs IdentityVerificationAttributes's fields from required parameters
@@ -3610,7 +3610,7 @@ Constructs IdentityVerificationAttributes's fields from required parameters
 
 ``` purescript
 newtype InvalidCloudWatchDestinationException
-  = InvalidCloudWatchDestinationException { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "EventDestinationName" :: NullOrUndefined (EventDestinationName) }
+  = InvalidCloudWatchDestinationException { "ConfigurationSetName" :: Maybe (ConfigurationSetName), "EventDestinationName" :: Maybe (EventDestinationName) }
 ```
 
 <p>Indicates that the Amazon CloudWatch destination is invalid. See the error message for details.</p>
@@ -3635,7 +3635,7 @@ Constructs InvalidCloudWatchDestinationException from required parameters
 #### `newInvalidCloudWatchDestinationException'`
 
 ``` purescript
-newInvalidCloudWatchDestinationException' :: ({ "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "EventDestinationName" :: NullOrUndefined (EventDestinationName) } -> { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "EventDestinationName" :: NullOrUndefined (EventDestinationName) }) -> InvalidCloudWatchDestinationException
+newInvalidCloudWatchDestinationException' :: ({ "ConfigurationSetName" :: Maybe (ConfigurationSetName), "EventDestinationName" :: Maybe (EventDestinationName) } -> { "ConfigurationSetName" :: Maybe (ConfigurationSetName), "EventDestinationName" :: Maybe (EventDestinationName) }) -> InvalidCloudWatchDestinationException
 ```
 
 Constructs InvalidCloudWatchDestinationException's fields from required parameters
@@ -3662,7 +3662,7 @@ Encode InvalidConfigurationSetException
 
 ``` purescript
 newtype InvalidFirehoseDestinationException
-  = InvalidFirehoseDestinationException { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "EventDestinationName" :: NullOrUndefined (EventDestinationName) }
+  = InvalidFirehoseDestinationException { "ConfigurationSetName" :: Maybe (ConfigurationSetName), "EventDestinationName" :: Maybe (EventDestinationName) }
 ```
 
 <p>Indicates that the Amazon Kinesis Firehose destination is invalid. See the error message for details.</p>
@@ -3687,7 +3687,7 @@ Constructs InvalidFirehoseDestinationException from required parameters
 #### `newInvalidFirehoseDestinationException'`
 
 ``` purescript
-newInvalidFirehoseDestinationException' :: ({ "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "EventDestinationName" :: NullOrUndefined (EventDestinationName) } -> { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "EventDestinationName" :: NullOrUndefined (EventDestinationName) }) -> InvalidFirehoseDestinationException
+newInvalidFirehoseDestinationException' :: ({ "ConfigurationSetName" :: Maybe (ConfigurationSetName), "EventDestinationName" :: Maybe (EventDestinationName) } -> { "ConfigurationSetName" :: Maybe (ConfigurationSetName), "EventDestinationName" :: Maybe (EventDestinationName) }) -> InvalidFirehoseDestinationException
 ```
 
 Constructs InvalidFirehoseDestinationException's fields from required parameters
@@ -3696,7 +3696,7 @@ Constructs InvalidFirehoseDestinationException's fields from required parameters
 
 ``` purescript
 newtype InvalidLambdaFunctionException
-  = InvalidLambdaFunctionException { "FunctionArn" :: NullOrUndefined (AmazonResourceName) }
+  = InvalidLambdaFunctionException { "FunctionArn" :: Maybe (AmazonResourceName) }
 ```
 
 <p>Indicates that the provided AWS Lambda function is invalid, or that Amazon SES could not execute the provided function, possibly due to permissions issues. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p>
@@ -3721,7 +3721,7 @@ Constructs InvalidLambdaFunctionException from required parameters
 #### `newInvalidLambdaFunctionException'`
 
 ``` purescript
-newInvalidLambdaFunctionException' :: ({ "FunctionArn" :: NullOrUndefined (AmazonResourceName) } -> { "FunctionArn" :: NullOrUndefined (AmazonResourceName) }) -> InvalidLambdaFunctionException
+newInvalidLambdaFunctionException' :: ({ "FunctionArn" :: Maybe (AmazonResourceName) } -> { "FunctionArn" :: Maybe (AmazonResourceName) }) -> InvalidLambdaFunctionException
 ```
 
 Constructs InvalidLambdaFunctionException's fields from required parameters
@@ -3748,7 +3748,7 @@ Encode InvalidPolicyException
 
 ``` purescript
 newtype InvalidRenderingParameterException
-  = InvalidRenderingParameterException { "TemplateName" :: NullOrUndefined (TemplateName) }
+  = InvalidRenderingParameterException { "TemplateName" :: Maybe (TemplateName) }
 ```
 
 <p>Indicates that one or more of the replacement values you provided is invalid. This error may occur when the TemplateData object contains invalid JSON.</p>
@@ -3773,7 +3773,7 @@ Constructs InvalidRenderingParameterException from required parameters
 #### `newInvalidRenderingParameterException'`
 
 ``` purescript
-newInvalidRenderingParameterException' :: ({ "TemplateName" :: NullOrUndefined (TemplateName) } -> { "TemplateName" :: NullOrUndefined (TemplateName) }) -> InvalidRenderingParameterException
+newInvalidRenderingParameterException' :: ({ "TemplateName" :: Maybe (TemplateName) } -> { "TemplateName" :: Maybe (TemplateName) }) -> InvalidRenderingParameterException
 ```
 
 Constructs InvalidRenderingParameterException's fields from required parameters
@@ -3782,7 +3782,7 @@ Constructs InvalidRenderingParameterException's fields from required parameters
 
 ``` purescript
 newtype InvalidS3ConfigurationException
-  = InvalidS3ConfigurationException { "Bucket" :: NullOrUndefined (S3BucketName) }
+  = InvalidS3ConfigurationException { "Bucket" :: Maybe (S3BucketName) }
 ```
 
 <p>Indicates that the provided Amazon S3 bucket or AWS KMS encryption key is invalid, or that Amazon SES could not publish to the bucket, possibly due to permissions issues. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p>
@@ -3807,7 +3807,7 @@ Constructs InvalidS3ConfigurationException from required parameters
 #### `newInvalidS3ConfigurationException'`
 
 ``` purescript
-newInvalidS3ConfigurationException' :: ({ "Bucket" :: NullOrUndefined (S3BucketName) } -> { "Bucket" :: NullOrUndefined (S3BucketName) }) -> InvalidS3ConfigurationException
+newInvalidS3ConfigurationException' :: ({ "Bucket" :: Maybe (S3BucketName) } -> { "Bucket" :: Maybe (S3BucketName) }) -> InvalidS3ConfigurationException
 ```
 
 Constructs InvalidS3ConfigurationException's fields from required parameters
@@ -3816,7 +3816,7 @@ Constructs InvalidS3ConfigurationException's fields from required parameters
 
 ``` purescript
 newtype InvalidSNSDestinationException
-  = InvalidSNSDestinationException { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "EventDestinationName" :: NullOrUndefined (EventDestinationName) }
+  = InvalidSNSDestinationException { "ConfigurationSetName" :: Maybe (ConfigurationSetName), "EventDestinationName" :: Maybe (EventDestinationName) }
 ```
 
 <p>Indicates that the Amazon Simple Notification Service (Amazon SNS) destination is invalid. See the error message for details.</p>
@@ -3841,7 +3841,7 @@ Constructs InvalidSNSDestinationException from required parameters
 #### `newInvalidSNSDestinationException'`
 
 ``` purescript
-newInvalidSNSDestinationException' :: ({ "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "EventDestinationName" :: NullOrUndefined (EventDestinationName) } -> { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "EventDestinationName" :: NullOrUndefined (EventDestinationName) }) -> InvalidSNSDestinationException
+newInvalidSNSDestinationException' :: ({ "ConfigurationSetName" :: Maybe (ConfigurationSetName), "EventDestinationName" :: Maybe (EventDestinationName) } -> { "ConfigurationSetName" :: Maybe (ConfigurationSetName), "EventDestinationName" :: Maybe (EventDestinationName) }) -> InvalidSNSDestinationException
 ```
 
 Constructs InvalidSNSDestinationException's fields from required parameters
@@ -3850,7 +3850,7 @@ Constructs InvalidSNSDestinationException's fields from required parameters
 
 ``` purescript
 newtype InvalidSnsTopicException
-  = InvalidSnsTopicException { "Topic" :: NullOrUndefined (AmazonResourceName) }
+  = InvalidSnsTopicException { "Topic" :: Maybe (AmazonResourceName) }
 ```
 
 <p>Indicates that the provided Amazon SNS topic is invalid, or that Amazon SES could not publish to the topic, possibly due to permissions issues. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p>
@@ -3875,7 +3875,7 @@ Constructs InvalidSnsTopicException from required parameters
 #### `newInvalidSnsTopicException'`
 
 ``` purescript
-newInvalidSnsTopicException' :: ({ "Topic" :: NullOrUndefined (AmazonResourceName) } -> { "Topic" :: NullOrUndefined (AmazonResourceName) }) -> InvalidSnsTopicException
+newInvalidSnsTopicException' :: ({ "Topic" :: Maybe (AmazonResourceName) } -> { "Topic" :: Maybe (AmazonResourceName) }) -> InvalidSnsTopicException
 ```
 
 Constructs InvalidSnsTopicException's fields from required parameters
@@ -3884,7 +3884,7 @@ Constructs InvalidSnsTopicException's fields from required parameters
 
 ``` purescript
 newtype InvalidTemplateException
-  = InvalidTemplateException { "TemplateName" :: NullOrUndefined (TemplateName) }
+  = InvalidTemplateException { "TemplateName" :: Maybe (TemplateName) }
 ```
 
 <p>Indicates that a template could not be created because it contained invalid JSON.</p>
@@ -3909,7 +3909,7 @@ Constructs InvalidTemplateException from required parameters
 #### `newInvalidTemplateException'`
 
 ``` purescript
-newInvalidTemplateException' :: ({ "TemplateName" :: NullOrUndefined (TemplateName) } -> { "TemplateName" :: NullOrUndefined (TemplateName) }) -> InvalidTemplateException
+newInvalidTemplateException' :: ({ "TemplateName" :: Maybe (TemplateName) } -> { "TemplateName" :: Maybe (TemplateName) }) -> InvalidTemplateException
 ```
 
 Constructs InvalidTemplateException's fields from required parameters
@@ -3986,7 +3986,7 @@ Constructs KinesisFirehoseDestination's fields from required parameters
 
 ``` purescript
 newtype LambdaAction
-  = LambdaAction { "TopicArn" :: NullOrUndefined (AmazonResourceName), "FunctionArn" :: AmazonResourceName, "InvocationType" :: NullOrUndefined (InvocationType) }
+  = LambdaAction { "TopicArn" :: Maybe (AmazonResourceName), "FunctionArn" :: AmazonResourceName, "InvocationType" :: Maybe (InvocationType) }
 ```
 
 <p>When included in a receipt rule, this action calls an AWS Lambda function and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p> <p>To enable Amazon SES to call your AWS Lambda function or to publish to an Amazon SNS topic of another account, Amazon SES must have permission to access those resources. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p> <p>For information about using AWS Lambda actions in receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-lambda.html">Amazon SES Developer Guide</a>.</p>
@@ -4011,7 +4011,7 @@ Constructs LambdaAction from required parameters
 #### `newLambdaAction'`
 
 ``` purescript
-newLambdaAction' :: AmazonResourceName -> ({ "TopicArn" :: NullOrUndefined (AmazonResourceName), "FunctionArn" :: AmazonResourceName, "InvocationType" :: NullOrUndefined (InvocationType) } -> { "TopicArn" :: NullOrUndefined (AmazonResourceName), "FunctionArn" :: AmazonResourceName, "InvocationType" :: NullOrUndefined (InvocationType) }) -> LambdaAction
+newLambdaAction' :: AmazonResourceName -> ({ "TopicArn" :: Maybe (AmazonResourceName), "FunctionArn" :: AmazonResourceName, "InvocationType" :: Maybe (InvocationType) } -> { "TopicArn" :: Maybe (AmazonResourceName), "FunctionArn" :: AmazonResourceName, "InvocationType" :: Maybe (InvocationType) }) -> LambdaAction
 ```
 
 Constructs LambdaAction's fields from required parameters
@@ -4070,7 +4070,7 @@ Encode LimitExceededException
 
 ``` purescript
 newtype ListConfigurationSetsRequest
-  = ListConfigurationSetsRequest { "NextToken" :: NullOrUndefined (NextToken), "MaxItems" :: NullOrUndefined (MaxItems) }
+  = ListConfigurationSetsRequest { "NextToken" :: Maybe (NextToken), "MaxItems" :: Maybe (MaxItems) }
 ```
 
 <p>Represents a request to list the configuration sets associated with your AWS account. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
@@ -4095,7 +4095,7 @@ Constructs ListConfigurationSetsRequest from required parameters
 #### `newListConfigurationSetsRequest'`
 
 ``` purescript
-newListConfigurationSetsRequest' :: ({ "NextToken" :: NullOrUndefined (NextToken), "MaxItems" :: NullOrUndefined (MaxItems) } -> { "NextToken" :: NullOrUndefined (NextToken), "MaxItems" :: NullOrUndefined (MaxItems) }) -> ListConfigurationSetsRequest
+newListConfigurationSetsRequest' :: ({ "NextToken" :: Maybe (NextToken), "MaxItems" :: Maybe (MaxItems) } -> { "NextToken" :: Maybe (NextToken), "MaxItems" :: Maybe (MaxItems) }) -> ListConfigurationSetsRequest
 ```
 
 Constructs ListConfigurationSetsRequest's fields from required parameters
@@ -4104,7 +4104,7 @@ Constructs ListConfigurationSetsRequest's fields from required parameters
 
 ``` purescript
 newtype ListConfigurationSetsResponse
-  = ListConfigurationSetsResponse { "ConfigurationSets" :: NullOrUndefined (ConfigurationSets), "NextToken" :: NullOrUndefined (NextToken) }
+  = ListConfigurationSetsResponse { "ConfigurationSets" :: Maybe (ConfigurationSets), "NextToken" :: Maybe (NextToken) }
 ```
 
 <p>A list of configuration sets associated with your AWS account. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
@@ -4129,7 +4129,7 @@ Constructs ListConfigurationSetsResponse from required parameters
 #### `newListConfigurationSetsResponse'`
 
 ``` purescript
-newListConfigurationSetsResponse' :: ({ "ConfigurationSets" :: NullOrUndefined (ConfigurationSets), "NextToken" :: NullOrUndefined (NextToken) } -> { "ConfigurationSets" :: NullOrUndefined (ConfigurationSets), "NextToken" :: NullOrUndefined (NextToken) }) -> ListConfigurationSetsResponse
+newListConfigurationSetsResponse' :: ({ "ConfigurationSets" :: Maybe (ConfigurationSets), "NextToken" :: Maybe (NextToken) } -> { "ConfigurationSets" :: Maybe (ConfigurationSets), "NextToken" :: Maybe (NextToken) }) -> ListConfigurationSetsResponse
 ```
 
 Constructs ListConfigurationSetsResponse's fields from required parameters
@@ -4138,7 +4138,7 @@ Constructs ListConfigurationSetsResponse's fields from required parameters
 
 ``` purescript
 newtype ListCustomVerificationEmailTemplatesRequest
-  = ListCustomVerificationEmailTemplatesRequest { "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxResults) }
+  = ListCustomVerificationEmailTemplatesRequest { "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxResults) }
 ```
 
 <p>Represents a request to list the existing custom verification email templates for your account.</p> <p>For more information about custom verification email templates, see <a href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html">Using Custom Verification Email Templates</a> in the <i>Amazon SES Developer Guide</i>.</p>
@@ -4163,7 +4163,7 @@ Constructs ListCustomVerificationEmailTemplatesRequest from required parameters
 #### `newListCustomVerificationEmailTemplatesRequest'`
 
 ``` purescript
-newListCustomVerificationEmailTemplatesRequest' :: ({ "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxResults) } -> { "NextToken" :: NullOrUndefined (NextToken), "MaxResults" :: NullOrUndefined (MaxResults) }) -> ListCustomVerificationEmailTemplatesRequest
+newListCustomVerificationEmailTemplatesRequest' :: ({ "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxResults) } -> { "NextToken" :: Maybe (NextToken), "MaxResults" :: Maybe (MaxResults) }) -> ListCustomVerificationEmailTemplatesRequest
 ```
 
 Constructs ListCustomVerificationEmailTemplatesRequest's fields from required parameters
@@ -4172,7 +4172,7 @@ Constructs ListCustomVerificationEmailTemplatesRequest's fields from required pa
 
 ``` purescript
 newtype ListCustomVerificationEmailTemplatesResponse
-  = ListCustomVerificationEmailTemplatesResponse { "CustomVerificationEmailTemplates" :: NullOrUndefined (CustomVerificationEmailTemplates), "NextToken" :: NullOrUndefined (NextToken) }
+  = ListCustomVerificationEmailTemplatesResponse { "CustomVerificationEmailTemplates" :: Maybe (CustomVerificationEmailTemplates), "NextToken" :: Maybe (NextToken) }
 ```
 
 <p>A paginated list of custom verification email templates.</p>
@@ -4197,7 +4197,7 @@ Constructs ListCustomVerificationEmailTemplatesResponse from required parameters
 #### `newListCustomVerificationEmailTemplatesResponse'`
 
 ``` purescript
-newListCustomVerificationEmailTemplatesResponse' :: ({ "CustomVerificationEmailTemplates" :: NullOrUndefined (CustomVerificationEmailTemplates), "NextToken" :: NullOrUndefined (NextToken) } -> { "CustomVerificationEmailTemplates" :: NullOrUndefined (CustomVerificationEmailTemplates), "NextToken" :: NullOrUndefined (NextToken) }) -> ListCustomVerificationEmailTemplatesResponse
+newListCustomVerificationEmailTemplatesResponse' :: ({ "CustomVerificationEmailTemplates" :: Maybe (CustomVerificationEmailTemplates), "NextToken" :: Maybe (NextToken) } -> { "CustomVerificationEmailTemplates" :: Maybe (CustomVerificationEmailTemplates), "NextToken" :: Maybe (NextToken) }) -> ListCustomVerificationEmailTemplatesResponse
 ```
 
 Constructs ListCustomVerificationEmailTemplatesResponse's fields from required parameters
@@ -4206,7 +4206,7 @@ Constructs ListCustomVerificationEmailTemplatesResponse's fields from required p
 
 ``` purescript
 newtype ListIdentitiesRequest
-  = ListIdentitiesRequest { "IdentityType" :: NullOrUndefined (IdentityType), "NextToken" :: NullOrUndefined (NextToken), "MaxItems" :: NullOrUndefined (MaxItems) }
+  = ListIdentitiesRequest { "IdentityType" :: Maybe (IdentityType), "NextToken" :: Maybe (NextToken), "MaxItems" :: Maybe (MaxItems) }
 ```
 
 <p>Represents a request to return a list of all identities (email addresses and domains) that you have attempted to verify under your AWS account, regardless of verification status.</p>
@@ -4231,7 +4231,7 @@ Constructs ListIdentitiesRequest from required parameters
 #### `newListIdentitiesRequest'`
 
 ``` purescript
-newListIdentitiesRequest' :: ({ "IdentityType" :: NullOrUndefined (IdentityType), "NextToken" :: NullOrUndefined (NextToken), "MaxItems" :: NullOrUndefined (MaxItems) } -> { "IdentityType" :: NullOrUndefined (IdentityType), "NextToken" :: NullOrUndefined (NextToken), "MaxItems" :: NullOrUndefined (MaxItems) }) -> ListIdentitiesRequest
+newListIdentitiesRequest' :: ({ "IdentityType" :: Maybe (IdentityType), "NextToken" :: Maybe (NextToken), "MaxItems" :: Maybe (MaxItems) } -> { "IdentityType" :: Maybe (IdentityType), "NextToken" :: Maybe (NextToken), "MaxItems" :: Maybe (MaxItems) }) -> ListIdentitiesRequest
 ```
 
 Constructs ListIdentitiesRequest's fields from required parameters
@@ -4240,7 +4240,7 @@ Constructs ListIdentitiesRequest's fields from required parameters
 
 ``` purescript
 newtype ListIdentitiesResponse
-  = ListIdentitiesResponse { "Identities" :: IdentityList, "NextToken" :: NullOrUndefined (NextToken) }
+  = ListIdentitiesResponse { "Identities" :: IdentityList, "NextToken" :: Maybe (NextToken) }
 ```
 
 <p>A list of all identities that you have attempted to verify under your AWS account, regardless of verification status.</p>
@@ -4265,7 +4265,7 @@ Constructs ListIdentitiesResponse from required parameters
 #### `newListIdentitiesResponse'`
 
 ``` purescript
-newListIdentitiesResponse' :: IdentityList -> ({ "Identities" :: IdentityList, "NextToken" :: NullOrUndefined (NextToken) } -> { "Identities" :: IdentityList, "NextToken" :: NullOrUndefined (NextToken) }) -> ListIdentitiesResponse
+newListIdentitiesResponse' :: IdentityList -> ({ "Identities" :: IdentityList, "NextToken" :: Maybe (NextToken) } -> { "Identities" :: IdentityList, "NextToken" :: Maybe (NextToken) }) -> ListIdentitiesResponse
 ```
 
 Constructs ListIdentitiesResponse's fields from required parameters
@@ -4360,7 +4360,7 @@ Encode ListReceiptFiltersRequest
 
 ``` purescript
 newtype ListReceiptFiltersResponse
-  = ListReceiptFiltersResponse { "Filters" :: NullOrUndefined (ReceiptFilterList) }
+  = ListReceiptFiltersResponse { "Filters" :: Maybe (ReceiptFilterList) }
 ```
 
 <p>A list of IP address filters that exist under your AWS account.</p>
@@ -4385,7 +4385,7 @@ Constructs ListReceiptFiltersResponse from required parameters
 #### `newListReceiptFiltersResponse'`
 
 ``` purescript
-newListReceiptFiltersResponse' :: ({ "Filters" :: NullOrUndefined (ReceiptFilterList) } -> { "Filters" :: NullOrUndefined (ReceiptFilterList) }) -> ListReceiptFiltersResponse
+newListReceiptFiltersResponse' :: ({ "Filters" :: Maybe (ReceiptFilterList) } -> { "Filters" :: Maybe (ReceiptFilterList) }) -> ListReceiptFiltersResponse
 ```
 
 Constructs ListReceiptFiltersResponse's fields from required parameters
@@ -4394,7 +4394,7 @@ Constructs ListReceiptFiltersResponse's fields from required parameters
 
 ``` purescript
 newtype ListReceiptRuleSetsRequest
-  = ListReceiptRuleSetsRequest { "NextToken" :: NullOrUndefined (NextToken) }
+  = ListReceiptRuleSetsRequest { "NextToken" :: Maybe (NextToken) }
 ```
 
 <p>Represents a request to list the receipt rule sets that exist under your AWS account. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
@@ -4419,7 +4419,7 @@ Constructs ListReceiptRuleSetsRequest from required parameters
 #### `newListReceiptRuleSetsRequest'`
 
 ``` purescript
-newListReceiptRuleSetsRequest' :: ({ "NextToken" :: NullOrUndefined (NextToken) } -> { "NextToken" :: NullOrUndefined (NextToken) }) -> ListReceiptRuleSetsRequest
+newListReceiptRuleSetsRequest' :: ({ "NextToken" :: Maybe (NextToken) } -> { "NextToken" :: Maybe (NextToken) }) -> ListReceiptRuleSetsRequest
 ```
 
 Constructs ListReceiptRuleSetsRequest's fields from required parameters
@@ -4428,7 +4428,7 @@ Constructs ListReceiptRuleSetsRequest's fields from required parameters
 
 ``` purescript
 newtype ListReceiptRuleSetsResponse
-  = ListReceiptRuleSetsResponse { "RuleSets" :: NullOrUndefined (ReceiptRuleSetsLists), "NextToken" :: NullOrUndefined (NextToken) }
+  = ListReceiptRuleSetsResponse { "RuleSets" :: Maybe (ReceiptRuleSetsLists), "NextToken" :: Maybe (NextToken) }
 ```
 
 <p>A list of receipt rule sets that exist under your AWS account.</p>
@@ -4453,7 +4453,7 @@ Constructs ListReceiptRuleSetsResponse from required parameters
 #### `newListReceiptRuleSetsResponse'`
 
 ``` purescript
-newListReceiptRuleSetsResponse' :: ({ "RuleSets" :: NullOrUndefined (ReceiptRuleSetsLists), "NextToken" :: NullOrUndefined (NextToken) } -> { "RuleSets" :: NullOrUndefined (ReceiptRuleSetsLists), "NextToken" :: NullOrUndefined (NextToken) }) -> ListReceiptRuleSetsResponse
+newListReceiptRuleSetsResponse' :: ({ "RuleSets" :: Maybe (ReceiptRuleSetsLists), "NextToken" :: Maybe (NextToken) } -> { "RuleSets" :: Maybe (ReceiptRuleSetsLists), "NextToken" :: Maybe (NextToken) }) -> ListReceiptRuleSetsResponse
 ```
 
 Constructs ListReceiptRuleSetsResponse's fields from required parameters
@@ -4462,7 +4462,7 @@ Constructs ListReceiptRuleSetsResponse's fields from required parameters
 
 ``` purescript
 newtype ListTemplatesRequest
-  = ListTemplatesRequest { "NextToken" :: NullOrUndefined (NextToken), "MaxItems" :: NullOrUndefined (MaxItems) }
+  = ListTemplatesRequest { "NextToken" :: Maybe (NextToken), "MaxItems" :: Maybe (MaxItems) }
 ```
 
 ##### Instances
@@ -4485,7 +4485,7 @@ Constructs ListTemplatesRequest from required parameters
 #### `newListTemplatesRequest'`
 
 ``` purescript
-newListTemplatesRequest' :: ({ "NextToken" :: NullOrUndefined (NextToken), "MaxItems" :: NullOrUndefined (MaxItems) } -> { "NextToken" :: NullOrUndefined (NextToken), "MaxItems" :: NullOrUndefined (MaxItems) }) -> ListTemplatesRequest
+newListTemplatesRequest' :: ({ "NextToken" :: Maybe (NextToken), "MaxItems" :: Maybe (MaxItems) } -> { "NextToken" :: Maybe (NextToken), "MaxItems" :: Maybe (MaxItems) }) -> ListTemplatesRequest
 ```
 
 Constructs ListTemplatesRequest's fields from required parameters
@@ -4494,7 +4494,7 @@ Constructs ListTemplatesRequest's fields from required parameters
 
 ``` purescript
 newtype ListTemplatesResponse
-  = ListTemplatesResponse { "TemplatesMetadata" :: NullOrUndefined (TemplateMetadataList), "NextToken" :: NullOrUndefined (NextToken) }
+  = ListTemplatesResponse { "TemplatesMetadata" :: Maybe (TemplateMetadataList), "NextToken" :: Maybe (NextToken) }
 ```
 
 ##### Instances
@@ -4517,7 +4517,7 @@ Constructs ListTemplatesResponse from required parameters
 #### `newListTemplatesResponse'`
 
 ``` purescript
-newListTemplatesResponse' :: ({ "TemplatesMetadata" :: NullOrUndefined (TemplateMetadataList), "NextToken" :: NullOrUndefined (NextToken) } -> { "TemplatesMetadata" :: NullOrUndefined (TemplateMetadataList), "NextToken" :: NullOrUndefined (NextToken) }) -> ListTemplatesResponse
+newListTemplatesResponse' :: ({ "TemplatesMetadata" :: Maybe (TemplateMetadataList), "NextToken" :: Maybe (NextToken) } -> { "TemplatesMetadata" :: Maybe (TemplateMetadataList), "NextToken" :: Maybe (NextToken) }) -> ListTemplatesResponse
 ```
 
 Constructs ListTemplatesResponse's fields from required parameters
@@ -4526,7 +4526,7 @@ Constructs ListTemplatesResponse's fields from required parameters
 
 ``` purescript
 newtype ListVerifiedEmailAddressesResponse
-  = ListVerifiedEmailAddressesResponse { "VerifiedEmailAddresses" :: NullOrUndefined (AddressList) }
+  = ListVerifiedEmailAddressesResponse { "VerifiedEmailAddresses" :: Maybe (AddressList) }
 ```
 
 <p>A list of email addresses that you have verified with Amazon SES under your AWS account.</p>
@@ -4551,7 +4551,7 @@ Constructs ListVerifiedEmailAddressesResponse from required parameters
 #### `newListVerifiedEmailAddressesResponse'`
 
 ``` purescript
-newListVerifiedEmailAddressesResponse' :: ({ "VerifiedEmailAddresses" :: NullOrUndefined (AddressList) } -> { "VerifiedEmailAddresses" :: NullOrUndefined (AddressList) }) -> ListVerifiedEmailAddressesResponse
+newListVerifiedEmailAddressesResponse' :: ({ "VerifiedEmailAddresses" :: Maybe (AddressList) } -> { "VerifiedEmailAddresses" :: Maybe (AddressList) }) -> ListVerifiedEmailAddressesResponse
 ```
 
 Constructs ListVerifiedEmailAddressesResponse's fields from required parameters
@@ -4724,7 +4724,7 @@ Encode MessageData
 
 ``` purescript
 newtype MessageDsn
-  = MessageDsn { "ReportingMta" :: ReportingMta, "ArrivalDate" :: NullOrUndefined (ArrivalDate), "ExtensionFields" :: NullOrUndefined (ExtensionFieldList) }
+  = MessageDsn { "ReportingMta" :: ReportingMta, "ArrivalDate" :: Maybe (ArrivalDate), "ExtensionFields" :: Maybe (ExtensionFieldList) }
 ```
 
 <p>Message-related information to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.</p> <p>For information about receiving email through Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon SES Developer Guide</a>.</p>
@@ -4749,7 +4749,7 @@ Constructs MessageDsn from required parameters
 #### `newMessageDsn'`
 
 ``` purescript
-newMessageDsn' :: ReportingMta -> ({ "ReportingMta" :: ReportingMta, "ArrivalDate" :: NullOrUndefined (ArrivalDate), "ExtensionFields" :: NullOrUndefined (ExtensionFieldList) } -> { "ReportingMta" :: ReportingMta, "ArrivalDate" :: NullOrUndefined (ArrivalDate), "ExtensionFields" :: NullOrUndefined (ExtensionFieldList) }) -> MessageDsn
+newMessageDsn' :: ReportingMta -> ({ "ReportingMta" :: ReportingMta, "ArrivalDate" :: Maybe (ArrivalDate), "ExtensionFields" :: Maybe (ExtensionFieldList) } -> { "ReportingMta" :: ReportingMta, "ArrivalDate" :: Maybe (ArrivalDate), "ExtensionFields" :: Maybe (ExtensionFieldList) }) -> MessageDsn
 ```
 
 Constructs MessageDsn's fields from required parameters
@@ -4874,7 +4874,7 @@ Encode MessageTagValue
 
 ``` purescript
 newtype MissingRenderingAttributeException
-  = MissingRenderingAttributeException { "TemplateName" :: NullOrUndefined (TemplateName) }
+  = MissingRenderingAttributeException { "TemplateName" :: Maybe (TemplateName) }
 ```
 
 <p>Indicates that one or more of the replacement values for the specified template was not specified. Ensure that the TemplateData object contains references to all of the replacement tags in the specified template.</p>
@@ -4899,7 +4899,7 @@ Constructs MissingRenderingAttributeException from required parameters
 #### `newMissingRenderingAttributeException'`
 
 ``` purescript
-newMissingRenderingAttributeException' :: ({ "TemplateName" :: NullOrUndefined (TemplateName) } -> { "TemplateName" :: NullOrUndefined (TemplateName) }) -> MissingRenderingAttributeException
+newMissingRenderingAttributeException' :: ({ "TemplateName" :: Maybe (TemplateName) } -> { "TemplateName" :: Maybe (TemplateName) }) -> MissingRenderingAttributeException
 ```
 
 Constructs MissingRenderingAttributeException's fields from required parameters
@@ -5156,7 +5156,7 @@ Encode RawMessageData
 
 ``` purescript
 newtype ReceiptAction
-  = ReceiptAction { "S3Action" :: NullOrUndefined (S3Action), "BounceAction" :: NullOrUndefined (BounceAction), "WorkmailAction" :: NullOrUndefined (WorkmailAction), "LambdaAction" :: NullOrUndefined (LambdaAction), "StopAction" :: NullOrUndefined (StopAction), "AddHeaderAction" :: NullOrUndefined (AddHeaderAction), "SNSAction" :: NullOrUndefined (SNSAction) }
+  = ReceiptAction { "S3Action" :: Maybe (S3Action), "BounceAction" :: Maybe (BounceAction), "WorkmailAction" :: Maybe (WorkmailAction), "LambdaAction" :: Maybe (LambdaAction), "StopAction" :: Maybe (StopAction), "AddHeaderAction" :: Maybe (AddHeaderAction), "SNSAction" :: Maybe (SNSAction) }
 ```
 
 <p>An action that Amazon SES can take when it receives an email on behalf of one or more email addresses or domains that you own. An instance of this data type can represent only one action.</p> <p>For information about setting up receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html">Amazon SES Developer Guide</a>.</p>
@@ -5181,7 +5181,7 @@ Constructs ReceiptAction from required parameters
 #### `newReceiptAction'`
 
 ``` purescript
-newReceiptAction' :: ({ "S3Action" :: NullOrUndefined (S3Action), "BounceAction" :: NullOrUndefined (BounceAction), "WorkmailAction" :: NullOrUndefined (WorkmailAction), "LambdaAction" :: NullOrUndefined (LambdaAction), "StopAction" :: NullOrUndefined (StopAction), "AddHeaderAction" :: NullOrUndefined (AddHeaderAction), "SNSAction" :: NullOrUndefined (SNSAction) } -> { "S3Action" :: NullOrUndefined (S3Action), "BounceAction" :: NullOrUndefined (BounceAction), "WorkmailAction" :: NullOrUndefined (WorkmailAction), "LambdaAction" :: NullOrUndefined (LambdaAction), "StopAction" :: NullOrUndefined (StopAction), "AddHeaderAction" :: NullOrUndefined (AddHeaderAction), "SNSAction" :: NullOrUndefined (SNSAction) }) -> ReceiptAction
+newReceiptAction' :: ({ "S3Action" :: Maybe (S3Action), "BounceAction" :: Maybe (BounceAction), "WorkmailAction" :: Maybe (WorkmailAction), "LambdaAction" :: Maybe (LambdaAction), "StopAction" :: Maybe (StopAction), "AddHeaderAction" :: Maybe (AddHeaderAction), "SNSAction" :: Maybe (SNSAction) } -> { "S3Action" :: Maybe (S3Action), "BounceAction" :: Maybe (BounceAction), "WorkmailAction" :: Maybe (WorkmailAction), "LambdaAction" :: Maybe (LambdaAction), "StopAction" :: Maybe (StopAction), "AddHeaderAction" :: Maybe (AddHeaderAction), "SNSAction" :: Maybe (SNSAction) }) -> ReceiptAction
 ```
 
 Constructs ReceiptAction's fields from required parameters
@@ -5322,7 +5322,7 @@ Constructs ReceiptIpFilter's fields from required parameters
 
 ``` purescript
 newtype ReceiptRule
-  = ReceiptRule { "Name" :: ReceiptRuleName, "Enabled" :: NullOrUndefined (Enabled), "TlsPolicy" :: NullOrUndefined (TlsPolicy), "Recipients" :: NullOrUndefined (RecipientsList), "Actions" :: NullOrUndefined (ReceiptActionsList), "ScanEnabled" :: NullOrUndefined (Enabled) }
+  = ReceiptRule { "Name" :: ReceiptRuleName, "Enabled" :: Maybe (Enabled), "TlsPolicy" :: Maybe (TlsPolicy), "Recipients" :: Maybe (RecipientsList), "Actions" :: Maybe (ReceiptActionsList), "ScanEnabled" :: Maybe (Enabled) }
 ```
 
 <p>Receipt rules enable you to specify which actions Amazon SES should take when it receives mail on behalf of one or more email addresses or domains that you own.</p> <p>Each receipt rule defines a set of email addresses or domains that it applies to. If the email addresses or domains match at least one recipient address of the message, Amazon SES executes all of the receipt rule's actions on the message.</p> <p>For information about setting up receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html">Amazon SES Developer Guide</a>.</p>
@@ -5347,7 +5347,7 @@ Constructs ReceiptRule from required parameters
 #### `newReceiptRule'`
 
 ``` purescript
-newReceiptRule' :: ReceiptRuleName -> ({ "Name" :: ReceiptRuleName, "Enabled" :: NullOrUndefined (Enabled), "TlsPolicy" :: NullOrUndefined (TlsPolicy), "Recipients" :: NullOrUndefined (RecipientsList), "Actions" :: NullOrUndefined (ReceiptActionsList), "ScanEnabled" :: NullOrUndefined (Enabled) } -> { "Name" :: ReceiptRuleName, "Enabled" :: NullOrUndefined (Enabled), "TlsPolicy" :: NullOrUndefined (TlsPolicy), "Recipients" :: NullOrUndefined (RecipientsList), "Actions" :: NullOrUndefined (ReceiptActionsList), "ScanEnabled" :: NullOrUndefined (Enabled) }) -> ReceiptRule
+newReceiptRule' :: ReceiptRuleName -> ({ "Name" :: ReceiptRuleName, "Enabled" :: Maybe (Enabled), "TlsPolicy" :: Maybe (TlsPolicy), "Recipients" :: Maybe (RecipientsList), "Actions" :: Maybe (ReceiptActionsList), "ScanEnabled" :: Maybe (Enabled) } -> { "Name" :: ReceiptRuleName, "Enabled" :: Maybe (Enabled), "TlsPolicy" :: Maybe (TlsPolicy), "Recipients" :: Maybe (RecipientsList), "Actions" :: Maybe (ReceiptActionsList), "ScanEnabled" :: Maybe (Enabled) }) -> ReceiptRule
 ```
 
 Constructs ReceiptRule's fields from required parameters
@@ -5388,7 +5388,7 @@ Encode ReceiptRuleNamesList
 
 ``` purescript
 newtype ReceiptRuleSetMetadata
-  = ReceiptRuleSetMetadata { "Name" :: NullOrUndefined (ReceiptRuleSetName), "CreatedTimestamp" :: NullOrUndefined (Timestamp) }
+  = ReceiptRuleSetMetadata { "Name" :: Maybe (ReceiptRuleSetName), "CreatedTimestamp" :: Maybe (Timestamp) }
 ```
 
 <p>Information about a receipt rule set.</p> <p>A receipt rule set is a collection of rules that specify what Amazon SES should do with mail it receives on behalf of your account's verified domains.</p> <p>For information about setting up receipt rule sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html">Amazon SES Developer Guide</a>.</p>
@@ -5413,7 +5413,7 @@ Constructs ReceiptRuleSetMetadata from required parameters
 #### `newReceiptRuleSetMetadata'`
 
 ``` purescript
-newReceiptRuleSetMetadata' :: ({ "Name" :: NullOrUndefined (ReceiptRuleSetName), "CreatedTimestamp" :: NullOrUndefined (Timestamp) } -> { "Name" :: NullOrUndefined (ReceiptRuleSetName), "CreatedTimestamp" :: NullOrUndefined (Timestamp) }) -> ReceiptRuleSetMetadata
+newReceiptRuleSetMetadata' :: ({ "Name" :: Maybe (ReceiptRuleSetName), "CreatedTimestamp" :: Maybe (Timestamp) } -> { "Name" :: Maybe (ReceiptRuleSetName), "CreatedTimestamp" :: Maybe (Timestamp) }) -> ReceiptRuleSetMetadata
 ```
 
 Constructs ReceiptRuleSetMetadata's fields from required parameters
@@ -5486,7 +5486,7 @@ Encode Recipient
 
 ``` purescript
 newtype RecipientDsnFields
-  = RecipientDsnFields { "FinalRecipient" :: NullOrUndefined (Address), "Action" :: DsnAction, "RemoteMta" :: NullOrUndefined (RemoteMta), "Status" :: DsnStatus, "DiagnosticCode" :: NullOrUndefined (DiagnosticCode), "LastAttemptDate" :: NullOrUndefined (LastAttemptDate), "ExtensionFields" :: NullOrUndefined (ExtensionFieldList) }
+  = RecipientDsnFields { "FinalRecipient" :: Maybe (Address), "Action" :: DsnAction, "RemoteMta" :: Maybe (RemoteMta), "Status" :: DsnStatus, "DiagnosticCode" :: Maybe (DiagnosticCode), "LastAttemptDate" :: Maybe (LastAttemptDate), "ExtensionFields" :: Maybe (ExtensionFieldList) }
 ```
 
 <p>Recipient-related information to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.</p> <p>For information about receiving email through Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon SES Developer Guide</a>.</p>
@@ -5511,7 +5511,7 @@ Constructs RecipientDsnFields from required parameters
 #### `newRecipientDsnFields'`
 
 ``` purescript
-newRecipientDsnFields' :: DsnAction -> DsnStatus -> ({ "FinalRecipient" :: NullOrUndefined (Address), "Action" :: DsnAction, "RemoteMta" :: NullOrUndefined (RemoteMta), "Status" :: DsnStatus, "DiagnosticCode" :: NullOrUndefined (DiagnosticCode), "LastAttemptDate" :: NullOrUndefined (LastAttemptDate), "ExtensionFields" :: NullOrUndefined (ExtensionFieldList) } -> { "FinalRecipient" :: NullOrUndefined (Address), "Action" :: DsnAction, "RemoteMta" :: NullOrUndefined (RemoteMta), "Status" :: DsnStatus, "DiagnosticCode" :: NullOrUndefined (DiagnosticCode), "LastAttemptDate" :: NullOrUndefined (LastAttemptDate), "ExtensionFields" :: NullOrUndefined (ExtensionFieldList) }) -> RecipientDsnFields
+newRecipientDsnFields' :: DsnAction -> DsnStatus -> ({ "FinalRecipient" :: Maybe (Address), "Action" :: DsnAction, "RemoteMta" :: Maybe (RemoteMta), "Status" :: DsnStatus, "DiagnosticCode" :: Maybe (DiagnosticCode), "LastAttemptDate" :: Maybe (LastAttemptDate), "ExtensionFields" :: Maybe (ExtensionFieldList) } -> { "FinalRecipient" :: Maybe (Address), "Action" :: DsnAction, "RemoteMta" :: Maybe (RemoteMta), "Status" :: DsnStatus, "DiagnosticCode" :: Maybe (DiagnosticCode), "LastAttemptDate" :: Maybe (LastAttemptDate), "ExtensionFields" :: Maybe (ExtensionFieldList) }) -> RecipientDsnFields
 ```
 
 Constructs RecipientDsnFields's fields from required parameters
@@ -5636,7 +5636,7 @@ Encode ReportingMta
 
 ``` purescript
 newtype ReputationOptions
-  = ReputationOptions { "SendingEnabled" :: NullOrUndefined (Enabled), "ReputationMetricsEnabled" :: NullOrUndefined (Enabled), "LastFreshStart" :: NullOrUndefined (LastFreshStart) }
+  = ReputationOptions { "SendingEnabled" :: Maybe (Enabled), "ReputationMetricsEnabled" :: Maybe (Enabled), "LastFreshStart" :: Maybe (LastFreshStart) }
 ```
 
 <p>Contains information about the reputation settings for a configuration set.</p>
@@ -5661,7 +5661,7 @@ Constructs ReputationOptions from required parameters
 #### `newReputationOptions'`
 
 ``` purescript
-newReputationOptions' :: ({ "SendingEnabled" :: NullOrUndefined (Enabled), "ReputationMetricsEnabled" :: NullOrUndefined (Enabled), "LastFreshStart" :: NullOrUndefined (LastFreshStart) } -> { "SendingEnabled" :: NullOrUndefined (Enabled), "ReputationMetricsEnabled" :: NullOrUndefined (Enabled), "LastFreshStart" :: NullOrUndefined (LastFreshStart) }) -> ReputationOptions
+newReputationOptions' :: ({ "SendingEnabled" :: Maybe (Enabled), "ReputationMetricsEnabled" :: Maybe (Enabled), "LastFreshStart" :: Maybe (LastFreshStart) } -> { "SendingEnabled" :: Maybe (Enabled), "ReputationMetricsEnabled" :: Maybe (Enabled), "LastFreshStart" :: Maybe (LastFreshStart) }) -> ReputationOptions
 ```
 
 Constructs ReputationOptions's fields from required parameters
@@ -5670,7 +5670,7 @@ Constructs ReputationOptions's fields from required parameters
 
 ``` purescript
 newtype RuleDoesNotExistException
-  = RuleDoesNotExistException { "Name" :: NullOrUndefined (RuleOrRuleSetName) }
+  = RuleDoesNotExistException { "Name" :: Maybe (RuleOrRuleSetName) }
 ```
 
 <p>Indicates that the provided receipt rule does not exist.</p>
@@ -5695,7 +5695,7 @@ Constructs RuleDoesNotExistException from required parameters
 #### `newRuleDoesNotExistException'`
 
 ``` purescript
-newRuleDoesNotExistException' :: ({ "Name" :: NullOrUndefined (RuleOrRuleSetName) } -> { "Name" :: NullOrUndefined (RuleOrRuleSetName) }) -> RuleDoesNotExistException
+newRuleDoesNotExistException' :: ({ "Name" :: Maybe (RuleOrRuleSetName) } -> { "Name" :: Maybe (RuleOrRuleSetName) }) -> RuleDoesNotExistException
 ```
 
 Constructs RuleDoesNotExistException's fields from required parameters
@@ -5720,7 +5720,7 @@ Encode RuleOrRuleSetName
 
 ``` purescript
 newtype RuleSetDoesNotExistException
-  = RuleSetDoesNotExistException { "Name" :: NullOrUndefined (RuleOrRuleSetName) }
+  = RuleSetDoesNotExistException { "Name" :: Maybe (RuleOrRuleSetName) }
 ```
 
 <p>Indicates that the provided receipt rule set does not exist.</p>
@@ -5745,7 +5745,7 @@ Constructs RuleSetDoesNotExistException from required parameters
 #### `newRuleSetDoesNotExistException'`
 
 ``` purescript
-newRuleSetDoesNotExistException' :: ({ "Name" :: NullOrUndefined (RuleOrRuleSetName) } -> { "Name" :: NullOrUndefined (RuleOrRuleSetName) }) -> RuleSetDoesNotExistException
+newRuleSetDoesNotExistException' :: ({ "Name" :: Maybe (RuleOrRuleSetName) } -> { "Name" :: Maybe (RuleOrRuleSetName) }) -> RuleSetDoesNotExistException
 ```
 
 Constructs RuleSetDoesNotExistException's fields from required parameters
@@ -5754,7 +5754,7 @@ Constructs RuleSetDoesNotExistException's fields from required parameters
 
 ``` purescript
 newtype S3Action
-  = S3Action { "TopicArn" :: NullOrUndefined (AmazonResourceName), "BucketName" :: S3BucketName, "ObjectKeyPrefix" :: NullOrUndefined (S3KeyPrefix), "KmsKeyArn" :: NullOrUndefined (AmazonResourceName) }
+  = S3Action { "TopicArn" :: Maybe (AmazonResourceName), "BucketName" :: S3BucketName, "ObjectKeyPrefix" :: Maybe (S3KeyPrefix), "KmsKeyArn" :: Maybe (AmazonResourceName) }
 ```
 
 <p>When included in a receipt rule, this action saves the received message to an Amazon Simple Storage Service (Amazon S3) bucket and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p> <p>To enable Amazon SES to write emails to your Amazon S3 bucket, use an AWS KMS key to encrypt your emails, or publish to an Amazon SNS topic of another account, Amazon SES must have permission to access those resources. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p> <note> <p>When you save your emails to an Amazon S3 bucket, the maximum email size (including headers) is 30 MB. Emails larger than that will bounce.</p> </note> <p>For information about specifying Amazon S3 actions in receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-s3.html">Amazon SES Developer Guide</a>.</p>
@@ -5779,7 +5779,7 @@ Constructs S3Action from required parameters
 #### `newS3Action'`
 
 ``` purescript
-newS3Action' :: S3BucketName -> ({ "TopicArn" :: NullOrUndefined (AmazonResourceName), "BucketName" :: S3BucketName, "ObjectKeyPrefix" :: NullOrUndefined (S3KeyPrefix), "KmsKeyArn" :: NullOrUndefined (AmazonResourceName) } -> { "TopicArn" :: NullOrUndefined (AmazonResourceName), "BucketName" :: S3BucketName, "ObjectKeyPrefix" :: NullOrUndefined (S3KeyPrefix), "KmsKeyArn" :: NullOrUndefined (AmazonResourceName) }) -> S3Action
+newS3Action' :: S3BucketName -> ({ "TopicArn" :: Maybe (AmazonResourceName), "BucketName" :: S3BucketName, "ObjectKeyPrefix" :: Maybe (S3KeyPrefix), "KmsKeyArn" :: Maybe (AmazonResourceName) } -> { "TopicArn" :: Maybe (AmazonResourceName), "BucketName" :: S3BucketName, "ObjectKeyPrefix" :: Maybe (S3KeyPrefix), "KmsKeyArn" :: Maybe (AmazonResourceName) }) -> S3Action
 ```
 
 Constructs S3Action's fields from required parameters
@@ -5820,7 +5820,7 @@ Encode S3KeyPrefix
 
 ``` purescript
 newtype SNSAction
-  = SNSAction { "TopicArn" :: AmazonResourceName, "Encoding" :: NullOrUndefined (SNSActionEncoding) }
+  = SNSAction { "TopicArn" :: AmazonResourceName, "Encoding" :: Maybe (SNSActionEncoding) }
 ```
 
 <p>When included in a receipt rule, this action publishes a notification to Amazon Simple Notification Service (Amazon SNS). This action includes a complete copy of the email content in the Amazon SNS notifications. Amazon SNS notifications for all other actions simply provide information about the email. They do not include the email content itself.</p> <p>If you own the Amazon SNS topic, you don't need to do anything to give Amazon SES permission to publish emails to it. However, if you don't own the Amazon SNS topic, you need to attach a policy to the topic to give Amazon SES permissions to access it. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p> <important> <p>You can only publish emails that are 150 KB or less (including the header) to Amazon SNS. Larger emails will bounce. If you anticipate emails larger than 150 KB, use the S3 action instead.</p> </important> <p>For information about using a receipt rule to publish an Amazon SNS notification, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-sns.html">Amazon SES Developer Guide</a>.</p>
@@ -5845,7 +5845,7 @@ Constructs SNSAction from required parameters
 #### `newSNSAction'`
 
 ``` purescript
-newSNSAction' :: AmazonResourceName -> ({ "TopicArn" :: AmazonResourceName, "Encoding" :: NullOrUndefined (SNSActionEncoding) } -> { "TopicArn" :: AmazonResourceName, "Encoding" :: NullOrUndefined (SNSActionEncoding) }) -> SNSAction
+newSNSAction' :: AmazonResourceName -> ({ "TopicArn" :: AmazonResourceName, "Encoding" :: Maybe (SNSActionEncoding) } -> { "TopicArn" :: AmazonResourceName, "Encoding" :: Maybe (SNSActionEncoding) }) -> SNSAction
 ```
 
 Constructs SNSAction's fields from required parameters
@@ -5904,7 +5904,7 @@ Constructs SNSDestination's fields from required parameters
 
 ``` purescript
 newtype SendBounceRequest
-  = SendBounceRequest { "OriginalMessageId" :: MessageId, "BounceSender" :: Address, "Explanation" :: NullOrUndefined (Explanation), "MessageDsn" :: NullOrUndefined (MessageDsn), "BouncedRecipientInfoList" :: BouncedRecipientInfoList, "BounceSenderArn" :: NullOrUndefined (AmazonResourceName) }
+  = SendBounceRequest { "OriginalMessageId" :: MessageId, "BounceSender" :: Address, "Explanation" :: Maybe (Explanation), "MessageDsn" :: Maybe (MessageDsn), "BouncedRecipientInfoList" :: BouncedRecipientInfoList, "BounceSenderArn" :: Maybe (AmazonResourceName) }
 ```
 
 <p>Represents a request to send a bounce message to the sender of an email you received through Amazon SES.</p>
@@ -5929,7 +5929,7 @@ Constructs SendBounceRequest from required parameters
 #### `newSendBounceRequest'`
 
 ``` purescript
-newSendBounceRequest' :: Address -> BouncedRecipientInfoList -> MessageId -> ({ "OriginalMessageId" :: MessageId, "BounceSender" :: Address, "Explanation" :: NullOrUndefined (Explanation), "MessageDsn" :: NullOrUndefined (MessageDsn), "BouncedRecipientInfoList" :: BouncedRecipientInfoList, "BounceSenderArn" :: NullOrUndefined (AmazonResourceName) } -> { "OriginalMessageId" :: MessageId, "BounceSender" :: Address, "Explanation" :: NullOrUndefined (Explanation), "MessageDsn" :: NullOrUndefined (MessageDsn), "BouncedRecipientInfoList" :: BouncedRecipientInfoList, "BounceSenderArn" :: NullOrUndefined (AmazonResourceName) }) -> SendBounceRequest
+newSendBounceRequest' :: Address -> BouncedRecipientInfoList -> MessageId -> ({ "OriginalMessageId" :: MessageId, "BounceSender" :: Address, "Explanation" :: Maybe (Explanation), "MessageDsn" :: Maybe (MessageDsn), "BouncedRecipientInfoList" :: BouncedRecipientInfoList, "BounceSenderArn" :: Maybe (AmazonResourceName) } -> { "OriginalMessageId" :: MessageId, "BounceSender" :: Address, "Explanation" :: Maybe (Explanation), "MessageDsn" :: Maybe (MessageDsn), "BouncedRecipientInfoList" :: BouncedRecipientInfoList, "BounceSenderArn" :: Maybe (AmazonResourceName) }) -> SendBounceRequest
 ```
 
 Constructs SendBounceRequest's fields from required parameters
@@ -5938,7 +5938,7 @@ Constructs SendBounceRequest's fields from required parameters
 
 ``` purescript
 newtype SendBounceResponse
-  = SendBounceResponse { "MessageId" :: NullOrUndefined (MessageId) }
+  = SendBounceResponse { "MessageId" :: Maybe (MessageId) }
 ```
 
 <p>Represents a unique message ID.</p>
@@ -5963,7 +5963,7 @@ Constructs SendBounceResponse from required parameters
 #### `newSendBounceResponse'`
 
 ``` purescript
-newSendBounceResponse' :: ({ "MessageId" :: NullOrUndefined (MessageId) } -> { "MessageId" :: NullOrUndefined (MessageId) }) -> SendBounceResponse
+newSendBounceResponse' :: ({ "MessageId" :: Maybe (MessageId) } -> { "MessageId" :: Maybe (MessageId) }) -> SendBounceResponse
 ```
 
 Constructs SendBounceResponse's fields from required parameters
@@ -5972,7 +5972,7 @@ Constructs SendBounceResponse's fields from required parameters
 
 ``` purescript
 newtype SendBulkTemplatedEmailRequest
-  = SendBulkTemplatedEmailRequest { "Source" :: Address, "SourceArn" :: NullOrUndefined (AmazonResourceName), "ReplyToAddresses" :: NullOrUndefined (AddressList), "ReturnPath" :: NullOrUndefined (Address), "ReturnPathArn" :: NullOrUndefined (AmazonResourceName), "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "DefaultTags" :: NullOrUndefined (MessageTagList), "Template" :: TemplateName, "TemplateArn" :: NullOrUndefined (AmazonResourceName), "DefaultTemplateData" :: NullOrUndefined (TemplateData), "Destinations" :: BulkEmailDestinationList }
+  = SendBulkTemplatedEmailRequest { "Source" :: Address, "SourceArn" :: Maybe (AmazonResourceName), "ReplyToAddresses" :: Maybe (AddressList), "ReturnPath" :: Maybe (Address), "ReturnPathArn" :: Maybe (AmazonResourceName), "ConfigurationSetName" :: Maybe (ConfigurationSetName), "DefaultTags" :: Maybe (MessageTagList), "Template" :: TemplateName, "TemplateArn" :: Maybe (AmazonResourceName), "DefaultTemplateData" :: Maybe (TemplateData), "Destinations" :: BulkEmailDestinationList }
 ```
 
 <p>Represents a request to send a templated email to multiple destinations using Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html">Amazon SES Developer Guide</a>.</p>
@@ -5997,7 +5997,7 @@ Constructs SendBulkTemplatedEmailRequest from required parameters
 #### `newSendBulkTemplatedEmailRequest'`
 
 ``` purescript
-newSendBulkTemplatedEmailRequest' :: BulkEmailDestinationList -> Address -> TemplateName -> ({ "Source" :: Address, "SourceArn" :: NullOrUndefined (AmazonResourceName), "ReplyToAddresses" :: NullOrUndefined (AddressList), "ReturnPath" :: NullOrUndefined (Address), "ReturnPathArn" :: NullOrUndefined (AmazonResourceName), "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "DefaultTags" :: NullOrUndefined (MessageTagList), "Template" :: TemplateName, "TemplateArn" :: NullOrUndefined (AmazonResourceName), "DefaultTemplateData" :: NullOrUndefined (TemplateData), "Destinations" :: BulkEmailDestinationList } -> { "Source" :: Address, "SourceArn" :: NullOrUndefined (AmazonResourceName), "ReplyToAddresses" :: NullOrUndefined (AddressList), "ReturnPath" :: NullOrUndefined (Address), "ReturnPathArn" :: NullOrUndefined (AmazonResourceName), "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "DefaultTags" :: NullOrUndefined (MessageTagList), "Template" :: TemplateName, "TemplateArn" :: NullOrUndefined (AmazonResourceName), "DefaultTemplateData" :: NullOrUndefined (TemplateData), "Destinations" :: BulkEmailDestinationList }) -> SendBulkTemplatedEmailRequest
+newSendBulkTemplatedEmailRequest' :: BulkEmailDestinationList -> Address -> TemplateName -> ({ "Source" :: Address, "SourceArn" :: Maybe (AmazonResourceName), "ReplyToAddresses" :: Maybe (AddressList), "ReturnPath" :: Maybe (Address), "ReturnPathArn" :: Maybe (AmazonResourceName), "ConfigurationSetName" :: Maybe (ConfigurationSetName), "DefaultTags" :: Maybe (MessageTagList), "Template" :: TemplateName, "TemplateArn" :: Maybe (AmazonResourceName), "DefaultTemplateData" :: Maybe (TemplateData), "Destinations" :: BulkEmailDestinationList } -> { "Source" :: Address, "SourceArn" :: Maybe (AmazonResourceName), "ReplyToAddresses" :: Maybe (AddressList), "ReturnPath" :: Maybe (Address), "ReturnPathArn" :: Maybe (AmazonResourceName), "ConfigurationSetName" :: Maybe (ConfigurationSetName), "DefaultTags" :: Maybe (MessageTagList), "Template" :: TemplateName, "TemplateArn" :: Maybe (AmazonResourceName), "DefaultTemplateData" :: Maybe (TemplateData), "Destinations" :: BulkEmailDestinationList }) -> SendBulkTemplatedEmailRequest
 ```
 
 Constructs SendBulkTemplatedEmailRequest's fields from required parameters
@@ -6038,7 +6038,7 @@ Constructs SendBulkTemplatedEmailResponse's fields from required parameters
 
 ``` purescript
 newtype SendCustomVerificationEmailRequest
-  = SendCustomVerificationEmailRequest { "EmailAddress" :: Address, "TemplateName" :: TemplateName, "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) }
+  = SendCustomVerificationEmailRequest { "EmailAddress" :: Address, "TemplateName" :: TemplateName, "ConfigurationSetName" :: Maybe (ConfigurationSetName) }
 ```
 
 <p>Represents a request to send a custom verification email to a specified recipient.</p>
@@ -6063,7 +6063,7 @@ Constructs SendCustomVerificationEmailRequest from required parameters
 #### `newSendCustomVerificationEmailRequest'`
 
 ``` purescript
-newSendCustomVerificationEmailRequest' :: Address -> TemplateName -> ({ "EmailAddress" :: Address, "TemplateName" :: TemplateName, "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } -> { "EmailAddress" :: Address, "TemplateName" :: TemplateName, "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) }) -> SendCustomVerificationEmailRequest
+newSendCustomVerificationEmailRequest' :: Address -> TemplateName -> ({ "EmailAddress" :: Address, "TemplateName" :: TemplateName, "ConfigurationSetName" :: Maybe (ConfigurationSetName) } -> { "EmailAddress" :: Address, "TemplateName" :: TemplateName, "ConfigurationSetName" :: Maybe (ConfigurationSetName) }) -> SendCustomVerificationEmailRequest
 ```
 
 Constructs SendCustomVerificationEmailRequest's fields from required parameters
@@ -6072,7 +6072,7 @@ Constructs SendCustomVerificationEmailRequest's fields from required parameters
 
 ``` purescript
 newtype SendCustomVerificationEmailResponse
-  = SendCustomVerificationEmailResponse { "MessageId" :: NullOrUndefined (MessageId) }
+  = SendCustomVerificationEmailResponse { "MessageId" :: Maybe (MessageId) }
 ```
 
 <p>The response received when attempting to send the custom verification email.</p>
@@ -6097,7 +6097,7 @@ Constructs SendCustomVerificationEmailResponse from required parameters
 #### `newSendCustomVerificationEmailResponse'`
 
 ``` purescript
-newSendCustomVerificationEmailResponse' :: ({ "MessageId" :: NullOrUndefined (MessageId) } -> { "MessageId" :: NullOrUndefined (MessageId) }) -> SendCustomVerificationEmailResponse
+newSendCustomVerificationEmailResponse' :: ({ "MessageId" :: Maybe (MessageId) } -> { "MessageId" :: Maybe (MessageId) }) -> SendCustomVerificationEmailResponse
 ```
 
 Constructs SendCustomVerificationEmailResponse's fields from required parameters
@@ -6106,7 +6106,7 @@ Constructs SendCustomVerificationEmailResponse's fields from required parameters
 
 ``` purescript
 newtype SendDataPoint
-  = SendDataPoint { "Timestamp" :: NullOrUndefined (Timestamp), "DeliveryAttempts" :: NullOrUndefined (Counter), "Bounces" :: NullOrUndefined (Counter), "Complaints" :: NullOrUndefined (Counter), "Rejects" :: NullOrUndefined (Counter) }
+  = SendDataPoint { "Timestamp" :: Maybe (Timestamp), "DeliveryAttempts" :: Maybe (Counter), "Bounces" :: Maybe (Counter), "Complaints" :: Maybe (Counter), "Rejects" :: Maybe (Counter) }
 ```
 
 <p>Represents sending statistics data. Each <code>SendDataPoint</code> contains statistics for a 15-minute period of sending activity. </p>
@@ -6131,7 +6131,7 @@ Constructs SendDataPoint from required parameters
 #### `newSendDataPoint'`
 
 ``` purescript
-newSendDataPoint' :: ({ "Timestamp" :: NullOrUndefined (Timestamp), "DeliveryAttempts" :: NullOrUndefined (Counter), "Bounces" :: NullOrUndefined (Counter), "Complaints" :: NullOrUndefined (Counter), "Rejects" :: NullOrUndefined (Counter) } -> { "Timestamp" :: NullOrUndefined (Timestamp), "DeliveryAttempts" :: NullOrUndefined (Counter), "Bounces" :: NullOrUndefined (Counter), "Complaints" :: NullOrUndefined (Counter), "Rejects" :: NullOrUndefined (Counter) }) -> SendDataPoint
+newSendDataPoint' :: ({ "Timestamp" :: Maybe (Timestamp), "DeliveryAttempts" :: Maybe (Counter), "Bounces" :: Maybe (Counter), "Complaints" :: Maybe (Counter), "Rejects" :: Maybe (Counter) } -> { "Timestamp" :: Maybe (Timestamp), "DeliveryAttempts" :: Maybe (Counter), "Bounces" :: Maybe (Counter), "Complaints" :: Maybe (Counter), "Rejects" :: Maybe (Counter) }) -> SendDataPoint
 ```
 
 Constructs SendDataPoint's fields from required parameters
@@ -6156,7 +6156,7 @@ Encode SendDataPointList
 
 ``` purescript
 newtype SendEmailRequest
-  = SendEmailRequest { "Source" :: Address, "Destination" :: Destination, "Message" :: Message, "ReplyToAddresses" :: NullOrUndefined (AddressList), "ReturnPath" :: NullOrUndefined (Address), "SourceArn" :: NullOrUndefined (AmazonResourceName), "ReturnPathArn" :: NullOrUndefined (AmazonResourceName), "Tags" :: NullOrUndefined (MessageTagList), "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) }
+  = SendEmailRequest { "Source" :: Address, "Destination" :: Destination, "Message" :: Message, "ReplyToAddresses" :: Maybe (AddressList), "ReturnPath" :: Maybe (Address), "SourceArn" :: Maybe (AmazonResourceName), "ReturnPathArn" :: Maybe (AmazonResourceName), "Tags" :: Maybe (MessageTagList), "ConfigurationSetName" :: Maybe (ConfigurationSetName) }
 ```
 
 <p>Represents a request to send a single formatted email using Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-formatted.html">Amazon SES Developer Guide</a>.</p>
@@ -6181,7 +6181,7 @@ Constructs SendEmailRequest from required parameters
 #### `newSendEmailRequest'`
 
 ``` purescript
-newSendEmailRequest' :: Destination -> Message -> Address -> ({ "Source" :: Address, "Destination" :: Destination, "Message" :: Message, "ReplyToAddresses" :: NullOrUndefined (AddressList), "ReturnPath" :: NullOrUndefined (Address), "SourceArn" :: NullOrUndefined (AmazonResourceName), "ReturnPathArn" :: NullOrUndefined (AmazonResourceName), "Tags" :: NullOrUndefined (MessageTagList), "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } -> { "Source" :: Address, "Destination" :: Destination, "Message" :: Message, "ReplyToAddresses" :: NullOrUndefined (AddressList), "ReturnPath" :: NullOrUndefined (Address), "SourceArn" :: NullOrUndefined (AmazonResourceName), "ReturnPathArn" :: NullOrUndefined (AmazonResourceName), "Tags" :: NullOrUndefined (MessageTagList), "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) }) -> SendEmailRequest
+newSendEmailRequest' :: Destination -> Message -> Address -> ({ "Source" :: Address, "Destination" :: Destination, "Message" :: Message, "ReplyToAddresses" :: Maybe (AddressList), "ReturnPath" :: Maybe (Address), "SourceArn" :: Maybe (AmazonResourceName), "ReturnPathArn" :: Maybe (AmazonResourceName), "Tags" :: Maybe (MessageTagList), "ConfigurationSetName" :: Maybe (ConfigurationSetName) } -> { "Source" :: Address, "Destination" :: Destination, "Message" :: Message, "ReplyToAddresses" :: Maybe (AddressList), "ReturnPath" :: Maybe (Address), "SourceArn" :: Maybe (AmazonResourceName), "ReturnPathArn" :: Maybe (AmazonResourceName), "Tags" :: Maybe (MessageTagList), "ConfigurationSetName" :: Maybe (ConfigurationSetName) }) -> SendEmailRequest
 ```
 
 Constructs SendEmailRequest's fields from required parameters
@@ -6224,7 +6224,7 @@ Constructs SendEmailResponse's fields from required parameters
 
 ``` purescript
 newtype SendRawEmailRequest
-  = SendRawEmailRequest { "Source" :: NullOrUndefined (Address), "Destinations" :: NullOrUndefined (AddressList), "RawMessage" :: RawMessage, "FromArn" :: NullOrUndefined (AmazonResourceName), "SourceArn" :: NullOrUndefined (AmazonResourceName), "ReturnPathArn" :: NullOrUndefined (AmazonResourceName), "Tags" :: NullOrUndefined (MessageTagList), "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) }
+  = SendRawEmailRequest { "Source" :: Maybe (Address), "Destinations" :: Maybe (AddressList), "RawMessage" :: RawMessage, "FromArn" :: Maybe (AmazonResourceName), "SourceArn" :: Maybe (AmazonResourceName), "ReturnPathArn" :: Maybe (AmazonResourceName), "Tags" :: Maybe (MessageTagList), "ConfigurationSetName" :: Maybe (ConfigurationSetName) }
 ```
 
 <p>Represents a request to send a single raw email using Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer Guide</a>.</p>
@@ -6249,7 +6249,7 @@ Constructs SendRawEmailRequest from required parameters
 #### `newSendRawEmailRequest'`
 
 ``` purescript
-newSendRawEmailRequest' :: RawMessage -> ({ "Source" :: NullOrUndefined (Address), "Destinations" :: NullOrUndefined (AddressList), "RawMessage" :: RawMessage, "FromArn" :: NullOrUndefined (AmazonResourceName), "SourceArn" :: NullOrUndefined (AmazonResourceName), "ReturnPathArn" :: NullOrUndefined (AmazonResourceName), "Tags" :: NullOrUndefined (MessageTagList), "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } -> { "Source" :: NullOrUndefined (Address), "Destinations" :: NullOrUndefined (AddressList), "RawMessage" :: RawMessage, "FromArn" :: NullOrUndefined (AmazonResourceName), "SourceArn" :: NullOrUndefined (AmazonResourceName), "ReturnPathArn" :: NullOrUndefined (AmazonResourceName), "Tags" :: NullOrUndefined (MessageTagList), "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) }) -> SendRawEmailRequest
+newSendRawEmailRequest' :: RawMessage -> ({ "Source" :: Maybe (Address), "Destinations" :: Maybe (AddressList), "RawMessage" :: RawMessage, "FromArn" :: Maybe (AmazonResourceName), "SourceArn" :: Maybe (AmazonResourceName), "ReturnPathArn" :: Maybe (AmazonResourceName), "Tags" :: Maybe (MessageTagList), "ConfigurationSetName" :: Maybe (ConfigurationSetName) } -> { "Source" :: Maybe (Address), "Destinations" :: Maybe (AddressList), "RawMessage" :: RawMessage, "FromArn" :: Maybe (AmazonResourceName), "SourceArn" :: Maybe (AmazonResourceName), "ReturnPathArn" :: Maybe (AmazonResourceName), "Tags" :: Maybe (MessageTagList), "ConfigurationSetName" :: Maybe (ConfigurationSetName) }) -> SendRawEmailRequest
 ```
 
 Constructs SendRawEmailRequest's fields from required parameters
@@ -6292,7 +6292,7 @@ Constructs SendRawEmailResponse's fields from required parameters
 
 ``` purescript
 newtype SendTemplatedEmailRequest
-  = SendTemplatedEmailRequest { "Source" :: Address, "Destination" :: Destination, "ReplyToAddresses" :: NullOrUndefined (AddressList), "ReturnPath" :: NullOrUndefined (Address), "SourceArn" :: NullOrUndefined (AmazonResourceName), "ReturnPathArn" :: NullOrUndefined (AmazonResourceName), "Tags" :: NullOrUndefined (MessageTagList), "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "Template" :: TemplateName, "TemplateArn" :: NullOrUndefined (AmazonResourceName), "TemplateData" :: TemplateData }
+  = SendTemplatedEmailRequest { "Source" :: Address, "Destination" :: Destination, "ReplyToAddresses" :: Maybe (AddressList), "ReturnPath" :: Maybe (Address), "SourceArn" :: Maybe (AmazonResourceName), "ReturnPathArn" :: Maybe (AmazonResourceName), "Tags" :: Maybe (MessageTagList), "ConfigurationSetName" :: Maybe (ConfigurationSetName), "Template" :: TemplateName, "TemplateArn" :: Maybe (AmazonResourceName), "TemplateData" :: TemplateData }
 ```
 
 <p>Represents a request to send a templated email using Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html">Amazon SES Developer Guide</a>.</p>
@@ -6317,7 +6317,7 @@ Constructs SendTemplatedEmailRequest from required parameters
 #### `newSendTemplatedEmailRequest'`
 
 ``` purescript
-newSendTemplatedEmailRequest' :: Destination -> Address -> TemplateName -> TemplateData -> ({ "Source" :: Address, "Destination" :: Destination, "ReplyToAddresses" :: NullOrUndefined (AddressList), "ReturnPath" :: NullOrUndefined (Address), "SourceArn" :: NullOrUndefined (AmazonResourceName), "ReturnPathArn" :: NullOrUndefined (AmazonResourceName), "Tags" :: NullOrUndefined (MessageTagList), "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "Template" :: TemplateName, "TemplateArn" :: NullOrUndefined (AmazonResourceName), "TemplateData" :: TemplateData } -> { "Source" :: Address, "Destination" :: Destination, "ReplyToAddresses" :: NullOrUndefined (AddressList), "ReturnPath" :: NullOrUndefined (Address), "SourceArn" :: NullOrUndefined (AmazonResourceName), "ReturnPathArn" :: NullOrUndefined (AmazonResourceName), "Tags" :: NullOrUndefined (MessageTagList), "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName), "Template" :: TemplateName, "TemplateArn" :: NullOrUndefined (AmazonResourceName), "TemplateData" :: TemplateData }) -> SendTemplatedEmailRequest
+newSendTemplatedEmailRequest' :: Destination -> Address -> TemplateName -> TemplateData -> ({ "Source" :: Address, "Destination" :: Destination, "ReplyToAddresses" :: Maybe (AddressList), "ReturnPath" :: Maybe (Address), "SourceArn" :: Maybe (AmazonResourceName), "ReturnPathArn" :: Maybe (AmazonResourceName), "Tags" :: Maybe (MessageTagList), "ConfigurationSetName" :: Maybe (ConfigurationSetName), "Template" :: TemplateName, "TemplateArn" :: Maybe (AmazonResourceName), "TemplateData" :: TemplateData } -> { "Source" :: Address, "Destination" :: Destination, "ReplyToAddresses" :: Maybe (AddressList), "ReturnPath" :: Maybe (Address), "SourceArn" :: Maybe (AmazonResourceName), "ReturnPathArn" :: Maybe (AmazonResourceName), "Tags" :: Maybe (MessageTagList), "ConfigurationSetName" :: Maybe (ConfigurationSetName), "Template" :: TemplateName, "TemplateArn" :: Maybe (AmazonResourceName), "TemplateData" :: TemplateData }) -> SendTemplatedEmailRequest
 ```
 
 Constructs SendTemplatedEmailRequest's fields from required parameters
@@ -6374,7 +6374,7 @@ Encode SentLast24Hours
 
 ``` purescript
 newtype SetActiveReceiptRuleSetRequest
-  = SetActiveReceiptRuleSetRequest { "RuleSetName" :: NullOrUndefined (ReceiptRuleSetName) }
+  = SetActiveReceiptRuleSetRequest { "RuleSetName" :: Maybe (ReceiptRuleSetName) }
 ```
 
 <p>Represents a request to set a receipt rule set as the active receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
@@ -6399,7 +6399,7 @@ Constructs SetActiveReceiptRuleSetRequest from required parameters
 #### `newSetActiveReceiptRuleSetRequest'`
 
 ``` purescript
-newSetActiveReceiptRuleSetRequest' :: ({ "RuleSetName" :: NullOrUndefined (ReceiptRuleSetName) } -> { "RuleSetName" :: NullOrUndefined (ReceiptRuleSetName) }) -> SetActiveReceiptRuleSetRequest
+newSetActiveReceiptRuleSetRequest' :: ({ "RuleSetName" :: Maybe (ReceiptRuleSetName) } -> { "RuleSetName" :: Maybe (ReceiptRuleSetName) }) -> SetActiveReceiptRuleSetRequest
 ```
 
 Constructs SetActiveReceiptRuleSetRequest's fields from required parameters
@@ -6582,7 +6582,7 @@ Encode SetIdentityHeadersInNotificationsEnabledResponse
 
 ``` purescript
 newtype SetIdentityMailFromDomainRequest
-  = SetIdentityMailFromDomainRequest { "Identity" :: Identity, "MailFromDomain" :: NullOrUndefined (MailFromDomainName), "BehaviorOnMXFailure" :: NullOrUndefined (BehaviorOnMXFailure) }
+  = SetIdentityMailFromDomainRequest { "Identity" :: Identity, "MailFromDomain" :: Maybe (MailFromDomainName), "BehaviorOnMXFailure" :: Maybe (BehaviorOnMXFailure) }
 ```
 
 <p>Represents a request to enable or disable the Amazon SES custom MAIL FROM domain setup for a verified identity. For information about using a custom MAIL FROM domain, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html">Amazon SES Developer Guide</a>.</p>
@@ -6607,7 +6607,7 @@ Constructs SetIdentityMailFromDomainRequest from required parameters
 #### `newSetIdentityMailFromDomainRequest'`
 
 ``` purescript
-newSetIdentityMailFromDomainRequest' :: Identity -> ({ "Identity" :: Identity, "MailFromDomain" :: NullOrUndefined (MailFromDomainName), "BehaviorOnMXFailure" :: NullOrUndefined (BehaviorOnMXFailure) } -> { "Identity" :: Identity, "MailFromDomain" :: NullOrUndefined (MailFromDomainName), "BehaviorOnMXFailure" :: NullOrUndefined (BehaviorOnMXFailure) }) -> SetIdentityMailFromDomainRequest
+newSetIdentityMailFromDomainRequest' :: Identity -> ({ "Identity" :: Identity, "MailFromDomain" :: Maybe (MailFromDomainName), "BehaviorOnMXFailure" :: Maybe (BehaviorOnMXFailure) } -> { "Identity" :: Identity, "MailFromDomain" :: Maybe (MailFromDomainName), "BehaviorOnMXFailure" :: Maybe (BehaviorOnMXFailure) }) -> SetIdentityMailFromDomainRequest
 ```
 
 Constructs SetIdentityMailFromDomainRequest's fields from required parameters
@@ -6634,7 +6634,7 @@ Encode SetIdentityMailFromDomainResponse
 
 ``` purescript
 newtype SetIdentityNotificationTopicRequest
-  = SetIdentityNotificationTopicRequest { "Identity" :: Identity, "NotificationType" :: NotificationType, "SnsTopic" :: NullOrUndefined (NotificationTopic) }
+  = SetIdentityNotificationTopicRequest { "Identity" :: Identity, "NotificationType" :: NotificationType, "SnsTopic" :: Maybe (NotificationTopic) }
 ```
 
 <p>Represents a request to specify the Amazon SNS topic to which Amazon SES will publish bounce, complaint, or delivery notifications for emails sent with that identity as the Source. For information about Amazon SES notifications, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications-via-sns.html">Amazon SES Developer Guide</a>.</p>
@@ -6659,7 +6659,7 @@ Constructs SetIdentityNotificationTopicRequest from required parameters
 #### `newSetIdentityNotificationTopicRequest'`
 
 ``` purescript
-newSetIdentityNotificationTopicRequest' :: Identity -> NotificationType -> ({ "Identity" :: Identity, "NotificationType" :: NotificationType, "SnsTopic" :: NullOrUndefined (NotificationTopic) } -> { "Identity" :: Identity, "NotificationType" :: NotificationType, "SnsTopic" :: NullOrUndefined (NotificationTopic) }) -> SetIdentityNotificationTopicRequest
+newSetIdentityNotificationTopicRequest' :: Identity -> NotificationType -> ({ "Identity" :: Identity, "NotificationType" :: NotificationType, "SnsTopic" :: Maybe (NotificationTopic) } -> { "Identity" :: Identity, "NotificationType" :: NotificationType, "SnsTopic" :: Maybe (NotificationTopic) }) -> SetIdentityNotificationTopicRequest
 ```
 
 Constructs SetIdentityNotificationTopicRequest's fields from required parameters
@@ -6686,7 +6686,7 @@ Encode SetIdentityNotificationTopicResponse
 
 ``` purescript
 newtype SetReceiptRulePositionRequest
-  = SetReceiptRulePositionRequest { "RuleSetName" :: ReceiptRuleSetName, "RuleName" :: ReceiptRuleName, "After" :: NullOrUndefined (ReceiptRuleName) }
+  = SetReceiptRulePositionRequest { "RuleSetName" :: ReceiptRuleSetName, "RuleName" :: ReceiptRuleName, "After" :: Maybe (ReceiptRuleName) }
 ```
 
 <p>Represents a request to set the position of a receipt rule in a receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
@@ -6711,7 +6711,7 @@ Constructs SetReceiptRulePositionRequest from required parameters
 #### `newSetReceiptRulePositionRequest'`
 
 ``` purescript
-newSetReceiptRulePositionRequest' :: ReceiptRuleName -> ReceiptRuleSetName -> ({ "RuleSetName" :: ReceiptRuleSetName, "RuleName" :: ReceiptRuleName, "After" :: NullOrUndefined (ReceiptRuleName) } -> { "RuleSetName" :: ReceiptRuleSetName, "RuleName" :: ReceiptRuleName, "After" :: NullOrUndefined (ReceiptRuleName) }) -> SetReceiptRulePositionRequest
+newSetReceiptRulePositionRequest' :: ReceiptRuleName -> ReceiptRuleSetName -> ({ "RuleSetName" :: ReceiptRuleSetName, "RuleName" :: ReceiptRuleName, "After" :: Maybe (ReceiptRuleName) } -> { "RuleSetName" :: ReceiptRuleSetName, "RuleName" :: ReceiptRuleName, "After" :: Maybe (ReceiptRuleName) }) -> SetReceiptRulePositionRequest
 ```
 
 Constructs SetReceiptRulePositionRequest's fields from required parameters
@@ -6738,7 +6738,7 @@ Encode SetReceiptRulePositionResponse
 
 ``` purescript
 newtype StopAction
-  = StopAction { "Scope" :: StopScope, "TopicArn" :: NullOrUndefined (AmazonResourceName) }
+  = StopAction { "Scope" :: StopScope, "TopicArn" :: Maybe (AmazonResourceName) }
 ```
 
 <p>When included in a receipt rule, this action terminates the evaluation of the receipt rule set and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p> <p>For information about setting a stop action in a receipt rule, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-stop.html">Amazon SES Developer Guide</a>.</p>
@@ -6763,7 +6763,7 @@ Constructs StopAction from required parameters
 #### `newStopAction'`
 
 ``` purescript
-newStopAction' :: StopScope -> ({ "Scope" :: StopScope, "TopicArn" :: NullOrUndefined (AmazonResourceName) } -> { "Scope" :: StopScope, "TopicArn" :: NullOrUndefined (AmazonResourceName) }) -> StopAction
+newStopAction' :: StopScope -> ({ "Scope" :: StopScope, "TopicArn" :: Maybe (AmazonResourceName) } -> { "Scope" :: StopScope, "TopicArn" :: Maybe (AmazonResourceName) }) -> StopAction
 ```
 
 Constructs StopAction's fields from required parameters
@@ -6836,7 +6836,7 @@ Encode SuccessRedirectionURL
 
 ``` purescript
 newtype Template
-  = Template { "TemplateName" :: TemplateName, "SubjectPart" :: NullOrUndefined (SubjectPart), "TextPart" :: NullOrUndefined (TextPart), "HtmlPart" :: NullOrUndefined (HtmlPart) }
+  = Template { "TemplateName" :: TemplateName, "SubjectPart" :: Maybe (SubjectPart), "TextPart" :: Maybe (TextPart), "HtmlPart" :: Maybe (HtmlPart) }
 ```
 
 <p>The content of the email, composed of a subject line, an HTML part, and a text-only part.</p>
@@ -6861,7 +6861,7 @@ Constructs Template from required parameters
 #### `newTemplate'`
 
 ``` purescript
-newTemplate' :: TemplateName -> ({ "TemplateName" :: TemplateName, "SubjectPart" :: NullOrUndefined (SubjectPart), "TextPart" :: NullOrUndefined (TextPart), "HtmlPart" :: NullOrUndefined (HtmlPart) } -> { "TemplateName" :: TemplateName, "SubjectPart" :: NullOrUndefined (SubjectPart), "TextPart" :: NullOrUndefined (TextPart), "HtmlPart" :: NullOrUndefined (HtmlPart) }) -> Template
+newTemplate' :: TemplateName -> ({ "TemplateName" :: TemplateName, "SubjectPart" :: Maybe (SubjectPart), "TextPart" :: Maybe (TextPart), "HtmlPart" :: Maybe (HtmlPart) } -> { "TemplateName" :: TemplateName, "SubjectPart" :: Maybe (SubjectPart), "TextPart" :: Maybe (TextPart), "HtmlPart" :: Maybe (HtmlPart) }) -> Template
 ```
 
 Constructs Template's fields from required parameters
@@ -6902,7 +6902,7 @@ Encode TemplateData
 
 ``` purescript
 newtype TemplateDoesNotExistException
-  = TemplateDoesNotExistException { "TemplateName" :: NullOrUndefined (TemplateName) }
+  = TemplateDoesNotExistException { "TemplateName" :: Maybe (TemplateName) }
 ```
 
 <p>Indicates that the Template object you specified does not exist in your Amazon SES account.</p>
@@ -6927,7 +6927,7 @@ Constructs TemplateDoesNotExistException from required parameters
 #### `newTemplateDoesNotExistException'`
 
 ``` purescript
-newTemplateDoesNotExistException' :: ({ "TemplateName" :: NullOrUndefined (TemplateName) } -> { "TemplateName" :: NullOrUndefined (TemplateName) }) -> TemplateDoesNotExistException
+newTemplateDoesNotExistException' :: ({ "TemplateName" :: Maybe (TemplateName) } -> { "TemplateName" :: Maybe (TemplateName) }) -> TemplateDoesNotExistException
 ```
 
 Constructs TemplateDoesNotExistException's fields from required parameters
@@ -6936,7 +6936,7 @@ Constructs TemplateDoesNotExistException's fields from required parameters
 
 ``` purescript
 newtype TemplateMetadata
-  = TemplateMetadata { "Name" :: NullOrUndefined (TemplateName), "CreatedTimestamp" :: NullOrUndefined (Timestamp) }
+  = TemplateMetadata { "Name" :: Maybe (TemplateName), "CreatedTimestamp" :: Maybe (Timestamp) }
 ```
 
 <p>Contains information about an email template.</p>
@@ -6961,7 +6961,7 @@ Constructs TemplateMetadata from required parameters
 #### `newTemplateMetadata'`
 
 ``` purescript
-newTemplateMetadata' :: ({ "Name" :: NullOrUndefined (TemplateName), "CreatedTimestamp" :: NullOrUndefined (Timestamp) } -> { "Name" :: NullOrUndefined (TemplateName), "CreatedTimestamp" :: NullOrUndefined (Timestamp) }) -> TemplateMetadata
+newTemplateMetadata' :: ({ "Name" :: Maybe (TemplateName), "CreatedTimestamp" :: Maybe (Timestamp) } -> { "Name" :: Maybe (TemplateName), "CreatedTimestamp" :: Maybe (Timestamp) }) -> TemplateMetadata
 ```
 
 Constructs TemplateMetadata's fields from required parameters
@@ -7034,7 +7034,7 @@ Constructs TestRenderTemplateRequest's fields from required parameters
 
 ``` purescript
 newtype TestRenderTemplateResponse
-  = TestRenderTemplateResponse { "RenderedTemplate" :: NullOrUndefined (RenderedTemplate) }
+  = TestRenderTemplateResponse { "RenderedTemplate" :: Maybe (RenderedTemplate) }
 ```
 
 ##### Instances
@@ -7057,7 +7057,7 @@ Constructs TestRenderTemplateResponse from required parameters
 #### `newTestRenderTemplateResponse'`
 
 ``` purescript
-newTestRenderTemplateResponse' :: ({ "RenderedTemplate" :: NullOrUndefined (RenderedTemplate) } -> { "RenderedTemplate" :: NullOrUndefined (RenderedTemplate) }) -> TestRenderTemplateResponse
+newTestRenderTemplateResponse' :: ({ "RenderedTemplate" :: Maybe (RenderedTemplate) } -> { "RenderedTemplate" :: Maybe (RenderedTemplate) }) -> TestRenderTemplateResponse
 ```
 
 Constructs TestRenderTemplateResponse's fields from required parameters
@@ -7098,7 +7098,7 @@ Encode TlsPolicy
 
 ``` purescript
 newtype TrackingOptions
-  = TrackingOptions { "CustomRedirectDomain" :: NullOrUndefined (CustomRedirectDomain) }
+  = TrackingOptions { "CustomRedirectDomain" :: Maybe (CustomRedirectDomain) }
 ```
 
 <p>A domain that is used to redirect email recipients to an Amazon SES-operated domain. This domain captures open and click events generated by Amazon SES emails.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html">Configuring Custom Domains to Handle Open and Click Tracking</a> in the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html">Amazon SES Developer Guide</a>.</p>
@@ -7123,7 +7123,7 @@ Constructs TrackingOptions from required parameters
 #### `newTrackingOptions'`
 
 ``` purescript
-newTrackingOptions' :: ({ "CustomRedirectDomain" :: NullOrUndefined (CustomRedirectDomain) } -> { "CustomRedirectDomain" :: NullOrUndefined (CustomRedirectDomain) }) -> TrackingOptions
+newTrackingOptions' :: ({ "CustomRedirectDomain" :: Maybe (CustomRedirectDomain) } -> { "CustomRedirectDomain" :: Maybe (CustomRedirectDomain) }) -> TrackingOptions
 ```
 
 Constructs TrackingOptions's fields from required parameters
@@ -7132,7 +7132,7 @@ Constructs TrackingOptions's fields from required parameters
 
 ``` purescript
 newtype TrackingOptionsAlreadyExistsException
-  = TrackingOptionsAlreadyExistsException { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) }
+  = TrackingOptionsAlreadyExistsException { "ConfigurationSetName" :: Maybe (ConfigurationSetName) }
 ```
 
 <p>Indicates that the configuration set you specified already contains a TrackingOptions object.</p>
@@ -7157,7 +7157,7 @@ Constructs TrackingOptionsAlreadyExistsException from required parameters
 #### `newTrackingOptionsAlreadyExistsException'`
 
 ``` purescript
-newTrackingOptionsAlreadyExistsException' :: ({ "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } -> { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) }) -> TrackingOptionsAlreadyExistsException
+newTrackingOptionsAlreadyExistsException' :: ({ "ConfigurationSetName" :: Maybe (ConfigurationSetName) } -> { "ConfigurationSetName" :: Maybe (ConfigurationSetName) }) -> TrackingOptionsAlreadyExistsException
 ```
 
 Constructs TrackingOptionsAlreadyExistsException's fields from required parameters
@@ -7166,7 +7166,7 @@ Constructs TrackingOptionsAlreadyExistsException's fields from required paramete
 
 ``` purescript
 newtype TrackingOptionsDoesNotExistException
-  = TrackingOptionsDoesNotExistException { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) }
+  = TrackingOptionsDoesNotExistException { "ConfigurationSetName" :: Maybe (ConfigurationSetName) }
 ```
 
 <p>Indicates that the TrackingOptions object you specified does not exist.</p>
@@ -7191,7 +7191,7 @@ Constructs TrackingOptionsDoesNotExistException from required parameters
 #### `newTrackingOptionsDoesNotExistException'`
 
 ``` purescript
-newTrackingOptionsDoesNotExistException' :: ({ "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } -> { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) }) -> TrackingOptionsDoesNotExistException
+newTrackingOptionsDoesNotExistException' :: ({ "ConfigurationSetName" :: Maybe (ConfigurationSetName) } -> { "ConfigurationSetName" :: Maybe (ConfigurationSetName) }) -> TrackingOptionsDoesNotExistException
 ```
 
 Constructs TrackingOptionsDoesNotExistException's fields from required parameters
@@ -7200,7 +7200,7 @@ Constructs TrackingOptionsDoesNotExistException's fields from required parameter
 
 ``` purescript
 newtype UpdateAccountSendingEnabledRequest
-  = UpdateAccountSendingEnabledRequest { "Enabled" :: NullOrUndefined (Enabled) }
+  = UpdateAccountSendingEnabledRequest { "Enabled" :: Maybe (Enabled) }
 ```
 
 <p>Represents a request to enable or disable the email sending capabilities for your entire Amazon SES account.</p>
@@ -7225,7 +7225,7 @@ Constructs UpdateAccountSendingEnabledRequest from required parameters
 #### `newUpdateAccountSendingEnabledRequest'`
 
 ``` purescript
-newUpdateAccountSendingEnabledRequest' :: ({ "Enabled" :: NullOrUndefined (Enabled) } -> { "Enabled" :: NullOrUndefined (Enabled) }) -> UpdateAccountSendingEnabledRequest
+newUpdateAccountSendingEnabledRequest' :: ({ "Enabled" :: Maybe (Enabled) } -> { "Enabled" :: Maybe (Enabled) }) -> UpdateAccountSendingEnabledRequest
 ```
 
 Constructs UpdateAccountSendingEnabledRequest's fields from required parameters
@@ -7406,7 +7406,7 @@ Encode UpdateConfigurationSetTrackingOptionsResponse
 
 ``` purescript
 newtype UpdateCustomVerificationEmailTemplateRequest
-  = UpdateCustomVerificationEmailTemplateRequest { "TemplateName" :: TemplateName, "FromEmailAddress" :: NullOrUndefined (FromAddress), "TemplateSubject" :: NullOrUndefined (Subject), "TemplateContent" :: NullOrUndefined (TemplateContent), "SuccessRedirectionURL" :: NullOrUndefined (SuccessRedirectionURL), "FailureRedirectionURL" :: NullOrUndefined (FailureRedirectionURL) }
+  = UpdateCustomVerificationEmailTemplateRequest { "TemplateName" :: TemplateName, "FromEmailAddress" :: Maybe (FromAddress), "TemplateSubject" :: Maybe (Subject), "TemplateContent" :: Maybe (TemplateContent), "SuccessRedirectionURL" :: Maybe (SuccessRedirectionURL), "FailureRedirectionURL" :: Maybe (FailureRedirectionURL) }
 ```
 
 <p>Represents a request to update an existing custom verification email template.</p>
@@ -7431,7 +7431,7 @@ Constructs UpdateCustomVerificationEmailTemplateRequest from required parameters
 #### `newUpdateCustomVerificationEmailTemplateRequest'`
 
 ``` purescript
-newUpdateCustomVerificationEmailTemplateRequest' :: TemplateName -> ({ "TemplateName" :: TemplateName, "FromEmailAddress" :: NullOrUndefined (FromAddress), "TemplateSubject" :: NullOrUndefined (Subject), "TemplateContent" :: NullOrUndefined (TemplateContent), "SuccessRedirectionURL" :: NullOrUndefined (SuccessRedirectionURL), "FailureRedirectionURL" :: NullOrUndefined (FailureRedirectionURL) } -> { "TemplateName" :: TemplateName, "FromEmailAddress" :: NullOrUndefined (FromAddress), "TemplateSubject" :: NullOrUndefined (Subject), "TemplateContent" :: NullOrUndefined (TemplateContent), "SuccessRedirectionURL" :: NullOrUndefined (SuccessRedirectionURL), "FailureRedirectionURL" :: NullOrUndefined (FailureRedirectionURL) }) -> UpdateCustomVerificationEmailTemplateRequest
+newUpdateCustomVerificationEmailTemplateRequest' :: TemplateName -> ({ "TemplateName" :: TemplateName, "FromEmailAddress" :: Maybe (FromAddress), "TemplateSubject" :: Maybe (Subject), "TemplateContent" :: Maybe (TemplateContent), "SuccessRedirectionURL" :: Maybe (SuccessRedirectionURL), "FailureRedirectionURL" :: Maybe (FailureRedirectionURL) } -> { "TemplateName" :: TemplateName, "FromEmailAddress" :: Maybe (FromAddress), "TemplateSubject" :: Maybe (Subject), "TemplateContent" :: Maybe (TemplateContent), "SuccessRedirectionURL" :: Maybe (SuccessRedirectionURL), "FailureRedirectionURL" :: Maybe (FailureRedirectionURL) }) -> UpdateCustomVerificationEmailTemplateRequest
 ```
 
 Constructs UpdateCustomVerificationEmailTemplateRequest's fields from required parameters
@@ -7826,7 +7826,7 @@ Encode VerifyEmailIdentityResponse
 
 ``` purescript
 newtype WorkmailAction
-  = WorkmailAction { "TopicArn" :: NullOrUndefined (AmazonResourceName), "OrganizationArn" :: AmazonResourceName }
+  = WorkmailAction { "TopicArn" :: Maybe (AmazonResourceName), "OrganizationArn" :: AmazonResourceName }
 ```
 
 <p>When included in a receipt rule, this action calls Amazon WorkMail and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS). You will typically not use this action directly because Amazon WorkMail adds the rule automatically during its setup procedure.</p> <p>For information using a receipt rule to call Amazon WorkMail, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-workmail.html">Amazon SES Developer Guide</a>.</p>
@@ -7851,7 +7851,7 @@ Constructs WorkmailAction from required parameters
 #### `newWorkmailAction'`
 
 ``` purescript
-newWorkmailAction' :: AmazonResourceName -> ({ "TopicArn" :: NullOrUndefined (AmazonResourceName), "OrganizationArn" :: AmazonResourceName } -> { "TopicArn" :: NullOrUndefined (AmazonResourceName), "OrganizationArn" :: AmazonResourceName }) -> WorkmailAction
+newWorkmailAction' :: AmazonResourceName -> ({ "TopicArn" :: Maybe (AmazonResourceName), "OrganizationArn" :: AmazonResourceName } -> { "TopicArn" :: Maybe (AmazonResourceName), "OrganizationArn" :: AmazonResourceName }) -> WorkmailAction
 ```
 
 Constructs WorkmailAction's fields from required parameters

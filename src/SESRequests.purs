@@ -37,7 +37,7 @@ createConfigurationSetTrackingOptions (SES.Service serviceImpl) = AWS.request se
 
 
 -- | <p>Creates a new custom verification email template.</p> <p>For more information about custom verification email templates, see <a href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html">Using Custom Verification Email Templates</a> in the <i>Amazon SES Developer Guide</i>.</p> <p>You can execute this operation no more than once per second.</p>
-createCustomVerificationEmailTemplate :: forall eff. SES.Service -> SESTypes.CreateCustomVerificationEmailTemplateRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+createCustomVerificationEmailTemplate :: forall eff. SES.Service -> SESTypes.CreateCustomVerificationEmailTemplateRequest -> Aff (exception :: EXCEPTION | eff) Unit
 createCustomVerificationEmailTemplate (SES.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "createCustomVerificationEmailTemplate"
 
@@ -85,7 +85,7 @@ deleteConfigurationSetTrackingOptions (SES.Service serviceImpl) = AWS.request se
 
 
 -- | <p>Deletes an existing custom verification email template. </p> <p>For more information about custom verification email templates, see <a href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html">Using Custom Verification Email Templates</a> in the <i>Amazon SES Developer Guide</i>.</p> <p>You can execute this operation no more than once per second.</p>
-deleteCustomVerificationEmailTemplate :: forall eff. SES.Service -> SESTypes.DeleteCustomVerificationEmailTemplateRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteCustomVerificationEmailTemplate :: forall eff. SES.Service -> SESTypes.DeleteCustomVerificationEmailTemplateRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteCustomVerificationEmailTemplate (SES.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteCustomVerificationEmailTemplate"
 
@@ -127,7 +127,7 @@ deleteTemplate (SES.Service serviceImpl) = AWS.request serviceImpl method  where
 
 
 -- | <p>Deprecated. Use the <code>DeleteIdentity</code> operation to delete email addresses and domains.</p>
-deleteVerifiedEmailAddress :: forall eff. SES.Service -> SESTypes.DeleteVerifiedEmailAddressRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+deleteVerifiedEmailAddress :: forall eff. SES.Service -> SESTypes.DeleteVerifiedEmailAddressRequest -> Aff (exception :: EXCEPTION | eff) Unit
 deleteVerifiedEmailAddress (SES.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "deleteVerifiedEmailAddress"
 
@@ -158,7 +158,7 @@ describeReceiptRuleSet (SES.Service serviceImpl) = AWS.request serviceImpl metho
 
 -- | <p>Returns the email sending status of the Amazon SES account.</p> <p>You can execute this operation no more than once per second.</p>
 getAccountSendingEnabled :: forall eff. SES.Service ->  Aff (exception :: EXCEPTION | eff) SESTypes.GetAccountSendingEnabledResponse
-getAccountSendingEnabled (SES.Service serviceImpl) = AWS.request serviceImpl method (Types.NoInput unit) where
+getAccountSendingEnabled (SES.Service serviceImpl) = AWS.request serviceImpl method unit where
     method = AWS.MethodName "getAccountSendingEnabled"
 
 
@@ -200,13 +200,13 @@ getIdentityVerificationAttributes (SES.Service serviceImpl) = AWS.request servic
 
 -- | <p>Provides the sending limits for the Amazon SES account. </p> <p>You can execute this operation no more than once per second.</p>
 getSendQuota :: forall eff. SES.Service ->  Aff (exception :: EXCEPTION | eff) SESTypes.GetSendQuotaResponse
-getSendQuota (SES.Service serviceImpl) = AWS.request serviceImpl method (Types.NoInput unit) where
+getSendQuota (SES.Service serviceImpl) = AWS.request serviceImpl method unit where
     method = AWS.MethodName "getSendQuota"
 
 
 -- | <p>Provides sending statistics for the Amazon SES account. The result is a list of data points, representing the last two weeks of sending activity. Each data point in the list contains statistics for a 15-minute period of time.</p> <p>You can execute this operation no more than once per second.</p>
 getSendStatistics :: forall eff. SES.Service ->  Aff (exception :: EXCEPTION | eff) SESTypes.GetSendStatisticsResponse
-getSendStatistics (SES.Service serviceImpl) = AWS.request serviceImpl method (Types.NoInput unit) where
+getSendStatistics (SES.Service serviceImpl) = AWS.request serviceImpl method unit where
     method = AWS.MethodName "getSendStatistics"
 
 
@@ -260,7 +260,7 @@ listTemplates (SES.Service serviceImpl) = AWS.request serviceImpl method  where
 
 -- | <p>Deprecated. Use the <code>ListIdentities</code> operation to list the email addresses and domains associated with your account.</p>
 listVerifiedEmailAddresses :: forall eff. SES.Service ->  Aff (exception :: EXCEPTION | eff) SESTypes.ListVerifiedEmailAddressesResponse
-listVerifiedEmailAddresses (SES.Service serviceImpl) = AWS.request serviceImpl method (Types.NoInput unit) where
+listVerifiedEmailAddresses (SES.Service serviceImpl) = AWS.request serviceImpl method unit where
     method = AWS.MethodName "listVerifiedEmailAddresses"
 
 
@@ -361,7 +361,7 @@ testRenderTemplate (SES.Service serviceImpl) = AWS.request serviceImpl method  w
 
 
 -- | <p>Enables or disables email sending across your entire Amazon SES account. You can use this operation in conjunction with Amazon CloudWatch alarms to temporarily pause email sending across your Amazon SES account when reputation metrics (such as your bounce on complaint rate) reach certain thresholds.</p> <p>You can execute this operation no more than once per second.</p>
-updateAccountSendingEnabled :: forall eff. SES.Service -> SESTypes.UpdateAccountSendingEnabledRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+updateAccountSendingEnabled :: forall eff. SES.Service -> SESTypes.UpdateAccountSendingEnabledRequest -> Aff (exception :: EXCEPTION | eff) Unit
 updateAccountSendingEnabled (SES.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "updateAccountSendingEnabled"
 
@@ -373,13 +373,13 @@ updateConfigurationSetEventDestination (SES.Service serviceImpl) = AWS.request s
 
 
 -- | <p>Enables or disables the publishing of reputation metrics for emails sent using a specific configuration set. Reputation metrics include bounce and complaint rates. These metrics are published to Amazon CloudWatch. By using Amazon CloudWatch, you can create alarms when bounce or complaint rates exceed a certain threshold.</p> <p>You can execute this operation no more than once per second.</p>
-updateConfigurationSetReputationMetricsEnabled :: forall eff. SES.Service -> SESTypes.UpdateConfigurationSetReputationMetricsEnabledRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+updateConfigurationSetReputationMetricsEnabled :: forall eff. SES.Service -> SESTypes.UpdateConfigurationSetReputationMetricsEnabledRequest -> Aff (exception :: EXCEPTION | eff) Unit
 updateConfigurationSetReputationMetricsEnabled (SES.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "updateConfigurationSetReputationMetricsEnabled"
 
 
 -- | <p>Enables or disables email sending for messages sent using a specific configuration set. You can use this operation in conjunction with Amazon CloudWatch alarms to temporarily pause email sending for a configuration set when the reputation metrics for that configuration set (such as your bounce on complaint rate) reach certain thresholds.</p> <p>You can execute this operation no more than once per second.</p>
-updateConfigurationSetSendingEnabled :: forall eff. SES.Service -> SESTypes.UpdateConfigurationSetSendingEnabledRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+updateConfigurationSetSendingEnabled :: forall eff. SES.Service -> SESTypes.UpdateConfigurationSetSendingEnabledRequest -> Aff (exception :: EXCEPTION | eff) Unit
 updateConfigurationSetSendingEnabled (SES.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "updateConfigurationSetSendingEnabled"
 
@@ -391,7 +391,7 @@ updateConfigurationSetTrackingOptions (SES.Service serviceImpl) = AWS.request se
 
 
 -- | <p>Updates an existing custom verification email template.</p> <p>For more information about custom verification email templates, see <a href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html">Using Custom Verification Email Templates</a> in the <i>Amazon SES Developer Guide</i>.</p> <p>You can execute this operation no more than once per second.</p>
-updateCustomVerificationEmailTemplate :: forall eff. SES.Service -> SESTypes.UpdateCustomVerificationEmailTemplateRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+updateCustomVerificationEmailTemplate :: forall eff. SES.Service -> SESTypes.UpdateCustomVerificationEmailTemplateRequest -> Aff (exception :: EXCEPTION | eff) Unit
 updateCustomVerificationEmailTemplate (SES.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "updateCustomVerificationEmailTemplate"
 
@@ -421,7 +421,7 @@ verifyDomainIdentity (SES.Service serviceImpl) = AWS.request serviceImpl method 
 
 
 -- | <p>Deprecated. Use the <code>VerifyEmailIdentity</code> operation to verify a new email address.</p>
-verifyEmailAddress :: forall eff. SES.Service -> SESTypes.VerifyEmailAddressRequest -> Aff (exception :: EXCEPTION | eff) Types.NoOutput
+verifyEmailAddress :: forall eff. SES.Service -> SESTypes.VerifyEmailAddressRequest -> Aff (exception :: EXCEPTION | eff) Unit
 verifyEmailAddress (SES.Service serviceImpl) = AWS.request serviceImpl method  where
     method = AWS.MethodName "verifyEmailAddress"
 

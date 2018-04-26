@@ -35,7 +35,7 @@ createConfigurationSetTrackingOptions :: forall eff. Service -> CreateConfigurat
 #### `createCustomVerificationEmailTemplate`
 
 ``` purescript
-createCustomVerificationEmailTemplate :: forall eff. Service -> CreateCustomVerificationEmailTemplateRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+createCustomVerificationEmailTemplate :: forall eff. Service -> CreateCustomVerificationEmailTemplateRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Creates a new custom verification email template.</p> <p>For more information about custom verification email templates, see <a href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html">Using Custom Verification Email Templates</a> in the <i>Amazon SES Developer Guide</i>.</p> <p>You can execute this operation no more than once per second.</p>
@@ -99,7 +99,7 @@ deleteConfigurationSetTrackingOptions :: forall eff. Service -> DeleteConfigurat
 #### `deleteCustomVerificationEmailTemplate`
 
 ``` purescript
-deleteCustomVerificationEmailTemplate :: forall eff. Service -> DeleteCustomVerificationEmailTemplateRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteCustomVerificationEmailTemplate :: forall eff. Service -> DeleteCustomVerificationEmailTemplateRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deletes an existing custom verification email template. </p> <p>For more information about custom verification email templates, see <a href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html">Using Custom Verification Email Templates</a> in the <i>Amazon SES Developer Guide</i>.</p> <p>You can execute this operation no more than once per second.</p>
@@ -155,7 +155,7 @@ deleteTemplate :: forall eff. Service -> DeleteTemplateRequest -> Aff (exception
 #### `deleteVerifiedEmailAddress`
 
 ``` purescript
-deleteVerifiedEmailAddress :: forall eff. Service -> DeleteVerifiedEmailAddressRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+deleteVerifiedEmailAddress :: forall eff. Service -> DeleteVerifiedEmailAddressRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deprecated. Use the <code>DeleteIdentity</code> operation to delete email addresses and domains.</p>
@@ -467,7 +467,7 @@ testRenderTemplate :: forall eff. Service -> TestRenderTemplateRequest -> Aff (e
 #### `updateAccountSendingEnabled`
 
 ``` purescript
-updateAccountSendingEnabled :: forall eff. Service -> UpdateAccountSendingEnabledRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+updateAccountSendingEnabled :: forall eff. Service -> UpdateAccountSendingEnabledRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Enables or disables email sending across your entire Amazon SES account. You can use this operation in conjunction with Amazon CloudWatch alarms to temporarily pause email sending across your Amazon SES account when reputation metrics (such as your bounce on complaint rate) reach certain thresholds.</p> <p>You can execute this operation no more than once per second.</p>
@@ -483,7 +483,7 @@ updateConfigurationSetEventDestination :: forall eff. Service -> UpdateConfigura
 #### `updateConfigurationSetReputationMetricsEnabled`
 
 ``` purescript
-updateConfigurationSetReputationMetricsEnabled :: forall eff. Service -> UpdateConfigurationSetReputationMetricsEnabledRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+updateConfigurationSetReputationMetricsEnabled :: forall eff. Service -> UpdateConfigurationSetReputationMetricsEnabledRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Enables or disables the publishing of reputation metrics for emails sent using a specific configuration set. Reputation metrics include bounce and complaint rates. These metrics are published to Amazon CloudWatch. By using Amazon CloudWatch, you can create alarms when bounce or complaint rates exceed a certain threshold.</p> <p>You can execute this operation no more than once per second.</p>
@@ -491,7 +491,7 @@ updateConfigurationSetReputationMetricsEnabled :: forall eff. Service -> UpdateC
 #### `updateConfigurationSetSendingEnabled`
 
 ``` purescript
-updateConfigurationSetSendingEnabled :: forall eff. Service -> UpdateConfigurationSetSendingEnabledRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+updateConfigurationSetSendingEnabled :: forall eff. Service -> UpdateConfigurationSetSendingEnabledRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Enables or disables email sending for messages sent using a specific configuration set. You can use this operation in conjunction with Amazon CloudWatch alarms to temporarily pause email sending for a configuration set when the reputation metrics for that configuration set (such as your bounce on complaint rate) reach certain thresholds.</p> <p>You can execute this operation no more than once per second.</p>
@@ -507,7 +507,7 @@ updateConfigurationSetTrackingOptions :: forall eff. Service -> UpdateConfigurat
 #### `updateCustomVerificationEmailTemplate`
 
 ``` purescript
-updateCustomVerificationEmailTemplate :: forall eff. Service -> UpdateCustomVerificationEmailTemplateRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+updateCustomVerificationEmailTemplate :: forall eff. Service -> UpdateCustomVerificationEmailTemplateRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Updates an existing custom verification email template.</p> <p>For more information about custom verification email templates, see <a href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html">Using Custom Verification Email Templates</a> in the <i>Amazon SES Developer Guide</i>.</p> <p>You can execute this operation no more than once per second.</p>
@@ -547,7 +547,7 @@ verifyDomainIdentity :: forall eff. Service -> VerifyDomainIdentityRequest -> Af
 #### `verifyEmailAddress`
 
 ``` purescript
-verifyEmailAddress :: forall eff. Service -> VerifyEmailAddressRequest -> Aff (exception :: EXCEPTION | eff) NoOutput
+verifyEmailAddress :: forall eff. Service -> VerifyEmailAddressRequest -> Aff (exception :: EXCEPTION | eff) Unit
 ```
 
 <p>Deprecated. Use the <code>VerifyEmailIdentity</code> operation to verify a new email address.</p>

@@ -5,7 +5,6 @@ import Prelude
 import Data.Foreign.Class (class Decode, class Encode)
 import Data.Foreign.Generic (defaultOptions, genericDecode, genericEncode)
 import Data.Foreign.Generic.Types (Options)
-import Data.Foreign.NullOrUndefined (NullOrUndefined(..))
 import Data.Generic.Rep (class Generic)
 import Data.Generic.Rep.Show (genericShow)
 import Data.Maybe (Maybe(..))
@@ -70,7 +69,7 @@ instance encodeAddressList :: Encode AddressList where encode = genericEncode op
 
 -- | <p>Indicates that a resource could not be created because of a naming conflict.</p>
 newtype AlreadyExistsException = AlreadyExistsException 
-  { "Name" :: NullOrUndefined (RuleOrRuleSetName)
+  { "Name" :: Maybe (RuleOrRuleSetName)
   }
 derive instance newtypeAlreadyExistsException :: Newtype AlreadyExistsException _
 derive instance repGenericAlreadyExistsException :: Generic AlreadyExistsException _
@@ -80,12 +79,12 @@ instance encodeAlreadyExistsException :: Encode AlreadyExistsException where enc
 
 -- | Constructs AlreadyExistsException from required parameters
 newAlreadyExistsException :: AlreadyExistsException
-newAlreadyExistsException  = AlreadyExistsException { "Name": (NullOrUndefined Nothing) }
+newAlreadyExistsException  = AlreadyExistsException { "Name": Nothing }
 
 -- | Constructs AlreadyExistsException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newAlreadyExistsException' :: ( { "Name" :: NullOrUndefined (RuleOrRuleSetName) } -> {"Name" :: NullOrUndefined (RuleOrRuleSetName) } ) -> AlreadyExistsException
-newAlreadyExistsException'  customize = (AlreadyExistsException <<< customize) { "Name": (NullOrUndefined Nothing) }
+newAlreadyExistsException' :: ( { "Name" :: Maybe (RuleOrRuleSetName) } -> {"Name" :: Maybe (RuleOrRuleSetName) } ) -> AlreadyExistsException
+newAlreadyExistsException'  customize = (AlreadyExistsException <<< customize) { "Name": Nothing }
 
 
 
@@ -118,8 +117,8 @@ instance encodeBehaviorOnMXFailure :: Encode BehaviorOnMXFailure where encode = 
 
 -- | <p>Represents the body of the message. You can specify text, HTML, or both. If you use both, then the message should display correctly in the widest variety of email clients.</p>
 newtype Body = Body 
-  { "Text" :: NullOrUndefined (Content)
-  , "Html" :: NullOrUndefined (Content)
+  { "Text" :: Maybe (Content)
+  , "Html" :: Maybe (Content)
   }
 derive instance newtypeBody :: Newtype Body _
 derive instance repGenericBody :: Generic Body _
@@ -129,20 +128,20 @@ instance encodeBody :: Encode Body where encode = genericEncode options
 
 -- | Constructs Body from required parameters
 newBody :: Body
-newBody  = Body { "Html": (NullOrUndefined Nothing), "Text": (NullOrUndefined Nothing) }
+newBody  = Body { "Html": Nothing, "Text": Nothing }
 
 -- | Constructs Body's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBody' :: ( { "Text" :: NullOrUndefined (Content) , "Html" :: NullOrUndefined (Content) } -> {"Text" :: NullOrUndefined (Content) , "Html" :: NullOrUndefined (Content) } ) -> Body
-newBody'  customize = (Body <<< customize) { "Html": (NullOrUndefined Nothing), "Text": (NullOrUndefined Nothing) }
+newBody' :: ( { "Text" :: Maybe (Content) , "Html" :: Maybe (Content) } -> {"Text" :: Maybe (Content) , "Html" :: Maybe (Content) } ) -> Body
+newBody'  customize = (Body <<< customize) { "Html": Nothing, "Text": Nothing }
 
 
 
 -- | <p>When included in a receipt rule, this action rejects the received email by returning a bounce response to the sender and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p> <p>For information about sending a bounce message in response to a received email, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-bounce.html">Amazon SES Developer Guide</a>.</p>
 newtype BounceAction = BounceAction 
-  { "TopicArn" :: NullOrUndefined (AmazonResourceName)
+  { "TopicArn" :: Maybe (AmazonResourceName)
   , "SmtpReplyCode" :: (BounceSmtpReplyCode)
-  , "StatusCode" :: NullOrUndefined (BounceStatusCode)
+  , "StatusCode" :: Maybe (BounceStatusCode)
   , "Message" :: (BounceMessage)
   , "Sender" :: (Address)
   }
@@ -154,12 +153,12 @@ instance encodeBounceAction :: Encode BounceAction where encode = genericEncode 
 
 -- | Constructs BounceAction from required parameters
 newBounceAction :: BounceMessage -> Address -> BounceSmtpReplyCode -> BounceAction
-newBounceAction _Message _Sender _SmtpReplyCode = BounceAction { "Message": _Message, "Sender": _Sender, "SmtpReplyCode": _SmtpReplyCode, "StatusCode": (NullOrUndefined Nothing), "TopicArn": (NullOrUndefined Nothing) }
+newBounceAction _Message _Sender _SmtpReplyCode = BounceAction { "Message": _Message, "Sender": _Sender, "SmtpReplyCode": _SmtpReplyCode, "StatusCode": Nothing, "TopicArn": Nothing }
 
 -- | Constructs BounceAction's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBounceAction' :: BounceMessage -> Address -> BounceSmtpReplyCode -> ( { "TopicArn" :: NullOrUndefined (AmazonResourceName) , "SmtpReplyCode" :: (BounceSmtpReplyCode) , "StatusCode" :: NullOrUndefined (BounceStatusCode) , "Message" :: (BounceMessage) , "Sender" :: (Address) } -> {"TopicArn" :: NullOrUndefined (AmazonResourceName) , "SmtpReplyCode" :: (BounceSmtpReplyCode) , "StatusCode" :: NullOrUndefined (BounceStatusCode) , "Message" :: (BounceMessage) , "Sender" :: (Address) } ) -> BounceAction
-newBounceAction' _Message _Sender _SmtpReplyCode customize = (BounceAction <<< customize) { "Message": _Message, "Sender": _Sender, "SmtpReplyCode": _SmtpReplyCode, "StatusCode": (NullOrUndefined Nothing), "TopicArn": (NullOrUndefined Nothing) }
+newBounceAction' :: BounceMessage -> Address -> BounceSmtpReplyCode -> ( { "TopicArn" :: Maybe (AmazonResourceName) , "SmtpReplyCode" :: (BounceSmtpReplyCode) , "StatusCode" :: Maybe (BounceStatusCode) , "Message" :: (BounceMessage) , "Sender" :: (Address) } -> {"TopicArn" :: Maybe (AmazonResourceName) , "SmtpReplyCode" :: (BounceSmtpReplyCode) , "StatusCode" :: Maybe (BounceStatusCode) , "Message" :: (BounceMessage) , "Sender" :: (Address) } ) -> BounceAction
+newBounceAction' _Message _Sender _SmtpReplyCode customize = (BounceAction <<< customize) { "Message": _Message, "Sender": _Sender, "SmtpReplyCode": _SmtpReplyCode, "StatusCode": Nothing, "TopicArn": Nothing }
 
 
 
@@ -202,9 +201,9 @@ instance encodeBounceType :: Encode BounceType where encode = genericEncode opti
 -- | <p>Recipient-related information to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.</p> <p>For information about receiving email through Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon SES Developer Guide</a>.</p>
 newtype BouncedRecipientInfo = BouncedRecipientInfo 
   { "Recipient" :: (Address)
-  , "RecipientArn" :: NullOrUndefined (AmazonResourceName)
-  , "BounceType" :: NullOrUndefined (BounceType)
-  , "RecipientDsnFields" :: NullOrUndefined (RecipientDsnFields)
+  , "RecipientArn" :: Maybe (AmazonResourceName)
+  , "BounceType" :: Maybe (BounceType)
+  , "RecipientDsnFields" :: Maybe (RecipientDsnFields)
   }
 derive instance newtypeBouncedRecipientInfo :: Newtype BouncedRecipientInfo _
 derive instance repGenericBouncedRecipientInfo :: Generic BouncedRecipientInfo _
@@ -214,12 +213,12 @@ instance encodeBouncedRecipientInfo :: Encode BouncedRecipientInfo where encode 
 
 -- | Constructs BouncedRecipientInfo from required parameters
 newBouncedRecipientInfo :: Address -> BouncedRecipientInfo
-newBouncedRecipientInfo _Recipient = BouncedRecipientInfo { "Recipient": _Recipient, "BounceType": (NullOrUndefined Nothing), "RecipientArn": (NullOrUndefined Nothing), "RecipientDsnFields": (NullOrUndefined Nothing) }
+newBouncedRecipientInfo _Recipient = BouncedRecipientInfo { "Recipient": _Recipient, "BounceType": Nothing, "RecipientArn": Nothing, "RecipientDsnFields": Nothing }
 
 -- | Constructs BouncedRecipientInfo's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBouncedRecipientInfo' :: Address -> ( { "Recipient" :: (Address) , "RecipientArn" :: NullOrUndefined (AmazonResourceName) , "BounceType" :: NullOrUndefined (BounceType) , "RecipientDsnFields" :: NullOrUndefined (RecipientDsnFields) } -> {"Recipient" :: (Address) , "RecipientArn" :: NullOrUndefined (AmazonResourceName) , "BounceType" :: NullOrUndefined (BounceType) , "RecipientDsnFields" :: NullOrUndefined (RecipientDsnFields) } ) -> BouncedRecipientInfo
-newBouncedRecipientInfo' _Recipient customize = (BouncedRecipientInfo <<< customize) { "Recipient": _Recipient, "BounceType": (NullOrUndefined Nothing), "RecipientArn": (NullOrUndefined Nothing), "RecipientDsnFields": (NullOrUndefined Nothing) }
+newBouncedRecipientInfo' :: Address -> ( { "Recipient" :: (Address) , "RecipientArn" :: Maybe (AmazonResourceName) , "BounceType" :: Maybe (BounceType) , "RecipientDsnFields" :: Maybe (RecipientDsnFields) } -> {"Recipient" :: (Address) , "RecipientArn" :: Maybe (AmazonResourceName) , "BounceType" :: Maybe (BounceType) , "RecipientDsnFields" :: Maybe (RecipientDsnFields) } ) -> BouncedRecipientInfo
+newBouncedRecipientInfo' _Recipient customize = (BouncedRecipientInfo <<< customize) { "Recipient": _Recipient, "BounceType": Nothing, "RecipientArn": Nothing, "RecipientDsnFields": Nothing }
 
 
 
@@ -235,8 +234,8 @@ instance encodeBouncedRecipientInfoList :: Encode BouncedRecipientInfoList where
 -- | <p>An array that contains one or more Destinations, as well as the tags and replacement data associated with each of those Destinations.</p>
 newtype BulkEmailDestination = BulkEmailDestination 
   { "Destination" :: (Destination)
-  , "ReplacementTags" :: NullOrUndefined (MessageTagList)
-  , "ReplacementTemplateData" :: NullOrUndefined (TemplateData)
+  , "ReplacementTags" :: Maybe (MessageTagList)
+  , "ReplacementTemplateData" :: Maybe (TemplateData)
   }
 derive instance newtypeBulkEmailDestination :: Newtype BulkEmailDestination _
 derive instance repGenericBulkEmailDestination :: Generic BulkEmailDestination _
@@ -246,12 +245,12 @@ instance encodeBulkEmailDestination :: Encode BulkEmailDestination where encode 
 
 -- | Constructs BulkEmailDestination from required parameters
 newBulkEmailDestination :: Destination -> BulkEmailDestination
-newBulkEmailDestination _Destination = BulkEmailDestination { "Destination": _Destination, "ReplacementTags": (NullOrUndefined Nothing), "ReplacementTemplateData": (NullOrUndefined Nothing) }
+newBulkEmailDestination _Destination = BulkEmailDestination { "Destination": _Destination, "ReplacementTags": Nothing, "ReplacementTemplateData": Nothing }
 
 -- | Constructs BulkEmailDestination's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBulkEmailDestination' :: Destination -> ( { "Destination" :: (Destination) , "ReplacementTags" :: NullOrUndefined (MessageTagList) , "ReplacementTemplateData" :: NullOrUndefined (TemplateData) } -> {"Destination" :: (Destination) , "ReplacementTags" :: NullOrUndefined (MessageTagList) , "ReplacementTemplateData" :: NullOrUndefined (TemplateData) } ) -> BulkEmailDestination
-newBulkEmailDestination' _Destination customize = (BulkEmailDestination <<< customize) { "Destination": _Destination, "ReplacementTags": (NullOrUndefined Nothing), "ReplacementTemplateData": (NullOrUndefined Nothing) }
+newBulkEmailDestination' :: Destination -> ( { "Destination" :: (Destination) , "ReplacementTags" :: Maybe (MessageTagList) , "ReplacementTemplateData" :: Maybe (TemplateData) } -> {"Destination" :: (Destination) , "ReplacementTags" :: Maybe (MessageTagList) , "ReplacementTemplateData" :: Maybe (TemplateData) } ) -> BulkEmailDestination
+newBulkEmailDestination' _Destination customize = (BulkEmailDestination <<< customize) { "Destination": _Destination, "ReplacementTags": Nothing, "ReplacementTemplateData": Nothing }
 
 
 
@@ -266,9 +265,9 @@ instance encodeBulkEmailDestinationList :: Encode BulkEmailDestinationList where
 
 -- | <p>An object that contains the response from the <code>SendBulkTemplatedEmail</code> operation.</p>
 newtype BulkEmailDestinationStatus = BulkEmailDestinationStatus 
-  { "Status" :: NullOrUndefined (BulkEmailStatus)
-  , "Error" :: NullOrUndefined (Error)
-  , "MessageId" :: NullOrUndefined (MessageId)
+  { "Status" :: Maybe (BulkEmailStatus)
+  , "Error" :: Maybe (Error)
+  , "MessageId" :: Maybe (MessageId)
   }
 derive instance newtypeBulkEmailDestinationStatus :: Newtype BulkEmailDestinationStatus _
 derive instance repGenericBulkEmailDestinationStatus :: Generic BulkEmailDestinationStatus _
@@ -278,12 +277,12 @@ instance encodeBulkEmailDestinationStatus :: Encode BulkEmailDestinationStatus w
 
 -- | Constructs BulkEmailDestinationStatus from required parameters
 newBulkEmailDestinationStatus :: BulkEmailDestinationStatus
-newBulkEmailDestinationStatus  = BulkEmailDestinationStatus { "Error": (NullOrUndefined Nothing), "MessageId": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing) }
+newBulkEmailDestinationStatus  = BulkEmailDestinationStatus { "Error": Nothing, "MessageId": Nothing, "Status": Nothing }
 
 -- | Constructs BulkEmailDestinationStatus's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newBulkEmailDestinationStatus' :: ( { "Status" :: NullOrUndefined (BulkEmailStatus) , "Error" :: NullOrUndefined (Error) , "MessageId" :: NullOrUndefined (MessageId) } -> {"Status" :: NullOrUndefined (BulkEmailStatus) , "Error" :: NullOrUndefined (Error) , "MessageId" :: NullOrUndefined (MessageId) } ) -> BulkEmailDestinationStatus
-newBulkEmailDestinationStatus'  customize = (BulkEmailDestinationStatus <<< customize) { "Error": (NullOrUndefined Nothing), "MessageId": (NullOrUndefined Nothing), "Status": (NullOrUndefined Nothing) }
+newBulkEmailDestinationStatus' :: ( { "Status" :: Maybe (BulkEmailStatus) , "Error" :: Maybe (Error) , "MessageId" :: Maybe (MessageId) } -> {"Status" :: Maybe (BulkEmailStatus) , "Error" :: Maybe (Error) , "MessageId" :: Maybe (MessageId) } ) -> BulkEmailDestinationStatus
+newBulkEmailDestinationStatus'  customize = (BulkEmailDestinationStatus <<< customize) { "Error": Nothing, "MessageId": Nothing, "Status": Nothing }
 
 
 
@@ -307,7 +306,7 @@ instance encodeBulkEmailStatus :: Encode BulkEmailStatus where encode = genericE
 
 -- | <p>Indicates that the delete operation could not be completed.</p>
 newtype CannotDeleteException = CannotDeleteException 
-  { "Name" :: NullOrUndefined (RuleOrRuleSetName)
+  { "Name" :: Maybe (RuleOrRuleSetName)
   }
 derive instance newtypeCannotDeleteException :: Newtype CannotDeleteException _
 derive instance repGenericCannotDeleteException :: Generic CannotDeleteException _
@@ -317,12 +316,12 @@ instance encodeCannotDeleteException :: Encode CannotDeleteException where encod
 
 -- | Constructs CannotDeleteException from required parameters
 newCannotDeleteException :: CannotDeleteException
-newCannotDeleteException  = CannotDeleteException { "Name": (NullOrUndefined Nothing) }
+newCannotDeleteException  = CannotDeleteException { "Name": Nothing }
 
 -- | Constructs CannotDeleteException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCannotDeleteException' :: ( { "Name" :: NullOrUndefined (RuleOrRuleSetName) } -> {"Name" :: NullOrUndefined (RuleOrRuleSetName) } ) -> CannotDeleteException
-newCannotDeleteException'  customize = (CannotDeleteException <<< customize) { "Name": (NullOrUndefined Nothing) }
+newCannotDeleteException' :: ( { "Name" :: Maybe (RuleOrRuleSetName) } -> {"Name" :: Maybe (RuleOrRuleSetName) } ) -> CannotDeleteException
+newCannotDeleteException'  customize = (CannotDeleteException <<< customize) { "Name": Nothing }
 
 
 
@@ -452,7 +451,7 @@ newConfigurationSet' _Name customize = (ConfigurationSet <<< customize) { "Name"
 
 -- | <p>Indicates that the configuration set could not be created because of a naming conflict.</p>
 newtype ConfigurationSetAlreadyExistsException = ConfigurationSetAlreadyExistsException 
-  { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName)
+  { "ConfigurationSetName" :: Maybe (ConfigurationSetName)
   }
 derive instance newtypeConfigurationSetAlreadyExistsException :: Newtype ConfigurationSetAlreadyExistsException _
 derive instance repGenericConfigurationSetAlreadyExistsException :: Generic ConfigurationSetAlreadyExistsException _
@@ -462,12 +461,12 @@ instance encodeConfigurationSetAlreadyExistsException :: Encode ConfigurationSet
 
 -- | Constructs ConfigurationSetAlreadyExistsException from required parameters
 newConfigurationSetAlreadyExistsException :: ConfigurationSetAlreadyExistsException
-newConfigurationSetAlreadyExistsException  = ConfigurationSetAlreadyExistsException { "ConfigurationSetName": (NullOrUndefined Nothing) }
+newConfigurationSetAlreadyExistsException  = ConfigurationSetAlreadyExistsException { "ConfigurationSetName": Nothing }
 
 -- | Constructs ConfigurationSetAlreadyExistsException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newConfigurationSetAlreadyExistsException' :: ( { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } -> {"ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } ) -> ConfigurationSetAlreadyExistsException
-newConfigurationSetAlreadyExistsException'  customize = (ConfigurationSetAlreadyExistsException <<< customize) { "ConfigurationSetName": (NullOrUndefined Nothing) }
+newConfigurationSetAlreadyExistsException' :: ( { "ConfigurationSetName" :: Maybe (ConfigurationSetName) } -> {"ConfigurationSetName" :: Maybe (ConfigurationSetName) } ) -> ConfigurationSetAlreadyExistsException
+newConfigurationSetAlreadyExistsException'  customize = (ConfigurationSetAlreadyExistsException <<< customize) { "ConfigurationSetName": Nothing }
 
 
 
@@ -491,7 +490,7 @@ instance encodeConfigurationSetAttributeList :: Encode ConfigurationSetAttribute
 
 -- | <p>Indicates that the configuration set does not exist.</p>
 newtype ConfigurationSetDoesNotExistException = ConfigurationSetDoesNotExistException 
-  { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName)
+  { "ConfigurationSetName" :: Maybe (ConfigurationSetName)
   }
 derive instance newtypeConfigurationSetDoesNotExistException :: Newtype ConfigurationSetDoesNotExistException _
 derive instance repGenericConfigurationSetDoesNotExistException :: Generic ConfigurationSetDoesNotExistException _
@@ -501,12 +500,12 @@ instance encodeConfigurationSetDoesNotExistException :: Encode ConfigurationSetD
 
 -- | Constructs ConfigurationSetDoesNotExistException from required parameters
 newConfigurationSetDoesNotExistException :: ConfigurationSetDoesNotExistException
-newConfigurationSetDoesNotExistException  = ConfigurationSetDoesNotExistException { "ConfigurationSetName": (NullOrUndefined Nothing) }
+newConfigurationSetDoesNotExistException  = ConfigurationSetDoesNotExistException { "ConfigurationSetName": Nothing }
 
 -- | Constructs ConfigurationSetDoesNotExistException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newConfigurationSetDoesNotExistException' :: ( { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } -> {"ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } ) -> ConfigurationSetDoesNotExistException
-newConfigurationSetDoesNotExistException'  customize = (ConfigurationSetDoesNotExistException <<< customize) { "ConfigurationSetName": (NullOrUndefined Nothing) }
+newConfigurationSetDoesNotExistException' :: ( { "ConfigurationSetName" :: Maybe (ConfigurationSetName) } -> {"ConfigurationSetName" :: Maybe (ConfigurationSetName) } ) -> ConfigurationSetDoesNotExistException
+newConfigurationSetDoesNotExistException'  customize = (ConfigurationSetDoesNotExistException <<< customize) { "ConfigurationSetName": Nothing }
 
 
 
@@ -521,7 +520,7 @@ instance encodeConfigurationSetName :: Encode ConfigurationSetName where encode 
 
 -- | <p>Indicates that email sending is disabled for the configuration set.</p> <p>You can enable or disable email sending for a configuration set using <a>UpdateConfigurationSetSendingEnabled</a>.</p>
 newtype ConfigurationSetSendingPausedException = ConfigurationSetSendingPausedException 
-  { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName)
+  { "ConfigurationSetName" :: Maybe (ConfigurationSetName)
   }
 derive instance newtypeConfigurationSetSendingPausedException :: Newtype ConfigurationSetSendingPausedException _
 derive instance repGenericConfigurationSetSendingPausedException :: Generic ConfigurationSetSendingPausedException _
@@ -531,12 +530,12 @@ instance encodeConfigurationSetSendingPausedException :: Encode ConfigurationSet
 
 -- | Constructs ConfigurationSetSendingPausedException from required parameters
 newConfigurationSetSendingPausedException :: ConfigurationSetSendingPausedException
-newConfigurationSetSendingPausedException  = ConfigurationSetSendingPausedException { "ConfigurationSetName": (NullOrUndefined Nothing) }
+newConfigurationSetSendingPausedException  = ConfigurationSetSendingPausedException { "ConfigurationSetName": Nothing }
 
 -- | Constructs ConfigurationSetSendingPausedException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newConfigurationSetSendingPausedException' :: ( { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } -> {"ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } ) -> ConfigurationSetSendingPausedException
-newConfigurationSetSendingPausedException'  customize = (ConfigurationSetSendingPausedException <<< customize) { "ConfigurationSetName": (NullOrUndefined Nothing) }
+newConfigurationSetSendingPausedException' :: ( { "ConfigurationSetName" :: Maybe (ConfigurationSetName) } -> {"ConfigurationSetName" :: Maybe (ConfigurationSetName) } ) -> ConfigurationSetSendingPausedException
+newConfigurationSetSendingPausedException'  customize = (ConfigurationSetSendingPausedException <<< customize) { "ConfigurationSetName": Nothing }
 
 
 
@@ -552,7 +551,7 @@ instance encodeConfigurationSets :: Encode ConfigurationSets where encode = gene
 -- | <p>Represents textual data, plus an optional character set specification.</p> <p>By default, the text must be 7-bit ASCII, due to the constraints of the SMTP protocol. If the text must contain any other characters, then you must also specify a character set. Examples include UTF-8, ISO-8859-1, and Shift_JIS.</p>
 newtype Content = Content 
   { "Data" :: (MessageData)
-  , "Charset" :: NullOrUndefined (Charset)
+  , "Charset" :: Maybe (Charset)
   }
 derive instance newtypeContent :: Newtype Content _
 derive instance repGenericContent :: Generic Content _
@@ -562,12 +561,12 @@ instance encodeContent :: Encode Content where encode = genericEncode options
 
 -- | Constructs Content from required parameters
 newContent :: MessageData -> Content
-newContent _Data = Content { "Data": _Data, "Charset": (NullOrUndefined Nothing) }
+newContent _Data = Content { "Data": _Data, "Charset": Nothing }
 
 -- | Constructs Content's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newContent' :: MessageData -> ( { "Data" :: (MessageData) , "Charset" :: NullOrUndefined (Charset) } -> {"Data" :: (MessageData) , "Charset" :: NullOrUndefined (Charset) } ) -> Content
-newContent' _Data customize = (Content <<< customize) { "Data": _Data, "Charset": (NullOrUndefined Nothing) }
+newContent' :: MessageData -> ( { "Data" :: (MessageData) , "Charset" :: Maybe (Charset) } -> {"Data" :: (MessageData) , "Charset" :: Maybe (Charset) } ) -> Content
+newContent' _Data customize = (Content <<< customize) { "Data": _Data, "Charset": Nothing }
 
 
 
@@ -735,7 +734,7 @@ instance encodeCreateReceiptFilterResponse :: Encode CreateReceiptFilterResponse
 -- | <p>Represents a request to create a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
 newtype CreateReceiptRuleRequest = CreateReceiptRuleRequest 
   { "RuleSetName" :: (ReceiptRuleSetName)
-  , "After" :: NullOrUndefined (ReceiptRuleName)
+  , "After" :: Maybe (ReceiptRuleName)
   , "Rule" :: (ReceiptRule)
   }
 derive instance newtypeCreateReceiptRuleRequest :: Newtype CreateReceiptRuleRequest _
@@ -746,12 +745,12 @@ instance encodeCreateReceiptRuleRequest :: Encode CreateReceiptRuleRequest where
 
 -- | Constructs CreateReceiptRuleRequest from required parameters
 newCreateReceiptRuleRequest :: ReceiptRule -> ReceiptRuleSetName -> CreateReceiptRuleRequest
-newCreateReceiptRuleRequest _Rule _RuleSetName = CreateReceiptRuleRequest { "Rule": _Rule, "RuleSetName": _RuleSetName, "After": (NullOrUndefined Nothing) }
+newCreateReceiptRuleRequest _Rule _RuleSetName = CreateReceiptRuleRequest { "Rule": _Rule, "RuleSetName": _RuleSetName, "After": Nothing }
 
 -- | Constructs CreateReceiptRuleRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCreateReceiptRuleRequest' :: ReceiptRule -> ReceiptRuleSetName -> ( { "RuleSetName" :: (ReceiptRuleSetName) , "After" :: NullOrUndefined (ReceiptRuleName) , "Rule" :: (ReceiptRule) } -> {"RuleSetName" :: (ReceiptRuleSetName) , "After" :: NullOrUndefined (ReceiptRuleName) , "Rule" :: (ReceiptRule) } ) -> CreateReceiptRuleRequest
-newCreateReceiptRuleRequest' _Rule _RuleSetName customize = (CreateReceiptRuleRequest <<< customize) { "Rule": _Rule, "RuleSetName": _RuleSetName, "After": (NullOrUndefined Nothing) }
+newCreateReceiptRuleRequest' :: ReceiptRule -> ReceiptRuleSetName -> ( { "RuleSetName" :: (ReceiptRuleSetName) , "After" :: Maybe (ReceiptRuleName) , "Rule" :: (ReceiptRule) } -> {"RuleSetName" :: (ReceiptRuleSetName) , "After" :: Maybe (ReceiptRuleName) , "Rule" :: (ReceiptRule) } ) -> CreateReceiptRuleRequest
+newCreateReceiptRuleRequest' _Rule _RuleSetName customize = (CreateReceiptRuleRequest <<< customize) { "Rule": _Rule, "RuleSetName": _RuleSetName, "After": Nothing }
 
 
 
@@ -856,11 +855,11 @@ instance encodeCustomVerificationEmailInvalidContentException :: Encode CustomVe
 
 -- | <p>Contains information about a custom verification email template.</p>
 newtype CustomVerificationEmailTemplate = CustomVerificationEmailTemplate 
-  { "TemplateName" :: NullOrUndefined (TemplateName)
-  , "FromEmailAddress" :: NullOrUndefined (FromAddress)
-  , "TemplateSubject" :: NullOrUndefined (Subject)
-  , "SuccessRedirectionURL" :: NullOrUndefined (SuccessRedirectionURL)
-  , "FailureRedirectionURL" :: NullOrUndefined (FailureRedirectionURL)
+  { "TemplateName" :: Maybe (TemplateName)
+  , "FromEmailAddress" :: Maybe (FromAddress)
+  , "TemplateSubject" :: Maybe (Subject)
+  , "SuccessRedirectionURL" :: Maybe (SuccessRedirectionURL)
+  , "FailureRedirectionURL" :: Maybe (FailureRedirectionURL)
   }
 derive instance newtypeCustomVerificationEmailTemplate :: Newtype CustomVerificationEmailTemplate _
 derive instance repGenericCustomVerificationEmailTemplate :: Generic CustomVerificationEmailTemplate _
@@ -870,18 +869,18 @@ instance encodeCustomVerificationEmailTemplate :: Encode CustomVerificationEmail
 
 -- | Constructs CustomVerificationEmailTemplate from required parameters
 newCustomVerificationEmailTemplate :: CustomVerificationEmailTemplate
-newCustomVerificationEmailTemplate  = CustomVerificationEmailTemplate { "FailureRedirectionURL": (NullOrUndefined Nothing), "FromEmailAddress": (NullOrUndefined Nothing), "SuccessRedirectionURL": (NullOrUndefined Nothing), "TemplateName": (NullOrUndefined Nothing), "TemplateSubject": (NullOrUndefined Nothing) }
+newCustomVerificationEmailTemplate  = CustomVerificationEmailTemplate { "FailureRedirectionURL": Nothing, "FromEmailAddress": Nothing, "SuccessRedirectionURL": Nothing, "TemplateName": Nothing, "TemplateSubject": Nothing }
 
 -- | Constructs CustomVerificationEmailTemplate's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCustomVerificationEmailTemplate' :: ( { "TemplateName" :: NullOrUndefined (TemplateName) , "FromEmailAddress" :: NullOrUndefined (FromAddress) , "TemplateSubject" :: NullOrUndefined (Subject) , "SuccessRedirectionURL" :: NullOrUndefined (SuccessRedirectionURL) , "FailureRedirectionURL" :: NullOrUndefined (FailureRedirectionURL) } -> {"TemplateName" :: NullOrUndefined (TemplateName) , "FromEmailAddress" :: NullOrUndefined (FromAddress) , "TemplateSubject" :: NullOrUndefined (Subject) , "SuccessRedirectionURL" :: NullOrUndefined (SuccessRedirectionURL) , "FailureRedirectionURL" :: NullOrUndefined (FailureRedirectionURL) } ) -> CustomVerificationEmailTemplate
-newCustomVerificationEmailTemplate'  customize = (CustomVerificationEmailTemplate <<< customize) { "FailureRedirectionURL": (NullOrUndefined Nothing), "FromEmailAddress": (NullOrUndefined Nothing), "SuccessRedirectionURL": (NullOrUndefined Nothing), "TemplateName": (NullOrUndefined Nothing), "TemplateSubject": (NullOrUndefined Nothing) }
+newCustomVerificationEmailTemplate' :: ( { "TemplateName" :: Maybe (TemplateName) , "FromEmailAddress" :: Maybe (FromAddress) , "TemplateSubject" :: Maybe (Subject) , "SuccessRedirectionURL" :: Maybe (SuccessRedirectionURL) , "FailureRedirectionURL" :: Maybe (FailureRedirectionURL) } -> {"TemplateName" :: Maybe (TemplateName) , "FromEmailAddress" :: Maybe (FromAddress) , "TemplateSubject" :: Maybe (Subject) , "SuccessRedirectionURL" :: Maybe (SuccessRedirectionURL) , "FailureRedirectionURL" :: Maybe (FailureRedirectionURL) } ) -> CustomVerificationEmailTemplate
+newCustomVerificationEmailTemplate'  customize = (CustomVerificationEmailTemplate <<< customize) { "FailureRedirectionURL": Nothing, "FromEmailAddress": Nothing, "SuccessRedirectionURL": Nothing, "TemplateName": Nothing, "TemplateSubject": Nothing }
 
 
 
 -- | <p>Indicates that a custom verification email template with the name you specified already exists.</p>
 newtype CustomVerificationEmailTemplateAlreadyExistsException = CustomVerificationEmailTemplateAlreadyExistsException 
-  { "CustomVerificationEmailTemplateName" :: NullOrUndefined (TemplateName)
+  { "CustomVerificationEmailTemplateName" :: Maybe (TemplateName)
   }
 derive instance newtypeCustomVerificationEmailTemplateAlreadyExistsException :: Newtype CustomVerificationEmailTemplateAlreadyExistsException _
 derive instance repGenericCustomVerificationEmailTemplateAlreadyExistsException :: Generic CustomVerificationEmailTemplateAlreadyExistsException _
@@ -891,18 +890,18 @@ instance encodeCustomVerificationEmailTemplateAlreadyExistsException :: Encode C
 
 -- | Constructs CustomVerificationEmailTemplateAlreadyExistsException from required parameters
 newCustomVerificationEmailTemplateAlreadyExistsException :: CustomVerificationEmailTemplateAlreadyExistsException
-newCustomVerificationEmailTemplateAlreadyExistsException  = CustomVerificationEmailTemplateAlreadyExistsException { "CustomVerificationEmailTemplateName": (NullOrUndefined Nothing) }
+newCustomVerificationEmailTemplateAlreadyExistsException  = CustomVerificationEmailTemplateAlreadyExistsException { "CustomVerificationEmailTemplateName": Nothing }
 
 -- | Constructs CustomVerificationEmailTemplateAlreadyExistsException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCustomVerificationEmailTemplateAlreadyExistsException' :: ( { "CustomVerificationEmailTemplateName" :: NullOrUndefined (TemplateName) } -> {"CustomVerificationEmailTemplateName" :: NullOrUndefined (TemplateName) } ) -> CustomVerificationEmailTemplateAlreadyExistsException
-newCustomVerificationEmailTemplateAlreadyExistsException'  customize = (CustomVerificationEmailTemplateAlreadyExistsException <<< customize) { "CustomVerificationEmailTemplateName": (NullOrUndefined Nothing) }
+newCustomVerificationEmailTemplateAlreadyExistsException' :: ( { "CustomVerificationEmailTemplateName" :: Maybe (TemplateName) } -> {"CustomVerificationEmailTemplateName" :: Maybe (TemplateName) } ) -> CustomVerificationEmailTemplateAlreadyExistsException
+newCustomVerificationEmailTemplateAlreadyExistsException'  customize = (CustomVerificationEmailTemplateAlreadyExistsException <<< customize) { "CustomVerificationEmailTemplateName": Nothing }
 
 
 
 -- | <p>Indicates that a custom verification email template with the name you specified does not exist.</p>
 newtype CustomVerificationEmailTemplateDoesNotExistException = CustomVerificationEmailTemplateDoesNotExistException 
-  { "CustomVerificationEmailTemplateName" :: NullOrUndefined (TemplateName)
+  { "CustomVerificationEmailTemplateName" :: Maybe (TemplateName)
   }
 derive instance newtypeCustomVerificationEmailTemplateDoesNotExistException :: Newtype CustomVerificationEmailTemplateDoesNotExistException _
 derive instance repGenericCustomVerificationEmailTemplateDoesNotExistException :: Generic CustomVerificationEmailTemplateDoesNotExistException _
@@ -912,12 +911,12 @@ instance encodeCustomVerificationEmailTemplateDoesNotExistException :: Encode Cu
 
 -- | Constructs CustomVerificationEmailTemplateDoesNotExistException from required parameters
 newCustomVerificationEmailTemplateDoesNotExistException :: CustomVerificationEmailTemplateDoesNotExistException
-newCustomVerificationEmailTemplateDoesNotExistException  = CustomVerificationEmailTemplateDoesNotExistException { "CustomVerificationEmailTemplateName": (NullOrUndefined Nothing) }
+newCustomVerificationEmailTemplateDoesNotExistException  = CustomVerificationEmailTemplateDoesNotExistException { "CustomVerificationEmailTemplateName": Nothing }
 
 -- | Constructs CustomVerificationEmailTemplateDoesNotExistException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newCustomVerificationEmailTemplateDoesNotExistException' :: ( { "CustomVerificationEmailTemplateName" :: NullOrUndefined (TemplateName) } -> {"CustomVerificationEmailTemplateName" :: NullOrUndefined (TemplateName) } ) -> CustomVerificationEmailTemplateDoesNotExistException
-newCustomVerificationEmailTemplateDoesNotExistException'  customize = (CustomVerificationEmailTemplateDoesNotExistException <<< customize) { "CustomVerificationEmailTemplateName": (NullOrUndefined Nothing) }
+newCustomVerificationEmailTemplateDoesNotExistException' :: ( { "CustomVerificationEmailTemplateName" :: Maybe (TemplateName) } -> {"CustomVerificationEmailTemplateName" :: Maybe (TemplateName) } ) -> CustomVerificationEmailTemplateDoesNotExistException
+newCustomVerificationEmailTemplateDoesNotExistException'  customize = (CustomVerificationEmailTemplateDoesNotExistException <<< customize) { "CustomVerificationEmailTemplateName": Nothing }
 
 
 
@@ -1274,8 +1273,8 @@ instance encodeDescribeActiveReceiptRuleSetRequest :: Encode DescribeActiveRecei
 
 -- | <p>Represents the metadata and receipt rules for the receipt rule set that is currently active.</p>
 newtype DescribeActiveReceiptRuleSetResponse = DescribeActiveReceiptRuleSetResponse 
-  { "Metadata" :: NullOrUndefined (ReceiptRuleSetMetadata)
-  , "Rules" :: NullOrUndefined (ReceiptRulesList)
+  { "Metadata" :: Maybe (ReceiptRuleSetMetadata)
+  , "Rules" :: Maybe (ReceiptRulesList)
   }
 derive instance newtypeDescribeActiveReceiptRuleSetResponse :: Newtype DescribeActiveReceiptRuleSetResponse _
 derive instance repGenericDescribeActiveReceiptRuleSetResponse :: Generic DescribeActiveReceiptRuleSetResponse _
@@ -1285,19 +1284,19 @@ instance encodeDescribeActiveReceiptRuleSetResponse :: Encode DescribeActiveRece
 
 -- | Constructs DescribeActiveReceiptRuleSetResponse from required parameters
 newDescribeActiveReceiptRuleSetResponse :: DescribeActiveReceiptRuleSetResponse
-newDescribeActiveReceiptRuleSetResponse  = DescribeActiveReceiptRuleSetResponse { "Metadata": (NullOrUndefined Nothing), "Rules": (NullOrUndefined Nothing) }
+newDescribeActiveReceiptRuleSetResponse  = DescribeActiveReceiptRuleSetResponse { "Metadata": Nothing, "Rules": Nothing }
 
 -- | Constructs DescribeActiveReceiptRuleSetResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeActiveReceiptRuleSetResponse' :: ( { "Metadata" :: NullOrUndefined (ReceiptRuleSetMetadata) , "Rules" :: NullOrUndefined (ReceiptRulesList) } -> {"Metadata" :: NullOrUndefined (ReceiptRuleSetMetadata) , "Rules" :: NullOrUndefined (ReceiptRulesList) } ) -> DescribeActiveReceiptRuleSetResponse
-newDescribeActiveReceiptRuleSetResponse'  customize = (DescribeActiveReceiptRuleSetResponse <<< customize) { "Metadata": (NullOrUndefined Nothing), "Rules": (NullOrUndefined Nothing) }
+newDescribeActiveReceiptRuleSetResponse' :: ( { "Metadata" :: Maybe (ReceiptRuleSetMetadata) , "Rules" :: Maybe (ReceiptRulesList) } -> {"Metadata" :: Maybe (ReceiptRuleSetMetadata) , "Rules" :: Maybe (ReceiptRulesList) } ) -> DescribeActiveReceiptRuleSetResponse
+newDescribeActiveReceiptRuleSetResponse'  customize = (DescribeActiveReceiptRuleSetResponse <<< customize) { "Metadata": Nothing, "Rules": Nothing }
 
 
 
 -- | <p>Represents a request to return the details of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
 newtype DescribeConfigurationSetRequest = DescribeConfigurationSetRequest 
   { "ConfigurationSetName" :: (ConfigurationSetName)
-  , "ConfigurationSetAttributeNames" :: NullOrUndefined (ConfigurationSetAttributeList)
+  , "ConfigurationSetAttributeNames" :: Maybe (ConfigurationSetAttributeList)
   }
 derive instance newtypeDescribeConfigurationSetRequest :: Newtype DescribeConfigurationSetRequest _
 derive instance repGenericDescribeConfigurationSetRequest :: Generic DescribeConfigurationSetRequest _
@@ -1307,21 +1306,21 @@ instance encodeDescribeConfigurationSetRequest :: Encode DescribeConfigurationSe
 
 -- | Constructs DescribeConfigurationSetRequest from required parameters
 newDescribeConfigurationSetRequest :: ConfigurationSetName -> DescribeConfigurationSetRequest
-newDescribeConfigurationSetRequest _ConfigurationSetName = DescribeConfigurationSetRequest { "ConfigurationSetName": _ConfigurationSetName, "ConfigurationSetAttributeNames": (NullOrUndefined Nothing) }
+newDescribeConfigurationSetRequest _ConfigurationSetName = DescribeConfigurationSetRequest { "ConfigurationSetName": _ConfigurationSetName, "ConfigurationSetAttributeNames": Nothing }
 
 -- | Constructs DescribeConfigurationSetRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeConfigurationSetRequest' :: ConfigurationSetName -> ( { "ConfigurationSetName" :: (ConfigurationSetName) , "ConfigurationSetAttributeNames" :: NullOrUndefined (ConfigurationSetAttributeList) } -> {"ConfigurationSetName" :: (ConfigurationSetName) , "ConfigurationSetAttributeNames" :: NullOrUndefined (ConfigurationSetAttributeList) } ) -> DescribeConfigurationSetRequest
-newDescribeConfigurationSetRequest' _ConfigurationSetName customize = (DescribeConfigurationSetRequest <<< customize) { "ConfigurationSetName": _ConfigurationSetName, "ConfigurationSetAttributeNames": (NullOrUndefined Nothing) }
+newDescribeConfigurationSetRequest' :: ConfigurationSetName -> ( { "ConfigurationSetName" :: (ConfigurationSetName) , "ConfigurationSetAttributeNames" :: Maybe (ConfigurationSetAttributeList) } -> {"ConfigurationSetName" :: (ConfigurationSetName) , "ConfigurationSetAttributeNames" :: Maybe (ConfigurationSetAttributeList) } ) -> DescribeConfigurationSetRequest
+newDescribeConfigurationSetRequest' _ConfigurationSetName customize = (DescribeConfigurationSetRequest <<< customize) { "ConfigurationSetName": _ConfigurationSetName, "ConfigurationSetAttributeNames": Nothing }
 
 
 
 -- | <p>Represents the details of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
 newtype DescribeConfigurationSetResponse = DescribeConfigurationSetResponse 
-  { "ConfigurationSet" :: NullOrUndefined (ConfigurationSet)
-  , "EventDestinations" :: NullOrUndefined (EventDestinations)
-  , "TrackingOptions" :: NullOrUndefined (TrackingOptions)
-  , "ReputationOptions" :: NullOrUndefined (ReputationOptions)
+  { "ConfigurationSet" :: Maybe (ConfigurationSet)
+  , "EventDestinations" :: Maybe (EventDestinations)
+  , "TrackingOptions" :: Maybe (TrackingOptions)
+  , "ReputationOptions" :: Maybe (ReputationOptions)
   }
 derive instance newtypeDescribeConfigurationSetResponse :: Newtype DescribeConfigurationSetResponse _
 derive instance repGenericDescribeConfigurationSetResponse :: Generic DescribeConfigurationSetResponse _
@@ -1331,12 +1330,12 @@ instance encodeDescribeConfigurationSetResponse :: Encode DescribeConfigurationS
 
 -- | Constructs DescribeConfigurationSetResponse from required parameters
 newDescribeConfigurationSetResponse :: DescribeConfigurationSetResponse
-newDescribeConfigurationSetResponse  = DescribeConfigurationSetResponse { "ConfigurationSet": (NullOrUndefined Nothing), "EventDestinations": (NullOrUndefined Nothing), "ReputationOptions": (NullOrUndefined Nothing), "TrackingOptions": (NullOrUndefined Nothing) }
+newDescribeConfigurationSetResponse  = DescribeConfigurationSetResponse { "ConfigurationSet": Nothing, "EventDestinations": Nothing, "ReputationOptions": Nothing, "TrackingOptions": Nothing }
 
 -- | Constructs DescribeConfigurationSetResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeConfigurationSetResponse' :: ( { "ConfigurationSet" :: NullOrUndefined (ConfigurationSet) , "EventDestinations" :: NullOrUndefined (EventDestinations) , "TrackingOptions" :: NullOrUndefined (TrackingOptions) , "ReputationOptions" :: NullOrUndefined (ReputationOptions) } -> {"ConfigurationSet" :: NullOrUndefined (ConfigurationSet) , "EventDestinations" :: NullOrUndefined (EventDestinations) , "TrackingOptions" :: NullOrUndefined (TrackingOptions) , "ReputationOptions" :: NullOrUndefined (ReputationOptions) } ) -> DescribeConfigurationSetResponse
-newDescribeConfigurationSetResponse'  customize = (DescribeConfigurationSetResponse <<< customize) { "ConfigurationSet": (NullOrUndefined Nothing), "EventDestinations": (NullOrUndefined Nothing), "ReputationOptions": (NullOrUndefined Nothing), "TrackingOptions": (NullOrUndefined Nothing) }
+newDescribeConfigurationSetResponse' :: ( { "ConfigurationSet" :: Maybe (ConfigurationSet) , "EventDestinations" :: Maybe (EventDestinations) , "TrackingOptions" :: Maybe (TrackingOptions) , "ReputationOptions" :: Maybe (ReputationOptions) } -> {"ConfigurationSet" :: Maybe (ConfigurationSet) , "EventDestinations" :: Maybe (EventDestinations) , "TrackingOptions" :: Maybe (TrackingOptions) , "ReputationOptions" :: Maybe (ReputationOptions) } ) -> DescribeConfigurationSetResponse
+newDescribeConfigurationSetResponse'  customize = (DescribeConfigurationSetResponse <<< customize) { "ConfigurationSet": Nothing, "EventDestinations": Nothing, "ReputationOptions": Nothing, "TrackingOptions": Nothing }
 
 
 
@@ -1364,7 +1363,7 @@ newDescribeReceiptRuleRequest' _RuleName _RuleSetName customize = (DescribeRecei
 
 -- | <p>Represents the details of a receipt rule.</p>
 newtype DescribeReceiptRuleResponse = DescribeReceiptRuleResponse 
-  { "Rule" :: NullOrUndefined (ReceiptRule)
+  { "Rule" :: Maybe (ReceiptRule)
   }
 derive instance newtypeDescribeReceiptRuleResponse :: Newtype DescribeReceiptRuleResponse _
 derive instance repGenericDescribeReceiptRuleResponse :: Generic DescribeReceiptRuleResponse _
@@ -1374,12 +1373,12 @@ instance encodeDescribeReceiptRuleResponse :: Encode DescribeReceiptRuleResponse
 
 -- | Constructs DescribeReceiptRuleResponse from required parameters
 newDescribeReceiptRuleResponse :: DescribeReceiptRuleResponse
-newDescribeReceiptRuleResponse  = DescribeReceiptRuleResponse { "Rule": (NullOrUndefined Nothing) }
+newDescribeReceiptRuleResponse  = DescribeReceiptRuleResponse { "Rule": Nothing }
 
 -- | Constructs DescribeReceiptRuleResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeReceiptRuleResponse' :: ( { "Rule" :: NullOrUndefined (ReceiptRule) } -> {"Rule" :: NullOrUndefined (ReceiptRule) } ) -> DescribeReceiptRuleResponse
-newDescribeReceiptRuleResponse'  customize = (DescribeReceiptRuleResponse <<< customize) { "Rule": (NullOrUndefined Nothing) }
+newDescribeReceiptRuleResponse' :: ( { "Rule" :: Maybe (ReceiptRule) } -> {"Rule" :: Maybe (ReceiptRule) } ) -> DescribeReceiptRuleResponse
+newDescribeReceiptRuleResponse'  customize = (DescribeReceiptRuleResponse <<< customize) { "Rule": Nothing }
 
 
 
@@ -1406,8 +1405,8 @@ newDescribeReceiptRuleSetRequest' _RuleSetName customize = (DescribeReceiptRuleS
 
 -- | <p>Represents the details of the specified receipt rule set.</p>
 newtype DescribeReceiptRuleSetResponse = DescribeReceiptRuleSetResponse 
-  { "Metadata" :: NullOrUndefined (ReceiptRuleSetMetadata)
-  , "Rules" :: NullOrUndefined (ReceiptRulesList)
+  { "Metadata" :: Maybe (ReceiptRuleSetMetadata)
+  , "Rules" :: Maybe (ReceiptRulesList)
   }
 derive instance newtypeDescribeReceiptRuleSetResponse :: Newtype DescribeReceiptRuleSetResponse _
 derive instance repGenericDescribeReceiptRuleSetResponse :: Generic DescribeReceiptRuleSetResponse _
@@ -1417,20 +1416,20 @@ instance encodeDescribeReceiptRuleSetResponse :: Encode DescribeReceiptRuleSetRe
 
 -- | Constructs DescribeReceiptRuleSetResponse from required parameters
 newDescribeReceiptRuleSetResponse :: DescribeReceiptRuleSetResponse
-newDescribeReceiptRuleSetResponse  = DescribeReceiptRuleSetResponse { "Metadata": (NullOrUndefined Nothing), "Rules": (NullOrUndefined Nothing) }
+newDescribeReceiptRuleSetResponse  = DescribeReceiptRuleSetResponse { "Metadata": Nothing, "Rules": Nothing }
 
 -- | Constructs DescribeReceiptRuleSetResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDescribeReceiptRuleSetResponse' :: ( { "Metadata" :: NullOrUndefined (ReceiptRuleSetMetadata) , "Rules" :: NullOrUndefined (ReceiptRulesList) } -> {"Metadata" :: NullOrUndefined (ReceiptRuleSetMetadata) , "Rules" :: NullOrUndefined (ReceiptRulesList) } ) -> DescribeReceiptRuleSetResponse
-newDescribeReceiptRuleSetResponse'  customize = (DescribeReceiptRuleSetResponse <<< customize) { "Metadata": (NullOrUndefined Nothing), "Rules": (NullOrUndefined Nothing) }
+newDescribeReceiptRuleSetResponse' :: ( { "Metadata" :: Maybe (ReceiptRuleSetMetadata) , "Rules" :: Maybe (ReceiptRulesList) } -> {"Metadata" :: Maybe (ReceiptRuleSetMetadata) , "Rules" :: Maybe (ReceiptRulesList) } ) -> DescribeReceiptRuleSetResponse
+newDescribeReceiptRuleSetResponse'  customize = (DescribeReceiptRuleSetResponse <<< customize) { "Metadata": Nothing, "Rules": Nothing }
 
 
 
 -- | <p>Represents the destination of the message, consisting of To:, CC:, and BCC: fields.</p> <note> <p>Amazon SES does not support the SMTPUTF8 extension, as described in <a href="https://tools.ietf.org/html/rfc6531">RFC6531</a>. For this reason, the <i>local part</i> of a destination email address (the part of the email address that precedes the @ sign) may only contain <a href="https://en.wikipedia.org/wiki/Email_address#Local-part">7-bit ASCII characters</a>. If the <i>domain part</i> of an address (the part after the @ sign) contains non-ASCII characters, they must be encoded using Punycode, as described in <a href="https://tools.ietf.org/html/rfc3492.html">RFC3492</a>.</p> </note>
 newtype Destination = Destination 
-  { "ToAddresses" :: NullOrUndefined (AddressList)
-  , "CcAddresses" :: NullOrUndefined (AddressList)
-  , "BccAddresses" :: NullOrUndefined (AddressList)
+  { "ToAddresses" :: Maybe (AddressList)
+  , "CcAddresses" :: Maybe (AddressList)
+  , "BccAddresses" :: Maybe (AddressList)
   }
 derive instance newtypeDestination :: Newtype Destination _
 derive instance repGenericDestination :: Generic Destination _
@@ -1440,12 +1439,12 @@ instance encodeDestination :: Encode Destination where encode = genericEncode op
 
 -- | Constructs Destination from required parameters
 newDestination :: Destination
-newDestination  = Destination { "BccAddresses": (NullOrUndefined Nothing), "CcAddresses": (NullOrUndefined Nothing), "ToAddresses": (NullOrUndefined Nothing) }
+newDestination  = Destination { "BccAddresses": Nothing, "CcAddresses": Nothing, "ToAddresses": Nothing }
 
 -- | Constructs Destination's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newDestination' :: ( { "ToAddresses" :: NullOrUndefined (AddressList) , "CcAddresses" :: NullOrUndefined (AddressList) , "BccAddresses" :: NullOrUndefined (AddressList) } -> {"ToAddresses" :: NullOrUndefined (AddressList) , "CcAddresses" :: NullOrUndefined (AddressList) , "BccAddresses" :: NullOrUndefined (AddressList) } ) -> Destination
-newDestination'  customize = (Destination <<< customize) { "BccAddresses": (NullOrUndefined Nothing), "CcAddresses": (NullOrUndefined Nothing), "ToAddresses": (NullOrUndefined Nothing) }
+newDestination' :: ( { "ToAddresses" :: Maybe (AddressList) , "CcAddresses" :: Maybe (AddressList) , "BccAddresses" :: Maybe (AddressList) } -> {"ToAddresses" :: Maybe (AddressList) , "CcAddresses" :: Maybe (AddressList) , "BccAddresses" :: Maybe (AddressList) } ) -> Destination
+newDestination'  customize = (Destination <<< customize) { "BccAddresses": Nothing, "CcAddresses": Nothing, "ToAddresses": Nothing }
 
 
 
@@ -1533,11 +1532,11 @@ instance encodeError :: Encode Error where encode = genericEncode options
 -- | <p>Contains information about the event destination that the specified email sending events will be published to.</p> <note> <p>When you create or update an event destination, you must provide one, and only one, destination. The destination can be Amazon CloudWatch, Amazon Kinesis Firehose or Amazon Simple Notification Service (Amazon SNS).</p> </note> <p>Event destinations are associated with configuration sets, which enable you to publish email sending events to Amazon CloudWatch, Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS). For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
 newtype EventDestination = EventDestination 
   { "Name" :: (EventDestinationName)
-  , "Enabled" :: NullOrUndefined (Enabled)
+  , "Enabled" :: Maybe (Enabled)
   , "MatchingEventTypes" :: (EventTypes)
-  , "KinesisFirehoseDestination" :: NullOrUndefined (KinesisFirehoseDestination)
-  , "CloudWatchDestination" :: NullOrUndefined (CloudWatchDestination)
-  , "SNSDestination" :: NullOrUndefined (SNSDestination)
+  , "KinesisFirehoseDestination" :: Maybe (KinesisFirehoseDestination)
+  , "CloudWatchDestination" :: Maybe (CloudWatchDestination)
+  , "SNSDestination" :: Maybe (SNSDestination)
   }
 derive instance newtypeEventDestination :: Newtype EventDestination _
 derive instance repGenericEventDestination :: Generic EventDestination _
@@ -1547,19 +1546,19 @@ instance encodeEventDestination :: Encode EventDestination where encode = generi
 
 -- | Constructs EventDestination from required parameters
 newEventDestination :: EventTypes -> EventDestinationName -> EventDestination
-newEventDestination _MatchingEventTypes _Name = EventDestination { "MatchingEventTypes": _MatchingEventTypes, "Name": _Name, "CloudWatchDestination": (NullOrUndefined Nothing), "Enabled": (NullOrUndefined Nothing), "KinesisFirehoseDestination": (NullOrUndefined Nothing), "SNSDestination": (NullOrUndefined Nothing) }
+newEventDestination _MatchingEventTypes _Name = EventDestination { "MatchingEventTypes": _MatchingEventTypes, "Name": _Name, "CloudWatchDestination": Nothing, "Enabled": Nothing, "KinesisFirehoseDestination": Nothing, "SNSDestination": Nothing }
 
 -- | Constructs EventDestination's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newEventDestination' :: EventTypes -> EventDestinationName -> ( { "Name" :: (EventDestinationName) , "Enabled" :: NullOrUndefined (Enabled) , "MatchingEventTypes" :: (EventTypes) , "KinesisFirehoseDestination" :: NullOrUndefined (KinesisFirehoseDestination) , "CloudWatchDestination" :: NullOrUndefined (CloudWatchDestination) , "SNSDestination" :: NullOrUndefined (SNSDestination) } -> {"Name" :: (EventDestinationName) , "Enabled" :: NullOrUndefined (Enabled) , "MatchingEventTypes" :: (EventTypes) , "KinesisFirehoseDestination" :: NullOrUndefined (KinesisFirehoseDestination) , "CloudWatchDestination" :: NullOrUndefined (CloudWatchDestination) , "SNSDestination" :: NullOrUndefined (SNSDestination) } ) -> EventDestination
-newEventDestination' _MatchingEventTypes _Name customize = (EventDestination <<< customize) { "MatchingEventTypes": _MatchingEventTypes, "Name": _Name, "CloudWatchDestination": (NullOrUndefined Nothing), "Enabled": (NullOrUndefined Nothing), "KinesisFirehoseDestination": (NullOrUndefined Nothing), "SNSDestination": (NullOrUndefined Nothing) }
+newEventDestination' :: EventTypes -> EventDestinationName -> ( { "Name" :: (EventDestinationName) , "Enabled" :: Maybe (Enabled) , "MatchingEventTypes" :: (EventTypes) , "KinesisFirehoseDestination" :: Maybe (KinesisFirehoseDestination) , "CloudWatchDestination" :: Maybe (CloudWatchDestination) , "SNSDestination" :: Maybe (SNSDestination) } -> {"Name" :: (EventDestinationName) , "Enabled" :: Maybe (Enabled) , "MatchingEventTypes" :: (EventTypes) , "KinesisFirehoseDestination" :: Maybe (KinesisFirehoseDestination) , "CloudWatchDestination" :: Maybe (CloudWatchDestination) , "SNSDestination" :: Maybe (SNSDestination) } ) -> EventDestination
+newEventDestination' _MatchingEventTypes _Name customize = (EventDestination <<< customize) { "MatchingEventTypes": _MatchingEventTypes, "Name": _Name, "CloudWatchDestination": Nothing, "Enabled": Nothing, "KinesisFirehoseDestination": Nothing, "SNSDestination": Nothing }
 
 
 
 -- | <p>Indicates that the event destination could not be created because of a naming conflict.</p>
 newtype EventDestinationAlreadyExistsException = EventDestinationAlreadyExistsException 
-  { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName)
-  , "EventDestinationName" :: NullOrUndefined (EventDestinationName)
+  { "ConfigurationSetName" :: Maybe (ConfigurationSetName)
+  , "EventDestinationName" :: Maybe (EventDestinationName)
   }
 derive instance newtypeEventDestinationAlreadyExistsException :: Newtype EventDestinationAlreadyExistsException _
 derive instance repGenericEventDestinationAlreadyExistsException :: Generic EventDestinationAlreadyExistsException _
@@ -1569,19 +1568,19 @@ instance encodeEventDestinationAlreadyExistsException :: Encode EventDestination
 
 -- | Constructs EventDestinationAlreadyExistsException from required parameters
 newEventDestinationAlreadyExistsException :: EventDestinationAlreadyExistsException
-newEventDestinationAlreadyExistsException  = EventDestinationAlreadyExistsException { "ConfigurationSetName": (NullOrUndefined Nothing), "EventDestinationName": (NullOrUndefined Nothing) }
+newEventDestinationAlreadyExistsException  = EventDestinationAlreadyExistsException { "ConfigurationSetName": Nothing, "EventDestinationName": Nothing }
 
 -- | Constructs EventDestinationAlreadyExistsException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newEventDestinationAlreadyExistsException' :: ( { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) , "EventDestinationName" :: NullOrUndefined (EventDestinationName) } -> {"ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) , "EventDestinationName" :: NullOrUndefined (EventDestinationName) } ) -> EventDestinationAlreadyExistsException
-newEventDestinationAlreadyExistsException'  customize = (EventDestinationAlreadyExistsException <<< customize) { "ConfigurationSetName": (NullOrUndefined Nothing), "EventDestinationName": (NullOrUndefined Nothing) }
+newEventDestinationAlreadyExistsException' :: ( { "ConfigurationSetName" :: Maybe (ConfigurationSetName) , "EventDestinationName" :: Maybe (EventDestinationName) } -> {"ConfigurationSetName" :: Maybe (ConfigurationSetName) , "EventDestinationName" :: Maybe (EventDestinationName) } ) -> EventDestinationAlreadyExistsException
+newEventDestinationAlreadyExistsException'  customize = (EventDestinationAlreadyExistsException <<< customize) { "ConfigurationSetName": Nothing, "EventDestinationName": Nothing }
 
 
 
 -- | <p>Indicates that the event destination does not exist.</p>
 newtype EventDestinationDoesNotExistException = EventDestinationDoesNotExistException 
-  { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName)
-  , "EventDestinationName" :: NullOrUndefined (EventDestinationName)
+  { "ConfigurationSetName" :: Maybe (ConfigurationSetName)
+  , "EventDestinationName" :: Maybe (EventDestinationName)
   }
 derive instance newtypeEventDestinationDoesNotExistException :: Newtype EventDestinationDoesNotExistException _
 derive instance repGenericEventDestinationDoesNotExistException :: Generic EventDestinationDoesNotExistException _
@@ -1591,12 +1590,12 @@ instance encodeEventDestinationDoesNotExistException :: Encode EventDestinationD
 
 -- | Constructs EventDestinationDoesNotExistException from required parameters
 newEventDestinationDoesNotExistException :: EventDestinationDoesNotExistException
-newEventDestinationDoesNotExistException  = EventDestinationDoesNotExistException { "ConfigurationSetName": (NullOrUndefined Nothing), "EventDestinationName": (NullOrUndefined Nothing) }
+newEventDestinationDoesNotExistException  = EventDestinationDoesNotExistException { "ConfigurationSetName": Nothing, "EventDestinationName": Nothing }
 
 -- | Constructs EventDestinationDoesNotExistException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newEventDestinationDoesNotExistException' :: ( { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) , "EventDestinationName" :: NullOrUndefined (EventDestinationName) } -> {"ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) , "EventDestinationName" :: NullOrUndefined (EventDestinationName) } ) -> EventDestinationDoesNotExistException
-newEventDestinationDoesNotExistException'  customize = (EventDestinationDoesNotExistException <<< customize) { "ConfigurationSetName": (NullOrUndefined Nothing), "EventDestinationName": (NullOrUndefined Nothing) }
+newEventDestinationDoesNotExistException' :: ( { "ConfigurationSetName" :: Maybe (ConfigurationSetName) , "EventDestinationName" :: Maybe (EventDestinationName) } -> {"ConfigurationSetName" :: Maybe (ConfigurationSetName) , "EventDestinationName" :: Maybe (EventDestinationName) } ) -> EventDestinationDoesNotExistException
+newEventDestinationDoesNotExistException'  customize = (EventDestinationDoesNotExistException <<< customize) { "ConfigurationSetName": Nothing, "EventDestinationName": Nothing }
 
 
 
@@ -1714,7 +1713,7 @@ instance encodeFromAddress :: Encode FromAddress where encode = genericEncode op
 
 -- | <p>Indicates that the sender address specified for a custom verification email is not verified, and is therefore not eligible to send the custom verification email. </p>
 newtype FromEmailAddressNotVerifiedException = FromEmailAddressNotVerifiedException 
-  { "FromEmailAddress" :: NullOrUndefined (FromAddress)
+  { "FromEmailAddress" :: Maybe (FromAddress)
   }
 derive instance newtypeFromEmailAddressNotVerifiedException :: Newtype FromEmailAddressNotVerifiedException _
 derive instance repGenericFromEmailAddressNotVerifiedException :: Generic FromEmailAddressNotVerifiedException _
@@ -1724,18 +1723,18 @@ instance encodeFromEmailAddressNotVerifiedException :: Encode FromEmailAddressNo
 
 -- | Constructs FromEmailAddressNotVerifiedException from required parameters
 newFromEmailAddressNotVerifiedException :: FromEmailAddressNotVerifiedException
-newFromEmailAddressNotVerifiedException  = FromEmailAddressNotVerifiedException { "FromEmailAddress": (NullOrUndefined Nothing) }
+newFromEmailAddressNotVerifiedException  = FromEmailAddressNotVerifiedException { "FromEmailAddress": Nothing }
 
 -- | Constructs FromEmailAddressNotVerifiedException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newFromEmailAddressNotVerifiedException' :: ( { "FromEmailAddress" :: NullOrUndefined (FromAddress) } -> {"FromEmailAddress" :: NullOrUndefined (FromAddress) } ) -> FromEmailAddressNotVerifiedException
-newFromEmailAddressNotVerifiedException'  customize = (FromEmailAddressNotVerifiedException <<< customize) { "FromEmailAddress": (NullOrUndefined Nothing) }
+newFromEmailAddressNotVerifiedException' :: ( { "FromEmailAddress" :: Maybe (FromAddress) } -> {"FromEmailAddress" :: Maybe (FromAddress) } ) -> FromEmailAddressNotVerifiedException
+newFromEmailAddressNotVerifiedException'  customize = (FromEmailAddressNotVerifiedException <<< customize) { "FromEmailAddress": Nothing }
 
 
 
 -- | <p>Represents a request to return the email sending status for your Amazon SES account.</p>
 newtype GetAccountSendingEnabledResponse = GetAccountSendingEnabledResponse 
-  { "Enabled" :: NullOrUndefined (Enabled)
+  { "Enabled" :: Maybe (Enabled)
   }
 derive instance newtypeGetAccountSendingEnabledResponse :: Newtype GetAccountSendingEnabledResponse _
 derive instance repGenericGetAccountSendingEnabledResponse :: Generic GetAccountSendingEnabledResponse _
@@ -1745,12 +1744,12 @@ instance encodeGetAccountSendingEnabledResponse :: Encode GetAccountSendingEnabl
 
 -- | Constructs GetAccountSendingEnabledResponse from required parameters
 newGetAccountSendingEnabledResponse :: GetAccountSendingEnabledResponse
-newGetAccountSendingEnabledResponse  = GetAccountSendingEnabledResponse { "Enabled": (NullOrUndefined Nothing) }
+newGetAccountSendingEnabledResponse  = GetAccountSendingEnabledResponse { "Enabled": Nothing }
 
 -- | Constructs GetAccountSendingEnabledResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetAccountSendingEnabledResponse' :: ( { "Enabled" :: NullOrUndefined (Enabled) } -> {"Enabled" :: NullOrUndefined (Enabled) } ) -> GetAccountSendingEnabledResponse
-newGetAccountSendingEnabledResponse'  customize = (GetAccountSendingEnabledResponse <<< customize) { "Enabled": (NullOrUndefined Nothing) }
+newGetAccountSendingEnabledResponse' :: ( { "Enabled" :: Maybe (Enabled) } -> {"Enabled" :: Maybe (Enabled) } ) -> GetAccountSendingEnabledResponse
+newGetAccountSendingEnabledResponse'  customize = (GetAccountSendingEnabledResponse <<< customize) { "Enabled": Nothing }
 
 
 
@@ -1777,12 +1776,12 @@ newGetCustomVerificationEmailTemplateRequest' _TemplateName customize = (GetCust
 
 -- | <p>The content of the custom verification email template.</p>
 newtype GetCustomVerificationEmailTemplateResponse = GetCustomVerificationEmailTemplateResponse 
-  { "TemplateName" :: NullOrUndefined (TemplateName)
-  , "FromEmailAddress" :: NullOrUndefined (FromAddress)
-  , "TemplateSubject" :: NullOrUndefined (Subject)
-  , "TemplateContent" :: NullOrUndefined (TemplateContent)
-  , "SuccessRedirectionURL" :: NullOrUndefined (SuccessRedirectionURL)
-  , "FailureRedirectionURL" :: NullOrUndefined (FailureRedirectionURL)
+  { "TemplateName" :: Maybe (TemplateName)
+  , "FromEmailAddress" :: Maybe (FromAddress)
+  , "TemplateSubject" :: Maybe (Subject)
+  , "TemplateContent" :: Maybe (TemplateContent)
+  , "SuccessRedirectionURL" :: Maybe (SuccessRedirectionURL)
+  , "FailureRedirectionURL" :: Maybe (FailureRedirectionURL)
   }
 derive instance newtypeGetCustomVerificationEmailTemplateResponse :: Newtype GetCustomVerificationEmailTemplateResponse _
 derive instance repGenericGetCustomVerificationEmailTemplateResponse :: Generic GetCustomVerificationEmailTemplateResponse _
@@ -1792,12 +1791,12 @@ instance encodeGetCustomVerificationEmailTemplateResponse :: Encode GetCustomVer
 
 -- | Constructs GetCustomVerificationEmailTemplateResponse from required parameters
 newGetCustomVerificationEmailTemplateResponse :: GetCustomVerificationEmailTemplateResponse
-newGetCustomVerificationEmailTemplateResponse  = GetCustomVerificationEmailTemplateResponse { "FailureRedirectionURL": (NullOrUndefined Nothing), "FromEmailAddress": (NullOrUndefined Nothing), "SuccessRedirectionURL": (NullOrUndefined Nothing), "TemplateContent": (NullOrUndefined Nothing), "TemplateName": (NullOrUndefined Nothing), "TemplateSubject": (NullOrUndefined Nothing) }
+newGetCustomVerificationEmailTemplateResponse  = GetCustomVerificationEmailTemplateResponse { "FailureRedirectionURL": Nothing, "FromEmailAddress": Nothing, "SuccessRedirectionURL": Nothing, "TemplateContent": Nothing, "TemplateName": Nothing, "TemplateSubject": Nothing }
 
 -- | Constructs GetCustomVerificationEmailTemplateResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetCustomVerificationEmailTemplateResponse' :: ( { "TemplateName" :: NullOrUndefined (TemplateName) , "FromEmailAddress" :: NullOrUndefined (FromAddress) , "TemplateSubject" :: NullOrUndefined (Subject) , "TemplateContent" :: NullOrUndefined (TemplateContent) , "SuccessRedirectionURL" :: NullOrUndefined (SuccessRedirectionURL) , "FailureRedirectionURL" :: NullOrUndefined (FailureRedirectionURL) } -> {"TemplateName" :: NullOrUndefined (TemplateName) , "FromEmailAddress" :: NullOrUndefined (FromAddress) , "TemplateSubject" :: NullOrUndefined (Subject) , "TemplateContent" :: NullOrUndefined (TemplateContent) , "SuccessRedirectionURL" :: NullOrUndefined (SuccessRedirectionURL) , "FailureRedirectionURL" :: NullOrUndefined (FailureRedirectionURL) } ) -> GetCustomVerificationEmailTemplateResponse
-newGetCustomVerificationEmailTemplateResponse'  customize = (GetCustomVerificationEmailTemplateResponse <<< customize) { "FailureRedirectionURL": (NullOrUndefined Nothing), "FromEmailAddress": (NullOrUndefined Nothing), "SuccessRedirectionURL": (NullOrUndefined Nothing), "TemplateContent": (NullOrUndefined Nothing), "TemplateName": (NullOrUndefined Nothing), "TemplateSubject": (NullOrUndefined Nothing) }
+newGetCustomVerificationEmailTemplateResponse' :: ( { "TemplateName" :: Maybe (TemplateName) , "FromEmailAddress" :: Maybe (FromAddress) , "TemplateSubject" :: Maybe (Subject) , "TemplateContent" :: Maybe (TemplateContent) , "SuccessRedirectionURL" :: Maybe (SuccessRedirectionURL) , "FailureRedirectionURL" :: Maybe (FailureRedirectionURL) } -> {"TemplateName" :: Maybe (TemplateName) , "FromEmailAddress" :: Maybe (FromAddress) , "TemplateSubject" :: Maybe (Subject) , "TemplateContent" :: Maybe (TemplateContent) , "SuccessRedirectionURL" :: Maybe (SuccessRedirectionURL) , "FailureRedirectionURL" :: Maybe (FailureRedirectionURL) } ) -> GetCustomVerificationEmailTemplateResponse
+newGetCustomVerificationEmailTemplateResponse'  customize = (GetCustomVerificationEmailTemplateResponse <<< customize) { "FailureRedirectionURL": Nothing, "FromEmailAddress": Nothing, "SuccessRedirectionURL": Nothing, "TemplateContent": Nothing, "TemplateName": Nothing, "TemplateSubject": Nothing }
 
 
 
@@ -2014,9 +2013,9 @@ newGetIdentityVerificationAttributesResponse' _VerificationAttributes customize 
 
 -- | <p>Represents your Amazon SES daily sending quota, maximum send rate, and the number of emails you have sent in the last 24 hours.</p>
 newtype GetSendQuotaResponse = GetSendQuotaResponse 
-  { "Max24HourSend" :: NullOrUndefined (Max24HourSend)
-  , "MaxSendRate" :: NullOrUndefined (MaxSendRate)
-  , "SentLast24Hours" :: NullOrUndefined (SentLast24Hours)
+  { "Max24HourSend" :: Maybe (Max24HourSend)
+  , "MaxSendRate" :: Maybe (MaxSendRate)
+  , "SentLast24Hours" :: Maybe (SentLast24Hours)
   }
 derive instance newtypeGetSendQuotaResponse :: Newtype GetSendQuotaResponse _
 derive instance repGenericGetSendQuotaResponse :: Generic GetSendQuotaResponse _
@@ -2026,18 +2025,18 @@ instance encodeGetSendQuotaResponse :: Encode GetSendQuotaResponse where encode 
 
 -- | Constructs GetSendQuotaResponse from required parameters
 newGetSendQuotaResponse :: GetSendQuotaResponse
-newGetSendQuotaResponse  = GetSendQuotaResponse { "Max24HourSend": (NullOrUndefined Nothing), "MaxSendRate": (NullOrUndefined Nothing), "SentLast24Hours": (NullOrUndefined Nothing) }
+newGetSendQuotaResponse  = GetSendQuotaResponse { "Max24HourSend": Nothing, "MaxSendRate": Nothing, "SentLast24Hours": Nothing }
 
 -- | Constructs GetSendQuotaResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetSendQuotaResponse' :: ( { "Max24HourSend" :: NullOrUndefined (Max24HourSend) , "MaxSendRate" :: NullOrUndefined (MaxSendRate) , "SentLast24Hours" :: NullOrUndefined (SentLast24Hours) } -> {"Max24HourSend" :: NullOrUndefined (Max24HourSend) , "MaxSendRate" :: NullOrUndefined (MaxSendRate) , "SentLast24Hours" :: NullOrUndefined (SentLast24Hours) } ) -> GetSendQuotaResponse
-newGetSendQuotaResponse'  customize = (GetSendQuotaResponse <<< customize) { "Max24HourSend": (NullOrUndefined Nothing), "MaxSendRate": (NullOrUndefined Nothing), "SentLast24Hours": (NullOrUndefined Nothing) }
+newGetSendQuotaResponse' :: ( { "Max24HourSend" :: Maybe (Max24HourSend) , "MaxSendRate" :: Maybe (MaxSendRate) , "SentLast24Hours" :: Maybe (SentLast24Hours) } -> {"Max24HourSend" :: Maybe (Max24HourSend) , "MaxSendRate" :: Maybe (MaxSendRate) , "SentLast24Hours" :: Maybe (SentLast24Hours) } ) -> GetSendQuotaResponse
+newGetSendQuotaResponse'  customize = (GetSendQuotaResponse <<< customize) { "Max24HourSend": Nothing, "MaxSendRate": Nothing, "SentLast24Hours": Nothing }
 
 
 
 -- | <p>Represents a list of data points. This list contains aggregated data from the previous two weeks of your sending activity with Amazon SES.</p>
 newtype GetSendStatisticsResponse = GetSendStatisticsResponse 
-  { "SendDataPoints" :: NullOrUndefined (SendDataPointList)
+  { "SendDataPoints" :: Maybe (SendDataPointList)
   }
 derive instance newtypeGetSendStatisticsResponse :: Newtype GetSendStatisticsResponse _
 derive instance repGenericGetSendStatisticsResponse :: Generic GetSendStatisticsResponse _
@@ -2047,12 +2046,12 @@ instance encodeGetSendStatisticsResponse :: Encode GetSendStatisticsResponse whe
 
 -- | Constructs GetSendStatisticsResponse from required parameters
 newGetSendStatisticsResponse :: GetSendStatisticsResponse
-newGetSendStatisticsResponse  = GetSendStatisticsResponse { "SendDataPoints": (NullOrUndefined Nothing) }
+newGetSendStatisticsResponse  = GetSendStatisticsResponse { "SendDataPoints": Nothing }
 
 -- | Constructs GetSendStatisticsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetSendStatisticsResponse' :: ( { "SendDataPoints" :: NullOrUndefined (SendDataPointList) } -> {"SendDataPoints" :: NullOrUndefined (SendDataPointList) } ) -> GetSendStatisticsResponse
-newGetSendStatisticsResponse'  customize = (GetSendStatisticsResponse <<< customize) { "SendDataPoints": (NullOrUndefined Nothing) }
+newGetSendStatisticsResponse' :: ( { "SendDataPoints" :: Maybe (SendDataPointList) } -> {"SendDataPoints" :: Maybe (SendDataPointList) } ) -> GetSendStatisticsResponse
+newGetSendStatisticsResponse'  customize = (GetSendStatisticsResponse <<< customize) { "SendDataPoints": Nothing }
 
 
 
@@ -2077,7 +2076,7 @@ newGetTemplateRequest' _TemplateName customize = (GetTemplateRequest <<< customi
 
 
 newtype GetTemplateResponse = GetTemplateResponse 
-  { "Template" :: NullOrUndefined (Template)
+  { "Template" :: Maybe (Template)
   }
 derive instance newtypeGetTemplateResponse :: Newtype GetTemplateResponse _
 derive instance repGenericGetTemplateResponse :: Generic GetTemplateResponse _
@@ -2087,12 +2086,12 @@ instance encodeGetTemplateResponse :: Encode GetTemplateResponse where encode = 
 
 -- | Constructs GetTemplateResponse from required parameters
 newGetTemplateResponse :: GetTemplateResponse
-newGetTemplateResponse  = GetTemplateResponse { "Template": (NullOrUndefined Nothing) }
+newGetTemplateResponse  = GetTemplateResponse { "Template": Nothing }
 
 -- | Constructs GetTemplateResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newGetTemplateResponse' :: ( { "Template" :: NullOrUndefined (Template) } -> {"Template" :: NullOrUndefined (Template) } ) -> GetTemplateResponse
-newGetTemplateResponse'  customize = (GetTemplateResponse <<< customize) { "Template": (NullOrUndefined Nothing) }
+newGetTemplateResponse' :: ( { "Template" :: Maybe (Template) } -> {"Template" :: Maybe (Template) } ) -> GetTemplateResponse
+newGetTemplateResponse'  customize = (GetTemplateResponse <<< customize) { "Template": Nothing }
 
 
 
@@ -2136,7 +2135,7 @@ instance encodeIdentity :: Encode Identity where encode = genericEncode options
 newtype IdentityDkimAttributes = IdentityDkimAttributes 
   { "DkimEnabled" :: (Enabled)
   , "DkimVerificationStatus" :: (VerificationStatus)
-  , "DkimTokens" :: NullOrUndefined (VerificationTokenList)
+  , "DkimTokens" :: Maybe (VerificationTokenList)
   }
 derive instance newtypeIdentityDkimAttributes :: Newtype IdentityDkimAttributes _
 derive instance repGenericIdentityDkimAttributes :: Generic IdentityDkimAttributes _
@@ -2146,12 +2145,12 @@ instance encodeIdentityDkimAttributes :: Encode IdentityDkimAttributes where enc
 
 -- | Constructs IdentityDkimAttributes from required parameters
 newIdentityDkimAttributes :: Enabled -> VerificationStatus -> IdentityDkimAttributes
-newIdentityDkimAttributes _DkimEnabled _DkimVerificationStatus = IdentityDkimAttributes { "DkimEnabled": _DkimEnabled, "DkimVerificationStatus": _DkimVerificationStatus, "DkimTokens": (NullOrUndefined Nothing) }
+newIdentityDkimAttributes _DkimEnabled _DkimVerificationStatus = IdentityDkimAttributes { "DkimEnabled": _DkimEnabled, "DkimVerificationStatus": _DkimVerificationStatus, "DkimTokens": Nothing }
 
 -- | Constructs IdentityDkimAttributes's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newIdentityDkimAttributes' :: Enabled -> VerificationStatus -> ( { "DkimEnabled" :: (Enabled) , "DkimVerificationStatus" :: (VerificationStatus) , "DkimTokens" :: NullOrUndefined (VerificationTokenList) } -> {"DkimEnabled" :: (Enabled) , "DkimVerificationStatus" :: (VerificationStatus) , "DkimTokens" :: NullOrUndefined (VerificationTokenList) } ) -> IdentityDkimAttributes
-newIdentityDkimAttributes' _DkimEnabled _DkimVerificationStatus customize = (IdentityDkimAttributes <<< customize) { "DkimEnabled": _DkimEnabled, "DkimVerificationStatus": _DkimVerificationStatus, "DkimTokens": (NullOrUndefined Nothing) }
+newIdentityDkimAttributes' :: Enabled -> VerificationStatus -> ( { "DkimEnabled" :: (Enabled) , "DkimVerificationStatus" :: (VerificationStatus) , "DkimTokens" :: Maybe (VerificationTokenList) } -> {"DkimEnabled" :: (Enabled) , "DkimVerificationStatus" :: (VerificationStatus) , "DkimTokens" :: Maybe (VerificationTokenList) } ) -> IdentityDkimAttributes
+newIdentityDkimAttributes' _DkimEnabled _DkimVerificationStatus customize = (IdentityDkimAttributes <<< customize) { "DkimEnabled": _DkimEnabled, "DkimVerificationStatus": _DkimVerificationStatus, "DkimTokens": Nothing }
 
 
 
@@ -2193,9 +2192,9 @@ newtype IdentityNotificationAttributes = IdentityNotificationAttributes
   , "ComplaintTopic" :: (NotificationTopic)
   , "DeliveryTopic" :: (NotificationTopic)
   , "ForwardingEnabled" :: (Enabled)
-  , "HeadersInBounceNotificationsEnabled" :: NullOrUndefined (Enabled)
-  , "HeadersInComplaintNotificationsEnabled" :: NullOrUndefined (Enabled)
-  , "HeadersInDeliveryNotificationsEnabled" :: NullOrUndefined (Enabled)
+  , "HeadersInBounceNotificationsEnabled" :: Maybe (Enabled)
+  , "HeadersInComplaintNotificationsEnabled" :: Maybe (Enabled)
+  , "HeadersInDeliveryNotificationsEnabled" :: Maybe (Enabled)
   }
 derive instance newtypeIdentityNotificationAttributes :: Newtype IdentityNotificationAttributes _
 derive instance repGenericIdentityNotificationAttributes :: Generic IdentityNotificationAttributes _
@@ -2205,12 +2204,12 @@ instance encodeIdentityNotificationAttributes :: Encode IdentityNotificationAttr
 
 -- | Constructs IdentityNotificationAttributes from required parameters
 newIdentityNotificationAttributes :: NotificationTopic -> NotificationTopic -> NotificationTopic -> Enabled -> IdentityNotificationAttributes
-newIdentityNotificationAttributes _BounceTopic _ComplaintTopic _DeliveryTopic _ForwardingEnabled = IdentityNotificationAttributes { "BounceTopic": _BounceTopic, "ComplaintTopic": _ComplaintTopic, "DeliveryTopic": _DeliveryTopic, "ForwardingEnabled": _ForwardingEnabled, "HeadersInBounceNotificationsEnabled": (NullOrUndefined Nothing), "HeadersInComplaintNotificationsEnabled": (NullOrUndefined Nothing), "HeadersInDeliveryNotificationsEnabled": (NullOrUndefined Nothing) }
+newIdentityNotificationAttributes _BounceTopic _ComplaintTopic _DeliveryTopic _ForwardingEnabled = IdentityNotificationAttributes { "BounceTopic": _BounceTopic, "ComplaintTopic": _ComplaintTopic, "DeliveryTopic": _DeliveryTopic, "ForwardingEnabled": _ForwardingEnabled, "HeadersInBounceNotificationsEnabled": Nothing, "HeadersInComplaintNotificationsEnabled": Nothing, "HeadersInDeliveryNotificationsEnabled": Nothing }
 
 -- | Constructs IdentityNotificationAttributes's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newIdentityNotificationAttributes' :: NotificationTopic -> NotificationTopic -> NotificationTopic -> Enabled -> ( { "BounceTopic" :: (NotificationTopic) , "ComplaintTopic" :: (NotificationTopic) , "DeliveryTopic" :: (NotificationTopic) , "ForwardingEnabled" :: (Enabled) , "HeadersInBounceNotificationsEnabled" :: NullOrUndefined (Enabled) , "HeadersInComplaintNotificationsEnabled" :: NullOrUndefined (Enabled) , "HeadersInDeliveryNotificationsEnabled" :: NullOrUndefined (Enabled) } -> {"BounceTopic" :: (NotificationTopic) , "ComplaintTopic" :: (NotificationTopic) , "DeliveryTopic" :: (NotificationTopic) , "ForwardingEnabled" :: (Enabled) , "HeadersInBounceNotificationsEnabled" :: NullOrUndefined (Enabled) , "HeadersInComplaintNotificationsEnabled" :: NullOrUndefined (Enabled) , "HeadersInDeliveryNotificationsEnabled" :: NullOrUndefined (Enabled) } ) -> IdentityNotificationAttributes
-newIdentityNotificationAttributes' _BounceTopic _ComplaintTopic _DeliveryTopic _ForwardingEnabled customize = (IdentityNotificationAttributes <<< customize) { "BounceTopic": _BounceTopic, "ComplaintTopic": _ComplaintTopic, "DeliveryTopic": _DeliveryTopic, "ForwardingEnabled": _ForwardingEnabled, "HeadersInBounceNotificationsEnabled": (NullOrUndefined Nothing), "HeadersInComplaintNotificationsEnabled": (NullOrUndefined Nothing), "HeadersInDeliveryNotificationsEnabled": (NullOrUndefined Nothing) }
+newIdentityNotificationAttributes' :: NotificationTopic -> NotificationTopic -> NotificationTopic -> Enabled -> ( { "BounceTopic" :: (NotificationTopic) , "ComplaintTopic" :: (NotificationTopic) , "DeliveryTopic" :: (NotificationTopic) , "ForwardingEnabled" :: (Enabled) , "HeadersInBounceNotificationsEnabled" :: Maybe (Enabled) , "HeadersInComplaintNotificationsEnabled" :: Maybe (Enabled) , "HeadersInDeliveryNotificationsEnabled" :: Maybe (Enabled) } -> {"BounceTopic" :: (NotificationTopic) , "ComplaintTopic" :: (NotificationTopic) , "DeliveryTopic" :: (NotificationTopic) , "ForwardingEnabled" :: (Enabled) , "HeadersInBounceNotificationsEnabled" :: Maybe (Enabled) , "HeadersInComplaintNotificationsEnabled" :: Maybe (Enabled) , "HeadersInDeliveryNotificationsEnabled" :: Maybe (Enabled) } ) -> IdentityNotificationAttributes
+newIdentityNotificationAttributes' _BounceTopic _ComplaintTopic _DeliveryTopic _ForwardingEnabled customize = (IdentityNotificationAttributes <<< customize) { "BounceTopic": _BounceTopic, "ComplaintTopic": _ComplaintTopic, "DeliveryTopic": _DeliveryTopic, "ForwardingEnabled": _ForwardingEnabled, "HeadersInBounceNotificationsEnabled": Nothing, "HeadersInComplaintNotificationsEnabled": Nothing, "HeadersInDeliveryNotificationsEnabled": Nothing }
 
 
 
@@ -2226,7 +2225,7 @@ instance encodeIdentityType :: Encode IdentityType where encode = genericEncode 
 -- | <p>Represents the verification attributes of a single identity.</p>
 newtype IdentityVerificationAttributes = IdentityVerificationAttributes 
   { "VerificationStatus" :: (VerificationStatus)
-  , "VerificationToken" :: NullOrUndefined (VerificationToken)
+  , "VerificationToken" :: Maybe (VerificationToken)
   }
 derive instance newtypeIdentityVerificationAttributes :: Newtype IdentityVerificationAttributes _
 derive instance repGenericIdentityVerificationAttributes :: Generic IdentityVerificationAttributes _
@@ -2236,19 +2235,19 @@ instance encodeIdentityVerificationAttributes :: Encode IdentityVerificationAttr
 
 -- | Constructs IdentityVerificationAttributes from required parameters
 newIdentityVerificationAttributes :: VerificationStatus -> IdentityVerificationAttributes
-newIdentityVerificationAttributes _VerificationStatus = IdentityVerificationAttributes { "VerificationStatus": _VerificationStatus, "VerificationToken": (NullOrUndefined Nothing) }
+newIdentityVerificationAttributes _VerificationStatus = IdentityVerificationAttributes { "VerificationStatus": _VerificationStatus, "VerificationToken": Nothing }
 
 -- | Constructs IdentityVerificationAttributes's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newIdentityVerificationAttributes' :: VerificationStatus -> ( { "VerificationStatus" :: (VerificationStatus) , "VerificationToken" :: NullOrUndefined (VerificationToken) } -> {"VerificationStatus" :: (VerificationStatus) , "VerificationToken" :: NullOrUndefined (VerificationToken) } ) -> IdentityVerificationAttributes
-newIdentityVerificationAttributes' _VerificationStatus customize = (IdentityVerificationAttributes <<< customize) { "VerificationStatus": _VerificationStatus, "VerificationToken": (NullOrUndefined Nothing) }
+newIdentityVerificationAttributes' :: VerificationStatus -> ( { "VerificationStatus" :: (VerificationStatus) , "VerificationToken" :: Maybe (VerificationToken) } -> {"VerificationStatus" :: (VerificationStatus) , "VerificationToken" :: Maybe (VerificationToken) } ) -> IdentityVerificationAttributes
+newIdentityVerificationAttributes' _VerificationStatus customize = (IdentityVerificationAttributes <<< customize) { "VerificationStatus": _VerificationStatus, "VerificationToken": Nothing }
 
 
 
 -- | <p>Indicates that the Amazon CloudWatch destination is invalid. See the error message for details.</p>
 newtype InvalidCloudWatchDestinationException = InvalidCloudWatchDestinationException 
-  { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName)
-  , "EventDestinationName" :: NullOrUndefined (EventDestinationName)
+  { "ConfigurationSetName" :: Maybe (ConfigurationSetName)
+  , "EventDestinationName" :: Maybe (EventDestinationName)
   }
 derive instance newtypeInvalidCloudWatchDestinationException :: Newtype InvalidCloudWatchDestinationException _
 derive instance repGenericInvalidCloudWatchDestinationException :: Generic InvalidCloudWatchDestinationException _
@@ -2258,12 +2257,12 @@ instance encodeInvalidCloudWatchDestinationException :: Encode InvalidCloudWatch
 
 -- | Constructs InvalidCloudWatchDestinationException from required parameters
 newInvalidCloudWatchDestinationException :: InvalidCloudWatchDestinationException
-newInvalidCloudWatchDestinationException  = InvalidCloudWatchDestinationException { "ConfigurationSetName": (NullOrUndefined Nothing), "EventDestinationName": (NullOrUndefined Nothing) }
+newInvalidCloudWatchDestinationException  = InvalidCloudWatchDestinationException { "ConfigurationSetName": Nothing, "EventDestinationName": Nothing }
 
 -- | Constructs InvalidCloudWatchDestinationException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidCloudWatchDestinationException' :: ( { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) , "EventDestinationName" :: NullOrUndefined (EventDestinationName) } -> {"ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) , "EventDestinationName" :: NullOrUndefined (EventDestinationName) } ) -> InvalidCloudWatchDestinationException
-newInvalidCloudWatchDestinationException'  customize = (InvalidCloudWatchDestinationException <<< customize) { "ConfigurationSetName": (NullOrUndefined Nothing), "EventDestinationName": (NullOrUndefined Nothing) }
+newInvalidCloudWatchDestinationException' :: ( { "ConfigurationSetName" :: Maybe (ConfigurationSetName) , "EventDestinationName" :: Maybe (EventDestinationName) } -> {"ConfigurationSetName" :: Maybe (ConfigurationSetName) , "EventDestinationName" :: Maybe (EventDestinationName) } ) -> InvalidCloudWatchDestinationException
+newInvalidCloudWatchDestinationException'  customize = (InvalidCloudWatchDestinationException <<< customize) { "ConfigurationSetName": Nothing, "EventDestinationName": Nothing }
 
 
 
@@ -2279,8 +2278,8 @@ instance encodeInvalidConfigurationSetException :: Encode InvalidConfigurationSe
 
 -- | <p>Indicates that the Amazon Kinesis Firehose destination is invalid. See the error message for details.</p>
 newtype InvalidFirehoseDestinationException = InvalidFirehoseDestinationException 
-  { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName)
-  , "EventDestinationName" :: NullOrUndefined (EventDestinationName)
+  { "ConfigurationSetName" :: Maybe (ConfigurationSetName)
+  , "EventDestinationName" :: Maybe (EventDestinationName)
   }
 derive instance newtypeInvalidFirehoseDestinationException :: Newtype InvalidFirehoseDestinationException _
 derive instance repGenericInvalidFirehoseDestinationException :: Generic InvalidFirehoseDestinationException _
@@ -2290,18 +2289,18 @@ instance encodeInvalidFirehoseDestinationException :: Encode InvalidFirehoseDest
 
 -- | Constructs InvalidFirehoseDestinationException from required parameters
 newInvalidFirehoseDestinationException :: InvalidFirehoseDestinationException
-newInvalidFirehoseDestinationException  = InvalidFirehoseDestinationException { "ConfigurationSetName": (NullOrUndefined Nothing), "EventDestinationName": (NullOrUndefined Nothing) }
+newInvalidFirehoseDestinationException  = InvalidFirehoseDestinationException { "ConfigurationSetName": Nothing, "EventDestinationName": Nothing }
 
 -- | Constructs InvalidFirehoseDestinationException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidFirehoseDestinationException' :: ( { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) , "EventDestinationName" :: NullOrUndefined (EventDestinationName) } -> {"ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) , "EventDestinationName" :: NullOrUndefined (EventDestinationName) } ) -> InvalidFirehoseDestinationException
-newInvalidFirehoseDestinationException'  customize = (InvalidFirehoseDestinationException <<< customize) { "ConfigurationSetName": (NullOrUndefined Nothing), "EventDestinationName": (NullOrUndefined Nothing) }
+newInvalidFirehoseDestinationException' :: ( { "ConfigurationSetName" :: Maybe (ConfigurationSetName) , "EventDestinationName" :: Maybe (EventDestinationName) } -> {"ConfigurationSetName" :: Maybe (ConfigurationSetName) , "EventDestinationName" :: Maybe (EventDestinationName) } ) -> InvalidFirehoseDestinationException
+newInvalidFirehoseDestinationException'  customize = (InvalidFirehoseDestinationException <<< customize) { "ConfigurationSetName": Nothing, "EventDestinationName": Nothing }
 
 
 
 -- | <p>Indicates that the provided AWS Lambda function is invalid, or that Amazon SES could not execute the provided function, possibly due to permissions issues. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p>
 newtype InvalidLambdaFunctionException = InvalidLambdaFunctionException 
-  { "FunctionArn" :: NullOrUndefined (AmazonResourceName)
+  { "FunctionArn" :: Maybe (AmazonResourceName)
   }
 derive instance newtypeInvalidLambdaFunctionException :: Newtype InvalidLambdaFunctionException _
 derive instance repGenericInvalidLambdaFunctionException :: Generic InvalidLambdaFunctionException _
@@ -2311,12 +2310,12 @@ instance encodeInvalidLambdaFunctionException :: Encode InvalidLambdaFunctionExc
 
 -- | Constructs InvalidLambdaFunctionException from required parameters
 newInvalidLambdaFunctionException :: InvalidLambdaFunctionException
-newInvalidLambdaFunctionException  = InvalidLambdaFunctionException { "FunctionArn": (NullOrUndefined Nothing) }
+newInvalidLambdaFunctionException  = InvalidLambdaFunctionException { "FunctionArn": Nothing }
 
 -- | Constructs InvalidLambdaFunctionException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidLambdaFunctionException' :: ( { "FunctionArn" :: NullOrUndefined (AmazonResourceName) } -> {"FunctionArn" :: NullOrUndefined (AmazonResourceName) } ) -> InvalidLambdaFunctionException
-newInvalidLambdaFunctionException'  customize = (InvalidLambdaFunctionException <<< customize) { "FunctionArn": (NullOrUndefined Nothing) }
+newInvalidLambdaFunctionException' :: ( { "FunctionArn" :: Maybe (AmazonResourceName) } -> {"FunctionArn" :: Maybe (AmazonResourceName) } ) -> InvalidLambdaFunctionException
+newInvalidLambdaFunctionException'  customize = (InvalidLambdaFunctionException <<< customize) { "FunctionArn": Nothing }
 
 
 
@@ -2332,7 +2331,7 @@ instance encodeInvalidPolicyException :: Encode InvalidPolicyException where enc
 
 -- | <p>Indicates that one or more of the replacement values you provided is invalid. This error may occur when the TemplateData object contains invalid JSON.</p>
 newtype InvalidRenderingParameterException = InvalidRenderingParameterException 
-  { "TemplateName" :: NullOrUndefined (TemplateName)
+  { "TemplateName" :: Maybe (TemplateName)
   }
 derive instance newtypeInvalidRenderingParameterException :: Newtype InvalidRenderingParameterException _
 derive instance repGenericInvalidRenderingParameterException :: Generic InvalidRenderingParameterException _
@@ -2342,18 +2341,18 @@ instance encodeInvalidRenderingParameterException :: Encode InvalidRenderingPara
 
 -- | Constructs InvalidRenderingParameterException from required parameters
 newInvalidRenderingParameterException :: InvalidRenderingParameterException
-newInvalidRenderingParameterException  = InvalidRenderingParameterException { "TemplateName": (NullOrUndefined Nothing) }
+newInvalidRenderingParameterException  = InvalidRenderingParameterException { "TemplateName": Nothing }
 
 -- | Constructs InvalidRenderingParameterException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidRenderingParameterException' :: ( { "TemplateName" :: NullOrUndefined (TemplateName) } -> {"TemplateName" :: NullOrUndefined (TemplateName) } ) -> InvalidRenderingParameterException
-newInvalidRenderingParameterException'  customize = (InvalidRenderingParameterException <<< customize) { "TemplateName": (NullOrUndefined Nothing) }
+newInvalidRenderingParameterException' :: ( { "TemplateName" :: Maybe (TemplateName) } -> {"TemplateName" :: Maybe (TemplateName) } ) -> InvalidRenderingParameterException
+newInvalidRenderingParameterException'  customize = (InvalidRenderingParameterException <<< customize) { "TemplateName": Nothing }
 
 
 
 -- | <p>Indicates that the provided Amazon S3 bucket or AWS KMS encryption key is invalid, or that Amazon SES could not publish to the bucket, possibly due to permissions issues. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p>
 newtype InvalidS3ConfigurationException = InvalidS3ConfigurationException 
-  { "Bucket" :: NullOrUndefined (S3BucketName)
+  { "Bucket" :: Maybe (S3BucketName)
   }
 derive instance newtypeInvalidS3ConfigurationException :: Newtype InvalidS3ConfigurationException _
 derive instance repGenericInvalidS3ConfigurationException :: Generic InvalidS3ConfigurationException _
@@ -2363,19 +2362,19 @@ instance encodeInvalidS3ConfigurationException :: Encode InvalidS3ConfigurationE
 
 -- | Constructs InvalidS3ConfigurationException from required parameters
 newInvalidS3ConfigurationException :: InvalidS3ConfigurationException
-newInvalidS3ConfigurationException  = InvalidS3ConfigurationException { "Bucket": (NullOrUndefined Nothing) }
+newInvalidS3ConfigurationException  = InvalidS3ConfigurationException { "Bucket": Nothing }
 
 -- | Constructs InvalidS3ConfigurationException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidS3ConfigurationException' :: ( { "Bucket" :: NullOrUndefined (S3BucketName) } -> {"Bucket" :: NullOrUndefined (S3BucketName) } ) -> InvalidS3ConfigurationException
-newInvalidS3ConfigurationException'  customize = (InvalidS3ConfigurationException <<< customize) { "Bucket": (NullOrUndefined Nothing) }
+newInvalidS3ConfigurationException' :: ( { "Bucket" :: Maybe (S3BucketName) } -> {"Bucket" :: Maybe (S3BucketName) } ) -> InvalidS3ConfigurationException
+newInvalidS3ConfigurationException'  customize = (InvalidS3ConfigurationException <<< customize) { "Bucket": Nothing }
 
 
 
 -- | <p>Indicates that the Amazon Simple Notification Service (Amazon SNS) destination is invalid. See the error message for details.</p>
 newtype InvalidSNSDestinationException = InvalidSNSDestinationException 
-  { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName)
-  , "EventDestinationName" :: NullOrUndefined (EventDestinationName)
+  { "ConfigurationSetName" :: Maybe (ConfigurationSetName)
+  , "EventDestinationName" :: Maybe (EventDestinationName)
   }
 derive instance newtypeInvalidSNSDestinationException :: Newtype InvalidSNSDestinationException _
 derive instance repGenericInvalidSNSDestinationException :: Generic InvalidSNSDestinationException _
@@ -2385,18 +2384,18 @@ instance encodeInvalidSNSDestinationException :: Encode InvalidSNSDestinationExc
 
 -- | Constructs InvalidSNSDestinationException from required parameters
 newInvalidSNSDestinationException :: InvalidSNSDestinationException
-newInvalidSNSDestinationException  = InvalidSNSDestinationException { "ConfigurationSetName": (NullOrUndefined Nothing), "EventDestinationName": (NullOrUndefined Nothing) }
+newInvalidSNSDestinationException  = InvalidSNSDestinationException { "ConfigurationSetName": Nothing, "EventDestinationName": Nothing }
 
 -- | Constructs InvalidSNSDestinationException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidSNSDestinationException' :: ( { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) , "EventDestinationName" :: NullOrUndefined (EventDestinationName) } -> {"ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) , "EventDestinationName" :: NullOrUndefined (EventDestinationName) } ) -> InvalidSNSDestinationException
-newInvalidSNSDestinationException'  customize = (InvalidSNSDestinationException <<< customize) { "ConfigurationSetName": (NullOrUndefined Nothing), "EventDestinationName": (NullOrUndefined Nothing) }
+newInvalidSNSDestinationException' :: ( { "ConfigurationSetName" :: Maybe (ConfigurationSetName) , "EventDestinationName" :: Maybe (EventDestinationName) } -> {"ConfigurationSetName" :: Maybe (ConfigurationSetName) , "EventDestinationName" :: Maybe (EventDestinationName) } ) -> InvalidSNSDestinationException
+newInvalidSNSDestinationException'  customize = (InvalidSNSDestinationException <<< customize) { "ConfigurationSetName": Nothing, "EventDestinationName": Nothing }
 
 
 
 -- | <p>Indicates that the provided Amazon SNS topic is invalid, or that Amazon SES could not publish to the topic, possibly due to permissions issues. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p>
 newtype InvalidSnsTopicException = InvalidSnsTopicException 
-  { "Topic" :: NullOrUndefined (AmazonResourceName)
+  { "Topic" :: Maybe (AmazonResourceName)
   }
 derive instance newtypeInvalidSnsTopicException :: Newtype InvalidSnsTopicException _
 derive instance repGenericInvalidSnsTopicException :: Generic InvalidSnsTopicException _
@@ -2406,18 +2405,18 @@ instance encodeInvalidSnsTopicException :: Encode InvalidSnsTopicException where
 
 -- | Constructs InvalidSnsTopicException from required parameters
 newInvalidSnsTopicException :: InvalidSnsTopicException
-newInvalidSnsTopicException  = InvalidSnsTopicException { "Topic": (NullOrUndefined Nothing) }
+newInvalidSnsTopicException  = InvalidSnsTopicException { "Topic": Nothing }
 
 -- | Constructs InvalidSnsTopicException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidSnsTopicException' :: ( { "Topic" :: NullOrUndefined (AmazonResourceName) } -> {"Topic" :: NullOrUndefined (AmazonResourceName) } ) -> InvalidSnsTopicException
-newInvalidSnsTopicException'  customize = (InvalidSnsTopicException <<< customize) { "Topic": (NullOrUndefined Nothing) }
+newInvalidSnsTopicException' :: ( { "Topic" :: Maybe (AmazonResourceName) } -> {"Topic" :: Maybe (AmazonResourceName) } ) -> InvalidSnsTopicException
+newInvalidSnsTopicException'  customize = (InvalidSnsTopicException <<< customize) { "Topic": Nothing }
 
 
 
 -- | <p>Indicates that a template could not be created because it contained invalid JSON.</p>
 newtype InvalidTemplateException = InvalidTemplateException 
-  { "TemplateName" :: NullOrUndefined (TemplateName)
+  { "TemplateName" :: Maybe (TemplateName)
   }
 derive instance newtypeInvalidTemplateException :: Newtype InvalidTemplateException _
 derive instance repGenericInvalidTemplateException :: Generic InvalidTemplateException _
@@ -2427,12 +2426,12 @@ instance encodeInvalidTemplateException :: Encode InvalidTemplateException where
 
 -- | Constructs InvalidTemplateException from required parameters
 newInvalidTemplateException :: InvalidTemplateException
-newInvalidTemplateException  = InvalidTemplateException { "TemplateName": (NullOrUndefined Nothing) }
+newInvalidTemplateException  = InvalidTemplateException { "TemplateName": Nothing }
 
 -- | Constructs InvalidTemplateException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newInvalidTemplateException' :: ( { "TemplateName" :: NullOrUndefined (TemplateName) } -> {"TemplateName" :: NullOrUndefined (TemplateName) } ) -> InvalidTemplateException
-newInvalidTemplateException'  customize = (InvalidTemplateException <<< customize) { "TemplateName": (NullOrUndefined Nothing) }
+newInvalidTemplateException' :: ( { "TemplateName" :: Maybe (TemplateName) } -> {"TemplateName" :: Maybe (TemplateName) } ) -> InvalidTemplateException
+newInvalidTemplateException'  customize = (InvalidTemplateException <<< customize) { "TemplateName": Nothing }
 
 
 
@@ -2479,9 +2478,9 @@ newKinesisFirehoseDestination' _DeliveryStreamARN _IAMRoleARN customize = (Kines
 
 -- | <p>When included in a receipt rule, this action calls an AWS Lambda function and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p> <p>To enable Amazon SES to call your AWS Lambda function or to publish to an Amazon SNS topic of another account, Amazon SES must have permission to access those resources. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p> <p>For information about using AWS Lambda actions in receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-lambda.html">Amazon SES Developer Guide</a>.</p>
 newtype LambdaAction = LambdaAction 
-  { "TopicArn" :: NullOrUndefined (AmazonResourceName)
+  { "TopicArn" :: Maybe (AmazonResourceName)
   , "FunctionArn" :: (AmazonResourceName)
-  , "InvocationType" :: NullOrUndefined (InvocationType)
+  , "InvocationType" :: Maybe (InvocationType)
   }
 derive instance newtypeLambdaAction :: Newtype LambdaAction _
 derive instance repGenericLambdaAction :: Generic LambdaAction _
@@ -2491,12 +2490,12 @@ instance encodeLambdaAction :: Encode LambdaAction where encode = genericEncode 
 
 -- | Constructs LambdaAction from required parameters
 newLambdaAction :: AmazonResourceName -> LambdaAction
-newLambdaAction _FunctionArn = LambdaAction { "FunctionArn": _FunctionArn, "InvocationType": (NullOrUndefined Nothing), "TopicArn": (NullOrUndefined Nothing) }
+newLambdaAction _FunctionArn = LambdaAction { "FunctionArn": _FunctionArn, "InvocationType": Nothing, "TopicArn": Nothing }
 
 -- | Constructs LambdaAction's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newLambdaAction' :: AmazonResourceName -> ( { "TopicArn" :: NullOrUndefined (AmazonResourceName) , "FunctionArn" :: (AmazonResourceName) , "InvocationType" :: NullOrUndefined (InvocationType) } -> {"TopicArn" :: NullOrUndefined (AmazonResourceName) , "FunctionArn" :: (AmazonResourceName) , "InvocationType" :: NullOrUndefined (InvocationType) } ) -> LambdaAction
-newLambdaAction' _FunctionArn customize = (LambdaAction <<< customize) { "FunctionArn": _FunctionArn, "InvocationType": (NullOrUndefined Nothing), "TopicArn": (NullOrUndefined Nothing) }
+newLambdaAction' :: AmazonResourceName -> ( { "TopicArn" :: Maybe (AmazonResourceName) , "FunctionArn" :: (AmazonResourceName) , "InvocationType" :: Maybe (InvocationType) } -> {"TopicArn" :: Maybe (AmazonResourceName) , "FunctionArn" :: (AmazonResourceName) , "InvocationType" :: Maybe (InvocationType) } ) -> LambdaAction
+newLambdaAction' _FunctionArn customize = (LambdaAction <<< customize) { "FunctionArn": _FunctionArn, "InvocationType": Nothing, "TopicArn": Nothing }
 
 
 
@@ -2530,8 +2529,8 @@ instance encodeLimitExceededException :: Encode LimitExceededException where enc
 
 -- | <p>Represents a request to list the configuration sets associated with your AWS account. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
 newtype ListConfigurationSetsRequest = ListConfigurationSetsRequest 
-  { "NextToken" :: NullOrUndefined (NextToken)
-  , "MaxItems" :: NullOrUndefined (MaxItems)
+  { "NextToken" :: Maybe (NextToken)
+  , "MaxItems" :: Maybe (MaxItems)
   }
 derive instance newtypeListConfigurationSetsRequest :: Newtype ListConfigurationSetsRequest _
 derive instance repGenericListConfigurationSetsRequest :: Generic ListConfigurationSetsRequest _
@@ -2541,19 +2540,19 @@ instance encodeListConfigurationSetsRequest :: Encode ListConfigurationSetsReque
 
 -- | Constructs ListConfigurationSetsRequest from required parameters
 newListConfigurationSetsRequest :: ListConfigurationSetsRequest
-newListConfigurationSetsRequest  = ListConfigurationSetsRequest { "MaxItems": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListConfigurationSetsRequest  = ListConfigurationSetsRequest { "MaxItems": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListConfigurationSetsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListConfigurationSetsRequest' :: ( { "NextToken" :: NullOrUndefined (NextToken) , "MaxItems" :: NullOrUndefined (MaxItems) } -> {"NextToken" :: NullOrUndefined (NextToken) , "MaxItems" :: NullOrUndefined (MaxItems) } ) -> ListConfigurationSetsRequest
-newListConfigurationSetsRequest'  customize = (ListConfigurationSetsRequest <<< customize) { "MaxItems": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListConfigurationSetsRequest' :: ( { "NextToken" :: Maybe (NextToken) , "MaxItems" :: Maybe (MaxItems) } -> {"NextToken" :: Maybe (NextToken) , "MaxItems" :: Maybe (MaxItems) } ) -> ListConfigurationSetsRequest
+newListConfigurationSetsRequest'  customize = (ListConfigurationSetsRequest <<< customize) { "MaxItems": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p>A list of configuration sets associated with your AWS account. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html">Amazon SES Developer Guide</a>.</p>
 newtype ListConfigurationSetsResponse = ListConfigurationSetsResponse 
-  { "ConfigurationSets" :: NullOrUndefined (ConfigurationSets)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "ConfigurationSets" :: Maybe (ConfigurationSets)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListConfigurationSetsResponse :: Newtype ListConfigurationSetsResponse _
 derive instance repGenericListConfigurationSetsResponse :: Generic ListConfigurationSetsResponse _
@@ -2563,19 +2562,19 @@ instance encodeListConfigurationSetsResponse :: Encode ListConfigurationSetsResp
 
 -- | Constructs ListConfigurationSetsResponse from required parameters
 newListConfigurationSetsResponse :: ListConfigurationSetsResponse
-newListConfigurationSetsResponse  = ListConfigurationSetsResponse { "ConfigurationSets": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListConfigurationSetsResponse  = ListConfigurationSetsResponse { "ConfigurationSets": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListConfigurationSetsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListConfigurationSetsResponse' :: ( { "ConfigurationSets" :: NullOrUndefined (ConfigurationSets) , "NextToken" :: NullOrUndefined (NextToken) } -> {"ConfigurationSets" :: NullOrUndefined (ConfigurationSets) , "NextToken" :: NullOrUndefined (NextToken) } ) -> ListConfigurationSetsResponse
-newListConfigurationSetsResponse'  customize = (ListConfigurationSetsResponse <<< customize) { "ConfigurationSets": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListConfigurationSetsResponse' :: ( { "ConfigurationSets" :: Maybe (ConfigurationSets) , "NextToken" :: Maybe (NextToken) } -> {"ConfigurationSets" :: Maybe (ConfigurationSets) , "NextToken" :: Maybe (NextToken) } ) -> ListConfigurationSetsResponse
+newListConfigurationSetsResponse'  customize = (ListConfigurationSetsResponse <<< customize) { "ConfigurationSets": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p>Represents a request to list the existing custom verification email templates for your account.</p> <p>For more information about custom verification email templates, see <a href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html">Using Custom Verification Email Templates</a> in the <i>Amazon SES Developer Guide</i>.</p>
 newtype ListCustomVerificationEmailTemplatesRequest = ListCustomVerificationEmailTemplatesRequest 
-  { "NextToken" :: NullOrUndefined (NextToken)
-  , "MaxResults" :: NullOrUndefined (MaxResults)
+  { "NextToken" :: Maybe (NextToken)
+  , "MaxResults" :: Maybe (MaxResults)
   }
 derive instance newtypeListCustomVerificationEmailTemplatesRequest :: Newtype ListCustomVerificationEmailTemplatesRequest _
 derive instance repGenericListCustomVerificationEmailTemplatesRequest :: Generic ListCustomVerificationEmailTemplatesRequest _
@@ -2585,19 +2584,19 @@ instance encodeListCustomVerificationEmailTemplatesRequest :: Encode ListCustomV
 
 -- | Constructs ListCustomVerificationEmailTemplatesRequest from required parameters
 newListCustomVerificationEmailTemplatesRequest :: ListCustomVerificationEmailTemplatesRequest
-newListCustomVerificationEmailTemplatesRequest  = ListCustomVerificationEmailTemplatesRequest { "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListCustomVerificationEmailTemplatesRequest  = ListCustomVerificationEmailTemplatesRequest { "MaxResults": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListCustomVerificationEmailTemplatesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListCustomVerificationEmailTemplatesRequest' :: ( { "NextToken" :: NullOrUndefined (NextToken) , "MaxResults" :: NullOrUndefined (MaxResults) } -> {"NextToken" :: NullOrUndefined (NextToken) , "MaxResults" :: NullOrUndefined (MaxResults) } ) -> ListCustomVerificationEmailTemplatesRequest
-newListCustomVerificationEmailTemplatesRequest'  customize = (ListCustomVerificationEmailTemplatesRequest <<< customize) { "MaxResults": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListCustomVerificationEmailTemplatesRequest' :: ( { "NextToken" :: Maybe (NextToken) , "MaxResults" :: Maybe (MaxResults) } -> {"NextToken" :: Maybe (NextToken) , "MaxResults" :: Maybe (MaxResults) } ) -> ListCustomVerificationEmailTemplatesRequest
+newListCustomVerificationEmailTemplatesRequest'  customize = (ListCustomVerificationEmailTemplatesRequest <<< customize) { "MaxResults": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p>A paginated list of custom verification email templates.</p>
 newtype ListCustomVerificationEmailTemplatesResponse = ListCustomVerificationEmailTemplatesResponse 
-  { "CustomVerificationEmailTemplates" :: NullOrUndefined (CustomVerificationEmailTemplates)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "CustomVerificationEmailTemplates" :: Maybe (CustomVerificationEmailTemplates)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListCustomVerificationEmailTemplatesResponse :: Newtype ListCustomVerificationEmailTemplatesResponse _
 derive instance repGenericListCustomVerificationEmailTemplatesResponse :: Generic ListCustomVerificationEmailTemplatesResponse _
@@ -2607,20 +2606,20 @@ instance encodeListCustomVerificationEmailTemplatesResponse :: Encode ListCustom
 
 -- | Constructs ListCustomVerificationEmailTemplatesResponse from required parameters
 newListCustomVerificationEmailTemplatesResponse :: ListCustomVerificationEmailTemplatesResponse
-newListCustomVerificationEmailTemplatesResponse  = ListCustomVerificationEmailTemplatesResponse { "CustomVerificationEmailTemplates": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListCustomVerificationEmailTemplatesResponse  = ListCustomVerificationEmailTemplatesResponse { "CustomVerificationEmailTemplates": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListCustomVerificationEmailTemplatesResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListCustomVerificationEmailTemplatesResponse' :: ( { "CustomVerificationEmailTemplates" :: NullOrUndefined (CustomVerificationEmailTemplates) , "NextToken" :: NullOrUndefined (NextToken) } -> {"CustomVerificationEmailTemplates" :: NullOrUndefined (CustomVerificationEmailTemplates) , "NextToken" :: NullOrUndefined (NextToken) } ) -> ListCustomVerificationEmailTemplatesResponse
-newListCustomVerificationEmailTemplatesResponse'  customize = (ListCustomVerificationEmailTemplatesResponse <<< customize) { "CustomVerificationEmailTemplates": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListCustomVerificationEmailTemplatesResponse' :: ( { "CustomVerificationEmailTemplates" :: Maybe (CustomVerificationEmailTemplates) , "NextToken" :: Maybe (NextToken) } -> {"CustomVerificationEmailTemplates" :: Maybe (CustomVerificationEmailTemplates) , "NextToken" :: Maybe (NextToken) } ) -> ListCustomVerificationEmailTemplatesResponse
+newListCustomVerificationEmailTemplatesResponse'  customize = (ListCustomVerificationEmailTemplatesResponse <<< customize) { "CustomVerificationEmailTemplates": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p>Represents a request to return a list of all identities (email addresses and domains) that you have attempted to verify under your AWS account, regardless of verification status.</p>
 newtype ListIdentitiesRequest = ListIdentitiesRequest 
-  { "IdentityType" :: NullOrUndefined (IdentityType)
-  , "NextToken" :: NullOrUndefined (NextToken)
-  , "MaxItems" :: NullOrUndefined (MaxItems)
+  { "IdentityType" :: Maybe (IdentityType)
+  , "NextToken" :: Maybe (NextToken)
+  , "MaxItems" :: Maybe (MaxItems)
   }
 derive instance newtypeListIdentitiesRequest :: Newtype ListIdentitiesRequest _
 derive instance repGenericListIdentitiesRequest :: Generic ListIdentitiesRequest _
@@ -2630,19 +2629,19 @@ instance encodeListIdentitiesRequest :: Encode ListIdentitiesRequest where encod
 
 -- | Constructs ListIdentitiesRequest from required parameters
 newListIdentitiesRequest :: ListIdentitiesRequest
-newListIdentitiesRequest  = ListIdentitiesRequest { "IdentityType": (NullOrUndefined Nothing), "MaxItems": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListIdentitiesRequest  = ListIdentitiesRequest { "IdentityType": Nothing, "MaxItems": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListIdentitiesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListIdentitiesRequest' :: ( { "IdentityType" :: NullOrUndefined (IdentityType) , "NextToken" :: NullOrUndefined (NextToken) , "MaxItems" :: NullOrUndefined (MaxItems) } -> {"IdentityType" :: NullOrUndefined (IdentityType) , "NextToken" :: NullOrUndefined (NextToken) , "MaxItems" :: NullOrUndefined (MaxItems) } ) -> ListIdentitiesRequest
-newListIdentitiesRequest'  customize = (ListIdentitiesRequest <<< customize) { "IdentityType": (NullOrUndefined Nothing), "MaxItems": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListIdentitiesRequest' :: ( { "IdentityType" :: Maybe (IdentityType) , "NextToken" :: Maybe (NextToken) , "MaxItems" :: Maybe (MaxItems) } -> {"IdentityType" :: Maybe (IdentityType) , "NextToken" :: Maybe (NextToken) , "MaxItems" :: Maybe (MaxItems) } ) -> ListIdentitiesRequest
+newListIdentitiesRequest'  customize = (ListIdentitiesRequest <<< customize) { "IdentityType": Nothing, "MaxItems": Nothing, "NextToken": Nothing }
 
 
 
 -- | <p>A list of all identities that you have attempted to verify under your AWS account, regardless of verification status.</p>
 newtype ListIdentitiesResponse = ListIdentitiesResponse 
   { "Identities" :: (IdentityList)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListIdentitiesResponse :: Newtype ListIdentitiesResponse _
 derive instance repGenericListIdentitiesResponse :: Generic ListIdentitiesResponse _
@@ -2652,12 +2651,12 @@ instance encodeListIdentitiesResponse :: Encode ListIdentitiesResponse where enc
 
 -- | Constructs ListIdentitiesResponse from required parameters
 newListIdentitiesResponse :: IdentityList -> ListIdentitiesResponse
-newListIdentitiesResponse _Identities = ListIdentitiesResponse { "Identities": _Identities, "NextToken": (NullOrUndefined Nothing) }
+newListIdentitiesResponse _Identities = ListIdentitiesResponse { "Identities": _Identities, "NextToken": Nothing }
 
 -- | Constructs ListIdentitiesResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListIdentitiesResponse' :: IdentityList -> ( { "Identities" :: (IdentityList) , "NextToken" :: NullOrUndefined (NextToken) } -> {"Identities" :: (IdentityList) , "NextToken" :: NullOrUndefined (NextToken) } ) -> ListIdentitiesResponse
-newListIdentitiesResponse' _Identities customize = (ListIdentitiesResponse <<< customize) { "Identities": _Identities, "NextToken": (NullOrUndefined Nothing) }
+newListIdentitiesResponse' :: IdentityList -> ( { "Identities" :: (IdentityList) , "NextToken" :: Maybe (NextToken) } -> {"Identities" :: (IdentityList) , "NextToken" :: Maybe (NextToken) } ) -> ListIdentitiesResponse
+newListIdentitiesResponse' _Identities customize = (ListIdentitiesResponse <<< customize) { "Identities": _Identities, "NextToken": Nothing }
 
 
 
@@ -2715,7 +2714,7 @@ instance encodeListReceiptFiltersRequest :: Encode ListReceiptFiltersRequest whe
 
 -- | <p>A list of IP address filters that exist under your AWS account.</p>
 newtype ListReceiptFiltersResponse = ListReceiptFiltersResponse 
-  { "Filters" :: NullOrUndefined (ReceiptFilterList)
+  { "Filters" :: Maybe (ReceiptFilterList)
   }
 derive instance newtypeListReceiptFiltersResponse :: Newtype ListReceiptFiltersResponse _
 derive instance repGenericListReceiptFiltersResponse :: Generic ListReceiptFiltersResponse _
@@ -2725,18 +2724,18 @@ instance encodeListReceiptFiltersResponse :: Encode ListReceiptFiltersResponse w
 
 -- | Constructs ListReceiptFiltersResponse from required parameters
 newListReceiptFiltersResponse :: ListReceiptFiltersResponse
-newListReceiptFiltersResponse  = ListReceiptFiltersResponse { "Filters": (NullOrUndefined Nothing) }
+newListReceiptFiltersResponse  = ListReceiptFiltersResponse { "Filters": Nothing }
 
 -- | Constructs ListReceiptFiltersResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListReceiptFiltersResponse' :: ( { "Filters" :: NullOrUndefined (ReceiptFilterList) } -> {"Filters" :: NullOrUndefined (ReceiptFilterList) } ) -> ListReceiptFiltersResponse
-newListReceiptFiltersResponse'  customize = (ListReceiptFiltersResponse <<< customize) { "Filters": (NullOrUndefined Nothing) }
+newListReceiptFiltersResponse' :: ( { "Filters" :: Maybe (ReceiptFilterList) } -> {"Filters" :: Maybe (ReceiptFilterList) } ) -> ListReceiptFiltersResponse
+newListReceiptFiltersResponse'  customize = (ListReceiptFiltersResponse <<< customize) { "Filters": Nothing }
 
 
 
 -- | <p>Represents a request to list the receipt rule sets that exist under your AWS account. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
 newtype ListReceiptRuleSetsRequest = ListReceiptRuleSetsRequest 
-  { "NextToken" :: NullOrUndefined (NextToken)
+  { "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListReceiptRuleSetsRequest :: Newtype ListReceiptRuleSetsRequest _
 derive instance repGenericListReceiptRuleSetsRequest :: Generic ListReceiptRuleSetsRequest _
@@ -2746,19 +2745,19 @@ instance encodeListReceiptRuleSetsRequest :: Encode ListReceiptRuleSetsRequest w
 
 -- | Constructs ListReceiptRuleSetsRequest from required parameters
 newListReceiptRuleSetsRequest :: ListReceiptRuleSetsRequest
-newListReceiptRuleSetsRequest  = ListReceiptRuleSetsRequest { "NextToken": (NullOrUndefined Nothing) }
+newListReceiptRuleSetsRequest  = ListReceiptRuleSetsRequest { "NextToken": Nothing }
 
 -- | Constructs ListReceiptRuleSetsRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListReceiptRuleSetsRequest' :: ( { "NextToken" :: NullOrUndefined (NextToken) } -> {"NextToken" :: NullOrUndefined (NextToken) } ) -> ListReceiptRuleSetsRequest
-newListReceiptRuleSetsRequest'  customize = (ListReceiptRuleSetsRequest <<< customize) { "NextToken": (NullOrUndefined Nothing) }
+newListReceiptRuleSetsRequest' :: ( { "NextToken" :: Maybe (NextToken) } -> {"NextToken" :: Maybe (NextToken) } ) -> ListReceiptRuleSetsRequest
+newListReceiptRuleSetsRequest'  customize = (ListReceiptRuleSetsRequest <<< customize) { "NextToken": Nothing }
 
 
 
 -- | <p>A list of receipt rule sets that exist under your AWS account.</p>
 newtype ListReceiptRuleSetsResponse = ListReceiptRuleSetsResponse 
-  { "RuleSets" :: NullOrUndefined (ReceiptRuleSetsLists)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "RuleSets" :: Maybe (ReceiptRuleSetsLists)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListReceiptRuleSetsResponse :: Newtype ListReceiptRuleSetsResponse _
 derive instance repGenericListReceiptRuleSetsResponse :: Generic ListReceiptRuleSetsResponse _
@@ -2768,18 +2767,18 @@ instance encodeListReceiptRuleSetsResponse :: Encode ListReceiptRuleSetsResponse
 
 -- | Constructs ListReceiptRuleSetsResponse from required parameters
 newListReceiptRuleSetsResponse :: ListReceiptRuleSetsResponse
-newListReceiptRuleSetsResponse  = ListReceiptRuleSetsResponse { "NextToken": (NullOrUndefined Nothing), "RuleSets": (NullOrUndefined Nothing) }
+newListReceiptRuleSetsResponse  = ListReceiptRuleSetsResponse { "NextToken": Nothing, "RuleSets": Nothing }
 
 -- | Constructs ListReceiptRuleSetsResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListReceiptRuleSetsResponse' :: ( { "RuleSets" :: NullOrUndefined (ReceiptRuleSetsLists) , "NextToken" :: NullOrUndefined (NextToken) } -> {"RuleSets" :: NullOrUndefined (ReceiptRuleSetsLists) , "NextToken" :: NullOrUndefined (NextToken) } ) -> ListReceiptRuleSetsResponse
-newListReceiptRuleSetsResponse'  customize = (ListReceiptRuleSetsResponse <<< customize) { "NextToken": (NullOrUndefined Nothing), "RuleSets": (NullOrUndefined Nothing) }
+newListReceiptRuleSetsResponse' :: ( { "RuleSets" :: Maybe (ReceiptRuleSetsLists) , "NextToken" :: Maybe (NextToken) } -> {"RuleSets" :: Maybe (ReceiptRuleSetsLists) , "NextToken" :: Maybe (NextToken) } ) -> ListReceiptRuleSetsResponse
+newListReceiptRuleSetsResponse'  customize = (ListReceiptRuleSetsResponse <<< customize) { "NextToken": Nothing, "RuleSets": Nothing }
 
 
 
 newtype ListTemplatesRequest = ListTemplatesRequest 
-  { "NextToken" :: NullOrUndefined (NextToken)
-  , "MaxItems" :: NullOrUndefined (MaxItems)
+  { "NextToken" :: Maybe (NextToken)
+  , "MaxItems" :: Maybe (MaxItems)
   }
 derive instance newtypeListTemplatesRequest :: Newtype ListTemplatesRequest _
 derive instance repGenericListTemplatesRequest :: Generic ListTemplatesRequest _
@@ -2789,18 +2788,18 @@ instance encodeListTemplatesRequest :: Encode ListTemplatesRequest where encode 
 
 -- | Constructs ListTemplatesRequest from required parameters
 newListTemplatesRequest :: ListTemplatesRequest
-newListTemplatesRequest  = ListTemplatesRequest { "MaxItems": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListTemplatesRequest  = ListTemplatesRequest { "MaxItems": Nothing, "NextToken": Nothing }
 
 -- | Constructs ListTemplatesRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListTemplatesRequest' :: ( { "NextToken" :: NullOrUndefined (NextToken) , "MaxItems" :: NullOrUndefined (MaxItems) } -> {"NextToken" :: NullOrUndefined (NextToken) , "MaxItems" :: NullOrUndefined (MaxItems) } ) -> ListTemplatesRequest
-newListTemplatesRequest'  customize = (ListTemplatesRequest <<< customize) { "MaxItems": (NullOrUndefined Nothing), "NextToken": (NullOrUndefined Nothing) }
+newListTemplatesRequest' :: ( { "NextToken" :: Maybe (NextToken) , "MaxItems" :: Maybe (MaxItems) } -> {"NextToken" :: Maybe (NextToken) , "MaxItems" :: Maybe (MaxItems) } ) -> ListTemplatesRequest
+newListTemplatesRequest'  customize = (ListTemplatesRequest <<< customize) { "MaxItems": Nothing, "NextToken": Nothing }
 
 
 
 newtype ListTemplatesResponse = ListTemplatesResponse 
-  { "TemplatesMetadata" :: NullOrUndefined (TemplateMetadataList)
-  , "NextToken" :: NullOrUndefined (NextToken)
+  { "TemplatesMetadata" :: Maybe (TemplateMetadataList)
+  , "NextToken" :: Maybe (NextToken)
   }
 derive instance newtypeListTemplatesResponse :: Newtype ListTemplatesResponse _
 derive instance repGenericListTemplatesResponse :: Generic ListTemplatesResponse _
@@ -2810,18 +2809,18 @@ instance encodeListTemplatesResponse :: Encode ListTemplatesResponse where encod
 
 -- | Constructs ListTemplatesResponse from required parameters
 newListTemplatesResponse :: ListTemplatesResponse
-newListTemplatesResponse  = ListTemplatesResponse { "NextToken": (NullOrUndefined Nothing), "TemplatesMetadata": (NullOrUndefined Nothing) }
+newListTemplatesResponse  = ListTemplatesResponse { "NextToken": Nothing, "TemplatesMetadata": Nothing }
 
 -- | Constructs ListTemplatesResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListTemplatesResponse' :: ( { "TemplatesMetadata" :: NullOrUndefined (TemplateMetadataList) , "NextToken" :: NullOrUndefined (NextToken) } -> {"TemplatesMetadata" :: NullOrUndefined (TemplateMetadataList) , "NextToken" :: NullOrUndefined (NextToken) } ) -> ListTemplatesResponse
-newListTemplatesResponse'  customize = (ListTemplatesResponse <<< customize) { "NextToken": (NullOrUndefined Nothing), "TemplatesMetadata": (NullOrUndefined Nothing) }
+newListTemplatesResponse' :: ( { "TemplatesMetadata" :: Maybe (TemplateMetadataList) , "NextToken" :: Maybe (NextToken) } -> {"TemplatesMetadata" :: Maybe (TemplateMetadataList) , "NextToken" :: Maybe (NextToken) } ) -> ListTemplatesResponse
+newListTemplatesResponse'  customize = (ListTemplatesResponse <<< customize) { "NextToken": Nothing, "TemplatesMetadata": Nothing }
 
 
 
 -- | <p>A list of email addresses that you have verified with Amazon SES under your AWS account.</p>
 newtype ListVerifiedEmailAddressesResponse = ListVerifiedEmailAddressesResponse 
-  { "VerifiedEmailAddresses" :: NullOrUndefined (AddressList)
+  { "VerifiedEmailAddresses" :: Maybe (AddressList)
   }
 derive instance newtypeListVerifiedEmailAddressesResponse :: Newtype ListVerifiedEmailAddressesResponse _
 derive instance repGenericListVerifiedEmailAddressesResponse :: Generic ListVerifiedEmailAddressesResponse _
@@ -2831,12 +2830,12 @@ instance encodeListVerifiedEmailAddressesResponse :: Encode ListVerifiedEmailAdd
 
 -- | Constructs ListVerifiedEmailAddressesResponse from required parameters
 newListVerifiedEmailAddressesResponse :: ListVerifiedEmailAddressesResponse
-newListVerifiedEmailAddressesResponse  = ListVerifiedEmailAddressesResponse { "VerifiedEmailAddresses": (NullOrUndefined Nothing) }
+newListVerifiedEmailAddressesResponse  = ListVerifiedEmailAddressesResponse { "VerifiedEmailAddresses": Nothing }
 
 -- | Constructs ListVerifiedEmailAddressesResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newListVerifiedEmailAddressesResponse' :: ( { "VerifiedEmailAddresses" :: NullOrUndefined (AddressList) } -> {"VerifiedEmailAddresses" :: NullOrUndefined (AddressList) } ) -> ListVerifiedEmailAddressesResponse
-newListVerifiedEmailAddressesResponse'  customize = (ListVerifiedEmailAddressesResponse <<< customize) { "VerifiedEmailAddresses": (NullOrUndefined Nothing) }
+newListVerifiedEmailAddressesResponse' :: ( { "VerifiedEmailAddresses" :: Maybe (AddressList) } -> {"VerifiedEmailAddresses" :: Maybe (AddressList) } ) -> ListVerifiedEmailAddressesResponse
+newListVerifiedEmailAddressesResponse'  customize = (ListVerifiedEmailAddressesResponse <<< customize) { "VerifiedEmailAddresses": Nothing }
 
 
 
@@ -2938,8 +2937,8 @@ instance encodeMessageData :: Encode MessageData where encode = genericEncode op
 -- | <p>Message-related information to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.</p> <p>For information about receiving email through Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon SES Developer Guide</a>.</p>
 newtype MessageDsn = MessageDsn 
   { "ReportingMta" :: (ReportingMta)
-  , "ArrivalDate" :: NullOrUndefined (ArrivalDate)
-  , "ExtensionFields" :: NullOrUndefined (ExtensionFieldList)
+  , "ArrivalDate" :: Maybe (ArrivalDate)
+  , "ExtensionFields" :: Maybe (ExtensionFieldList)
   }
 derive instance newtypeMessageDsn :: Newtype MessageDsn _
 derive instance repGenericMessageDsn :: Generic MessageDsn _
@@ -2949,12 +2948,12 @@ instance encodeMessageDsn :: Encode MessageDsn where encode = genericEncode opti
 
 -- | Constructs MessageDsn from required parameters
 newMessageDsn :: ReportingMta -> MessageDsn
-newMessageDsn _ReportingMta = MessageDsn { "ReportingMta": _ReportingMta, "ArrivalDate": (NullOrUndefined Nothing), "ExtensionFields": (NullOrUndefined Nothing) }
+newMessageDsn _ReportingMta = MessageDsn { "ReportingMta": _ReportingMta, "ArrivalDate": Nothing, "ExtensionFields": Nothing }
 
 -- | Constructs MessageDsn's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newMessageDsn' :: ReportingMta -> ( { "ReportingMta" :: (ReportingMta) , "ArrivalDate" :: NullOrUndefined (ArrivalDate) , "ExtensionFields" :: NullOrUndefined (ExtensionFieldList) } -> {"ReportingMta" :: (ReportingMta) , "ArrivalDate" :: NullOrUndefined (ArrivalDate) , "ExtensionFields" :: NullOrUndefined (ExtensionFieldList) } ) -> MessageDsn
-newMessageDsn' _ReportingMta customize = (MessageDsn <<< customize) { "ReportingMta": _ReportingMta, "ArrivalDate": (NullOrUndefined Nothing), "ExtensionFields": (NullOrUndefined Nothing) }
+newMessageDsn' :: ReportingMta -> ( { "ReportingMta" :: (ReportingMta) , "ArrivalDate" :: Maybe (ArrivalDate) , "ExtensionFields" :: Maybe (ExtensionFieldList) } -> {"ReportingMta" :: (ReportingMta) , "ArrivalDate" :: Maybe (ArrivalDate) , "ExtensionFields" :: Maybe (ExtensionFieldList) } ) -> MessageDsn
+newMessageDsn' _ReportingMta customize = (MessageDsn <<< customize) { "ReportingMta": _ReportingMta, "ArrivalDate": Nothing, "ExtensionFields": Nothing }
 
 
 
@@ -3028,7 +3027,7 @@ instance encodeMessageTagValue :: Encode MessageTagValue where encode = genericE
 
 -- | <p>Indicates that one or more of the replacement values for the specified template was not specified. Ensure that the TemplateData object contains references to all of the replacement tags in the specified template.</p>
 newtype MissingRenderingAttributeException = MissingRenderingAttributeException 
-  { "TemplateName" :: NullOrUndefined (TemplateName)
+  { "TemplateName" :: Maybe (TemplateName)
   }
 derive instance newtypeMissingRenderingAttributeException :: Newtype MissingRenderingAttributeException _
 derive instance repGenericMissingRenderingAttributeException :: Generic MissingRenderingAttributeException _
@@ -3038,12 +3037,12 @@ instance encodeMissingRenderingAttributeException :: Encode MissingRenderingAttr
 
 -- | Constructs MissingRenderingAttributeException from required parameters
 newMissingRenderingAttributeException :: MissingRenderingAttributeException
-newMissingRenderingAttributeException  = MissingRenderingAttributeException { "TemplateName": (NullOrUndefined Nothing) }
+newMissingRenderingAttributeException  = MissingRenderingAttributeException { "TemplateName": Nothing }
 
 -- | Constructs MissingRenderingAttributeException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newMissingRenderingAttributeException' :: ( { "TemplateName" :: NullOrUndefined (TemplateName) } -> {"TemplateName" :: NullOrUndefined (TemplateName) } ) -> MissingRenderingAttributeException
-newMissingRenderingAttributeException'  customize = (MissingRenderingAttributeException <<< customize) { "TemplateName": (NullOrUndefined Nothing) }
+newMissingRenderingAttributeException' :: ( { "TemplateName" :: Maybe (TemplateName) } -> {"TemplateName" :: Maybe (TemplateName) } ) -> MissingRenderingAttributeException
+newMissingRenderingAttributeException'  customize = (MissingRenderingAttributeException <<< customize) { "TemplateName": Nothing }
 
 
 
@@ -3194,13 +3193,13 @@ instance encodeRawMessageData :: Encode RawMessageData where encode = genericEnc
 
 -- | <p>An action that Amazon SES can take when it receives an email on behalf of one or more email addresses or domains that you own. An instance of this data type can represent only one action.</p> <p>For information about setting up receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html">Amazon SES Developer Guide</a>.</p>
 newtype ReceiptAction = ReceiptAction 
-  { "S3Action" :: NullOrUndefined (S3Action)
-  , "BounceAction" :: NullOrUndefined (BounceAction)
-  , "WorkmailAction" :: NullOrUndefined (WorkmailAction)
-  , "LambdaAction" :: NullOrUndefined (LambdaAction)
-  , "StopAction" :: NullOrUndefined (StopAction)
-  , "AddHeaderAction" :: NullOrUndefined (AddHeaderAction)
-  , "SNSAction" :: NullOrUndefined (SNSAction)
+  { "S3Action" :: Maybe (S3Action)
+  , "BounceAction" :: Maybe (BounceAction)
+  , "WorkmailAction" :: Maybe (WorkmailAction)
+  , "LambdaAction" :: Maybe (LambdaAction)
+  , "StopAction" :: Maybe (StopAction)
+  , "AddHeaderAction" :: Maybe (AddHeaderAction)
+  , "SNSAction" :: Maybe (SNSAction)
   }
 derive instance newtypeReceiptAction :: Newtype ReceiptAction _
 derive instance repGenericReceiptAction :: Generic ReceiptAction _
@@ -3210,12 +3209,12 @@ instance encodeReceiptAction :: Encode ReceiptAction where encode = genericEncod
 
 -- | Constructs ReceiptAction from required parameters
 newReceiptAction :: ReceiptAction
-newReceiptAction  = ReceiptAction { "AddHeaderAction": (NullOrUndefined Nothing), "BounceAction": (NullOrUndefined Nothing), "LambdaAction": (NullOrUndefined Nothing), "S3Action": (NullOrUndefined Nothing), "SNSAction": (NullOrUndefined Nothing), "StopAction": (NullOrUndefined Nothing), "WorkmailAction": (NullOrUndefined Nothing) }
+newReceiptAction  = ReceiptAction { "AddHeaderAction": Nothing, "BounceAction": Nothing, "LambdaAction": Nothing, "S3Action": Nothing, "SNSAction": Nothing, "StopAction": Nothing, "WorkmailAction": Nothing }
 
 -- | Constructs ReceiptAction's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newReceiptAction' :: ( { "S3Action" :: NullOrUndefined (S3Action) , "BounceAction" :: NullOrUndefined (BounceAction) , "WorkmailAction" :: NullOrUndefined (WorkmailAction) , "LambdaAction" :: NullOrUndefined (LambdaAction) , "StopAction" :: NullOrUndefined (StopAction) , "AddHeaderAction" :: NullOrUndefined (AddHeaderAction) , "SNSAction" :: NullOrUndefined (SNSAction) } -> {"S3Action" :: NullOrUndefined (S3Action) , "BounceAction" :: NullOrUndefined (BounceAction) , "WorkmailAction" :: NullOrUndefined (WorkmailAction) , "LambdaAction" :: NullOrUndefined (LambdaAction) , "StopAction" :: NullOrUndefined (StopAction) , "AddHeaderAction" :: NullOrUndefined (AddHeaderAction) , "SNSAction" :: NullOrUndefined (SNSAction) } ) -> ReceiptAction
-newReceiptAction'  customize = (ReceiptAction <<< customize) { "AddHeaderAction": (NullOrUndefined Nothing), "BounceAction": (NullOrUndefined Nothing), "LambdaAction": (NullOrUndefined Nothing), "S3Action": (NullOrUndefined Nothing), "SNSAction": (NullOrUndefined Nothing), "StopAction": (NullOrUndefined Nothing), "WorkmailAction": (NullOrUndefined Nothing) }
+newReceiptAction' :: ( { "S3Action" :: Maybe (S3Action) , "BounceAction" :: Maybe (BounceAction) , "WorkmailAction" :: Maybe (WorkmailAction) , "LambdaAction" :: Maybe (LambdaAction) , "StopAction" :: Maybe (StopAction) , "AddHeaderAction" :: Maybe (AddHeaderAction) , "SNSAction" :: Maybe (SNSAction) } -> {"S3Action" :: Maybe (S3Action) , "BounceAction" :: Maybe (BounceAction) , "WorkmailAction" :: Maybe (WorkmailAction) , "LambdaAction" :: Maybe (LambdaAction) , "StopAction" :: Maybe (StopAction) , "AddHeaderAction" :: Maybe (AddHeaderAction) , "SNSAction" :: Maybe (SNSAction) } ) -> ReceiptAction
+newReceiptAction'  customize = (ReceiptAction <<< customize) { "AddHeaderAction": Nothing, "BounceAction": Nothing, "LambdaAction": Nothing, "S3Action": Nothing, "SNSAction": Nothing, "StopAction": Nothing, "WorkmailAction": Nothing }
 
 
 
@@ -3302,11 +3301,11 @@ newReceiptIpFilter' _Cidr _Policy customize = (ReceiptIpFilter <<< customize) { 
 -- | <p>Receipt rules enable you to specify which actions Amazon SES should take when it receives mail on behalf of one or more email addresses or domains that you own.</p> <p>Each receipt rule defines a set of email addresses or domains that it applies to. If the email addresses or domains match at least one recipient address of the message, Amazon SES executes all of the receipt rule's actions on the message.</p> <p>For information about setting up receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html">Amazon SES Developer Guide</a>.</p>
 newtype ReceiptRule = ReceiptRule 
   { "Name" :: (ReceiptRuleName)
-  , "Enabled" :: NullOrUndefined (Enabled)
-  , "TlsPolicy" :: NullOrUndefined (TlsPolicy)
-  , "Recipients" :: NullOrUndefined (RecipientsList)
-  , "Actions" :: NullOrUndefined (ReceiptActionsList)
-  , "ScanEnabled" :: NullOrUndefined (Enabled)
+  , "Enabled" :: Maybe (Enabled)
+  , "TlsPolicy" :: Maybe (TlsPolicy)
+  , "Recipients" :: Maybe (RecipientsList)
+  , "Actions" :: Maybe (ReceiptActionsList)
+  , "ScanEnabled" :: Maybe (Enabled)
   }
 derive instance newtypeReceiptRule :: Newtype ReceiptRule _
 derive instance repGenericReceiptRule :: Generic ReceiptRule _
@@ -3316,12 +3315,12 @@ instance encodeReceiptRule :: Encode ReceiptRule where encode = genericEncode op
 
 -- | Constructs ReceiptRule from required parameters
 newReceiptRule :: ReceiptRuleName -> ReceiptRule
-newReceiptRule _Name = ReceiptRule { "Name": _Name, "Actions": (NullOrUndefined Nothing), "Enabled": (NullOrUndefined Nothing), "Recipients": (NullOrUndefined Nothing), "ScanEnabled": (NullOrUndefined Nothing), "TlsPolicy": (NullOrUndefined Nothing) }
+newReceiptRule _Name = ReceiptRule { "Name": _Name, "Actions": Nothing, "Enabled": Nothing, "Recipients": Nothing, "ScanEnabled": Nothing, "TlsPolicy": Nothing }
 
 -- | Constructs ReceiptRule's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newReceiptRule' :: ReceiptRuleName -> ( { "Name" :: (ReceiptRuleName) , "Enabled" :: NullOrUndefined (Enabled) , "TlsPolicy" :: NullOrUndefined (TlsPolicy) , "Recipients" :: NullOrUndefined (RecipientsList) , "Actions" :: NullOrUndefined (ReceiptActionsList) , "ScanEnabled" :: NullOrUndefined (Enabled) } -> {"Name" :: (ReceiptRuleName) , "Enabled" :: NullOrUndefined (Enabled) , "TlsPolicy" :: NullOrUndefined (TlsPolicy) , "Recipients" :: NullOrUndefined (RecipientsList) , "Actions" :: NullOrUndefined (ReceiptActionsList) , "ScanEnabled" :: NullOrUndefined (Enabled) } ) -> ReceiptRule
-newReceiptRule' _Name customize = (ReceiptRule <<< customize) { "Name": _Name, "Actions": (NullOrUndefined Nothing), "Enabled": (NullOrUndefined Nothing), "Recipients": (NullOrUndefined Nothing), "ScanEnabled": (NullOrUndefined Nothing), "TlsPolicy": (NullOrUndefined Nothing) }
+newReceiptRule' :: ReceiptRuleName -> ( { "Name" :: (ReceiptRuleName) , "Enabled" :: Maybe (Enabled) , "TlsPolicy" :: Maybe (TlsPolicy) , "Recipients" :: Maybe (RecipientsList) , "Actions" :: Maybe (ReceiptActionsList) , "ScanEnabled" :: Maybe (Enabled) } -> {"Name" :: (ReceiptRuleName) , "Enabled" :: Maybe (Enabled) , "TlsPolicy" :: Maybe (TlsPolicy) , "Recipients" :: Maybe (RecipientsList) , "Actions" :: Maybe (ReceiptActionsList) , "ScanEnabled" :: Maybe (Enabled) } ) -> ReceiptRule
+newReceiptRule' _Name customize = (ReceiptRule <<< customize) { "Name": _Name, "Actions": Nothing, "Enabled": Nothing, "Recipients": Nothing, "ScanEnabled": Nothing, "TlsPolicy": Nothing }
 
 
 
@@ -3345,8 +3344,8 @@ instance encodeReceiptRuleNamesList :: Encode ReceiptRuleNamesList where encode 
 
 -- | <p>Information about a receipt rule set.</p> <p>A receipt rule set is a collection of rules that specify what Amazon SES should do with mail it receives on behalf of your account's verified domains.</p> <p>For information about setting up receipt rule sets, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html">Amazon SES Developer Guide</a>.</p>
 newtype ReceiptRuleSetMetadata = ReceiptRuleSetMetadata 
-  { "Name" :: NullOrUndefined (ReceiptRuleSetName)
-  , "CreatedTimestamp" :: NullOrUndefined (Types.Timestamp)
+  { "Name" :: Maybe (ReceiptRuleSetName)
+  , "CreatedTimestamp" :: Maybe (Types.Timestamp)
   }
 derive instance newtypeReceiptRuleSetMetadata :: Newtype ReceiptRuleSetMetadata _
 derive instance repGenericReceiptRuleSetMetadata :: Generic ReceiptRuleSetMetadata _
@@ -3356,12 +3355,12 @@ instance encodeReceiptRuleSetMetadata :: Encode ReceiptRuleSetMetadata where enc
 
 -- | Constructs ReceiptRuleSetMetadata from required parameters
 newReceiptRuleSetMetadata :: ReceiptRuleSetMetadata
-newReceiptRuleSetMetadata  = ReceiptRuleSetMetadata { "CreatedTimestamp": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing) }
+newReceiptRuleSetMetadata  = ReceiptRuleSetMetadata { "CreatedTimestamp": Nothing, "Name": Nothing }
 
 -- | Constructs ReceiptRuleSetMetadata's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newReceiptRuleSetMetadata' :: ( { "Name" :: NullOrUndefined (ReceiptRuleSetName) , "CreatedTimestamp" :: NullOrUndefined (Types.Timestamp) } -> {"Name" :: NullOrUndefined (ReceiptRuleSetName) , "CreatedTimestamp" :: NullOrUndefined (Types.Timestamp) } ) -> ReceiptRuleSetMetadata
-newReceiptRuleSetMetadata'  customize = (ReceiptRuleSetMetadata <<< customize) { "CreatedTimestamp": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing) }
+newReceiptRuleSetMetadata' :: ( { "Name" :: Maybe (ReceiptRuleSetName) , "CreatedTimestamp" :: Maybe (Types.Timestamp) } -> {"Name" :: Maybe (ReceiptRuleSetName) , "CreatedTimestamp" :: Maybe (Types.Timestamp) } ) -> ReceiptRuleSetMetadata
+newReceiptRuleSetMetadata'  customize = (ReceiptRuleSetMetadata <<< customize) { "CreatedTimestamp": Nothing, "Name": Nothing }
 
 
 
@@ -3403,13 +3402,13 @@ instance encodeRecipient :: Encode Recipient where encode = genericEncode option
 
 -- | <p>Recipient-related information to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.</p> <p>For information about receiving email through Amazon SES, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html">Amazon SES Developer Guide</a>.</p>
 newtype RecipientDsnFields = RecipientDsnFields 
-  { "FinalRecipient" :: NullOrUndefined (Address)
+  { "FinalRecipient" :: Maybe (Address)
   , "Action" :: (DsnAction)
-  , "RemoteMta" :: NullOrUndefined (RemoteMta)
+  , "RemoteMta" :: Maybe (RemoteMta)
   , "Status" :: (DsnStatus)
-  , "DiagnosticCode" :: NullOrUndefined (DiagnosticCode)
-  , "LastAttemptDate" :: NullOrUndefined (LastAttemptDate)
-  , "ExtensionFields" :: NullOrUndefined (ExtensionFieldList)
+  , "DiagnosticCode" :: Maybe (DiagnosticCode)
+  , "LastAttemptDate" :: Maybe (LastAttemptDate)
+  , "ExtensionFields" :: Maybe (ExtensionFieldList)
   }
 derive instance newtypeRecipientDsnFields :: Newtype RecipientDsnFields _
 derive instance repGenericRecipientDsnFields :: Generic RecipientDsnFields _
@@ -3419,12 +3418,12 @@ instance encodeRecipientDsnFields :: Encode RecipientDsnFields where encode = ge
 
 -- | Constructs RecipientDsnFields from required parameters
 newRecipientDsnFields :: DsnAction -> DsnStatus -> RecipientDsnFields
-newRecipientDsnFields _Action _Status = RecipientDsnFields { "Action": _Action, "Status": _Status, "DiagnosticCode": (NullOrUndefined Nothing), "ExtensionFields": (NullOrUndefined Nothing), "FinalRecipient": (NullOrUndefined Nothing), "LastAttemptDate": (NullOrUndefined Nothing), "RemoteMta": (NullOrUndefined Nothing) }
+newRecipientDsnFields _Action _Status = RecipientDsnFields { "Action": _Action, "Status": _Status, "DiagnosticCode": Nothing, "ExtensionFields": Nothing, "FinalRecipient": Nothing, "LastAttemptDate": Nothing, "RemoteMta": Nothing }
 
 -- | Constructs RecipientDsnFields's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRecipientDsnFields' :: DsnAction -> DsnStatus -> ( { "FinalRecipient" :: NullOrUndefined (Address) , "Action" :: (DsnAction) , "RemoteMta" :: NullOrUndefined (RemoteMta) , "Status" :: (DsnStatus) , "DiagnosticCode" :: NullOrUndefined (DiagnosticCode) , "LastAttemptDate" :: NullOrUndefined (LastAttemptDate) , "ExtensionFields" :: NullOrUndefined (ExtensionFieldList) } -> {"FinalRecipient" :: NullOrUndefined (Address) , "Action" :: (DsnAction) , "RemoteMta" :: NullOrUndefined (RemoteMta) , "Status" :: (DsnStatus) , "DiagnosticCode" :: NullOrUndefined (DiagnosticCode) , "LastAttemptDate" :: NullOrUndefined (LastAttemptDate) , "ExtensionFields" :: NullOrUndefined (ExtensionFieldList) } ) -> RecipientDsnFields
-newRecipientDsnFields' _Action _Status customize = (RecipientDsnFields <<< customize) { "Action": _Action, "Status": _Status, "DiagnosticCode": (NullOrUndefined Nothing), "ExtensionFields": (NullOrUndefined Nothing), "FinalRecipient": (NullOrUndefined Nothing), "LastAttemptDate": (NullOrUndefined Nothing), "RemoteMta": (NullOrUndefined Nothing) }
+newRecipientDsnFields' :: DsnAction -> DsnStatus -> ( { "FinalRecipient" :: Maybe (Address) , "Action" :: (DsnAction) , "RemoteMta" :: Maybe (RemoteMta) , "Status" :: (DsnStatus) , "DiagnosticCode" :: Maybe (DiagnosticCode) , "LastAttemptDate" :: Maybe (LastAttemptDate) , "ExtensionFields" :: Maybe (ExtensionFieldList) } -> {"FinalRecipient" :: Maybe (Address) , "Action" :: (DsnAction) , "RemoteMta" :: Maybe (RemoteMta) , "Status" :: (DsnStatus) , "DiagnosticCode" :: Maybe (DiagnosticCode) , "LastAttemptDate" :: Maybe (LastAttemptDate) , "ExtensionFields" :: Maybe (ExtensionFieldList) } ) -> RecipientDsnFields
+newRecipientDsnFields' _Action _Status customize = (RecipientDsnFields <<< customize) { "Action": _Action, "Status": _Status, "DiagnosticCode": Nothing, "ExtensionFields": Nothing, "FinalRecipient": Nothing, "LastAttemptDate": Nothing, "RemoteMta": Nothing }
 
 
 
@@ -3498,9 +3497,9 @@ instance encodeReportingMta :: Encode ReportingMta where encode = genericEncode 
 
 -- | <p>Contains information about the reputation settings for a configuration set.</p>
 newtype ReputationOptions = ReputationOptions 
-  { "SendingEnabled" :: NullOrUndefined (Enabled)
-  , "ReputationMetricsEnabled" :: NullOrUndefined (Enabled)
-  , "LastFreshStart" :: NullOrUndefined (LastFreshStart)
+  { "SendingEnabled" :: Maybe (Enabled)
+  , "ReputationMetricsEnabled" :: Maybe (Enabled)
+  , "LastFreshStart" :: Maybe (LastFreshStart)
   }
 derive instance newtypeReputationOptions :: Newtype ReputationOptions _
 derive instance repGenericReputationOptions :: Generic ReputationOptions _
@@ -3510,18 +3509,18 @@ instance encodeReputationOptions :: Encode ReputationOptions where encode = gene
 
 -- | Constructs ReputationOptions from required parameters
 newReputationOptions :: ReputationOptions
-newReputationOptions  = ReputationOptions { "LastFreshStart": (NullOrUndefined Nothing), "ReputationMetricsEnabled": (NullOrUndefined Nothing), "SendingEnabled": (NullOrUndefined Nothing) }
+newReputationOptions  = ReputationOptions { "LastFreshStart": Nothing, "ReputationMetricsEnabled": Nothing, "SendingEnabled": Nothing }
 
 -- | Constructs ReputationOptions's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newReputationOptions' :: ( { "SendingEnabled" :: NullOrUndefined (Enabled) , "ReputationMetricsEnabled" :: NullOrUndefined (Enabled) , "LastFreshStart" :: NullOrUndefined (LastFreshStart) } -> {"SendingEnabled" :: NullOrUndefined (Enabled) , "ReputationMetricsEnabled" :: NullOrUndefined (Enabled) , "LastFreshStart" :: NullOrUndefined (LastFreshStart) } ) -> ReputationOptions
-newReputationOptions'  customize = (ReputationOptions <<< customize) { "LastFreshStart": (NullOrUndefined Nothing), "ReputationMetricsEnabled": (NullOrUndefined Nothing), "SendingEnabled": (NullOrUndefined Nothing) }
+newReputationOptions' :: ( { "SendingEnabled" :: Maybe (Enabled) , "ReputationMetricsEnabled" :: Maybe (Enabled) , "LastFreshStart" :: Maybe (LastFreshStart) } -> {"SendingEnabled" :: Maybe (Enabled) , "ReputationMetricsEnabled" :: Maybe (Enabled) , "LastFreshStart" :: Maybe (LastFreshStart) } ) -> ReputationOptions
+newReputationOptions'  customize = (ReputationOptions <<< customize) { "LastFreshStart": Nothing, "ReputationMetricsEnabled": Nothing, "SendingEnabled": Nothing }
 
 
 
 -- | <p>Indicates that the provided receipt rule does not exist.</p>
 newtype RuleDoesNotExistException = RuleDoesNotExistException 
-  { "Name" :: NullOrUndefined (RuleOrRuleSetName)
+  { "Name" :: Maybe (RuleOrRuleSetName)
   }
 derive instance newtypeRuleDoesNotExistException :: Newtype RuleDoesNotExistException _
 derive instance repGenericRuleDoesNotExistException :: Generic RuleDoesNotExistException _
@@ -3531,12 +3530,12 @@ instance encodeRuleDoesNotExistException :: Encode RuleDoesNotExistException whe
 
 -- | Constructs RuleDoesNotExistException from required parameters
 newRuleDoesNotExistException :: RuleDoesNotExistException
-newRuleDoesNotExistException  = RuleDoesNotExistException { "Name": (NullOrUndefined Nothing) }
+newRuleDoesNotExistException  = RuleDoesNotExistException { "Name": Nothing }
 
 -- | Constructs RuleDoesNotExistException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRuleDoesNotExistException' :: ( { "Name" :: NullOrUndefined (RuleOrRuleSetName) } -> {"Name" :: NullOrUndefined (RuleOrRuleSetName) } ) -> RuleDoesNotExistException
-newRuleDoesNotExistException'  customize = (RuleDoesNotExistException <<< customize) { "Name": (NullOrUndefined Nothing) }
+newRuleDoesNotExistException' :: ( { "Name" :: Maybe (RuleOrRuleSetName) } -> {"Name" :: Maybe (RuleOrRuleSetName) } ) -> RuleDoesNotExistException
+newRuleDoesNotExistException'  customize = (RuleDoesNotExistException <<< customize) { "Name": Nothing }
 
 
 
@@ -3551,7 +3550,7 @@ instance encodeRuleOrRuleSetName :: Encode RuleOrRuleSetName where encode = gene
 
 -- | <p>Indicates that the provided receipt rule set does not exist.</p>
 newtype RuleSetDoesNotExistException = RuleSetDoesNotExistException 
-  { "Name" :: NullOrUndefined (RuleOrRuleSetName)
+  { "Name" :: Maybe (RuleOrRuleSetName)
   }
 derive instance newtypeRuleSetDoesNotExistException :: Newtype RuleSetDoesNotExistException _
 derive instance repGenericRuleSetDoesNotExistException :: Generic RuleSetDoesNotExistException _
@@ -3561,21 +3560,21 @@ instance encodeRuleSetDoesNotExistException :: Encode RuleSetDoesNotExistExcepti
 
 -- | Constructs RuleSetDoesNotExistException from required parameters
 newRuleSetDoesNotExistException :: RuleSetDoesNotExistException
-newRuleSetDoesNotExistException  = RuleSetDoesNotExistException { "Name": (NullOrUndefined Nothing) }
+newRuleSetDoesNotExistException  = RuleSetDoesNotExistException { "Name": Nothing }
 
 -- | Constructs RuleSetDoesNotExistException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newRuleSetDoesNotExistException' :: ( { "Name" :: NullOrUndefined (RuleOrRuleSetName) } -> {"Name" :: NullOrUndefined (RuleOrRuleSetName) } ) -> RuleSetDoesNotExistException
-newRuleSetDoesNotExistException'  customize = (RuleSetDoesNotExistException <<< customize) { "Name": (NullOrUndefined Nothing) }
+newRuleSetDoesNotExistException' :: ( { "Name" :: Maybe (RuleOrRuleSetName) } -> {"Name" :: Maybe (RuleOrRuleSetName) } ) -> RuleSetDoesNotExistException
+newRuleSetDoesNotExistException'  customize = (RuleSetDoesNotExistException <<< customize) { "Name": Nothing }
 
 
 
 -- | <p>When included in a receipt rule, this action saves the received message to an Amazon Simple Storage Service (Amazon S3) bucket and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p> <p>To enable Amazon SES to write emails to your Amazon S3 bucket, use an AWS KMS key to encrypt your emails, or publish to an Amazon SNS topic of another account, Amazon SES must have permission to access those resources. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p> <note> <p>When you save your emails to an Amazon S3 bucket, the maximum email size (including headers) is 30 MB. Emails larger than that will bounce.</p> </note> <p>For information about specifying Amazon S3 actions in receipt rules, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-s3.html">Amazon SES Developer Guide</a>.</p>
 newtype S3Action = S3Action 
-  { "TopicArn" :: NullOrUndefined (AmazonResourceName)
+  { "TopicArn" :: Maybe (AmazonResourceName)
   , "BucketName" :: (S3BucketName)
-  , "ObjectKeyPrefix" :: NullOrUndefined (S3KeyPrefix)
-  , "KmsKeyArn" :: NullOrUndefined (AmazonResourceName)
+  , "ObjectKeyPrefix" :: Maybe (S3KeyPrefix)
+  , "KmsKeyArn" :: Maybe (AmazonResourceName)
   }
 derive instance newtypeS3Action :: Newtype S3Action _
 derive instance repGenericS3Action :: Generic S3Action _
@@ -3585,12 +3584,12 @@ instance encodeS3Action :: Encode S3Action where encode = genericEncode options
 
 -- | Constructs S3Action from required parameters
 newS3Action :: S3BucketName -> S3Action
-newS3Action _BucketName = S3Action { "BucketName": _BucketName, "KmsKeyArn": (NullOrUndefined Nothing), "ObjectKeyPrefix": (NullOrUndefined Nothing), "TopicArn": (NullOrUndefined Nothing) }
+newS3Action _BucketName = S3Action { "BucketName": _BucketName, "KmsKeyArn": Nothing, "ObjectKeyPrefix": Nothing, "TopicArn": Nothing }
 
 -- | Constructs S3Action's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newS3Action' :: S3BucketName -> ( { "TopicArn" :: NullOrUndefined (AmazonResourceName) , "BucketName" :: (S3BucketName) , "ObjectKeyPrefix" :: NullOrUndefined (S3KeyPrefix) , "KmsKeyArn" :: NullOrUndefined (AmazonResourceName) } -> {"TopicArn" :: NullOrUndefined (AmazonResourceName) , "BucketName" :: (S3BucketName) , "ObjectKeyPrefix" :: NullOrUndefined (S3KeyPrefix) , "KmsKeyArn" :: NullOrUndefined (AmazonResourceName) } ) -> S3Action
-newS3Action' _BucketName customize = (S3Action <<< customize) { "BucketName": _BucketName, "KmsKeyArn": (NullOrUndefined Nothing), "ObjectKeyPrefix": (NullOrUndefined Nothing), "TopicArn": (NullOrUndefined Nothing) }
+newS3Action' :: S3BucketName -> ( { "TopicArn" :: Maybe (AmazonResourceName) , "BucketName" :: (S3BucketName) , "ObjectKeyPrefix" :: Maybe (S3KeyPrefix) , "KmsKeyArn" :: Maybe (AmazonResourceName) } -> {"TopicArn" :: Maybe (AmazonResourceName) , "BucketName" :: (S3BucketName) , "ObjectKeyPrefix" :: Maybe (S3KeyPrefix) , "KmsKeyArn" :: Maybe (AmazonResourceName) } ) -> S3Action
+newS3Action' _BucketName customize = (S3Action <<< customize) { "BucketName": _BucketName, "KmsKeyArn": Nothing, "ObjectKeyPrefix": Nothing, "TopicArn": Nothing }
 
 
 
@@ -3615,7 +3614,7 @@ instance encodeS3KeyPrefix :: Encode S3KeyPrefix where encode = genericEncode op
 -- | <p>When included in a receipt rule, this action publishes a notification to Amazon Simple Notification Service (Amazon SNS). This action includes a complete copy of the email content in the Amazon SNS notifications. Amazon SNS notifications for all other actions simply provide information about the email. They do not include the email content itself.</p> <p>If you own the Amazon SNS topic, you don't need to do anything to give Amazon SES permission to publish emails to it. However, if you don't own the Amazon SNS topic, you need to attach a policy to the topic to give Amazon SES permissions to access it. For information about giving permissions, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html">Amazon SES Developer Guide</a>.</p> <important> <p>You can only publish emails that are 150 KB or less (including the header) to Amazon SNS. Larger emails will bounce. If you anticipate emails larger than 150 KB, use the S3 action instead.</p> </important> <p>For information about using a receipt rule to publish an Amazon SNS notification, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-sns.html">Amazon SES Developer Guide</a>.</p>
 newtype SNSAction = SNSAction 
   { "TopicArn" :: (AmazonResourceName)
-  , "Encoding" :: NullOrUndefined (SNSActionEncoding)
+  , "Encoding" :: Maybe (SNSActionEncoding)
   }
 derive instance newtypeSNSAction :: Newtype SNSAction _
 derive instance repGenericSNSAction :: Generic SNSAction _
@@ -3625,12 +3624,12 @@ instance encodeSNSAction :: Encode SNSAction where encode = genericEncode option
 
 -- | Constructs SNSAction from required parameters
 newSNSAction :: AmazonResourceName -> SNSAction
-newSNSAction _TopicArn = SNSAction { "TopicArn": _TopicArn, "Encoding": (NullOrUndefined Nothing) }
+newSNSAction _TopicArn = SNSAction { "TopicArn": _TopicArn, "Encoding": Nothing }
 
 -- | Constructs SNSAction's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSNSAction' :: AmazonResourceName -> ( { "TopicArn" :: (AmazonResourceName) , "Encoding" :: NullOrUndefined (SNSActionEncoding) } -> {"TopicArn" :: (AmazonResourceName) , "Encoding" :: NullOrUndefined (SNSActionEncoding) } ) -> SNSAction
-newSNSAction' _TopicArn customize = (SNSAction <<< customize) { "TopicArn": _TopicArn, "Encoding": (NullOrUndefined Nothing) }
+newSNSAction' :: AmazonResourceName -> ( { "TopicArn" :: (AmazonResourceName) , "Encoding" :: Maybe (SNSActionEncoding) } -> {"TopicArn" :: (AmazonResourceName) , "Encoding" :: Maybe (SNSActionEncoding) } ) -> SNSAction
+newSNSAction' _TopicArn customize = (SNSAction <<< customize) { "TopicArn": _TopicArn, "Encoding": Nothing }
 
 
 
@@ -3668,10 +3667,10 @@ newSNSDestination' _TopicARN customize = (SNSDestination <<< customize) { "Topic
 newtype SendBounceRequest = SendBounceRequest 
   { "OriginalMessageId" :: (MessageId)
   , "BounceSender" :: (Address)
-  , "Explanation" :: NullOrUndefined (Explanation)
-  , "MessageDsn" :: NullOrUndefined (MessageDsn)
+  , "Explanation" :: Maybe (Explanation)
+  , "MessageDsn" :: Maybe (MessageDsn)
   , "BouncedRecipientInfoList" :: (BouncedRecipientInfoList)
-  , "BounceSenderArn" :: NullOrUndefined (AmazonResourceName)
+  , "BounceSenderArn" :: Maybe (AmazonResourceName)
   }
 derive instance newtypeSendBounceRequest :: Newtype SendBounceRequest _
 derive instance repGenericSendBounceRequest :: Generic SendBounceRequest _
@@ -3681,18 +3680,18 @@ instance encodeSendBounceRequest :: Encode SendBounceRequest where encode = gene
 
 -- | Constructs SendBounceRequest from required parameters
 newSendBounceRequest :: Address -> BouncedRecipientInfoList -> MessageId -> SendBounceRequest
-newSendBounceRequest _BounceSender _BouncedRecipientInfoList _OriginalMessageId = SendBounceRequest { "BounceSender": _BounceSender, "BouncedRecipientInfoList": _BouncedRecipientInfoList, "OriginalMessageId": _OriginalMessageId, "BounceSenderArn": (NullOrUndefined Nothing), "Explanation": (NullOrUndefined Nothing), "MessageDsn": (NullOrUndefined Nothing) }
+newSendBounceRequest _BounceSender _BouncedRecipientInfoList _OriginalMessageId = SendBounceRequest { "BounceSender": _BounceSender, "BouncedRecipientInfoList": _BouncedRecipientInfoList, "OriginalMessageId": _OriginalMessageId, "BounceSenderArn": Nothing, "Explanation": Nothing, "MessageDsn": Nothing }
 
 -- | Constructs SendBounceRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSendBounceRequest' :: Address -> BouncedRecipientInfoList -> MessageId -> ( { "OriginalMessageId" :: (MessageId) , "BounceSender" :: (Address) , "Explanation" :: NullOrUndefined (Explanation) , "MessageDsn" :: NullOrUndefined (MessageDsn) , "BouncedRecipientInfoList" :: (BouncedRecipientInfoList) , "BounceSenderArn" :: NullOrUndefined (AmazonResourceName) } -> {"OriginalMessageId" :: (MessageId) , "BounceSender" :: (Address) , "Explanation" :: NullOrUndefined (Explanation) , "MessageDsn" :: NullOrUndefined (MessageDsn) , "BouncedRecipientInfoList" :: (BouncedRecipientInfoList) , "BounceSenderArn" :: NullOrUndefined (AmazonResourceName) } ) -> SendBounceRequest
-newSendBounceRequest' _BounceSender _BouncedRecipientInfoList _OriginalMessageId customize = (SendBounceRequest <<< customize) { "BounceSender": _BounceSender, "BouncedRecipientInfoList": _BouncedRecipientInfoList, "OriginalMessageId": _OriginalMessageId, "BounceSenderArn": (NullOrUndefined Nothing), "Explanation": (NullOrUndefined Nothing), "MessageDsn": (NullOrUndefined Nothing) }
+newSendBounceRequest' :: Address -> BouncedRecipientInfoList -> MessageId -> ( { "OriginalMessageId" :: (MessageId) , "BounceSender" :: (Address) , "Explanation" :: Maybe (Explanation) , "MessageDsn" :: Maybe (MessageDsn) , "BouncedRecipientInfoList" :: (BouncedRecipientInfoList) , "BounceSenderArn" :: Maybe (AmazonResourceName) } -> {"OriginalMessageId" :: (MessageId) , "BounceSender" :: (Address) , "Explanation" :: Maybe (Explanation) , "MessageDsn" :: Maybe (MessageDsn) , "BouncedRecipientInfoList" :: (BouncedRecipientInfoList) , "BounceSenderArn" :: Maybe (AmazonResourceName) } ) -> SendBounceRequest
+newSendBounceRequest' _BounceSender _BouncedRecipientInfoList _OriginalMessageId customize = (SendBounceRequest <<< customize) { "BounceSender": _BounceSender, "BouncedRecipientInfoList": _BouncedRecipientInfoList, "OriginalMessageId": _OriginalMessageId, "BounceSenderArn": Nothing, "Explanation": Nothing, "MessageDsn": Nothing }
 
 
 
 -- | <p>Represents a unique message ID.</p>
 newtype SendBounceResponse = SendBounceResponse 
-  { "MessageId" :: NullOrUndefined (MessageId)
+  { "MessageId" :: Maybe (MessageId)
   }
 derive instance newtypeSendBounceResponse :: Newtype SendBounceResponse _
 derive instance repGenericSendBounceResponse :: Generic SendBounceResponse _
@@ -3702,27 +3701,27 @@ instance encodeSendBounceResponse :: Encode SendBounceResponse where encode = ge
 
 -- | Constructs SendBounceResponse from required parameters
 newSendBounceResponse :: SendBounceResponse
-newSendBounceResponse  = SendBounceResponse { "MessageId": (NullOrUndefined Nothing) }
+newSendBounceResponse  = SendBounceResponse { "MessageId": Nothing }
 
 -- | Constructs SendBounceResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSendBounceResponse' :: ( { "MessageId" :: NullOrUndefined (MessageId) } -> {"MessageId" :: NullOrUndefined (MessageId) } ) -> SendBounceResponse
-newSendBounceResponse'  customize = (SendBounceResponse <<< customize) { "MessageId": (NullOrUndefined Nothing) }
+newSendBounceResponse' :: ( { "MessageId" :: Maybe (MessageId) } -> {"MessageId" :: Maybe (MessageId) } ) -> SendBounceResponse
+newSendBounceResponse'  customize = (SendBounceResponse <<< customize) { "MessageId": Nothing }
 
 
 
 -- | <p>Represents a request to send a templated email to multiple destinations using Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html">Amazon SES Developer Guide</a>.</p>
 newtype SendBulkTemplatedEmailRequest = SendBulkTemplatedEmailRequest 
   { "Source" :: (Address)
-  , "SourceArn" :: NullOrUndefined (AmazonResourceName)
-  , "ReplyToAddresses" :: NullOrUndefined (AddressList)
-  , "ReturnPath" :: NullOrUndefined (Address)
-  , "ReturnPathArn" :: NullOrUndefined (AmazonResourceName)
-  , "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName)
-  , "DefaultTags" :: NullOrUndefined (MessageTagList)
+  , "SourceArn" :: Maybe (AmazonResourceName)
+  , "ReplyToAddresses" :: Maybe (AddressList)
+  , "ReturnPath" :: Maybe (Address)
+  , "ReturnPathArn" :: Maybe (AmazonResourceName)
+  , "ConfigurationSetName" :: Maybe (ConfigurationSetName)
+  , "DefaultTags" :: Maybe (MessageTagList)
   , "Template" :: (TemplateName)
-  , "TemplateArn" :: NullOrUndefined (AmazonResourceName)
-  , "DefaultTemplateData" :: NullOrUndefined (TemplateData)
+  , "TemplateArn" :: Maybe (AmazonResourceName)
+  , "DefaultTemplateData" :: Maybe (TemplateData)
   , "Destinations" :: (BulkEmailDestinationList)
   }
 derive instance newtypeSendBulkTemplatedEmailRequest :: Newtype SendBulkTemplatedEmailRequest _
@@ -3733,12 +3732,12 @@ instance encodeSendBulkTemplatedEmailRequest :: Encode SendBulkTemplatedEmailReq
 
 -- | Constructs SendBulkTemplatedEmailRequest from required parameters
 newSendBulkTemplatedEmailRequest :: BulkEmailDestinationList -> Address -> TemplateName -> SendBulkTemplatedEmailRequest
-newSendBulkTemplatedEmailRequest _Destinations _Source _Template = SendBulkTemplatedEmailRequest { "Destinations": _Destinations, "Source": _Source, "Template": _Template, "ConfigurationSetName": (NullOrUndefined Nothing), "DefaultTags": (NullOrUndefined Nothing), "DefaultTemplateData": (NullOrUndefined Nothing), "ReplyToAddresses": (NullOrUndefined Nothing), "ReturnPath": (NullOrUndefined Nothing), "ReturnPathArn": (NullOrUndefined Nothing), "SourceArn": (NullOrUndefined Nothing), "TemplateArn": (NullOrUndefined Nothing) }
+newSendBulkTemplatedEmailRequest _Destinations _Source _Template = SendBulkTemplatedEmailRequest { "Destinations": _Destinations, "Source": _Source, "Template": _Template, "ConfigurationSetName": Nothing, "DefaultTags": Nothing, "DefaultTemplateData": Nothing, "ReplyToAddresses": Nothing, "ReturnPath": Nothing, "ReturnPathArn": Nothing, "SourceArn": Nothing, "TemplateArn": Nothing }
 
 -- | Constructs SendBulkTemplatedEmailRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSendBulkTemplatedEmailRequest' :: BulkEmailDestinationList -> Address -> TemplateName -> ( { "Source" :: (Address) , "SourceArn" :: NullOrUndefined (AmazonResourceName) , "ReplyToAddresses" :: NullOrUndefined (AddressList) , "ReturnPath" :: NullOrUndefined (Address) , "ReturnPathArn" :: NullOrUndefined (AmazonResourceName) , "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) , "DefaultTags" :: NullOrUndefined (MessageTagList) , "Template" :: (TemplateName) , "TemplateArn" :: NullOrUndefined (AmazonResourceName) , "DefaultTemplateData" :: NullOrUndefined (TemplateData) , "Destinations" :: (BulkEmailDestinationList) } -> {"Source" :: (Address) , "SourceArn" :: NullOrUndefined (AmazonResourceName) , "ReplyToAddresses" :: NullOrUndefined (AddressList) , "ReturnPath" :: NullOrUndefined (Address) , "ReturnPathArn" :: NullOrUndefined (AmazonResourceName) , "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) , "DefaultTags" :: NullOrUndefined (MessageTagList) , "Template" :: (TemplateName) , "TemplateArn" :: NullOrUndefined (AmazonResourceName) , "DefaultTemplateData" :: NullOrUndefined (TemplateData) , "Destinations" :: (BulkEmailDestinationList) } ) -> SendBulkTemplatedEmailRequest
-newSendBulkTemplatedEmailRequest' _Destinations _Source _Template customize = (SendBulkTemplatedEmailRequest <<< customize) { "Destinations": _Destinations, "Source": _Source, "Template": _Template, "ConfigurationSetName": (NullOrUndefined Nothing), "DefaultTags": (NullOrUndefined Nothing), "DefaultTemplateData": (NullOrUndefined Nothing), "ReplyToAddresses": (NullOrUndefined Nothing), "ReturnPath": (NullOrUndefined Nothing), "ReturnPathArn": (NullOrUndefined Nothing), "SourceArn": (NullOrUndefined Nothing), "TemplateArn": (NullOrUndefined Nothing) }
+newSendBulkTemplatedEmailRequest' :: BulkEmailDestinationList -> Address -> TemplateName -> ( { "Source" :: (Address) , "SourceArn" :: Maybe (AmazonResourceName) , "ReplyToAddresses" :: Maybe (AddressList) , "ReturnPath" :: Maybe (Address) , "ReturnPathArn" :: Maybe (AmazonResourceName) , "ConfigurationSetName" :: Maybe (ConfigurationSetName) , "DefaultTags" :: Maybe (MessageTagList) , "Template" :: (TemplateName) , "TemplateArn" :: Maybe (AmazonResourceName) , "DefaultTemplateData" :: Maybe (TemplateData) , "Destinations" :: (BulkEmailDestinationList) } -> {"Source" :: (Address) , "SourceArn" :: Maybe (AmazonResourceName) , "ReplyToAddresses" :: Maybe (AddressList) , "ReturnPath" :: Maybe (Address) , "ReturnPathArn" :: Maybe (AmazonResourceName) , "ConfigurationSetName" :: Maybe (ConfigurationSetName) , "DefaultTags" :: Maybe (MessageTagList) , "Template" :: (TemplateName) , "TemplateArn" :: Maybe (AmazonResourceName) , "DefaultTemplateData" :: Maybe (TemplateData) , "Destinations" :: (BulkEmailDestinationList) } ) -> SendBulkTemplatedEmailRequest
+newSendBulkTemplatedEmailRequest' _Destinations _Source _Template customize = (SendBulkTemplatedEmailRequest <<< customize) { "Destinations": _Destinations, "Source": _Source, "Template": _Template, "ConfigurationSetName": Nothing, "DefaultTags": Nothing, "DefaultTemplateData": Nothing, "ReplyToAddresses": Nothing, "ReturnPath": Nothing, "ReturnPathArn": Nothing, "SourceArn": Nothing, "TemplateArn": Nothing }
 
 
 
@@ -3766,7 +3765,7 @@ newSendBulkTemplatedEmailResponse' _Status customize = (SendBulkTemplatedEmailRe
 newtype SendCustomVerificationEmailRequest = SendCustomVerificationEmailRequest 
   { "EmailAddress" :: (Address)
   , "TemplateName" :: (TemplateName)
-  , "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName)
+  , "ConfigurationSetName" :: Maybe (ConfigurationSetName)
   }
 derive instance newtypeSendCustomVerificationEmailRequest :: Newtype SendCustomVerificationEmailRequest _
 derive instance repGenericSendCustomVerificationEmailRequest :: Generic SendCustomVerificationEmailRequest _
@@ -3776,18 +3775,18 @@ instance encodeSendCustomVerificationEmailRequest :: Encode SendCustomVerificati
 
 -- | Constructs SendCustomVerificationEmailRequest from required parameters
 newSendCustomVerificationEmailRequest :: Address -> TemplateName -> SendCustomVerificationEmailRequest
-newSendCustomVerificationEmailRequest _EmailAddress _TemplateName = SendCustomVerificationEmailRequest { "EmailAddress": _EmailAddress, "TemplateName": _TemplateName, "ConfigurationSetName": (NullOrUndefined Nothing) }
+newSendCustomVerificationEmailRequest _EmailAddress _TemplateName = SendCustomVerificationEmailRequest { "EmailAddress": _EmailAddress, "TemplateName": _TemplateName, "ConfigurationSetName": Nothing }
 
 -- | Constructs SendCustomVerificationEmailRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSendCustomVerificationEmailRequest' :: Address -> TemplateName -> ( { "EmailAddress" :: (Address) , "TemplateName" :: (TemplateName) , "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } -> {"EmailAddress" :: (Address) , "TemplateName" :: (TemplateName) , "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } ) -> SendCustomVerificationEmailRequest
-newSendCustomVerificationEmailRequest' _EmailAddress _TemplateName customize = (SendCustomVerificationEmailRequest <<< customize) { "EmailAddress": _EmailAddress, "TemplateName": _TemplateName, "ConfigurationSetName": (NullOrUndefined Nothing) }
+newSendCustomVerificationEmailRequest' :: Address -> TemplateName -> ( { "EmailAddress" :: (Address) , "TemplateName" :: (TemplateName) , "ConfigurationSetName" :: Maybe (ConfigurationSetName) } -> {"EmailAddress" :: (Address) , "TemplateName" :: (TemplateName) , "ConfigurationSetName" :: Maybe (ConfigurationSetName) } ) -> SendCustomVerificationEmailRequest
+newSendCustomVerificationEmailRequest' _EmailAddress _TemplateName customize = (SendCustomVerificationEmailRequest <<< customize) { "EmailAddress": _EmailAddress, "TemplateName": _TemplateName, "ConfigurationSetName": Nothing }
 
 
 
 -- | <p>The response received when attempting to send the custom verification email.</p>
 newtype SendCustomVerificationEmailResponse = SendCustomVerificationEmailResponse 
-  { "MessageId" :: NullOrUndefined (MessageId)
+  { "MessageId" :: Maybe (MessageId)
   }
 derive instance newtypeSendCustomVerificationEmailResponse :: Newtype SendCustomVerificationEmailResponse _
 derive instance repGenericSendCustomVerificationEmailResponse :: Generic SendCustomVerificationEmailResponse _
@@ -3797,22 +3796,22 @@ instance encodeSendCustomVerificationEmailResponse :: Encode SendCustomVerificat
 
 -- | Constructs SendCustomVerificationEmailResponse from required parameters
 newSendCustomVerificationEmailResponse :: SendCustomVerificationEmailResponse
-newSendCustomVerificationEmailResponse  = SendCustomVerificationEmailResponse { "MessageId": (NullOrUndefined Nothing) }
+newSendCustomVerificationEmailResponse  = SendCustomVerificationEmailResponse { "MessageId": Nothing }
 
 -- | Constructs SendCustomVerificationEmailResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSendCustomVerificationEmailResponse' :: ( { "MessageId" :: NullOrUndefined (MessageId) } -> {"MessageId" :: NullOrUndefined (MessageId) } ) -> SendCustomVerificationEmailResponse
-newSendCustomVerificationEmailResponse'  customize = (SendCustomVerificationEmailResponse <<< customize) { "MessageId": (NullOrUndefined Nothing) }
+newSendCustomVerificationEmailResponse' :: ( { "MessageId" :: Maybe (MessageId) } -> {"MessageId" :: Maybe (MessageId) } ) -> SendCustomVerificationEmailResponse
+newSendCustomVerificationEmailResponse'  customize = (SendCustomVerificationEmailResponse <<< customize) { "MessageId": Nothing }
 
 
 
 -- | <p>Represents sending statistics data. Each <code>SendDataPoint</code> contains statistics for a 15-minute period of sending activity. </p>
 newtype SendDataPoint = SendDataPoint 
-  { "Timestamp" :: NullOrUndefined (Types.Timestamp)
-  , "DeliveryAttempts" :: NullOrUndefined (Counter)
-  , "Bounces" :: NullOrUndefined (Counter)
-  , "Complaints" :: NullOrUndefined (Counter)
-  , "Rejects" :: NullOrUndefined (Counter)
+  { "Timestamp" :: Maybe (Types.Timestamp)
+  , "DeliveryAttempts" :: Maybe (Counter)
+  , "Bounces" :: Maybe (Counter)
+  , "Complaints" :: Maybe (Counter)
+  , "Rejects" :: Maybe (Counter)
   }
 derive instance newtypeSendDataPoint :: Newtype SendDataPoint _
 derive instance repGenericSendDataPoint :: Generic SendDataPoint _
@@ -3822,12 +3821,12 @@ instance encodeSendDataPoint :: Encode SendDataPoint where encode = genericEncod
 
 -- | Constructs SendDataPoint from required parameters
 newSendDataPoint :: SendDataPoint
-newSendDataPoint  = SendDataPoint { "Bounces": (NullOrUndefined Nothing), "Complaints": (NullOrUndefined Nothing), "DeliveryAttempts": (NullOrUndefined Nothing), "Rejects": (NullOrUndefined Nothing), "Timestamp": (NullOrUndefined Nothing) }
+newSendDataPoint  = SendDataPoint { "Bounces": Nothing, "Complaints": Nothing, "DeliveryAttempts": Nothing, "Rejects": Nothing, "Timestamp": Nothing }
 
 -- | Constructs SendDataPoint's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSendDataPoint' :: ( { "Timestamp" :: NullOrUndefined (Types.Timestamp) , "DeliveryAttempts" :: NullOrUndefined (Counter) , "Bounces" :: NullOrUndefined (Counter) , "Complaints" :: NullOrUndefined (Counter) , "Rejects" :: NullOrUndefined (Counter) } -> {"Timestamp" :: NullOrUndefined (Types.Timestamp) , "DeliveryAttempts" :: NullOrUndefined (Counter) , "Bounces" :: NullOrUndefined (Counter) , "Complaints" :: NullOrUndefined (Counter) , "Rejects" :: NullOrUndefined (Counter) } ) -> SendDataPoint
-newSendDataPoint'  customize = (SendDataPoint <<< customize) { "Bounces": (NullOrUndefined Nothing), "Complaints": (NullOrUndefined Nothing), "DeliveryAttempts": (NullOrUndefined Nothing), "Rejects": (NullOrUndefined Nothing), "Timestamp": (NullOrUndefined Nothing) }
+newSendDataPoint' :: ( { "Timestamp" :: Maybe (Types.Timestamp) , "DeliveryAttempts" :: Maybe (Counter) , "Bounces" :: Maybe (Counter) , "Complaints" :: Maybe (Counter) , "Rejects" :: Maybe (Counter) } -> {"Timestamp" :: Maybe (Types.Timestamp) , "DeliveryAttempts" :: Maybe (Counter) , "Bounces" :: Maybe (Counter) , "Complaints" :: Maybe (Counter) , "Rejects" :: Maybe (Counter) } ) -> SendDataPoint
+newSendDataPoint'  customize = (SendDataPoint <<< customize) { "Bounces": Nothing, "Complaints": Nothing, "DeliveryAttempts": Nothing, "Rejects": Nothing, "Timestamp": Nothing }
 
 
 
@@ -3845,12 +3844,12 @@ newtype SendEmailRequest = SendEmailRequest
   { "Source" :: (Address)
   , "Destination" :: (Destination)
   , "Message" :: (Message)
-  , "ReplyToAddresses" :: NullOrUndefined (AddressList)
-  , "ReturnPath" :: NullOrUndefined (Address)
-  , "SourceArn" :: NullOrUndefined (AmazonResourceName)
-  , "ReturnPathArn" :: NullOrUndefined (AmazonResourceName)
-  , "Tags" :: NullOrUndefined (MessageTagList)
-  , "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName)
+  , "ReplyToAddresses" :: Maybe (AddressList)
+  , "ReturnPath" :: Maybe (Address)
+  , "SourceArn" :: Maybe (AmazonResourceName)
+  , "ReturnPathArn" :: Maybe (AmazonResourceName)
+  , "Tags" :: Maybe (MessageTagList)
+  , "ConfigurationSetName" :: Maybe (ConfigurationSetName)
   }
 derive instance newtypeSendEmailRequest :: Newtype SendEmailRequest _
 derive instance repGenericSendEmailRequest :: Generic SendEmailRequest _
@@ -3860,12 +3859,12 @@ instance encodeSendEmailRequest :: Encode SendEmailRequest where encode = generi
 
 -- | Constructs SendEmailRequest from required parameters
 newSendEmailRequest :: Destination -> Message -> Address -> SendEmailRequest
-newSendEmailRequest _Destination _Message _Source = SendEmailRequest { "Destination": _Destination, "Message": _Message, "Source": _Source, "ConfigurationSetName": (NullOrUndefined Nothing), "ReplyToAddresses": (NullOrUndefined Nothing), "ReturnPath": (NullOrUndefined Nothing), "ReturnPathArn": (NullOrUndefined Nothing), "SourceArn": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing) }
+newSendEmailRequest _Destination _Message _Source = SendEmailRequest { "Destination": _Destination, "Message": _Message, "Source": _Source, "ConfigurationSetName": Nothing, "ReplyToAddresses": Nothing, "ReturnPath": Nothing, "ReturnPathArn": Nothing, "SourceArn": Nothing, "Tags": Nothing }
 
 -- | Constructs SendEmailRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSendEmailRequest' :: Destination -> Message -> Address -> ( { "Source" :: (Address) , "Destination" :: (Destination) , "Message" :: (Message) , "ReplyToAddresses" :: NullOrUndefined (AddressList) , "ReturnPath" :: NullOrUndefined (Address) , "SourceArn" :: NullOrUndefined (AmazonResourceName) , "ReturnPathArn" :: NullOrUndefined (AmazonResourceName) , "Tags" :: NullOrUndefined (MessageTagList) , "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } -> {"Source" :: (Address) , "Destination" :: (Destination) , "Message" :: (Message) , "ReplyToAddresses" :: NullOrUndefined (AddressList) , "ReturnPath" :: NullOrUndefined (Address) , "SourceArn" :: NullOrUndefined (AmazonResourceName) , "ReturnPathArn" :: NullOrUndefined (AmazonResourceName) , "Tags" :: NullOrUndefined (MessageTagList) , "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } ) -> SendEmailRequest
-newSendEmailRequest' _Destination _Message _Source customize = (SendEmailRequest <<< customize) { "Destination": _Destination, "Message": _Message, "Source": _Source, "ConfigurationSetName": (NullOrUndefined Nothing), "ReplyToAddresses": (NullOrUndefined Nothing), "ReturnPath": (NullOrUndefined Nothing), "ReturnPathArn": (NullOrUndefined Nothing), "SourceArn": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing) }
+newSendEmailRequest' :: Destination -> Message -> Address -> ( { "Source" :: (Address) , "Destination" :: (Destination) , "Message" :: (Message) , "ReplyToAddresses" :: Maybe (AddressList) , "ReturnPath" :: Maybe (Address) , "SourceArn" :: Maybe (AmazonResourceName) , "ReturnPathArn" :: Maybe (AmazonResourceName) , "Tags" :: Maybe (MessageTagList) , "ConfigurationSetName" :: Maybe (ConfigurationSetName) } -> {"Source" :: (Address) , "Destination" :: (Destination) , "Message" :: (Message) , "ReplyToAddresses" :: Maybe (AddressList) , "ReturnPath" :: Maybe (Address) , "SourceArn" :: Maybe (AmazonResourceName) , "ReturnPathArn" :: Maybe (AmazonResourceName) , "Tags" :: Maybe (MessageTagList) , "ConfigurationSetName" :: Maybe (ConfigurationSetName) } ) -> SendEmailRequest
+newSendEmailRequest' _Destination _Message _Source customize = (SendEmailRequest <<< customize) { "Destination": _Destination, "Message": _Message, "Source": _Source, "ConfigurationSetName": Nothing, "ReplyToAddresses": Nothing, "ReturnPath": Nothing, "ReturnPathArn": Nothing, "SourceArn": Nothing, "Tags": Nothing }
 
 
 
@@ -3892,14 +3891,14 @@ newSendEmailResponse' _MessageId customize = (SendEmailResponse <<< customize) {
 
 -- | <p>Represents a request to send a single raw email using Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html">Amazon SES Developer Guide</a>.</p>
 newtype SendRawEmailRequest = SendRawEmailRequest 
-  { "Source" :: NullOrUndefined (Address)
-  , "Destinations" :: NullOrUndefined (AddressList)
+  { "Source" :: Maybe (Address)
+  , "Destinations" :: Maybe (AddressList)
   , "RawMessage" :: (RawMessage)
-  , "FromArn" :: NullOrUndefined (AmazonResourceName)
-  , "SourceArn" :: NullOrUndefined (AmazonResourceName)
-  , "ReturnPathArn" :: NullOrUndefined (AmazonResourceName)
-  , "Tags" :: NullOrUndefined (MessageTagList)
-  , "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName)
+  , "FromArn" :: Maybe (AmazonResourceName)
+  , "SourceArn" :: Maybe (AmazonResourceName)
+  , "ReturnPathArn" :: Maybe (AmazonResourceName)
+  , "Tags" :: Maybe (MessageTagList)
+  , "ConfigurationSetName" :: Maybe (ConfigurationSetName)
   }
 derive instance newtypeSendRawEmailRequest :: Newtype SendRawEmailRequest _
 derive instance repGenericSendRawEmailRequest :: Generic SendRawEmailRequest _
@@ -3909,12 +3908,12 @@ instance encodeSendRawEmailRequest :: Encode SendRawEmailRequest where encode = 
 
 -- | Constructs SendRawEmailRequest from required parameters
 newSendRawEmailRequest :: RawMessage -> SendRawEmailRequest
-newSendRawEmailRequest _RawMessage = SendRawEmailRequest { "RawMessage": _RawMessage, "ConfigurationSetName": (NullOrUndefined Nothing), "Destinations": (NullOrUndefined Nothing), "FromArn": (NullOrUndefined Nothing), "ReturnPathArn": (NullOrUndefined Nothing), "Source": (NullOrUndefined Nothing), "SourceArn": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing) }
+newSendRawEmailRequest _RawMessage = SendRawEmailRequest { "RawMessage": _RawMessage, "ConfigurationSetName": Nothing, "Destinations": Nothing, "FromArn": Nothing, "ReturnPathArn": Nothing, "Source": Nothing, "SourceArn": Nothing, "Tags": Nothing }
 
 -- | Constructs SendRawEmailRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSendRawEmailRequest' :: RawMessage -> ( { "Source" :: NullOrUndefined (Address) , "Destinations" :: NullOrUndefined (AddressList) , "RawMessage" :: (RawMessage) , "FromArn" :: NullOrUndefined (AmazonResourceName) , "SourceArn" :: NullOrUndefined (AmazonResourceName) , "ReturnPathArn" :: NullOrUndefined (AmazonResourceName) , "Tags" :: NullOrUndefined (MessageTagList) , "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } -> {"Source" :: NullOrUndefined (Address) , "Destinations" :: NullOrUndefined (AddressList) , "RawMessage" :: (RawMessage) , "FromArn" :: NullOrUndefined (AmazonResourceName) , "SourceArn" :: NullOrUndefined (AmazonResourceName) , "ReturnPathArn" :: NullOrUndefined (AmazonResourceName) , "Tags" :: NullOrUndefined (MessageTagList) , "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } ) -> SendRawEmailRequest
-newSendRawEmailRequest' _RawMessage customize = (SendRawEmailRequest <<< customize) { "RawMessage": _RawMessage, "ConfigurationSetName": (NullOrUndefined Nothing), "Destinations": (NullOrUndefined Nothing), "FromArn": (NullOrUndefined Nothing), "ReturnPathArn": (NullOrUndefined Nothing), "Source": (NullOrUndefined Nothing), "SourceArn": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing) }
+newSendRawEmailRequest' :: RawMessage -> ( { "Source" :: Maybe (Address) , "Destinations" :: Maybe (AddressList) , "RawMessage" :: (RawMessage) , "FromArn" :: Maybe (AmazonResourceName) , "SourceArn" :: Maybe (AmazonResourceName) , "ReturnPathArn" :: Maybe (AmazonResourceName) , "Tags" :: Maybe (MessageTagList) , "ConfigurationSetName" :: Maybe (ConfigurationSetName) } -> {"Source" :: Maybe (Address) , "Destinations" :: Maybe (AddressList) , "RawMessage" :: (RawMessage) , "FromArn" :: Maybe (AmazonResourceName) , "SourceArn" :: Maybe (AmazonResourceName) , "ReturnPathArn" :: Maybe (AmazonResourceName) , "Tags" :: Maybe (MessageTagList) , "ConfigurationSetName" :: Maybe (ConfigurationSetName) } ) -> SendRawEmailRequest
+newSendRawEmailRequest' _RawMessage customize = (SendRawEmailRequest <<< customize) { "RawMessage": _RawMessage, "ConfigurationSetName": Nothing, "Destinations": Nothing, "FromArn": Nothing, "ReturnPathArn": Nothing, "Source": Nothing, "SourceArn": Nothing, "Tags": Nothing }
 
 
 
@@ -3943,14 +3942,14 @@ newSendRawEmailResponse' _MessageId customize = (SendRawEmailResponse <<< custom
 newtype SendTemplatedEmailRequest = SendTemplatedEmailRequest 
   { "Source" :: (Address)
   , "Destination" :: (Destination)
-  , "ReplyToAddresses" :: NullOrUndefined (AddressList)
-  , "ReturnPath" :: NullOrUndefined (Address)
-  , "SourceArn" :: NullOrUndefined (AmazonResourceName)
-  , "ReturnPathArn" :: NullOrUndefined (AmazonResourceName)
-  , "Tags" :: NullOrUndefined (MessageTagList)
-  , "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName)
+  , "ReplyToAddresses" :: Maybe (AddressList)
+  , "ReturnPath" :: Maybe (Address)
+  , "SourceArn" :: Maybe (AmazonResourceName)
+  , "ReturnPathArn" :: Maybe (AmazonResourceName)
+  , "Tags" :: Maybe (MessageTagList)
+  , "ConfigurationSetName" :: Maybe (ConfigurationSetName)
   , "Template" :: (TemplateName)
-  , "TemplateArn" :: NullOrUndefined (AmazonResourceName)
+  , "TemplateArn" :: Maybe (AmazonResourceName)
   , "TemplateData" :: (TemplateData)
   }
 derive instance newtypeSendTemplatedEmailRequest :: Newtype SendTemplatedEmailRequest _
@@ -3961,12 +3960,12 @@ instance encodeSendTemplatedEmailRequest :: Encode SendTemplatedEmailRequest whe
 
 -- | Constructs SendTemplatedEmailRequest from required parameters
 newSendTemplatedEmailRequest :: Destination -> Address -> TemplateName -> TemplateData -> SendTemplatedEmailRequest
-newSendTemplatedEmailRequest _Destination _Source _Template _TemplateData = SendTemplatedEmailRequest { "Destination": _Destination, "Source": _Source, "Template": _Template, "TemplateData": _TemplateData, "ConfigurationSetName": (NullOrUndefined Nothing), "ReplyToAddresses": (NullOrUndefined Nothing), "ReturnPath": (NullOrUndefined Nothing), "ReturnPathArn": (NullOrUndefined Nothing), "SourceArn": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing), "TemplateArn": (NullOrUndefined Nothing) }
+newSendTemplatedEmailRequest _Destination _Source _Template _TemplateData = SendTemplatedEmailRequest { "Destination": _Destination, "Source": _Source, "Template": _Template, "TemplateData": _TemplateData, "ConfigurationSetName": Nothing, "ReplyToAddresses": Nothing, "ReturnPath": Nothing, "ReturnPathArn": Nothing, "SourceArn": Nothing, "Tags": Nothing, "TemplateArn": Nothing }
 
 -- | Constructs SendTemplatedEmailRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSendTemplatedEmailRequest' :: Destination -> Address -> TemplateName -> TemplateData -> ( { "Source" :: (Address) , "Destination" :: (Destination) , "ReplyToAddresses" :: NullOrUndefined (AddressList) , "ReturnPath" :: NullOrUndefined (Address) , "SourceArn" :: NullOrUndefined (AmazonResourceName) , "ReturnPathArn" :: NullOrUndefined (AmazonResourceName) , "Tags" :: NullOrUndefined (MessageTagList) , "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) , "Template" :: (TemplateName) , "TemplateArn" :: NullOrUndefined (AmazonResourceName) , "TemplateData" :: (TemplateData) } -> {"Source" :: (Address) , "Destination" :: (Destination) , "ReplyToAddresses" :: NullOrUndefined (AddressList) , "ReturnPath" :: NullOrUndefined (Address) , "SourceArn" :: NullOrUndefined (AmazonResourceName) , "ReturnPathArn" :: NullOrUndefined (AmazonResourceName) , "Tags" :: NullOrUndefined (MessageTagList) , "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) , "Template" :: (TemplateName) , "TemplateArn" :: NullOrUndefined (AmazonResourceName) , "TemplateData" :: (TemplateData) } ) -> SendTemplatedEmailRequest
-newSendTemplatedEmailRequest' _Destination _Source _Template _TemplateData customize = (SendTemplatedEmailRequest <<< customize) { "Destination": _Destination, "Source": _Source, "Template": _Template, "TemplateData": _TemplateData, "ConfigurationSetName": (NullOrUndefined Nothing), "ReplyToAddresses": (NullOrUndefined Nothing), "ReturnPath": (NullOrUndefined Nothing), "ReturnPathArn": (NullOrUndefined Nothing), "SourceArn": (NullOrUndefined Nothing), "Tags": (NullOrUndefined Nothing), "TemplateArn": (NullOrUndefined Nothing) }
+newSendTemplatedEmailRequest' :: Destination -> Address -> TemplateName -> TemplateData -> ( { "Source" :: (Address) , "Destination" :: (Destination) , "ReplyToAddresses" :: Maybe (AddressList) , "ReturnPath" :: Maybe (Address) , "SourceArn" :: Maybe (AmazonResourceName) , "ReturnPathArn" :: Maybe (AmazonResourceName) , "Tags" :: Maybe (MessageTagList) , "ConfigurationSetName" :: Maybe (ConfigurationSetName) , "Template" :: (TemplateName) , "TemplateArn" :: Maybe (AmazonResourceName) , "TemplateData" :: (TemplateData) } -> {"Source" :: (Address) , "Destination" :: (Destination) , "ReplyToAddresses" :: Maybe (AddressList) , "ReturnPath" :: Maybe (Address) , "SourceArn" :: Maybe (AmazonResourceName) , "ReturnPathArn" :: Maybe (AmazonResourceName) , "Tags" :: Maybe (MessageTagList) , "ConfigurationSetName" :: Maybe (ConfigurationSetName) , "Template" :: (TemplateName) , "TemplateArn" :: Maybe (AmazonResourceName) , "TemplateData" :: (TemplateData) } ) -> SendTemplatedEmailRequest
+newSendTemplatedEmailRequest' _Destination _Source _Template _TemplateData customize = (SendTemplatedEmailRequest <<< customize) { "Destination": _Destination, "Source": _Source, "Template": _Template, "TemplateData": _TemplateData, "ConfigurationSetName": Nothing, "ReplyToAddresses": Nothing, "ReturnPath": Nothing, "ReturnPathArn": Nothing, "SourceArn": Nothing, "Tags": Nothing, "TemplateArn": Nothing }
 
 
 
@@ -4001,7 +4000,7 @@ instance encodeSentLast24Hours :: Encode SentLast24Hours where encode = genericE
 
 -- | <p>Represents a request to set a receipt rule set as the active receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html">Amazon SES Developer Guide</a>.</p>
 newtype SetActiveReceiptRuleSetRequest = SetActiveReceiptRuleSetRequest 
-  { "RuleSetName" :: NullOrUndefined (ReceiptRuleSetName)
+  { "RuleSetName" :: Maybe (ReceiptRuleSetName)
   }
 derive instance newtypeSetActiveReceiptRuleSetRequest :: Newtype SetActiveReceiptRuleSetRequest _
 derive instance repGenericSetActiveReceiptRuleSetRequest :: Generic SetActiveReceiptRuleSetRequest _
@@ -4011,12 +4010,12 @@ instance encodeSetActiveReceiptRuleSetRequest :: Encode SetActiveReceiptRuleSetR
 
 -- | Constructs SetActiveReceiptRuleSetRequest from required parameters
 newSetActiveReceiptRuleSetRequest :: SetActiveReceiptRuleSetRequest
-newSetActiveReceiptRuleSetRequest  = SetActiveReceiptRuleSetRequest { "RuleSetName": (NullOrUndefined Nothing) }
+newSetActiveReceiptRuleSetRequest  = SetActiveReceiptRuleSetRequest { "RuleSetName": Nothing }
 
 -- | Constructs SetActiveReceiptRuleSetRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSetActiveReceiptRuleSetRequest' :: ( { "RuleSetName" :: NullOrUndefined (ReceiptRuleSetName) } -> {"RuleSetName" :: NullOrUndefined (ReceiptRuleSetName) } ) -> SetActiveReceiptRuleSetRequest
-newSetActiveReceiptRuleSetRequest'  customize = (SetActiveReceiptRuleSetRequest <<< customize) { "RuleSetName": (NullOrUndefined Nothing) }
+newSetActiveReceiptRuleSetRequest' :: ( { "RuleSetName" :: Maybe (ReceiptRuleSetName) } -> {"RuleSetName" :: Maybe (ReceiptRuleSetName) } ) -> SetActiveReceiptRuleSetRequest
+newSetActiveReceiptRuleSetRequest'  customize = (SetActiveReceiptRuleSetRequest <<< customize) { "RuleSetName": Nothing }
 
 
 
@@ -4130,8 +4129,8 @@ instance encodeSetIdentityHeadersInNotificationsEnabledResponse :: Encode SetIde
 -- | <p>Represents a request to enable or disable the Amazon SES custom MAIL FROM domain setup for a verified identity. For information about using a custom MAIL FROM domain, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from.html">Amazon SES Developer Guide</a>.</p>
 newtype SetIdentityMailFromDomainRequest = SetIdentityMailFromDomainRequest 
   { "Identity" :: (Identity)
-  , "MailFromDomain" :: NullOrUndefined (MailFromDomainName)
-  , "BehaviorOnMXFailure" :: NullOrUndefined (BehaviorOnMXFailure)
+  , "MailFromDomain" :: Maybe (MailFromDomainName)
+  , "BehaviorOnMXFailure" :: Maybe (BehaviorOnMXFailure)
   }
 derive instance newtypeSetIdentityMailFromDomainRequest :: Newtype SetIdentityMailFromDomainRequest _
 derive instance repGenericSetIdentityMailFromDomainRequest :: Generic SetIdentityMailFromDomainRequest _
@@ -4141,12 +4140,12 @@ instance encodeSetIdentityMailFromDomainRequest :: Encode SetIdentityMailFromDom
 
 -- | Constructs SetIdentityMailFromDomainRequest from required parameters
 newSetIdentityMailFromDomainRequest :: Identity -> SetIdentityMailFromDomainRequest
-newSetIdentityMailFromDomainRequest _Identity = SetIdentityMailFromDomainRequest { "Identity": _Identity, "BehaviorOnMXFailure": (NullOrUndefined Nothing), "MailFromDomain": (NullOrUndefined Nothing) }
+newSetIdentityMailFromDomainRequest _Identity = SetIdentityMailFromDomainRequest { "Identity": _Identity, "BehaviorOnMXFailure": Nothing, "MailFromDomain": Nothing }
 
 -- | Constructs SetIdentityMailFromDomainRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSetIdentityMailFromDomainRequest' :: Identity -> ( { "Identity" :: (Identity) , "MailFromDomain" :: NullOrUndefined (MailFromDomainName) , "BehaviorOnMXFailure" :: NullOrUndefined (BehaviorOnMXFailure) } -> {"Identity" :: (Identity) , "MailFromDomain" :: NullOrUndefined (MailFromDomainName) , "BehaviorOnMXFailure" :: NullOrUndefined (BehaviorOnMXFailure) } ) -> SetIdentityMailFromDomainRequest
-newSetIdentityMailFromDomainRequest' _Identity customize = (SetIdentityMailFromDomainRequest <<< customize) { "Identity": _Identity, "BehaviorOnMXFailure": (NullOrUndefined Nothing), "MailFromDomain": (NullOrUndefined Nothing) }
+newSetIdentityMailFromDomainRequest' :: Identity -> ( { "Identity" :: (Identity) , "MailFromDomain" :: Maybe (MailFromDomainName) , "BehaviorOnMXFailure" :: Maybe (BehaviorOnMXFailure) } -> {"Identity" :: (Identity) , "MailFromDomain" :: Maybe (MailFromDomainName) , "BehaviorOnMXFailure" :: Maybe (BehaviorOnMXFailure) } ) -> SetIdentityMailFromDomainRequest
+newSetIdentityMailFromDomainRequest' _Identity customize = (SetIdentityMailFromDomainRequest <<< customize) { "Identity": _Identity, "BehaviorOnMXFailure": Nothing, "MailFromDomain": Nothing }
 
 
 
@@ -4164,7 +4163,7 @@ instance encodeSetIdentityMailFromDomainResponse :: Encode SetIdentityMailFromDo
 newtype SetIdentityNotificationTopicRequest = SetIdentityNotificationTopicRequest 
   { "Identity" :: (Identity)
   , "NotificationType" :: (NotificationType)
-  , "SnsTopic" :: NullOrUndefined (NotificationTopic)
+  , "SnsTopic" :: Maybe (NotificationTopic)
   }
 derive instance newtypeSetIdentityNotificationTopicRequest :: Newtype SetIdentityNotificationTopicRequest _
 derive instance repGenericSetIdentityNotificationTopicRequest :: Generic SetIdentityNotificationTopicRequest _
@@ -4174,12 +4173,12 @@ instance encodeSetIdentityNotificationTopicRequest :: Encode SetIdentityNotifica
 
 -- | Constructs SetIdentityNotificationTopicRequest from required parameters
 newSetIdentityNotificationTopicRequest :: Identity -> NotificationType -> SetIdentityNotificationTopicRequest
-newSetIdentityNotificationTopicRequest _Identity _NotificationType = SetIdentityNotificationTopicRequest { "Identity": _Identity, "NotificationType": _NotificationType, "SnsTopic": (NullOrUndefined Nothing) }
+newSetIdentityNotificationTopicRequest _Identity _NotificationType = SetIdentityNotificationTopicRequest { "Identity": _Identity, "NotificationType": _NotificationType, "SnsTopic": Nothing }
 
 -- | Constructs SetIdentityNotificationTopicRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSetIdentityNotificationTopicRequest' :: Identity -> NotificationType -> ( { "Identity" :: (Identity) , "NotificationType" :: (NotificationType) , "SnsTopic" :: NullOrUndefined (NotificationTopic) } -> {"Identity" :: (Identity) , "NotificationType" :: (NotificationType) , "SnsTopic" :: NullOrUndefined (NotificationTopic) } ) -> SetIdentityNotificationTopicRequest
-newSetIdentityNotificationTopicRequest' _Identity _NotificationType customize = (SetIdentityNotificationTopicRequest <<< customize) { "Identity": _Identity, "NotificationType": _NotificationType, "SnsTopic": (NullOrUndefined Nothing) }
+newSetIdentityNotificationTopicRequest' :: Identity -> NotificationType -> ( { "Identity" :: (Identity) , "NotificationType" :: (NotificationType) , "SnsTopic" :: Maybe (NotificationTopic) } -> {"Identity" :: (Identity) , "NotificationType" :: (NotificationType) , "SnsTopic" :: Maybe (NotificationTopic) } ) -> SetIdentityNotificationTopicRequest
+newSetIdentityNotificationTopicRequest' _Identity _NotificationType customize = (SetIdentityNotificationTopicRequest <<< customize) { "Identity": _Identity, "NotificationType": _NotificationType, "SnsTopic": Nothing }
 
 
 
@@ -4197,7 +4196,7 @@ instance encodeSetIdentityNotificationTopicResponse :: Encode SetIdentityNotific
 newtype SetReceiptRulePositionRequest = SetReceiptRulePositionRequest 
   { "RuleSetName" :: (ReceiptRuleSetName)
   , "RuleName" :: (ReceiptRuleName)
-  , "After" :: NullOrUndefined (ReceiptRuleName)
+  , "After" :: Maybe (ReceiptRuleName)
   }
 derive instance newtypeSetReceiptRulePositionRequest :: Newtype SetReceiptRulePositionRequest _
 derive instance repGenericSetReceiptRulePositionRequest :: Generic SetReceiptRulePositionRequest _
@@ -4207,12 +4206,12 @@ instance encodeSetReceiptRulePositionRequest :: Encode SetReceiptRulePositionReq
 
 -- | Constructs SetReceiptRulePositionRequest from required parameters
 newSetReceiptRulePositionRequest :: ReceiptRuleName -> ReceiptRuleSetName -> SetReceiptRulePositionRequest
-newSetReceiptRulePositionRequest _RuleName _RuleSetName = SetReceiptRulePositionRequest { "RuleName": _RuleName, "RuleSetName": _RuleSetName, "After": (NullOrUndefined Nothing) }
+newSetReceiptRulePositionRequest _RuleName _RuleSetName = SetReceiptRulePositionRequest { "RuleName": _RuleName, "RuleSetName": _RuleSetName, "After": Nothing }
 
 -- | Constructs SetReceiptRulePositionRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newSetReceiptRulePositionRequest' :: ReceiptRuleName -> ReceiptRuleSetName -> ( { "RuleSetName" :: (ReceiptRuleSetName) , "RuleName" :: (ReceiptRuleName) , "After" :: NullOrUndefined (ReceiptRuleName) } -> {"RuleSetName" :: (ReceiptRuleSetName) , "RuleName" :: (ReceiptRuleName) , "After" :: NullOrUndefined (ReceiptRuleName) } ) -> SetReceiptRulePositionRequest
-newSetReceiptRulePositionRequest' _RuleName _RuleSetName customize = (SetReceiptRulePositionRequest <<< customize) { "RuleName": _RuleName, "RuleSetName": _RuleSetName, "After": (NullOrUndefined Nothing) }
+newSetReceiptRulePositionRequest' :: ReceiptRuleName -> ReceiptRuleSetName -> ( { "RuleSetName" :: (ReceiptRuleSetName) , "RuleName" :: (ReceiptRuleName) , "After" :: Maybe (ReceiptRuleName) } -> {"RuleSetName" :: (ReceiptRuleSetName) , "RuleName" :: (ReceiptRuleName) , "After" :: Maybe (ReceiptRuleName) } ) -> SetReceiptRulePositionRequest
+newSetReceiptRulePositionRequest' _RuleName _RuleSetName customize = (SetReceiptRulePositionRequest <<< customize) { "RuleName": _RuleName, "RuleSetName": _RuleSetName, "After": Nothing }
 
 
 
@@ -4229,7 +4228,7 @@ instance encodeSetReceiptRulePositionResponse :: Encode SetReceiptRulePositionRe
 -- | <p>When included in a receipt rule, this action terminates the evaluation of the receipt rule set and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).</p> <p>For information about setting a stop action in a receipt rule, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-stop.html">Amazon SES Developer Guide</a>.</p>
 newtype StopAction = StopAction 
   { "Scope" :: (StopScope)
-  , "TopicArn" :: NullOrUndefined (AmazonResourceName)
+  , "TopicArn" :: Maybe (AmazonResourceName)
   }
 derive instance newtypeStopAction :: Newtype StopAction _
 derive instance repGenericStopAction :: Generic StopAction _
@@ -4239,12 +4238,12 @@ instance encodeStopAction :: Encode StopAction where encode = genericEncode opti
 
 -- | Constructs StopAction from required parameters
 newStopAction :: StopScope -> StopAction
-newStopAction _Scope = StopAction { "Scope": _Scope, "TopicArn": (NullOrUndefined Nothing) }
+newStopAction _Scope = StopAction { "Scope": _Scope, "TopicArn": Nothing }
 
 -- | Constructs StopAction's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newStopAction' :: StopScope -> ( { "Scope" :: (StopScope) , "TopicArn" :: NullOrUndefined (AmazonResourceName) } -> {"Scope" :: (StopScope) , "TopicArn" :: NullOrUndefined (AmazonResourceName) } ) -> StopAction
-newStopAction' _Scope customize = (StopAction <<< customize) { "Scope": _Scope, "TopicArn": (NullOrUndefined Nothing) }
+newStopAction' :: StopScope -> ( { "Scope" :: (StopScope) , "TopicArn" :: Maybe (AmazonResourceName) } -> {"Scope" :: (StopScope) , "TopicArn" :: Maybe (AmazonResourceName) } ) -> StopAction
+newStopAction' _Scope customize = (StopAction <<< customize) { "Scope": _Scope, "TopicArn": Nothing }
 
 
 
@@ -4287,9 +4286,9 @@ instance encodeSuccessRedirectionURL :: Encode SuccessRedirectionURL where encod
 -- | <p>The content of the email, composed of a subject line, an HTML part, and a text-only part.</p>
 newtype Template = Template 
   { "TemplateName" :: (TemplateName)
-  , "SubjectPart" :: NullOrUndefined (SubjectPart)
-  , "TextPart" :: NullOrUndefined (TextPart)
-  , "HtmlPart" :: NullOrUndefined (HtmlPart)
+  , "SubjectPart" :: Maybe (SubjectPart)
+  , "TextPart" :: Maybe (TextPart)
+  , "HtmlPart" :: Maybe (HtmlPart)
   }
 derive instance newtypeTemplate :: Newtype Template _
 derive instance repGenericTemplate :: Generic Template _
@@ -4299,12 +4298,12 @@ instance encodeTemplate :: Encode Template where encode = genericEncode options
 
 -- | Constructs Template from required parameters
 newTemplate :: TemplateName -> Template
-newTemplate _TemplateName = Template { "TemplateName": _TemplateName, "HtmlPart": (NullOrUndefined Nothing), "SubjectPart": (NullOrUndefined Nothing), "TextPart": (NullOrUndefined Nothing) }
+newTemplate _TemplateName = Template { "TemplateName": _TemplateName, "HtmlPart": Nothing, "SubjectPart": Nothing, "TextPart": Nothing }
 
 -- | Constructs Template's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newTemplate' :: TemplateName -> ( { "TemplateName" :: (TemplateName) , "SubjectPart" :: NullOrUndefined (SubjectPart) , "TextPart" :: NullOrUndefined (TextPart) , "HtmlPart" :: NullOrUndefined (HtmlPart) } -> {"TemplateName" :: (TemplateName) , "SubjectPart" :: NullOrUndefined (SubjectPart) , "TextPart" :: NullOrUndefined (TextPart) , "HtmlPart" :: NullOrUndefined (HtmlPart) } ) -> Template
-newTemplate' _TemplateName customize = (Template <<< customize) { "TemplateName": _TemplateName, "HtmlPart": (NullOrUndefined Nothing), "SubjectPart": (NullOrUndefined Nothing), "TextPart": (NullOrUndefined Nothing) }
+newTemplate' :: TemplateName -> ( { "TemplateName" :: (TemplateName) , "SubjectPart" :: Maybe (SubjectPart) , "TextPart" :: Maybe (TextPart) , "HtmlPart" :: Maybe (HtmlPart) } -> {"TemplateName" :: (TemplateName) , "SubjectPart" :: Maybe (SubjectPart) , "TextPart" :: Maybe (TextPart) , "HtmlPart" :: Maybe (HtmlPart) } ) -> Template
+newTemplate' _TemplateName customize = (Template <<< customize) { "TemplateName": _TemplateName, "HtmlPart": Nothing, "SubjectPart": Nothing, "TextPart": Nothing }
 
 
 
@@ -4328,7 +4327,7 @@ instance encodeTemplateData :: Encode TemplateData where encode = genericEncode 
 
 -- | <p>Indicates that the Template object you specified does not exist in your Amazon SES account.</p>
 newtype TemplateDoesNotExistException = TemplateDoesNotExistException 
-  { "TemplateName" :: NullOrUndefined (TemplateName)
+  { "TemplateName" :: Maybe (TemplateName)
   }
 derive instance newtypeTemplateDoesNotExistException :: Newtype TemplateDoesNotExistException _
 derive instance repGenericTemplateDoesNotExistException :: Generic TemplateDoesNotExistException _
@@ -4338,19 +4337,19 @@ instance encodeTemplateDoesNotExistException :: Encode TemplateDoesNotExistExcep
 
 -- | Constructs TemplateDoesNotExistException from required parameters
 newTemplateDoesNotExistException :: TemplateDoesNotExistException
-newTemplateDoesNotExistException  = TemplateDoesNotExistException { "TemplateName": (NullOrUndefined Nothing) }
+newTemplateDoesNotExistException  = TemplateDoesNotExistException { "TemplateName": Nothing }
 
 -- | Constructs TemplateDoesNotExistException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newTemplateDoesNotExistException' :: ( { "TemplateName" :: NullOrUndefined (TemplateName) } -> {"TemplateName" :: NullOrUndefined (TemplateName) } ) -> TemplateDoesNotExistException
-newTemplateDoesNotExistException'  customize = (TemplateDoesNotExistException <<< customize) { "TemplateName": (NullOrUndefined Nothing) }
+newTemplateDoesNotExistException' :: ( { "TemplateName" :: Maybe (TemplateName) } -> {"TemplateName" :: Maybe (TemplateName) } ) -> TemplateDoesNotExistException
+newTemplateDoesNotExistException'  customize = (TemplateDoesNotExistException <<< customize) { "TemplateName": Nothing }
 
 
 
 -- | <p>Contains information about an email template.</p>
 newtype TemplateMetadata = TemplateMetadata 
-  { "Name" :: NullOrUndefined (TemplateName)
-  , "CreatedTimestamp" :: NullOrUndefined (Types.Timestamp)
+  { "Name" :: Maybe (TemplateName)
+  , "CreatedTimestamp" :: Maybe (Types.Timestamp)
   }
 derive instance newtypeTemplateMetadata :: Newtype TemplateMetadata _
 derive instance repGenericTemplateMetadata :: Generic TemplateMetadata _
@@ -4360,12 +4359,12 @@ instance encodeTemplateMetadata :: Encode TemplateMetadata where encode = generi
 
 -- | Constructs TemplateMetadata from required parameters
 newTemplateMetadata :: TemplateMetadata
-newTemplateMetadata  = TemplateMetadata { "CreatedTimestamp": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing) }
+newTemplateMetadata  = TemplateMetadata { "CreatedTimestamp": Nothing, "Name": Nothing }
 
 -- | Constructs TemplateMetadata's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newTemplateMetadata' :: ( { "Name" :: NullOrUndefined (TemplateName) , "CreatedTimestamp" :: NullOrUndefined (Types.Timestamp) } -> {"Name" :: NullOrUndefined (TemplateName) , "CreatedTimestamp" :: NullOrUndefined (Types.Timestamp) } ) -> TemplateMetadata
-newTemplateMetadata'  customize = (TemplateMetadata <<< customize) { "CreatedTimestamp": (NullOrUndefined Nothing), "Name": (NullOrUndefined Nothing) }
+newTemplateMetadata' :: ( { "Name" :: Maybe (TemplateName) , "CreatedTimestamp" :: Maybe (Types.Timestamp) } -> {"Name" :: Maybe (TemplateName) , "CreatedTimestamp" :: Maybe (Types.Timestamp) } ) -> TemplateMetadata
+newTemplateMetadata'  customize = (TemplateMetadata <<< customize) { "CreatedTimestamp": Nothing, "Name": Nothing }
 
 
 
@@ -4409,7 +4408,7 @@ newTestRenderTemplateRequest' _TemplateData _TemplateName customize = (TestRende
 
 
 newtype TestRenderTemplateResponse = TestRenderTemplateResponse 
-  { "RenderedTemplate" :: NullOrUndefined (RenderedTemplate)
+  { "RenderedTemplate" :: Maybe (RenderedTemplate)
   }
 derive instance newtypeTestRenderTemplateResponse :: Newtype TestRenderTemplateResponse _
 derive instance repGenericTestRenderTemplateResponse :: Generic TestRenderTemplateResponse _
@@ -4419,12 +4418,12 @@ instance encodeTestRenderTemplateResponse :: Encode TestRenderTemplateResponse w
 
 -- | Constructs TestRenderTemplateResponse from required parameters
 newTestRenderTemplateResponse :: TestRenderTemplateResponse
-newTestRenderTemplateResponse  = TestRenderTemplateResponse { "RenderedTemplate": (NullOrUndefined Nothing) }
+newTestRenderTemplateResponse  = TestRenderTemplateResponse { "RenderedTemplate": Nothing }
 
 -- | Constructs TestRenderTemplateResponse's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newTestRenderTemplateResponse' :: ( { "RenderedTemplate" :: NullOrUndefined (RenderedTemplate) } -> {"RenderedTemplate" :: NullOrUndefined (RenderedTemplate) } ) -> TestRenderTemplateResponse
-newTestRenderTemplateResponse'  customize = (TestRenderTemplateResponse <<< customize) { "RenderedTemplate": (NullOrUndefined Nothing) }
+newTestRenderTemplateResponse' :: ( { "RenderedTemplate" :: Maybe (RenderedTemplate) } -> {"RenderedTemplate" :: Maybe (RenderedTemplate) } ) -> TestRenderTemplateResponse
+newTestRenderTemplateResponse'  customize = (TestRenderTemplateResponse <<< customize) { "RenderedTemplate": Nothing }
 
 
 
@@ -4448,7 +4447,7 @@ instance encodeTlsPolicy :: Encode TlsPolicy where encode = genericEncode option
 
 -- | <p>A domain that is used to redirect email recipients to an Amazon SES-operated domain. This domain captures open and click events generated by Amazon SES emails.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html">Configuring Custom Domains to Handle Open and Click Tracking</a> in the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html">Amazon SES Developer Guide</a>.</p>
 newtype TrackingOptions = TrackingOptions 
-  { "CustomRedirectDomain" :: NullOrUndefined (CustomRedirectDomain)
+  { "CustomRedirectDomain" :: Maybe (CustomRedirectDomain)
   }
 derive instance newtypeTrackingOptions :: Newtype TrackingOptions _
 derive instance repGenericTrackingOptions :: Generic TrackingOptions _
@@ -4458,18 +4457,18 @@ instance encodeTrackingOptions :: Encode TrackingOptions where encode = genericE
 
 -- | Constructs TrackingOptions from required parameters
 newTrackingOptions :: TrackingOptions
-newTrackingOptions  = TrackingOptions { "CustomRedirectDomain": (NullOrUndefined Nothing) }
+newTrackingOptions  = TrackingOptions { "CustomRedirectDomain": Nothing }
 
 -- | Constructs TrackingOptions's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newTrackingOptions' :: ( { "CustomRedirectDomain" :: NullOrUndefined (CustomRedirectDomain) } -> {"CustomRedirectDomain" :: NullOrUndefined (CustomRedirectDomain) } ) -> TrackingOptions
-newTrackingOptions'  customize = (TrackingOptions <<< customize) { "CustomRedirectDomain": (NullOrUndefined Nothing) }
+newTrackingOptions' :: ( { "CustomRedirectDomain" :: Maybe (CustomRedirectDomain) } -> {"CustomRedirectDomain" :: Maybe (CustomRedirectDomain) } ) -> TrackingOptions
+newTrackingOptions'  customize = (TrackingOptions <<< customize) { "CustomRedirectDomain": Nothing }
 
 
 
 -- | <p>Indicates that the configuration set you specified already contains a TrackingOptions object.</p>
 newtype TrackingOptionsAlreadyExistsException = TrackingOptionsAlreadyExistsException 
-  { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName)
+  { "ConfigurationSetName" :: Maybe (ConfigurationSetName)
   }
 derive instance newtypeTrackingOptionsAlreadyExistsException :: Newtype TrackingOptionsAlreadyExistsException _
 derive instance repGenericTrackingOptionsAlreadyExistsException :: Generic TrackingOptionsAlreadyExistsException _
@@ -4479,18 +4478,18 @@ instance encodeTrackingOptionsAlreadyExistsException :: Encode TrackingOptionsAl
 
 -- | Constructs TrackingOptionsAlreadyExistsException from required parameters
 newTrackingOptionsAlreadyExistsException :: TrackingOptionsAlreadyExistsException
-newTrackingOptionsAlreadyExistsException  = TrackingOptionsAlreadyExistsException { "ConfigurationSetName": (NullOrUndefined Nothing) }
+newTrackingOptionsAlreadyExistsException  = TrackingOptionsAlreadyExistsException { "ConfigurationSetName": Nothing }
 
 -- | Constructs TrackingOptionsAlreadyExistsException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newTrackingOptionsAlreadyExistsException' :: ( { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } -> {"ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } ) -> TrackingOptionsAlreadyExistsException
-newTrackingOptionsAlreadyExistsException'  customize = (TrackingOptionsAlreadyExistsException <<< customize) { "ConfigurationSetName": (NullOrUndefined Nothing) }
+newTrackingOptionsAlreadyExistsException' :: ( { "ConfigurationSetName" :: Maybe (ConfigurationSetName) } -> {"ConfigurationSetName" :: Maybe (ConfigurationSetName) } ) -> TrackingOptionsAlreadyExistsException
+newTrackingOptionsAlreadyExistsException'  customize = (TrackingOptionsAlreadyExistsException <<< customize) { "ConfigurationSetName": Nothing }
 
 
 
 -- | <p>Indicates that the TrackingOptions object you specified does not exist.</p>
 newtype TrackingOptionsDoesNotExistException = TrackingOptionsDoesNotExistException 
-  { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName)
+  { "ConfigurationSetName" :: Maybe (ConfigurationSetName)
   }
 derive instance newtypeTrackingOptionsDoesNotExistException :: Newtype TrackingOptionsDoesNotExistException _
 derive instance repGenericTrackingOptionsDoesNotExistException :: Generic TrackingOptionsDoesNotExistException _
@@ -4500,18 +4499,18 @@ instance encodeTrackingOptionsDoesNotExistException :: Encode TrackingOptionsDoe
 
 -- | Constructs TrackingOptionsDoesNotExistException from required parameters
 newTrackingOptionsDoesNotExistException :: TrackingOptionsDoesNotExistException
-newTrackingOptionsDoesNotExistException  = TrackingOptionsDoesNotExistException { "ConfigurationSetName": (NullOrUndefined Nothing) }
+newTrackingOptionsDoesNotExistException  = TrackingOptionsDoesNotExistException { "ConfigurationSetName": Nothing }
 
 -- | Constructs TrackingOptionsDoesNotExistException's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newTrackingOptionsDoesNotExistException' :: ( { "ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } -> {"ConfigurationSetName" :: NullOrUndefined (ConfigurationSetName) } ) -> TrackingOptionsDoesNotExistException
-newTrackingOptionsDoesNotExistException'  customize = (TrackingOptionsDoesNotExistException <<< customize) { "ConfigurationSetName": (NullOrUndefined Nothing) }
+newTrackingOptionsDoesNotExistException' :: ( { "ConfigurationSetName" :: Maybe (ConfigurationSetName) } -> {"ConfigurationSetName" :: Maybe (ConfigurationSetName) } ) -> TrackingOptionsDoesNotExistException
+newTrackingOptionsDoesNotExistException'  customize = (TrackingOptionsDoesNotExistException <<< customize) { "ConfigurationSetName": Nothing }
 
 
 
 -- | <p>Represents a request to enable or disable the email sending capabilities for your entire Amazon SES account.</p>
 newtype UpdateAccountSendingEnabledRequest = UpdateAccountSendingEnabledRequest 
-  { "Enabled" :: NullOrUndefined (Enabled)
+  { "Enabled" :: Maybe (Enabled)
   }
 derive instance newtypeUpdateAccountSendingEnabledRequest :: Newtype UpdateAccountSendingEnabledRequest _
 derive instance repGenericUpdateAccountSendingEnabledRequest :: Generic UpdateAccountSendingEnabledRequest _
@@ -4521,12 +4520,12 @@ instance encodeUpdateAccountSendingEnabledRequest :: Encode UpdateAccountSending
 
 -- | Constructs UpdateAccountSendingEnabledRequest from required parameters
 newUpdateAccountSendingEnabledRequest :: UpdateAccountSendingEnabledRequest
-newUpdateAccountSendingEnabledRequest  = UpdateAccountSendingEnabledRequest { "Enabled": (NullOrUndefined Nothing) }
+newUpdateAccountSendingEnabledRequest  = UpdateAccountSendingEnabledRequest { "Enabled": Nothing }
 
 -- | Constructs UpdateAccountSendingEnabledRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUpdateAccountSendingEnabledRequest' :: ( { "Enabled" :: NullOrUndefined (Enabled) } -> {"Enabled" :: NullOrUndefined (Enabled) } ) -> UpdateAccountSendingEnabledRequest
-newUpdateAccountSendingEnabledRequest'  customize = (UpdateAccountSendingEnabledRequest <<< customize) { "Enabled": (NullOrUndefined Nothing) }
+newUpdateAccountSendingEnabledRequest' :: ( { "Enabled" :: Maybe (Enabled) } -> {"Enabled" :: Maybe (Enabled) } ) -> UpdateAccountSendingEnabledRequest
+newUpdateAccountSendingEnabledRequest'  customize = (UpdateAccountSendingEnabledRequest <<< customize) { "Enabled": Nothing }
 
 
 
@@ -4641,11 +4640,11 @@ instance encodeUpdateConfigurationSetTrackingOptionsResponse :: Encode UpdateCon
 -- | <p>Represents a request to update an existing custom verification email template.</p>
 newtype UpdateCustomVerificationEmailTemplateRequest = UpdateCustomVerificationEmailTemplateRequest 
   { "TemplateName" :: (TemplateName)
-  , "FromEmailAddress" :: NullOrUndefined (FromAddress)
-  , "TemplateSubject" :: NullOrUndefined (Subject)
-  , "TemplateContent" :: NullOrUndefined (TemplateContent)
-  , "SuccessRedirectionURL" :: NullOrUndefined (SuccessRedirectionURL)
-  , "FailureRedirectionURL" :: NullOrUndefined (FailureRedirectionURL)
+  , "FromEmailAddress" :: Maybe (FromAddress)
+  , "TemplateSubject" :: Maybe (Subject)
+  , "TemplateContent" :: Maybe (TemplateContent)
+  , "SuccessRedirectionURL" :: Maybe (SuccessRedirectionURL)
+  , "FailureRedirectionURL" :: Maybe (FailureRedirectionURL)
   }
 derive instance newtypeUpdateCustomVerificationEmailTemplateRequest :: Newtype UpdateCustomVerificationEmailTemplateRequest _
 derive instance repGenericUpdateCustomVerificationEmailTemplateRequest :: Generic UpdateCustomVerificationEmailTemplateRequest _
@@ -4655,12 +4654,12 @@ instance encodeUpdateCustomVerificationEmailTemplateRequest :: Encode UpdateCust
 
 -- | Constructs UpdateCustomVerificationEmailTemplateRequest from required parameters
 newUpdateCustomVerificationEmailTemplateRequest :: TemplateName -> UpdateCustomVerificationEmailTemplateRequest
-newUpdateCustomVerificationEmailTemplateRequest _TemplateName = UpdateCustomVerificationEmailTemplateRequest { "TemplateName": _TemplateName, "FailureRedirectionURL": (NullOrUndefined Nothing), "FromEmailAddress": (NullOrUndefined Nothing), "SuccessRedirectionURL": (NullOrUndefined Nothing), "TemplateContent": (NullOrUndefined Nothing), "TemplateSubject": (NullOrUndefined Nothing) }
+newUpdateCustomVerificationEmailTemplateRequest _TemplateName = UpdateCustomVerificationEmailTemplateRequest { "TemplateName": _TemplateName, "FailureRedirectionURL": Nothing, "FromEmailAddress": Nothing, "SuccessRedirectionURL": Nothing, "TemplateContent": Nothing, "TemplateSubject": Nothing }
 
 -- | Constructs UpdateCustomVerificationEmailTemplateRequest's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newUpdateCustomVerificationEmailTemplateRequest' :: TemplateName -> ( { "TemplateName" :: (TemplateName) , "FromEmailAddress" :: NullOrUndefined (FromAddress) , "TemplateSubject" :: NullOrUndefined (Subject) , "TemplateContent" :: NullOrUndefined (TemplateContent) , "SuccessRedirectionURL" :: NullOrUndefined (SuccessRedirectionURL) , "FailureRedirectionURL" :: NullOrUndefined (FailureRedirectionURL) } -> {"TemplateName" :: (TemplateName) , "FromEmailAddress" :: NullOrUndefined (FromAddress) , "TemplateSubject" :: NullOrUndefined (Subject) , "TemplateContent" :: NullOrUndefined (TemplateContent) , "SuccessRedirectionURL" :: NullOrUndefined (SuccessRedirectionURL) , "FailureRedirectionURL" :: NullOrUndefined (FailureRedirectionURL) } ) -> UpdateCustomVerificationEmailTemplateRequest
-newUpdateCustomVerificationEmailTemplateRequest' _TemplateName customize = (UpdateCustomVerificationEmailTemplateRequest <<< customize) { "TemplateName": _TemplateName, "FailureRedirectionURL": (NullOrUndefined Nothing), "FromEmailAddress": (NullOrUndefined Nothing), "SuccessRedirectionURL": (NullOrUndefined Nothing), "TemplateContent": (NullOrUndefined Nothing), "TemplateSubject": (NullOrUndefined Nothing) }
+newUpdateCustomVerificationEmailTemplateRequest' :: TemplateName -> ( { "TemplateName" :: (TemplateName) , "FromEmailAddress" :: Maybe (FromAddress) , "TemplateSubject" :: Maybe (Subject) , "TemplateContent" :: Maybe (TemplateContent) , "SuccessRedirectionURL" :: Maybe (SuccessRedirectionURL) , "FailureRedirectionURL" :: Maybe (FailureRedirectionURL) } -> {"TemplateName" :: (TemplateName) , "FromEmailAddress" :: Maybe (FromAddress) , "TemplateSubject" :: Maybe (Subject) , "TemplateContent" :: Maybe (TemplateContent) , "SuccessRedirectionURL" :: Maybe (SuccessRedirectionURL) , "FailureRedirectionURL" :: Maybe (FailureRedirectionURL) } ) -> UpdateCustomVerificationEmailTemplateRequest
+newUpdateCustomVerificationEmailTemplateRequest' _TemplateName customize = (UpdateCustomVerificationEmailTemplateRequest <<< customize) { "TemplateName": _TemplateName, "FailureRedirectionURL": Nothing, "FromEmailAddress": Nothing, "SuccessRedirectionURL": Nothing, "TemplateContent": Nothing, "TemplateSubject": Nothing }
 
 
 
@@ -4899,7 +4898,7 @@ instance encodeVerifyEmailIdentityResponse :: Encode VerifyEmailIdentityResponse
 
 -- | <p>When included in a receipt rule, this action calls Amazon WorkMail and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS). You will typically not use this action directly because Amazon WorkMail adds the rule automatically during its setup procedure.</p> <p>For information using a receipt rule to call Amazon WorkMail, see the <a href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-workmail.html">Amazon SES Developer Guide</a>.</p>
 newtype WorkmailAction = WorkmailAction 
-  { "TopicArn" :: NullOrUndefined (AmazonResourceName)
+  { "TopicArn" :: Maybe (AmazonResourceName)
   , "OrganizationArn" :: (AmazonResourceName)
   }
 derive instance newtypeWorkmailAction :: Newtype WorkmailAction _
@@ -4910,10 +4909,10 @@ instance encodeWorkmailAction :: Encode WorkmailAction where encode = genericEnc
 
 -- | Constructs WorkmailAction from required parameters
 newWorkmailAction :: AmazonResourceName -> WorkmailAction
-newWorkmailAction _OrganizationArn = WorkmailAction { "OrganizationArn": _OrganizationArn, "TopicArn": (NullOrUndefined Nothing) }
+newWorkmailAction _OrganizationArn = WorkmailAction { "OrganizationArn": _OrganizationArn, "TopicArn": Nothing }
 
 -- | Constructs WorkmailAction's fields from required parameters
 --   This may be useful if you need to immediately overwrite some of the optional values
-newWorkmailAction' :: AmazonResourceName -> ( { "TopicArn" :: NullOrUndefined (AmazonResourceName) , "OrganizationArn" :: (AmazonResourceName) } -> {"TopicArn" :: NullOrUndefined (AmazonResourceName) , "OrganizationArn" :: (AmazonResourceName) } ) -> WorkmailAction
-newWorkmailAction' _OrganizationArn customize = (WorkmailAction <<< customize) { "OrganizationArn": _OrganizationArn, "TopicArn": (NullOrUndefined Nothing) }
+newWorkmailAction' :: AmazonResourceName -> ( { "TopicArn" :: Maybe (AmazonResourceName) , "OrganizationArn" :: (AmazonResourceName) } -> {"TopicArn" :: Maybe (AmazonResourceName) , "OrganizationArn" :: (AmazonResourceName) } ) -> WorkmailAction
+newWorkmailAction' _OrganizationArn customize = (WorkmailAction <<< customize) { "OrganizationArn": _OrganizationArn, "TopicArn": Nothing }
 
